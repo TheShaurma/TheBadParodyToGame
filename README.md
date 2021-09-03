@@ -1,3 +1,3 @@
 # TheBadParodyToGame
 
-Sory, but documentation have not for now. :(
+Sorry, but documentation have not for now. :(
