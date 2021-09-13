@@ -43,11 +43,12 @@ class ShowedField:
         y = self._window_y_max-y-self.__rect_heigh - self.__y_remainder
 
         pos = (x, y)
-        # self.__check_pos(pos)
 
         return pos
 
     def window_update(self):
+        # TODO: Optimise me!
+
         self._window.fill((0x00, 0x00, 0x00))
 
         for pos_on_field in self.__field:

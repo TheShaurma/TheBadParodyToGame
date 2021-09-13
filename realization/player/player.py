@@ -36,9 +36,16 @@ class Player:
 
         self._movement_itself(pos)
 
-
     def _movement_itself(self, pos):
         """Make player move to assigned pos."""
+
+        try:
+            if self._field[pos].is_barrier:
+                self.rgb = (0xFF, 0x00, 0x00)
+                return
+        except AttributeError:
+            pass
+        self.rgb = (0x00, 0xFF, 0x00)
 
         old_pos = self._pos
 
