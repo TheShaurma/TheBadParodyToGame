@@ -3,8 +3,8 @@ import pygame
 import realization
 import visualization
 
-FIELD_X_MAX = 30
-FIELD_Y_MAX = 30
+FIELD_X_MAX = 20
+FIELD_Y_MAX = 20
 
 WINDOW_X_MAX = 500
 WINDOW_Y_MAX = 500

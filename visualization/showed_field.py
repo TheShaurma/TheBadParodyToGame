@@ -1,5 +1,6 @@
 import pygame
 
+
 class ShowedField:
     """Objects of this class tracks of picture on transmitted him window."""
 
@@ -46,13 +47,30 @@ class ShowedField:
 
         return pos
 
-    def window_update(self):
-        # TODO: Optimise me!
+    def __from_pos_on_window_to_pos_on_field(self, pos_on_window):
+        x, y = pos_on_window
+        y = self._window_y_max - y - self.__y_remainder
 
+        x //= self.__rect_length
+        y //= self.__rect_heigh
+
+        pos = (x, y)
+
+        return pos
+
+    def window_update(self):
+        self._show_field()
+        self._mouse_pos_update()
+
+        pygame.display.update()
+
+    def _show_field(self):
+        # TODO: Optimise me!
         self._window.fill((0x00, 0x00, 0x00))
 
         for pos_on_field in self.__field:
-            pos_on_window = self.__from_pos_on_field_to_pos_on_window(pos_on_field)
+            pos_on_window = self.__from_pos_on_field_to_pos_on_window(
+                pos_on_field)
             try:
                 pygame.draw.rect(
                     self._window,
@@ -62,11 +80,33 @@ class ShowedField:
             except AttributeError:
                 pygame.draw.rect(
                     self._window,
-                    (0xFF, 0xFF, 0xFF),
+                    (0xFA, 0xCE, 0x04),
                     (*pos_on_window, self.__rect_length, self.__rect_heigh)
                 )
 
-        pygame.display.update()
+    def _get_mouse_pos(self):
+        mouse_pos = pygame.mouse.get_pos()
+
+        x, y = mouse_pos
+
+        return (x, y)
+
+    def _mouse_pos_update(self):
+        mouse_pos_on_window = self._get_mouse_pos()
+        self.mouse_pos_on_field = self.__from_pos_on_window_to_pos_on_field(
+            mouse_pos_on_window)
+
+        pygame.draw.rect(
+            self._window,
+            (0xAA, 0xAA, 0xAA),
+            (
+                *self.__from_pos_on_field_to_pos_on_window(self.mouse_pos_on_field),
+                self.__rect_length, self.__rect_heigh
+            )
+        )
+
+    mouse_pos_on_field = (0, 0)
+
 
 if __name__ == '__main__':
     pygame.init()
