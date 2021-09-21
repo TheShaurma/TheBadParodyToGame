@@ -11,9 +11,10 @@ class Checker:
         if keys[self.__FROM_PYGAME_TO_CURRENT_PACAGE_CONSTANTS_DICT[key]]:
             return True
 
-        for event in pygame.event.get():
-            if event.type == self.__FROM_PYGAME_TO_CURRENT_PACAGE_CONSTANTS_DICT[key]:
-                return True
+        if key == constants.QUIT:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    return True
 
         return False
 
