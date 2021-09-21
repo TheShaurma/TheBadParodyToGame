@@ -4,6 +4,7 @@ import pygame
 class ShowedField:
     """Objects of this class tracks of picture on transmitted him window."""
 
+    # interface ###########################################
     def __init__(self, window_resolution, field_resolution):
         self._window = pygame.display.set_mode(window_resolution)
         self._window.fill((0x00, 0x00, 0x00))
@@ -22,6 +23,13 @@ class ShowedField:
 
     def set_field(self, field):
         self.__field = field
+
+    def window_update(self):
+        self._show_field()
+        self._mouse_pos_update()
+
+    mouse_pos_on_field = (0, 0)
+    #######################################################
 
     def __prepare_to___from_pos_on_field_to_pos_on_windows_call(self):
         field_length = self._field_y_max-self._field_x_min+1
@@ -58,12 +66,6 @@ class ShowedField:
 
         return pos
 
-    def window_update(self):
-        self._show_field()
-        self._mouse_pos_update()
-
-        pygame.display.update()
-
     def _show_field(self):
         # TODO: Optimise me!
         self._window.fill((0x00, 0x00, 0x00))
@@ -83,6 +85,8 @@ class ShowedField:
                     (0xFA, 0xCE, 0x04),
                     (*pos_on_window, self.__rect_length, self.__rect_heigh)
                 )
+
+        pygame.display.update()
 
     def _get_mouse_pos(self):
         mouse_pos = pygame.mouse.get_pos()
@@ -104,8 +108,6 @@ class ShowedField:
                 self.__rect_length, self.__rect_heigh
             )
         )
-
-    mouse_pos_on_field = (0, 0)
 
 
 if __name__ == '__main__':

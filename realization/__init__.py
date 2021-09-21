@@ -1,3 +1,3 @@
 from . import field
-from . import player
+from . import game_objects
 from . import mouse_keys_and_events_checker
