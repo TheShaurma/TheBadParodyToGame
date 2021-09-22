@@ -15,9 +15,9 @@ class Field:
             self._y_min = 0
             self._y_max = resolution[1]
         else:
-            self._x_min = -float('inf')
+            self._x_min = 0
             self._x_max = float('inf')
-            self._y_min = -float('inf')
+            self._y_min = 0
             self._y_max = float('inf')
 
         self.__field_itself = {}
