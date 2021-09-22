@@ -1,5 +1,6 @@
 __all__ = ['Field', 'PositionError']
 
+
 class Field:
     def __init__(self, resolution=(15, 15)):
         """Create a field with assigned resolution.
@@ -24,18 +25,21 @@ class Field:
     def __prepare_pos(self, pos):
         """Creates and returns tuple object from slice or tuple object."""
 
-        try: pos = (pos.start, pos.stop)
-        except AttributeError: pass
+        try:
+            pos = (pos.start, pos.stop)
+        except AttributeError:
+            pass
 
         return pos
 
     def __check_pos(self, pos):
-       x, y = pos
+        x, y = pos
 
-       if (x < self._x_min or
-           x > self._x_max or
-           y < self._y_min or
-           y > self._x_max): raise PositionError(pos)
+        if (x < self._x_min or
+            x > self._x_max or
+            y < self._y_min or
+                y > self._y_max):
+            raise PositionError(pos)
 
     def __getitem__(self, pos):
         """If on assigned pos field hes an object than return it, else return None."""
@@ -63,6 +67,7 @@ class Field:
 
     def __iter__(self): return iter(self.__field_itself)
 
+
 class PositionError(Exception):
     """Position out of range exception."""
 
@@ -72,16 +77,18 @@ class PositionError(Exception):
     def __str__(self):
         return 'Position {} out of range.'.format(self.pos)
 
+
 if __name__ == '__main__':
-    def print_field(field:Field):
+    def print_field(field: Field):
         [print(str(x)[-1], end=' ') for x in range(15+1)]
         print()
 
-        for y in range(15, 0-1 , -1):
+        for y in range(15, 0-1, -1):
             for x in range(15+1):
                 if field[x:y] is not None:
                     print(field[x:y], end=' ')
-                else: print('.', end=' ')
+                else:
+                    print('.', end=' ')
             print(y)
 
     f = Field()

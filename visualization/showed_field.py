@@ -89,25 +89,19 @@ class ShowedField:
         pygame.display.update()
 
     def _get_mouse_pos(self):
-        mouse_pos = pygame.mouse.get_pos()
-
-        x, y = mouse_pos
-
-        return (x, y)
+        return pygame.mouse.get_pos()
 
     def _mouse_pos_update(self):
         mouse_pos_on_window = self._get_mouse_pos()
-        self.mouse_pos_on_field = self.__from_pos_on_window_to_pos_on_field(
+        x, y = self.__from_pos_on_window_to_pos_on_field(
             mouse_pos_on_window)
 
-        pygame.draw.rect(
-            self._window,
-            (0xAA, 0xAA, 0xAA),
-            (
-                *self.__from_pos_on_field_to_pos_on_window(self.mouse_pos_on_field),
-                self.__rect_length, self.__rect_heigh
-            )
-        )
+        if x > self._field_x_max:
+            x -= 1
+        if y < self._field_y_min:
+            y += 1
+
+        self.mouse_pos_on_field = x, y
 
 
 if __name__ == '__main__':

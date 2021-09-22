@@ -24,12 +24,20 @@ class MainGame:
         self._player = player
     ####################################################
 
-    def append_game_objects(self, *poses_and_classes):
-        for pos, clss in poses_and_classes:
-            obj = clss(self._field, pos)
-            self._game_objects.append(obj)
+    def append_game_object(self, game_obj):
+        self._game_objects.append(game_obj)
 
     def iteration(self):
+        # check mouse position
+        try:
+            self._field[self.__old_mouse_pos_on_field].set_under_mouse_flag(
+                False)
+            self._field[self._showed_field.mouse_pos_on_field].set_under_mouse_flag(
+                True)
+        except AttributeError:
+            pass
+        self.__old_mouse_pos_on_field = self._showed_field.mouse_pos_on_field
+
         # check keys and events
         try:
             if self.__checker[constants.K_DOWN]:
@@ -54,7 +62,6 @@ class MainGame:
                     pass
             if self.__checker[constants.QUIT]:
                 raise QuitError()
-
         except AttributeError:
             if self._player is None:
                 pass

@@ -15,6 +15,7 @@ realization.field.objects_on_field.ObjectOnField(field, (5, 5))
 main_game = main_game_class.MainGame()
 main_game.set_field(field)
 main_game.set_player(player)
+main_game.append_game_object(player)
 
 while True:
     pygame.time.delay(70)
