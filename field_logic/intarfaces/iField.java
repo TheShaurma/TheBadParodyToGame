@@ -7,4 +7,14 @@ public interface iField {
     iObjectOnField getObject(iDot pos);
 
     void removeObject(iDot pos);
+
+    void iteration();
+
+    int getXMinLimit();
+
+    int getXMaxLimit();
+
+    int getYMinLimit();
+
+    int getYMaxLimit();
 }

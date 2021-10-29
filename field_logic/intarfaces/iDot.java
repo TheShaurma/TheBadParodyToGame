@@ -1,11 +1,7 @@
 package field_logic.intarfaces;
 
 public interface iDot {
-    void setX(int x);
+    double getX();
 
-    int getX();
-
-    void setY(int x);
-
-    int getY();
+    double getY();
 }
