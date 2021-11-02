@@ -12,4 +12,8 @@ public class ObjectOnField implements iObjectOnField {
         this.field = field;
         this.pos = pos;
     }
+
+    public String toString() {
+        return "*";
+    }
 }
