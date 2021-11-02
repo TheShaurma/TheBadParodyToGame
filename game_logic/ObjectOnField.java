@@ -8,7 +8,7 @@ public class ObjectOnField implements iObjectOnField {
     iField field;
     iDot pos;
 
-    ObjectOnField(iField field, iDot pos) {
+    public ObjectOnField(iField field, iDot pos) {
         this.field = field;
         this.pos = pos;
     }

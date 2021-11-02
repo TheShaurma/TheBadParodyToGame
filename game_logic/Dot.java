@@ -6,7 +6,7 @@ public class Dot implements iDot {
     private int xPos;
     private int yPos;
 
-    Dot(int x, int y) {
+    public Dot(int x, int y) {
         xPos = x;
         yPos = y;
     }
