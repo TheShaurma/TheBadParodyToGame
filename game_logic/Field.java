@@ -18,10 +18,11 @@ public class Field implements iFieldWithIterableObjects {
     //
 
     public Field(int xMin, int xMax, int yMin, int yMax) {
-        this.xMin = xMin;
-        this.xMax = xMax;
-        this.yMin = yMin;
-        this.yMax = yMax;
+        setLimits(xMin, xMax, yMin, yMax);
+    }
+
+    public Field() {
+        setLimits(-10, 10, -10, 10);
     }
 
     public void iteration() {
@@ -116,5 +117,12 @@ public class Field implements iFieldWithIterableObjects {
 
     private void removeObjectFromField(PosOnField pos) {
         fieldItself.remove(pos);
+    }
+
+    private void setLimits(int xMin, int xMax, int yMin, int yMax) {
+        this.xMin = xMin;
+        this.xMax = xMax;
+        this.yMin = yMin;
+        this.yMax = yMax;
     }
 }
