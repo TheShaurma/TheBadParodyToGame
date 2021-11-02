@@ -8,7 +8,7 @@ import field_logic.intarfaces.iIterableObjectOnField;
 import field_logic.intarfaces.iObjectOnField;
 
 public class Field implements iFieldWithIterableObjects {
-    private HashMap<iDot, iObjectOnField> fieldItself;
+    private HashMap<PosOnField, iObjectOnField> fieldItself;
     private HashMap<String, iIterableObjectOnField> iterableObjects;
     private int xMin;
     private int xMax;
@@ -30,12 +30,14 @@ public class Field implements iFieldWithIterableObjects {
         }
     }
 
-    public void putObject(iDot pos, iObjectOnField obj) {
+    public void putObject(iDot dot, iObjectOnField obj) {
+        PosOnField pos = fromDotToPos(dot);
         checkPos(pos);
         fieldItself.put(pos, obj);
     }
 
-    public iObjectOnField getObject(iDot pos) {
+    public iObjectOnField getObject(iDot dot) {
+        PosOnField pos = fromDotToPos(dot);
         checkPos(pos);
         if (fieldItself.containsKey(pos)) {
             return fieldItself.get(pos);
@@ -45,7 +47,8 @@ public class Field implements iFieldWithIterableObjects {
         return null;
     }
 
-    public void removeObject(iDot pos) {
+    public void removeObject(iDot dot) {
+        PosOnField pos = fromDotToPos(dot);
         checkPos(pos);
         removeObjectFromField(pos);
     }
@@ -54,7 +57,7 @@ public class Field implements iFieldWithIterableObjects {
         iterableObjects.put(name, obj);
     }
 
-    public iIterableObjectOnField getIterableObjectOnField(String name) {
+    public iIterableObjectOnField getIterableObject(String name) {
         return iterableObjects.get(name);
     }
 
@@ -82,24 +85,36 @@ public class Field implements iFieldWithIterableObjects {
 
     //
 
-    private void checkPos(iDot pos) {
-        if (pos.getX() < xMin || pos.getX() > xMax || pos.getY() < yMin || pos.getY() > yMax) {
+    private class PosOnField {
+        private int x;
+        private int y;
+
+        PosOnField(int x, int y) {
+            this.x = x;
+            this.y = y;
+        }
+
+        public int getX() {
+            return x;
+        }
+
+        public int getY() {
+            return y;
+        }
+    }
+
+    private PosOnField fromDotToPos(iDot dot) {
+        return new PosOnField(dot.getX(), dot.getY());
+    }
+
+    private void checkPos(PosOnField pos) {
+        if (pos.getX() < getXMinLimit() || pos.getX() > getXMaxLimit() || pos.getY() < getYMinLimit()
+                || pos.getY() > getYMaxLimit()) {
             // TODO: raise a normal exeption
         }
     }
 
-    private void removeObjectFromField(iDot pos) {
+    private void removeObjectFromField(PosOnField pos) {
         fieldItself.remove(pos);
     }
-
-    @Override
-    public iIterableObjectOnField getIterableObject(String name) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    // private void
-    // removeIterableObjectFromIterableObjectsList(iIterableObjectOnField obj) {
-    // iterableObjects.remove(obj);
-    // }
 }
