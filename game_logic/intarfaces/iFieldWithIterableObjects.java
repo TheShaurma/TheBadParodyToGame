@@ -1,4 +1,4 @@
-package field_logic.intarfaces;
+package game_logic.intarfaces;
 
 public interface iFieldWithIterableObjects extends iField {
     void putIterableObject(String name, iIterableObjectOnField obj);

@@ -1,8 +1,8 @@
-package field_logic;
+package game_logic;
 
-import field_logic.intarfaces.iDot;
-import field_logic.intarfaces.iField;
-import field_logic.intarfaces.iObjectOnField;
+import game_logic.intarfaces.iDot;
+import game_logic.intarfaces.iField;
+import game_logic.intarfaces.iObjectOnField;
 
 public class ObjectOnField implements iObjectOnField {
     iField field;

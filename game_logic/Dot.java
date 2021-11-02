@@ -1,6 +1,6 @@
-package field_logic;
+package game_logic;
 
-import field_logic.intarfaces.iDot;
+import game_logic.intarfaces.iDot;
 
 public class Dot implements iDot {
     private int xPos;

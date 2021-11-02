@@ -1,7 +1,7 @@
-package field_logic;
+package game_logic;
 
-import field_logic.intarfaces.iField;
-import field_logic.intarfaces.iFieldVisualization;
+import game_logic.intarfaces.iField;
+import game_logic.intarfaces.iFieldVisualization;
 
 public class FieldVisualization implements iFieldVisualization {
     iField field;

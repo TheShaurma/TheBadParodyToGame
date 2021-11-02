@@ -1,11 +1,11 @@
-package field_logic;
+package game_logic;
 
 import java.util.HashMap;
 
-import field_logic.intarfaces.iDot;
-import field_logic.intarfaces.iFieldWithIterableObjects;
-import field_logic.intarfaces.iIterableObjectOnField;
-import field_logic.intarfaces.iObjectOnField;
+import game_logic.intarfaces.iDot;
+import game_logic.intarfaces.iFieldWithIterableObjects;
+import game_logic.intarfaces.iIterableObjectOnField;
+import game_logic.intarfaces.iObjectOnField;
 
 public class Field implements iFieldWithIterableObjects {
     private HashMap<PosOnField, iObjectOnField> fieldItself;

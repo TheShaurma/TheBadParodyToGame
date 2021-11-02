@@ -1,4 +1,4 @@
-package field_logic.intarfaces;
+package game_logic.intarfaces;
 
 public interface iField {
     // this method will call obj.setField(this)
