@@ -43,9 +43,8 @@ public class Field implements iFieldWithIterableObjects {
         if (fieldItself.containsKey(pos)) {
             return fieldItself.get(pos);
         }
-        // FIXME: fix this!!!
-        // it will return null, if pos is empty
-        return null;
+
+        return new NullObjectOnField();
     }
 
     public void removeObject(iDot dot) {
@@ -101,6 +100,16 @@ public class Field implements iFieldWithIterableObjects {
 
         public int getY() {
             return y;
+        }
+    }
+
+    private class NullObjectOnField implements iObjectOnField {
+        public boolean isNull() {
+            return true;
+        }
+
+        public String toString() {
+            return " ";
         }
     }
 
