@@ -2,14 +2,12 @@ package game_logic;
 
 import java.util.HashMap;
 
+import game_logic.intarfaces.iField;
 import game_logic.intarfaces.iDot;
-import game_logic.intarfaces.iFieldWithIterableObjects;
-import game_logic.intarfaces.iIterableObjectOnField;
 import game_logic.intarfaces.iObjectOnField;
 
-public class Field implements iFieldWithIterableObjects {
+public class Field implements iField {
     private FieldItself fieldItself = new FieldItself();
-    private HashMap<String, iIterableObjectOnField> iterableObjects = new HashMap<String, iIterableObjectOnField>();
     private int xMin;
     private int xMax;
     private int yMin;
@@ -23,12 +21,6 @@ public class Field implements iFieldWithIterableObjects {
 
     public Field() {
         setLimits(-10, 10, -10, 10);
-    }
-
-    public void iteration() {
-        for (iIterableObjectOnField iterableObject : iterableObjects.values()) {
-            iterableObject.iteration();
-        }
     }
 
     //
@@ -73,20 +65,6 @@ public class Field implements iFieldWithIterableObjects {
         checkPos(pos);
 
         fieldItself.removeObject(pos);
-    }
-
-    //
-
-    public void putIterableObject(String name, iIterableObjectOnField obj) {
-        iterableObjects.put(name, obj);
-    }
-
-    public iIterableObjectOnField getIterableObject(String name) {
-        return iterableObjects.get(name);
-    }
-
-    public void removeIterableObject(String name) {
-        iterableObjects.remove(name);
     }
 
     //

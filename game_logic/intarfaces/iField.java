@@ -13,7 +13,7 @@ public interface iField {
 
     void removeObject(int x, int y);
 
-    void iteration();
+    //
 
     int getXMinLimit();
 
