@@ -5,8 +5,8 @@ import game_logic.intarfaces.iField;
 import game_logic.intarfaces.iObjectOnField;
 
 public class ObjectOnField implements iObjectOnField {
-    iField field;
-    iDot pos;
+    private iField field;
+    private iDot pos;
 
     public ObjectOnField(iField field, iDot pos) {
         setField(field);

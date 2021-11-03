@@ -3,8 +3,8 @@ package game_logic;
 import game_logic.intarfaces.iDot;
 
 public class Dot implements iDot {
-    private int xPos;
-    private int yPos;
+    private final int xPos;
+    private final int yPos;
 
     public Dot(int x, int y) {
         xPos = x;
