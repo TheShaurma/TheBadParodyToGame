@@ -9,11 +9,26 @@ public class ObjectOnField implements iObjectOnField {
     iDot pos;
 
     public ObjectOnField(iField field, iDot pos) {
-        this.field = field;
-        this.pos = pos;
+        setField(field);
+        setPos(pos);
+    }
+
+    public ObjectOnField(iField field, int x, int y) {
+        setField(field);
+        setPos(new Dot(x, y));
     }
 
     public String toString() {
         return "*";
+    }
+
+    //
+
+    private void setField(iField field) {
+        this.field = field;
+    }
+
+    private void setPos(iDot pos) {
+        this.pos = pos;
     }
 }

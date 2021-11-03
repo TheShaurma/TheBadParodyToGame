@@ -8,8 +8,8 @@ import game_logic.intarfaces.iIterableObjectOnField;
 import game_logic.intarfaces.iObjectOnField;
 
 public class Field implements iFieldWithIterableObjects {
-    private HashMap<PosOnField, iObjectOnField> fieldItself;
-    private HashMap<String, iIterableObjectOnField> iterableObjects;
+    private FieldItself fieldItself = new FieldItself();
+    private HashMap<String, iIterableObjectOnField> iterableObjects = new HashMap<String, iIterableObjectOnField>();
     private int xMin;
     private int xMax;
     private int yMin;
@@ -31,27 +31,51 @@ public class Field implements iFieldWithIterableObjects {
         }
     }
 
+    //
+
     public void putObject(iDot dot, iObjectOnField obj) {
         PosOnField pos = fromDotToPos(dot);
         checkPos(pos);
-        fieldItself.put(pos, obj);
+
+        fieldItself.putObject(pos, obj);
+    }
+
+    public void putObject(int x, int y, iObjectOnField obj) {
+        PosOnField pos = new PosOnField(x, y);
+        checkPos(pos);
+
+        fieldItself.putObject(pos, obj);
     }
 
     public iObjectOnField getObject(iDot dot) {
         PosOnField pos = fromDotToPos(dot);
         checkPos(pos);
-        if (fieldItself.containsKey(pos)) {
-            return fieldItself.get(pos);
-        }
 
-        return new NullObjectOnField();
+        return fieldItself.getObject(pos);
+    }
+
+    public iObjectOnField getObject(int x, int y) {
+        PosOnField pos = new PosOnField(x, y);
+        checkPos(pos);
+
+        return fieldItself.getObject(pos);
     }
 
     public void removeObject(iDot dot) {
         PosOnField pos = fromDotToPos(dot);
         checkPos(pos);
-        removeObjectFromField(pos);
+
+        fieldItself.removeObject(pos);
     }
+
+    public void removeObject(int x, int y) {
+        PosOnField pos = new PosOnField(x, y);
+        checkPos(pos);
+
+        fieldItself.removeObject(pos);
+    }
+
+    //
 
     public void putIterableObject(String name, iIterableObjectOnField obj) {
         iterableObjects.put(name, obj);
@@ -85,6 +109,34 @@ public class Field implements iFieldWithIterableObjects {
 
     //
 
+    private class FieldItself {
+        private HashMap<Integer, HashMap<Integer, iObjectOnField>> fieldItself = new HashMap<Integer, HashMap<Integer, iObjectOnField>>();
+
+        public void putObject(PosOnField pos, iObjectOnField obj) {
+            if (fieldItself.get(pos.getX()) == null) {
+                fieldItself.put(pos.getX(), new HashMap<Integer, iObjectOnField>());
+            }
+
+            fieldItself.get(pos.getX()).put(pos.getY(), obj);
+        }
+
+        public iObjectOnField getObject(PosOnField pos) {
+            HashMap<Integer, iObjectOnField> xLine = fieldItself.get(pos.getX());
+            if (xLine != null) {
+                iObjectOnField obj = xLine.get(pos.getY());
+                if (obj != null) {
+                    return obj;
+                }
+            }
+
+            return new NullObjectOnField();
+        }
+
+        public void removeObject(PosOnField pos) {
+            fieldItself.get(pos.getX()).remove(pos.getY());
+        }
+    }
+
     private class PosOnField {
         private int x;
         private int y;
@@ -113,6 +165,8 @@ public class Field implements iFieldWithIterableObjects {
         }
     }
 
+    //
+
     private PosOnField fromDotToPos(iDot dot) {
         return new PosOnField(dot.getX(), dot.getY());
     }
@@ -124,14 +178,11 @@ public class Field implements iFieldWithIterableObjects {
         }
     }
 
-    private void removeObjectFromField(PosOnField pos) {
-        fieldItself.remove(pos);
-    }
-
     private void setLimits(int xMin, int xMax, int yMin, int yMax) {
         this.xMin = xMin;
         this.xMax = xMax;
         this.yMin = yMin;
         this.yMax = yMax;
     }
+
 }

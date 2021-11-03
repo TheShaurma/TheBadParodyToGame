@@ -2,6 +2,7 @@ import game_logic.Field;
 import game_logic.FieldVisualization;
 import game_logic.ObjectOnField;
 import game_logic.intarfaces.iDot;
+
 import game_logic.Dot;
 
 public class Main {
@@ -10,8 +11,9 @@ public class Main {
         iDot pos = new Dot(0, 0);
         ObjectOnField obj = new ObjectOnField(field, pos);
         field.putObject(pos, obj);
-        FieldVisualization visual = new FieldVisualization();
+        FieldVisualization visual = new FieldVisualization(field);
 
         visual.showField();
+        System.out.println("The end!!!");
     }
 }

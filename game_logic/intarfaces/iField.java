@@ -1,12 +1,17 @@
 package game_logic.intarfaces;
 
 public interface iField {
-    // this method will call obj.setField(this)
     void putObject(iDot pos, iObjectOnField obj);
+
+    void putObject(int x, int y, iObjectOnField obj);
 
     iObjectOnField getObject(iDot pos);
 
+    iObjectOnField getObject(int x, int y);
+
     void removeObject(iDot pos);
+
+    void removeObject(int x, int y);
 
     void iteration();
 
