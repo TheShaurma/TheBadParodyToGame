@@ -3,7 +3,7 @@ package game_logic;
 import java.util.HashMap;
 
 import game_logic.intarfaces.iField;
-import game_logic.intarfaces.iDot;
+import game_logic.intarfaces.iPos;
 import game_logic.intarfaces.iObjectOnField;
 
 public class Field implements iField {
@@ -25,7 +25,7 @@ public class Field implements iField {
 
     //
 
-    public void putObject(iDot dot, iObjectOnField obj) {
+    public void putObject(iPos dot, iObjectOnField obj) {
         PosOnField pos = fromDotToPos(dot);
         checkPos(pos);
 
@@ -39,7 +39,7 @@ public class Field implements iField {
         fieldItself.putObject(pos, obj);
     }
 
-    public iObjectOnField getObject(iDot dot) {
+    public iObjectOnField getObject(iPos dot) {
         PosOnField pos = fromDotToPos(dot);
         checkPos(pos);
 
@@ -53,7 +53,7 @@ public class Field implements iField {
         return fieldItself.getObject(pos);
     }
 
-    public void removeObject(iDot dot) {
+    public void removeObject(iPos dot) {
         PosOnField pos = fromDotToPos(dot);
         checkPos(pos);
 
@@ -145,7 +145,7 @@ public class Field implements iField {
 
     //
 
-    private PosOnField fromDotToPos(iDot dot) {
+    private PosOnField fromDotToPos(iPos dot) {
         return new PosOnField(dot.getX(), dot.getY());
     }
 

@@ -1,6 +1,6 @@
 package game_logic.intarfaces;
 
-public interface iDot {
+public interface iPos {
     int getX();
 
     int getY();

@@ -34,7 +34,7 @@ public class FieldVisualization implements iFieldVisualization {
         for (int y = field.getYMaxLimit(); y >= field.getYMinLimit(); y--) {
             for (int x = field.getXMinLimit(); x < field.getXMaxLimit(); x++) {
                 System.out.print(' ');
-                System.out.print(field.getObject(new Dot(x, y)));
+                System.out.print(field.getObject(new Pos(x, y)));
             }
             System.out.println(y);
         }

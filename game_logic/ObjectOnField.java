@@ -1,21 +1,21 @@
 package game_logic;
 
-import game_logic.intarfaces.iDot;
+import game_logic.intarfaces.iPos;
 import game_logic.intarfaces.iField;
 import game_logic.intarfaces.iObjectOnField;
 
 public class ObjectOnField implements iObjectOnField {
     private iField field;
-    private iDot pos;
+    private iPos pos;
 
-    public ObjectOnField(iField field, iDot pos) {
+    public ObjectOnField(iField field, iPos pos) {
         setField(field);
         setPos(pos);
     }
 
     public ObjectOnField(iField field, int x, int y) {
         setField(field);
-        setPos(new Dot(x, y));
+        setPos(new Pos(x, y));
     }
 
     public String toString() {
@@ -28,7 +28,7 @@ public class ObjectOnField implements iObjectOnField {
         this.field = field;
     }
 
-    private void setPos(iDot pos) {
+    private void setPos(iPos pos) {
         this.pos = pos;
     }
 }

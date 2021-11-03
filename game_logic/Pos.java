@@ -1,12 +1,12 @@
 package game_logic;
 
-import game_logic.intarfaces.iDot;
+import game_logic.intarfaces.iPos;
 
-public class Dot implements iDot {
+public class Pos implements iPos {
     private final int xPos;
     private final int yPos;
 
-    public Dot(int x, int y) {
+    public Pos(int x, int y) {
         xPos = x;
         yPos = y;
     }
