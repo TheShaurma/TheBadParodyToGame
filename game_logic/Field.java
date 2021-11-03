@@ -26,42 +26,42 @@ public class Field implements iField {
     //
 
     public void putObject(iPos dot, iObjectOnField obj) {
-        PosOnField pos = fromDotToPos(dot);
+        PosOnFieldAdapter pos = new PosOnFieldAdapter(dot);
         checkPos(pos);
 
         fieldItself.putObject(pos, obj);
     }
 
     public void putObject(int x, int y, iObjectOnField obj) {
-        PosOnField pos = new PosOnField(x, y);
+        PosOnFieldAdapter pos = new PosOnFieldAdapter(x, y);
         checkPos(pos);
 
         fieldItself.putObject(pos, obj);
     }
 
     public iObjectOnField getObject(iPos dot) {
-        PosOnField pos = fromDotToPos(dot);
+        PosOnFieldAdapter pos = new PosOnFieldAdapter(dot);
         checkPos(pos);
 
         return fieldItself.getObject(pos);
     }
 
     public iObjectOnField getObject(int x, int y) {
-        PosOnField pos = new PosOnField(x, y);
+        PosOnFieldAdapter pos = new PosOnFieldAdapter(x, y);
         checkPos(pos);
 
         return fieldItself.getObject(pos);
     }
 
     public void removeObject(iPos dot) {
-        PosOnField pos = fromDotToPos(dot);
+        PosOnFieldAdapter pos = new PosOnFieldAdapter(dot);
         checkPos(pos);
 
         fieldItself.removeObject(pos);
     }
 
     public void removeObject(int x, int y) {
-        PosOnField pos = new PosOnField(x, y);
+        PosOnFieldAdapter pos = new PosOnFieldAdapter(x, y);
         checkPos(pos);
 
         fieldItself.removeObject(pos);
@@ -90,7 +90,7 @@ public class Field implements iField {
     private class FieldItself {
         private HashMap<Integer, HashMap<Integer, iObjectOnField>> fieldItself = new HashMap<Integer, HashMap<Integer, iObjectOnField>>();
 
-        public void putObject(PosOnField pos, iObjectOnField obj) {
+        public void putObject(PosOnFieldAdapter pos, iObjectOnField obj) {
             if (fieldItself.get(pos.getX()) == null) {
                 fieldItself.put(pos.getX(), new HashMap<Integer, iObjectOnField>());
             }
@@ -98,7 +98,7 @@ public class Field implements iField {
             fieldItself.get(pos.getX()).put(pos.getY(), obj);
         }
 
-        public iObjectOnField getObject(PosOnField pos) {
+        public iObjectOnField getObject(PosOnFieldAdapter pos) {
             HashMap<Integer, iObjectOnField> xLine = fieldItself.get(pos.getX());
             if (xLine != null) {
                 iObjectOnField obj = xLine.get(pos.getY());
@@ -110,18 +110,23 @@ public class Field implements iField {
             return new NullObjectOnField();
         }
 
-        public void removeObject(PosOnField pos) {
+        public void removeObject(PosOnFieldAdapter pos) {
             fieldItself.get(pos.getX()).remove(pos.getY());
         }
     }
 
-    private class PosOnField {
-        private int x;
-        private int y;
+    private class PosOnFieldAdapter {
+        private final int x;
+        private final int y;
 
-        PosOnField(int x, int y) {
+        public PosOnFieldAdapter(int x, int y) {
             this.x = x;
             this.y = y;
+        }
+
+        public PosOnFieldAdapter(iPos pos) {
+            x = pos.getX();
+            y = pos.getY();
         }
 
         public int getX() {
@@ -145,11 +150,7 @@ public class Field implements iField {
 
     //
 
-    private PosOnField fromDotToPos(iPos dot) {
-        return new PosOnField(dot.getX(), dot.getY());
-    }
-
-    private void checkPos(PosOnField pos) {
+    private void checkPos(PosOnFieldAdapter pos) {
         if (pos.getX() < getXMinLimit() || pos.getX() > getXMaxLimit() || pos.getY() < getYMinLimit()
                 || pos.getY() > getYMaxLimit()) {
             // TODO: raise a normal exeption
