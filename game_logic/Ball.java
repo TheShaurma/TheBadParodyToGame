@@ -4,16 +4,16 @@ import game_logic.intarfaces.iPos;
 import game_logic.intarfaces.iField;
 import game_logic.intarfaces.iObjectOnField;
 
-public class ObjectOnField implements iObjectOnField {
+public class Ball implements iObjectOnField {
     private iField field;
     private iPos pos;
 
-    public ObjectOnField(iField field, iPos pos) {
+    public Ball(iField field, iPos pos) {
         setField(field);
         setPos(pos);
     }
 
-    public ObjectOnField(iField field, int x, int y) {
+    public Ball(iField field, int x, int y) {
         setField(field);
         setPos(new Pos(x, y));
     }
