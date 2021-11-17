@@ -15,7 +15,7 @@ public class Ball implements ObjectOnField {
 
     public Ball(Location field, int x, int y) {
         setField(field);
-        setPos(new Pos(x, y));
+        setPos(new IntegerPosition(x, y));
     }
 
     public String toString() {

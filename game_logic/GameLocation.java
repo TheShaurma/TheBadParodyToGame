@@ -6,7 +6,7 @@ import game_logic.intarfaces.Location;
 import game_logic.intarfaces.IntegerPos;
 import game_logic.intarfaces.ObjectOnField;
 
-public class Field implements Location {
+public class GameLocation implements Location {
     private FieldItself fieldItself = new FieldItself();
     private int xMin;
     private int xMax;
@@ -15,11 +15,11 @@ public class Field implements Location {
 
     //
 
-    public Field(int xMin, int xMax, int yMin, int yMax) {
+    public GameLocation(int xMin, int xMax, int yMin, int yMax) {
         setLimits(xMin, xMax, yMin, yMax);
     }
 
-    public Field() {
+    public GameLocation() {
         setLimits(-10, 10, -10, 10);
     }
 

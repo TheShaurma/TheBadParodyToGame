@@ -2,11 +2,11 @@ package game_logic;
 
 import game_logic.intarfaces.IntegerPos;
 
-public class Pos implements IntegerPos {
+public class IntegerPosition implements IntegerPos {
     private final int xPos;
     private final int yPos;
 
-    public Pos(int x, int y) {
+    public IntegerPosition(int x, int y) {
         xPos = x;
         yPos = y;
     }

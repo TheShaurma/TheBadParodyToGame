@@ -1,6 +1,6 @@
 package game_logic.intarfaces;
 
-public interface LocationVisualizationImp {
+public interface LocationVisualization {
     void setField(Location field);
 
     void showField();
