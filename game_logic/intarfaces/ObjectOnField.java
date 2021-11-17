@@ -1,6 +1,6 @@
 package game_logic.intarfaces;
 
-public interface iObjectOnField {
+public interface ObjectOnField {
     default boolean isNull() {
         return false;
     }

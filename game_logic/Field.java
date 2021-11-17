@@ -2,11 +2,11 @@ package game_logic;
 
 import java.util.HashMap;
 
-import game_logic.intarfaces.iField;
-import game_logic.intarfaces.iPos;
-import game_logic.intarfaces.iObjectOnField;
+import game_logic.intarfaces.Location;
+import game_logic.intarfaces.IntegerPos;
+import game_logic.intarfaces.ObjectOnField;
 
-public class Field implements iField {
+public class Field implements Location {
     private FieldItself fieldItself = new FieldItself();
     private int xMin;
     private int xMax;
@@ -25,35 +25,35 @@ public class Field implements iField {
 
     //
 
-    public void putObject(iPos dot, iObjectOnField obj) {
+    public void putObject(IntegerPos dot, ObjectOnField obj) {
         PosOnFieldAdapter pos = new PosOnFieldAdapter(dot);
         checkPos(pos);
 
         fieldItself.putObject(pos, obj);
     }
 
-    public void putObject(int x, int y, iObjectOnField obj) {
+    public void putObject(int x, int y, ObjectOnField obj) {
         PosOnFieldAdapter pos = new PosOnFieldAdapter(x, y);
         checkPos(pos);
 
         fieldItself.putObject(pos, obj);
     }
 
-    public iObjectOnField getObject(iPos dot) {
+    public ObjectOnField getObject(IntegerPos dot) {
         PosOnFieldAdapter pos = new PosOnFieldAdapter(dot);
         checkPos(pos);
 
         return fieldItself.getObject(pos);
     }
 
-    public iObjectOnField getObject(int x, int y) {
+    public ObjectOnField getObject(int x, int y) {
         PosOnFieldAdapter pos = new PosOnFieldAdapter(x, y);
         checkPos(pos);
 
         return fieldItself.getObject(pos);
     }
 
-    public void removeObject(iPos dot) {
+    public void removeObject(IntegerPos dot) {
         PosOnFieldAdapter pos = new PosOnFieldAdapter(dot);
         checkPos(pos);
 
@@ -88,20 +88,20 @@ public class Field implements iField {
     //
 
     private class FieldItself {
-        private HashMap<Integer, HashMap<Integer, iObjectOnField>> fieldItself = new HashMap<Integer, HashMap<Integer, iObjectOnField>>();
+        private HashMap<Integer, HashMap<Integer, ObjectOnField>> fieldItself = new HashMap<Integer, HashMap<Integer, ObjectOnField>>();
 
-        public void putObject(PosOnFieldAdapter pos, iObjectOnField obj) {
+        public void putObject(PosOnFieldAdapter pos, ObjectOnField obj) {
             if (fieldItself.get(pos.getX()) == null) {
-                fieldItself.put(pos.getX(), new HashMap<Integer, iObjectOnField>());
+                fieldItself.put(pos.getX(), new HashMap<Integer, ObjectOnField>());
             }
 
             fieldItself.get(pos.getX()).put(pos.getY(), obj);
         }
 
-        public iObjectOnField getObject(PosOnFieldAdapter pos) {
-            HashMap<Integer, iObjectOnField> xLine = fieldItself.get(pos.getX());
+        public ObjectOnField getObject(PosOnFieldAdapter pos) {
+            HashMap<Integer, ObjectOnField> xLine = fieldItself.get(pos.getX());
             if (xLine != null) {
-                iObjectOnField obj = xLine.get(pos.getY());
+                ObjectOnField obj = xLine.get(pos.getY());
                 if (obj != null) {
                     return obj;
                 }
@@ -124,7 +124,7 @@ public class Field implements iField {
             this.y = y;
         }
 
-        public PosOnFieldAdapter(iPos pos) {
+        public PosOnFieldAdapter(IntegerPos pos) {
             x = pos.getX();
             y = pos.getY();
         }
@@ -138,7 +138,7 @@ public class Field implements iField {
         }
     }
 
-    private class NullObjectOnField implements iObjectOnField {
+    private class NullObjectOnField implements ObjectOnField {
         public boolean isNull() {
             return true;
         }

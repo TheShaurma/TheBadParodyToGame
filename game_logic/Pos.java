@@ -1,8 +1,8 @@
 package game_logic;
 
-import game_logic.intarfaces.iPos;
+import game_logic.intarfaces.IntegerPos;
 
-public class Pos implements iPos {
+public class Pos implements IntegerPos {
     private final int xPos;
     private final int yPos;
 

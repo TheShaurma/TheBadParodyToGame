@@ -1,19 +1,19 @@
 package game_logic;
 
-import game_logic.intarfaces.iPos;
-import game_logic.intarfaces.iField;
-import game_logic.intarfaces.iObjectOnField;
+import game_logic.intarfaces.IntegerPos;
+import game_logic.intarfaces.Location;
+import game_logic.intarfaces.ObjectOnField;
 
-public class Ball implements iObjectOnField {
-    private iField field;
-    private iPos pos;
+public class Ball implements ObjectOnField {
+    private Location field;
+    private IntegerPos pos;
 
-    public Ball(iField field, iPos pos) {
+    public Ball(Location field, IntegerPos pos) {
         setField(field);
         setPos(pos);
     }
 
-    public Ball(iField field, int x, int y) {
+    public Ball(Location field, int x, int y) {
         setField(field);
         setPos(new Pos(x, y));
     }
@@ -24,11 +24,11 @@ public class Ball implements iObjectOnField {
 
     //
 
-    private void setField(iField field) {
+    private void setField(Location field) {
         this.field = field;
     }
 
-    private void setPos(iPos pos) {
+    private void setPos(IntegerPos pos) {
         this.pos = pos;
     }
 }

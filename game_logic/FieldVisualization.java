@@ -1,19 +1,19 @@
 package game_logic;
 
-import game_logic.intarfaces.iField;
-import game_logic.intarfaces.iFieldVisualization;
+import game_logic.intarfaces.Location;
+import game_logic.intarfaces.LocationVisualizationImp;
 
-public class FieldVisualization implements iFieldVisualization {
-    iField field;
+public class FieldVisualization implements LocationVisualizationImp {
+    Location field;
 
-    public FieldVisualization(iField field) {
+    public FieldVisualization(Location field) {
         this.field = field;
     }
 
     public FieldVisualization() {
     }
 
-    public void setField(iField field) {
+    public void setField(Location field) {
         this.field = field;
     }
 
