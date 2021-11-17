@@ -19,6 +19,14 @@ public class GameLocation implements Location {
         setLimits(xMin, xMax, yMin, yMax);
     }
 
+    public GameLocation(IntegerPos minPos, IntegerPos maxPos) {
+        setLimits(minPos.getX(), maxPos.getY(), minPos.getY(), maxPos.getY());
+    }
+
+    public GameLocation(int xLength, int yLength) {
+        setLimits(0, xLength, 0, yLength);
+    }
+
     public GameLocation() {
         setLimits(-10, 10, -10, 10);
     }
@@ -88,6 +96,7 @@ public class GameLocation implements Location {
     //
 
     private class FieldItself {
+        // FIXME: fix this code!
         private HashMap<Integer, HashMap<Integer, ObjectOnField>> fieldItself = new HashMap<Integer, HashMap<Integer, ObjectOnField>>();
 
         public void putObject(PosOnFieldAdapter pos, ObjectOnField obj) {
