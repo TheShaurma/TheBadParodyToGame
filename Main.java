@@ -1,16 +1,11 @@
+import game_logic.BallManager;
 import game_logic.GameLocation;
 import game_logic.GameLocationVisualization;
-import game_logic.Ball;
-import game_logic.intarfaces.IntegerPos;
-
-import game_logic.IntegerPosition;
 
 public class Main {
     public static void main(String[] args) {
         GameLocation field = new GameLocation();
-        IntegerPos pos = new IntegerPosition(0, 0);
-        Ball obj = new Ball(field, pos);
-        field.putObject(pos, obj);
+        BallManager ball = new BallManager(field);
         GameLocationVisualization visual = new GameLocationVisualization(field);
 
         visual.showField();

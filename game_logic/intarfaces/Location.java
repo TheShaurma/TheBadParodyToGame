@@ -1,13 +1,13 @@
 package game_logic.intarfaces;
 
 public interface Location {
-    void putObject(IntegerPos pos, ObjectOnField obj);
+    void putObject(IntegerPos pos, ObjectOnLocation obj);
 
-    void putObject(int x, int y, ObjectOnField obj);
+    void putObject(int x, int y, ObjectOnLocation obj);
 
-    ObjectOnField getObject(IntegerPos pos);
+    ObjectOnLocation getObject(IntegerPos pos);
 
-    ObjectOnField getObject(int x, int y);
+    ObjectOnLocation getObject(int x, int y);
 
     void removeObject(IntegerPos pos);
 

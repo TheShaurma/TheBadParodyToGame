@@ -1,6 +1,6 @@
 package game_logic.intarfaces;
 
-public interface ObjectOnField {
+public interface ObjectOnLocation {
     default boolean isNull() {
         return false;
     }

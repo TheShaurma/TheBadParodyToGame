@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 import game_logic.intarfaces.Location;
 import game_logic.intarfaces.IntegerPos;
-import game_logic.intarfaces.ObjectOnField;
+import game_logic.intarfaces.ObjectOnLocation;
 
 public class GameLocation implements Location {
     private FieldItself fieldItself = new FieldItself();
@@ -33,28 +33,28 @@ public class GameLocation implements Location {
 
     //
 
-    public void putObject(IntegerPos dot, ObjectOnField obj) {
+    public void putObject(IntegerPos dot, ObjectOnLocation obj) {
         PosOnFieldAdapter pos = new PosOnFieldAdapter(dot);
         checkPos(pos);
 
         fieldItself.putObject(pos, obj);
     }
 
-    public void putObject(int x, int y, ObjectOnField obj) {
+    public void putObject(int x, int y, ObjectOnLocation obj) {
         PosOnFieldAdapter pos = new PosOnFieldAdapter(x, y);
         checkPos(pos);
 
         fieldItself.putObject(pos, obj);
     }
 
-    public ObjectOnField getObject(IntegerPos dot) {
+    public ObjectOnLocation getObject(IntegerPos dot) {
         PosOnFieldAdapter pos = new PosOnFieldAdapter(dot);
         checkPos(pos);
 
         return fieldItself.getObject(pos);
     }
 
-    public ObjectOnField getObject(int x, int y) {
+    public ObjectOnLocation getObject(int x, int y) {
         PosOnFieldAdapter pos = new PosOnFieldAdapter(x, y);
         checkPos(pos);
 
@@ -97,20 +97,20 @@ public class GameLocation implements Location {
 
     private class FieldItself {
         // FIXME: fix this code!
-        private HashMap<Integer, HashMap<Integer, ObjectOnField>> fieldItself = new HashMap<Integer, HashMap<Integer, ObjectOnField>>();
+        private HashMap<Integer, HashMap<Integer, ObjectOnLocation>> fieldItself = new HashMap<Integer, HashMap<Integer, ObjectOnLocation>>();
 
-        public void putObject(PosOnFieldAdapter pos, ObjectOnField obj) {
+        public void putObject(PosOnFieldAdapter pos, ObjectOnLocation obj) {
             if (fieldItself.get(pos.getX()) == null) {
-                fieldItself.put(pos.getX(), new HashMap<Integer, ObjectOnField>());
+                fieldItself.put(pos.getX(), new HashMap<Integer, ObjectOnLocation>());
             }
 
             fieldItself.get(pos.getX()).put(pos.getY(), obj);
         }
 
-        public ObjectOnField getObject(PosOnFieldAdapter pos) {
-            HashMap<Integer, ObjectOnField> xLine = fieldItself.get(pos.getX());
+        public ObjectOnLocation getObject(PosOnFieldAdapter pos) {
+            HashMap<Integer, ObjectOnLocation> xLine = fieldItself.get(pos.getX());
             if (xLine != null) {
-                ObjectOnField obj = xLine.get(pos.getY());
+                ObjectOnLocation obj = xLine.get(pos.getY());
                 if (obj != null) {
                     return obj;
                 }
@@ -147,7 +147,7 @@ public class GameLocation implements Location {
         }
     }
 
-    private class NullObjectOnField implements ObjectOnField {
+    private class NullObjectOnField implements ObjectOnLocation {
         public boolean isNull() {
             return true;
         }
