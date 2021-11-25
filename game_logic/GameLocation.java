@@ -32,7 +32,6 @@ public class GameLocation implements Location {
     }
 
     //
-
     public void putObject(IntegerPos dot, ObjectOnLocation obj) {
         PosOnFieldAdapter pos = new PosOnFieldAdapter(dot);
         checkPos(pos);
@@ -76,7 +75,6 @@ public class GameLocation implements Location {
     }
 
     //
-
     public int getXMinLimit() {
         return xMin;
     }
@@ -158,7 +156,6 @@ public class GameLocation implements Location {
     }
 
     //
-
     private void checkPos(PosOnFieldAdapter pos) {
         if (pos.getX() < getXMinLimit() || pos.getX() > getXMaxLimit() || pos.getY() < getYMinLimit()
                 || pos.getY() > getYMaxLimit()) {

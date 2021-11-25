@@ -1,213 +1,212 @@
 package game_logic;
 
-import game_logic.abstract_classes.AbstractObjectOnLocation;
 import game_logic.intarfaces.IntegerPos;
 import game_logic.intarfaces.Location;
 import game_logic.intarfaces.ObjectOnLocation;
 
 public class BallManager {
-    private BallDirection direction = BallDirection.DOWN_RIGHT;
-    Location location;
-    IntegerPos ballPosition;
+    private Ball ball;
+    private Location location;
 
     public BallManager(Location location) {
         setLocation(location);
-        setBallPosition(new IntegerPosition(getLocation().getXMinLimit(), getLocation().getYMaxLimit()));
+        ball = new Ball(new IntegerPosition(location.getXMinLimit(), location.getYMaxLimit()));
+    }
+
+    public void fly() {
+        while (!inAngle()) {
+            step();
+        }
     }
 
     public void step() {
         if (!inAngle()) {
-            directionUpdate();
-            moveByDirection();
-        }
-    }
-
-    public String toString() {
-        return "*";
-    }
-
-    //
-    private void directionUpdate() {
-        if (nearHorizontalWall()) {
-            if (direction == BallDirection.UP_LEFT) {
-                direction = BallDirection.DOWN_LEFT;
-            } else if (direction == BallDirection.UP_RIGHT) {
-                direction = BallDirection.DOWN_RIGHT;
-            } else if (direction == BallDirection.DOWN_LEFT) {
-                direction = BallDirection.UP_LEFT;
-            } else {
-                direction = BallDirection.UP_RIGHT;
+            if (shouldWriteLineInBallPosition()) {
+                writeLineInBallPosition();
             }
-        } else {
-            if (direction == BallDirection.UP_LEFT) {
-                direction = BallDirection.UP_RIGHT;
-            } else if (direction == BallDirection.UP_RIGHT) {
-                direction = BallDirection.UP_LEFT;
-            } else if (direction == BallDirection.DOWN_LEFT) {
-                direction = BallDirection.DOWN_RIGHT;
-            } else {
-                direction = BallDirection.DOWN_LEFT;
-            }
+            moveBall();
         }
     }
 
-    private void moveByDirection() {
-        if (direction == BallDirection.UP_LEFT) {
-            moveToUpLeft();
-        } else if (direction == BallDirection.UP_RIGHT) {
-            moveToUpRight();
-        } else if (direction == BallDirection.DOWN_RIGHT) {
-            moveToDownRight();
-        } else if (direction == BallDirection.DOWN_LEFT) {
-            moveToDownLeft();
+    private void moveBall() {
+        if (ball.getDirection() == Direction.UP_LEFT) {
+            moveUpLeft();
+        } else if (ball.getDirection() == Direction.UP_RIGHT) {
+            moveUpRight();
+        } else if (ball.getDirection() == Direction.DOWN_LEFT) {
+            moveDownLeft();
+        } else if (ball.getDirection() == Direction.DOWN_RIGHT) {
+            moveDownRight();
         }
     }
 
-    private void writeLineFromBall(BallDirection lineDirection) {
-        IntegerPos ballPos = getBallPosition();
-        IntegerPos linePos = getNearestPositionByDirectionFromBall(lineDirection);
-        getLocation().putObject(linePos, getLineByDirection(lineDirection));
+    private void writeLineInBallPosition() {
+        Location location = getLocation();
+
+        location.putObject(ball.getCurrentPosition(), new Line(ball.getDirection()));
     }
 
     // getters and setters
-    private void setLocation(Location location) {
-        this.location = location;
+    private void setLocation(Location loc) {
+        location = loc;
     }
 
     private Location getLocation() {
         return location;
     }
 
-    private void setBallPosition(IntegerPos pos) {
-        ballPosition = pos;
+    //
+    private void moveUpRight() {
+        IntegerPos oldBallPos = ball.getCurrentPosition();
+        int x = oldBallPos.getX() + 1;
+        int y = oldBallPos.getY() + 1;
+
+        ball.setCurrentPosition(x, y);
     }
 
-    private IntegerPos getBallPosition() {
-        return ballPosition;
+    private void moveUpLeft() {
+        IntegerPos oldBallPos = ball.getCurrentPosition();
+        int x = oldBallPos.getX() - 1;
+        int y = oldBallPos.getY() + 1;
+
+        ball.setCurrentPosition(x, y);
     }
 
-    // moving
-    private void moveToUpLeft() {
-        int newX = getBallPosition().getX() - 1;
-        int newY = getBallPosition().getY() + 1;
-        IntegerPos newPos = new IntegerPosition(newX, newY);
+    private void moveDownLeft() {
+        IntegerPos oldBallPos = ball.getCurrentPosition();
+        int x = oldBallPos.getX() - 1;
+        int y = oldBallPos.getY() - 1;
 
-        relocate(newPos);
+        ball.setCurrentPosition(x, y);
     }
 
-    private void moveToUpRight() {
-        int newX = getBallPosition().getX() + 1;
-        int newY = getBallPosition().getY() + 1;
-        IntegerPos newPos = new IntegerPosition(newX, newY);
+    private void moveDownRight() {
+        IntegerPos oldBallPos = ball.getCurrentPosition();
+        int x = oldBallPos.getX() + 1;
+        int y = oldBallPos.getY() - 1;
 
-        relocate(newPos);
-    }
-
-    private void moveToDownLeft() {
-        int newX = getBallPosition().getX() - 1;
-        int newY = getBallPosition().getY() - 1;
-        IntegerPos newPos = new IntegerPosition(newX, newY);
-
-        relocate(newPos);
-    }
-
-    private void moveToDownRight() {
-        int newX = getBallPosition().getX() + 1;
-        int newY = getBallPosition().getY() - 1;
-        IntegerPos newPos = new IntegerPosition(newX, newY);
-
-        relocate(newPos);
-    }
-
-    private void relocate(IntegerPos newPos) {
-        setBallPosition(newPos);
-    }
-
-    // writing line
-    private IntegerPos getNearestPositionByDirectionFromBall(BallDirection direction) {
-        int x = getBallPosition().getX();
-        int y = getBallPosition().getY();
-        if (direction == BallDirection.UP_LEFT) {
-            x--;
-            y++;
-        } else if (direction == BallDirection.UP_RIGHT) {
-            x++;
-            y++;
-        } else if (direction == BallDirection.DOWN_LEFT) {
-            x--;
-            y--;
-        } else if (direction == BallDirection.DOWN_RIGHT) {
-            x++;
-            y--;
-        }
-        return new IntegerPosition(x, y);
-    }
-
-    public Line getLineByDirection(BallDirection direction) {
-        if (direction == BallDirection.UP_LEFT || direction == BallDirection.DOWN_RIGHT) {
-            return new Line('\\');
-        } else {
-            return new Line('/');
-        }
+        ball.setCurrentPosition(x, y);
     }
 
     // checkers
-    private boolean inAngle() {
-        if (nearHorizontalWall() && nearVerticalWall()) {
-            return true;
+    private boolean shouldWriteLineInBallPosition() {
+        IntegerPos pastBallPos = ball.getPastPosition();
+
+        if (getLocation().getObject(pastBallPos) instanceof Line) {
+            return false;
         }
-        return false;
+        return true;
+    }
+
+    private boolean inAngle() {
+        return nearVerticalWall() && nearHorizontalWall();
     }
 
     private boolean nearHorizontalWall() {
-        int x = getBallPosition().getX();
-        int xMin = getLocation().getXMinLimit();
-        int xMax = getLocation().getXMaxLimit();
-
-        if (x == xMin || x == xMax) {
-            return true;
-        }
-        return false;
+        return nearUpperWall() || nearLowerWall();
     }
 
     private boolean nearVerticalWall() {
-        int y = getBallPosition().getY();
-        int yMin = getLocation().getYMinLimit();
+        return nearLeftWall() || nearRightWall();
+    }
+
+    private boolean nearUpperWall() {
+        int ballY = ball.getCurrentPosition().getY();
         int yMax = getLocation().getYMaxLimit();
 
-        if (y == yMin || y == yMax) {
-            return true;
-        }
-        return false;
+        return ballY == yMax;
+    }
+
+    private boolean nearLowerWall() {
+        int ballY = ball.getCurrentPosition().getY();
+        int yMin = getLocation().getYMinLimit();
+
+        return ballY == yMin;
+    }
+
+    private boolean nearLeftWall() {
+        int ballX = ball.getCurrentPosition().getX();
+        int xMin = getLocation().getXMinLimit();
+
+        return ballX == xMin;
+    }
+
+    private boolean nearRightWall() {
+        int ballX = ball.getCurrentPosition().getX();
+        int xMax = getLocation().getXMaxLimit();
+
+        return ballX == xMax;
     }
 
     // inner classes
-    private enum BallDirection {
-        UP_RIGHT, UP_LEFT, DOWN_RIGHT, DOWN_LEFT;
+    protected class Ball {
+        private IntegerPos currentPosition;
+        private IntegerPos pastPosition;
+        private Direction direction;
 
-        public BallDirection opposite() {
-            if (this == UP_LEFT) {
-                return DOWN_RIGHT;
-            } else if (this == UP_RIGHT) {
-                return DOWN_LEFT;
-            } else if (this == DOWN_LEFT) {
-                return UP_RIGHT;
-            } else {
-                return UP_LEFT;
-            }
+        public Ball(IntegerPos startPosition, Direction startDirection) {
+            setCurrentPosition(startPosition);
+            setDirection(startDirection);
+            setPastPosition(startPosition);
+        }
+
+        /**
+         * Start direction will be Direction.DOWN_RIGHT
+         */
+        public Ball(IntegerPos startPosition) {
+            setCurrentPosition(startPosition);
+            setDirection(Direction.DOWN_RIGHT);
+            setPastPosition(startPosition);
+        }
+
+        public void setCurrentPosition(IntegerPos pos) {
+            setPastPosition(getCurrentPosition());
+            currentPosition = pos;
+        }
+
+        public void setCurrentPosition(int x, int y) {
+            setCurrentPosition(new IntegerPosition(x, y));
+        }
+
+        public IntegerPos getCurrentPosition() {
+            return currentPosition;
+        }
+
+        public void setDirection(Direction dir) {
+            direction = dir;
+        }
+
+        public Direction getDirection() {
+            return direction;
+        }
+
+        private void setPastPosition(IntegerPos pos) {
+            pastPosition = pos;
+        }
+
+        public IntegerPos getPastPosition() {
+            return pastPosition;
         }
     }
 
-    private class Line implements ObjectOnLocation {
-        private char lineType;
+    private enum Direction {
+        UP_LEFT, UP_RIGHT, DOWN_LEFT, DOWN_RIGHT;
+    }
 
-        public Line(char line) {
-            lineType = line;
+    private class Line implements ObjectOnLocation {
+        Direction direction;
+
+        public Line(Direction dir) {
+            direction = dir;
         }
 
         @Override
         public String toString() {
-            return String.valueOf(lineType);
+            if (direction == Direction.UP_LEFT || direction == Direction.DOWN_LEFT) {
+                return "\\";
+            } else {
+                return "/";
+            }
         }
     }
 }
