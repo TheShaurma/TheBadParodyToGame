@@ -13,13 +13,13 @@ public class BallManager {
         ball = new Ball(new IntegerPosition(location.getXMinLimit(), location.getYMaxLimit()));
     }
 
-    public void fly() {
+    public void rideBallToEnd() {
         while (!inAngle()) {
-            step();
+            rideBallToStep();
         }
     }
 
-    public void step() {
+    public void rideBallToStep() {
         if (!inAngle()) {
             if (shouldWriteLineInBallPosition()) {
                 writeLineInBallPosition();
