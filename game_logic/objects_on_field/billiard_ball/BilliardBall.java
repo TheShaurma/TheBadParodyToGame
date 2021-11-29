@@ -18,9 +18,18 @@ public class BilliardBall implements ObjectOnLocation {
         setPastPosition(getCurrentPosition());
         setCurrentDirection(Direction.DOWN_RIGHT);
         setPastDirection(getCurrentDirection());
+
+        location.putObject(getCurrentPosition(), this);
     }
 
-    public void moveByStep() throws TryReboundWithoutWallNearException {
+    public void runToEnd() throws TryReboundWithoutWallNearException {
+        while (!inAngle() || inStartingPosition()) {
+            moveByStep();
+        }
+    }
+
+    // moving
+    private void moveByStep() throws TryReboundWithoutWallNearException {
         // moving
         if (!inAngle() || inStartingPosition()) {
             if (!movingToNearestWall()) {
@@ -34,7 +43,6 @@ public class BilliardBall implements ObjectOnLocation {
         writeLineInPastPosition();
     }
 
-    // moving
     private void moveByCurrentDirection() {
         moveByDirection(getCurrentDirection());
     }
