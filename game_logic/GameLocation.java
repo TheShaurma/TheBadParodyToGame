@@ -14,7 +14,6 @@ public class GameLocation implements Location {
     private int yMax;
 
     //
-
     public GameLocation(int xMin, int xMax, int yMin, int yMax) {
         setLimits(xMin, xMax, yMin, yMax);
     }
