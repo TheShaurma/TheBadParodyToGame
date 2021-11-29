@@ -20,23 +20,18 @@ public class BilliardBall implements ObjectOnLocation {
         setPastDirection(getCurrentDirection());
     }
 
-    public void moveByStep() throws Exception {
+    public void moveByStep() throws TryReboundWithoutWallNearException {
         // moving
         if (!inAngle() || inStartingPosition()) {
             if (!movingToNearestWall()) {
                 moveByCurrentDirection();
             } else {
-                try {
-                    setCurrentDirection(getNewDirection()); // have to be before moveToPosition method's call
-                    moveToPosition(getPositionAfterRebound());
-                } catch (Exception e) {
-                    // FIXME: very bad idea
-                    throw e;
-                }
+                setCurrentDirection(getNewDirection()); // have to be before moveToPosition method's call
+                moveToPosition(getPositionAfterRebound());
             }
-
-            writeLineInPastPosition();
         }
+
+        writeLineInPastPosition();
     }
 
     // moving
@@ -291,27 +286,18 @@ enum Direction {
 }
 
 class BallLine implements ObjectOnLocation {
-    private final LineType type;
+    private final String str;
 
     protected BallLine(Direction direction) {
         if (direction == Direction.UP_LEFT || direction == Direction.DOWN_RIGHT) {
-            type = LineType.FROM_UP_TO_DOWN;
+            str = "\\";
         } else {
-            type = LineType.FROM_DOWN_TO_UP;
+            str = "/";
         }
     }
 
     @Override
     public String toString() {
-        if (type == FROM_DOWN_TO_UP) {
-            return "/";
-        } else {
-            return "\\";
-        }
-    }
-
-    private enum LineType {
-        FROM_UP_TO_DOWN, // \
-        FROM_DOWN_TO_UP; // /
+        return str;
     }
 }
