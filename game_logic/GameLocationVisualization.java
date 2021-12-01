@@ -18,9 +18,16 @@ public class GameLocationVisualization implements LocationVisualization {
     }
 
     public void showField() {
-        printLine();
+        printNumericLine();
         printField();
         printLine();
+    }
+
+    private void printNumericLine() {
+        for (int i = field.getXMinLimit(); i <= field.getXMaxLimit(); i++) {
+            System.out.print("-" + i % 10);
+        }
+        System.out.println();
     }
 
     private void printLine() {
