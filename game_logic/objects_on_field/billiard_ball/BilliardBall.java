@@ -22,25 +22,40 @@ public class BilliardBall implements ObjectOnLocation {
         location.putObject(getCurrentPosition(), this);
     }
 
-    public void runToEnd() throws TryReboundWithoutWallNearException {
-        while (!inAngle() || inStartingPosition()) {
-            moveByStep();
+    public void runToEnd() throws TryToReboundWithoutWallNearException {
+        while (canRiding()) {
+            step();
         }
     }
 
+    public void step() throws TryToReboundWithoutWallNearException {
+        moveByStep();
+        writeLineInPastPosition();
+    }
+
+    public boolean canRiding() {
+        return !inAngle() || inStartingPosition();
+    }
+
+    @Override
+    public String toString() {
+        return "O";
+    }
+
     // moving
-    private void moveByStep() throws TryReboundWithoutWallNearException {
-        // moving
+    private void moveByStep() throws TryToReboundWithoutWallNearException {
+        // setCurrentDirection()'s call have to be before moveToPosition()'s call
         if (!inAngle() || inStartingPosition()) {
             if (!movingToNearestWall()) {
+                setCurrentDirection(getNewDirection());
                 moveByCurrentDirection();
             } else {
-                setCurrentDirection(getNewDirection()); // have to be before moveToPosition method's call
-                moveToPosition(getPositionAfterRebound());
+                moveToPosition(getPositionAfterReboundWithCurrentDirection());
+                // setCurrentDirection()'s call have to be after
+                // getPositionAfterReboundWithCurrentDirection()'s call, not before
+                setCurrentDirection(getNewDirection());
             }
         }
-
-        writeLineInPastPosition();
     }
 
     private void moveByCurrentDirection() {
@@ -74,9 +89,9 @@ public class BilliardBall implements ObjectOnLocation {
         }
     }
 
-    private IntegerPos getPositionAfterRebound() throws TryReboundWithoutWallNearException {
+    private IntegerPos getPositionAfterReboundWithCurrentDirection() throws TryToReboundWithoutWallNearException {
         if (!nearWall()) {
-            throw new TryReboundWithoutWallNearException();
+            throw new TryToReboundWithoutWallNearException();
         }
 
         Direction direction = getCurrentDirection();

@@ -91,7 +91,6 @@ public class GameLocation implements Location {
     }
 
     //
-
     private class FieldItself {
         // FIXME: fix this code!
         private HashMap<Integer, HashMap<Integer, ObjectOnLocation>> fieldItself = new HashMap<Integer, HashMap<Integer, ObjectOnLocation>>();
@@ -150,7 +149,7 @@ public class GameLocation implements Location {
         }
 
         public String toString() {
-            return " ";
+            return ".";
         }
     }
 

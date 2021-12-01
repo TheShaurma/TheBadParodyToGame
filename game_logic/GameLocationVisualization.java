@@ -32,7 +32,7 @@ public class GameLocationVisualization implements LocationVisualization {
 
     private void printField() {
         for (int y = field.getYMaxLimit(); y >= field.getYMinLimit(); y--) {
-            for (int x = field.getXMinLimit(); x < field.getXMaxLimit(); x++) {
+            for (int x = field.getXMinLimit(); x <= field.getXMaxLimit(); x++) {
                 System.out.print(' ');
                 System.out.print(field.getObject(new IntegerPosition(x, y)));
             }

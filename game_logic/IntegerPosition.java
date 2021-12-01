@@ -18,4 +18,9 @@ public class IntegerPosition implements IntegerPos {
     public int getY() {
         return yPos;
     }
+
+    @Override
+    public String toString() {
+        return "(" + getX() + "; " + getY() + ")";
+    }
 }
