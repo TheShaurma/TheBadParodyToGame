@@ -1,17 +1,19 @@
 package game_logic.intarfaces;
 
+import game_logic.basis_exceptions.PositionException;
+
 public interface Location {
-    void putObject(IntegerPos pos, ObjectOnLocation obj);
+    void putObject(IntegerPos pos, ObjectOnLocation obj) throws PositionException;
 
-    void putObject(int x, int y, ObjectOnLocation obj);
+    void putObject(int x, int y, ObjectOnLocation obj) throws PositionException;
 
-    ObjectOnLocation getObject(IntegerPos pos);
+    ObjectOnLocation getObject(IntegerPos pos) throws PositionException;
 
-    ObjectOnLocation getObject(int x, int y);
+    ObjectOnLocation getObject(int x, int y) throws PositionException;
 
-    void removeObject(IntegerPos pos);
+    void removeObject(IntegerPos pos) throws PositionException;
 
-    void removeObject(int x, int y);
+    void removeObject(int x, int y) throws PositionException;
 
     //
 

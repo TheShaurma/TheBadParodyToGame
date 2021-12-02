@@ -1,6 +1,7 @@
 package game_logic.objects_on_field.billiard_ball;
 
 import game_logic.IntegerPosition;
+import game_logic.basis_exceptions.GameLogicException;
 import game_logic.intarfaces.IntegerPos;
 import game_logic.intarfaces.Location;
 import game_logic.intarfaces.ObjectOnLocation;
@@ -12,7 +13,7 @@ public class BilliardBall implements ObjectOnLocation {
     private IntegerPos pastPosition;
     private Direction pastDirection;
 
-    public BilliardBall(Location loc) {
+    public BilliardBall(Location loc) throws GameLogicException {
         location = loc;
         setCurrentPosition(new IntegerPosition(location.getXMinLimit(), location.getYMaxLimit()));
         setPastPosition(getCurrentPosition());
@@ -22,19 +23,19 @@ public class BilliardBall implements ObjectOnLocation {
         location.putObject(getCurrentPosition(), this);
     }
 
-    public void runToEnd() throws TryToReboundWithoutWallNearException {
+    public void runToEnd() throws GameLogicException {
         while (canRiding()) {
             step();
         }
     }
 
-    public void step() throws TryToReboundWithoutWallNearException {
+    public void step() throws GameLogicException {
         moveByStep();
         writeLineInPastPosition();
     }
 
     public boolean canRiding() {
-        return !inAngle() || inStartingPosition();
+        return !inAngle() || movingToNearestWall() || inStartingPosition();
     }
 
     @Override
@@ -43,9 +44,9 @@ public class BilliardBall implements ObjectOnLocation {
     }
 
     // moving
-    private void moveByStep() throws TryToReboundWithoutWallNearException {
+    private void moveByStep() throws GameLogicException {
         // setCurrentDirection()'s call have to be before moveToPosition()'s call
-        if (!inAngle() || inStartingPosition()) {
+        if (canRiding()) {
             if (!movingToNearestWall()) {
                 setCurrentDirection(getNewDirection());
                 moveByCurrentDirection();
@@ -58,11 +59,11 @@ public class BilliardBall implements ObjectOnLocation {
         }
     }
 
-    private void moveByCurrentDirection() {
+    private void moveByCurrentDirection() throws GameLogicException {
         moveByDirection(getCurrentDirection());
     }
 
-    private void moveByDirection(Direction direction) {
+    private void moveByDirection(Direction direction) throws GameLogicException {
         if (direction == Direction.UP_LEFT) {
             moveUpLeft();
         } else if (direction == Direction.UP_RIGHT) {
@@ -81,7 +82,7 @@ public class BilliardBall implements ObjectOnLocation {
         if (!movingToNearestWall()) {
             return currentDirection;
         } else {
-            if (nearHorizontalWall()) {
+            if ((nearLeftWall() && currentDirection.isLeft()) || (nearRightWall() && currentDirection.isRight())) {
                 return currentDirection.getShiftedVertically();
             } else {
                 return currentDirection.getShiftedHorizontally();
@@ -100,10 +101,11 @@ public class BilliardBall implements ObjectOnLocation {
         if (nearUpperWall()) {
             if (direction == Direction.UP_LEFT) {
                 return new IntegerPosition(currentX - 1, currentY);
-            } else {
+            } else if (direction == Direction.UP_RIGHT) {
                 return new IntegerPosition(currentX + 1, currentY);
             }
-        } else if (nearBottomWall()) {
+        }
+        if (nearBottomWall()) {
             if (direction == Direction.DOWN_LEFT) {
                 return new IntegerPosition(currentX - 1, currentY);
             } else {
@@ -124,42 +126,42 @@ public class BilliardBall implements ObjectOnLocation {
         }
     }
 
-    private void moveUpLeft() {
+    private void moveUpLeft() throws GameLogicException {
         int newX = getCurrentPosition().getX() - 1;
         int newY = getCurrentPosition().getY() + 1;
 
         moveToPosition(new IntegerPosition(newX, newY));
     }
 
-    private void moveUpRight() {
+    private void moveUpRight() throws GameLogicException {
         int newX = getCurrentPosition().getX() + 1;
         int newY = getCurrentPosition().getY() + 1;
 
         moveToPosition(new IntegerPosition(newX, newY));
     }
 
-    private void moveDownLeft() {
+    private void moveDownLeft() throws GameLogicException {
         int newX = getCurrentPosition().getX() - 1;
         int newY = getCurrentPosition().getY() - 1;
 
         moveToPosition(new IntegerPosition(newX, newY));
     }
 
-    private void moveDownRight() {
+    private void moveDownRight() throws GameLogicException {
         int newX = getCurrentPosition().getX() + 1;
         int newY = getCurrentPosition().getY() - 1;
 
         moveToPosition(new IntegerPosition(newX, newY));
     }
 
-    private void moveToPosition(IntegerPos pos) {
+    private void moveToPosition(IntegerPos pos) throws GameLogicException {
         setCurrentPosition(pos);
         location.removeObject(getPastPosition());
         location.putObject(getCurrentPosition(), this);
     }
 
     // writing line
-    private void writeLineInPastPosition() {
+    private void writeLineInPastPosition() throws GameLogicException {
         location.putObject(getPastPosition(), new BallLine(getPastDirection()));
     }
 

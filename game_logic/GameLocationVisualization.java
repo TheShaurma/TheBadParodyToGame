@@ -1,5 +1,6 @@
 package game_logic;
 
+import game_logic.basis_exceptions.PositionException;
 import game_logic.intarfaces.Location;
 import game_logic.intarfaces.LocationVisualization;
 
@@ -17,7 +18,7 @@ public class GameLocationVisualization implements LocationVisualization {
         this.field = field;
     }
 
-    public void showField() {
+    public void showField() throws PositionException {
         printNumericLine();
         printField();
         printLine();
@@ -37,7 +38,7 @@ public class GameLocationVisualization implements LocationVisualization {
         System.out.println();
     }
 
-    private void printField() {
+    private void printField() throws PositionException {
         for (int y = field.getYMaxLimit(); y >= field.getYMinLimit(); y--) {
             for (int x = field.getXMinLimit(); x <= field.getXMaxLimit(); x++) {
                 System.out.print(' ');
