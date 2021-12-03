@@ -10,7 +10,7 @@ public class Main {
         LocationVisualization visual = new GameLocationVisualization(location);
         BilliardBall ball = new BilliardBall(location);
 
-        while (ball.canRiding()) {
+        while (ball.canMoving()) {
             ball.step();
             visual.showField();
         }

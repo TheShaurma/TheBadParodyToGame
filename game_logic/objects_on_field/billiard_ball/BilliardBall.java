@@ -24,7 +24,7 @@ public class BilliardBall implements ObjectOnLocation {
     }
 
     public void runToEnd() throws GameLogicException {
-        while (canRiding()) {
+        while (canMoving()) {
             step();
         }
     }
@@ -34,7 +34,7 @@ public class BilliardBall implements ObjectOnLocation {
         writeLineInPastPosition();
     }
 
-    public boolean canRiding() {
+    public boolean canMoving() {
         return !movingInAngle();
     }
 
@@ -46,7 +46,7 @@ public class BilliardBall implements ObjectOnLocation {
     // moving
     private void moveByStep() throws GameLogicException {
         // setCurrentDirection()'s call have to be before moveToPosition()'s call
-        if (canRiding()) {
+        if (canMoving()) {
             if (!movingToNearestWall()) {
                 setCurrentDirection(getNewDirection());
                 moveByCurrentDirection();
