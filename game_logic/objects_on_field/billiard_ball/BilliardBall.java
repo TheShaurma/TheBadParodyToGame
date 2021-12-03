@@ -35,7 +35,7 @@ public class BilliardBall implements ObjectOnLocation {
     }
 
     public boolean canRiding() {
-        return !inAngle() || movingToNearestWall() || inStartingPosition();
+        return !movingInAngle();
     }
 
     @Override
@@ -51,9 +51,9 @@ public class BilliardBall implements ObjectOnLocation {
                 setCurrentDirection(getNewDirection());
                 moveByCurrentDirection();
             } else {
-                moveToPosition(getPositionAfterReboundWithCurrentDirection());
                 // setCurrentDirection()'s call have to be after
                 // getPositionAfterReboundWithCurrentDirection()'s call, not before
+                moveToPosition(getPositionAfterReboundWithCurrentDirection());
                 setCurrentDirection(getNewDirection());
             }
         }
@@ -83,9 +83,9 @@ public class BilliardBall implements ObjectOnLocation {
             return currentDirection;
         } else {
             if ((nearLeftWall() && currentDirection.isLeft()) || (nearRightWall() && currentDirection.isRight())) {
-                return currentDirection.getShiftedVertically();
-            } else {
                 return currentDirection.getShiftedHorizontally();
+            } else {
+                return currentDirection.getShiftedVertically();
             }
         }
     }
@@ -108,10 +108,11 @@ public class BilliardBall implements ObjectOnLocation {
         if (nearBottomWall()) {
             if (direction == Direction.DOWN_LEFT) {
                 return new IntegerPosition(currentX - 1, currentY);
-            } else {
+            } else if (direction == Direction.DOWN_RIGHT) {
                 return new IntegerPosition(currentX + 1, currentY);
             }
-        } else if (nearLeftWall()) {
+        }
+        if (nearLeftWall()) {
             if (direction == Direction.UP_LEFT) {
                 return new IntegerPosition(currentX, currentY + 1);
             } else {
@@ -211,17 +212,12 @@ public class BilliardBall implements ObjectOnLocation {
         }
     }
 
-    private boolean inStartingPosition() {
-        int x = getCurrentPosition().getX();
-        int y = getCurrentPosition().getY();
-        int xMin = location.getXMinLimit();
-        int yMax = location.getYMaxLimit();
-
-        return x == xMin && y == yMax;
-    }
-
-    private boolean inAngle() {
-        return nearHorizontalWall() && nearVerticalWall();
+    private boolean movingInAngle() {
+        Direction direction = getCurrentDirection();
+        return (inUpperLeftAngle() && direction == Direction.UP_LEFT)
+                || (inUpperRightAngle() && direction == Direction.UP_RIGHT)
+                || (inBottomLeftAngle() && direction == Direction.DOWN_LEFT)
+                || (inBottomRightAngle() && direction == Direction.DOWN_RIGHT);
     }
 
     private boolean nearWall() {
@@ -264,6 +260,21 @@ public class BilliardBall implements ObjectOnLocation {
         return y == yMax;
     }
 
+    private boolean inUpperLeftAngle() {
+        return nearUpperWall() && nearLeftWall();
+    }
+
+    private boolean inUpperRightAngle() {
+        return nearUpperWall() && nearRightWall();
+    }
+
+    private boolean inBottomLeftAngle() {
+        return nearBottomWall() && nearLeftWall();
+    }
+
+    private boolean inBottomRightAngle() {
+        return nearBottomWall() && nearRightWall();
+    }
 }
 
 enum Direction {
