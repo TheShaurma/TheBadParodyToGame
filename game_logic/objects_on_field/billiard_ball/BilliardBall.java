@@ -51,10 +51,13 @@ public class BilliardBall implements ObjectOnLocation {
                 setCurrentDirection(getNewDirection());
                 moveByCurrentDirection();
             } else {
-                // setCurrentDirection()'s call have to be after
-                // getPositionAfterReboundWithCurrentDirection()'s call, not before
-                moveToPosition(getPositionAfterReboundWithCurrentDirection());
-                setCurrentDirection(getNewDirection());
+                // Have to create 2 variables and write into themselves new position
+                // and new direction to don't suffer from bags.
+                IntegerPos newPosition = getPositionAfterReboundWithCurrentDirection();
+                Direction newDirection = getNewDirection();
+
+                moveToPosition(newPosition);
+                setCurrentDirection(newDirection);
             }
         }
     }
@@ -79,14 +82,13 @@ public class BilliardBall implements ObjectOnLocation {
     private Direction getNewDirection() {
         currentDirection = getCurrentDirection();
 
-        if (!movingToNearestWall()) {
-            return currentDirection;
+        if ((nearLeftWall() && currentDirection.isLeft()) || (nearRightWall() && currentDirection.isRight())) {
+            return currentDirection.getShiftedHorizontally();
+        } else if ((nearUpperWall() && currentDirection.isUpper())
+                || (nearBottomWall() && currentDirection.isBottom())) {
+            return currentDirection.getShiftedVertically();
         } else {
-            if ((nearLeftWall() && currentDirection.isLeft()) || (nearRightWall() && currentDirection.isRight())) {
-                return currentDirection.getShiftedHorizontally();
-            } else {
-                return currentDirection.getShiftedVertically();
-            }
+            return currentDirection;
         }
     }
 

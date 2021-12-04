@@ -25,7 +25,7 @@ public class GameLocation implements Location {
     }
 
     public GameLocation(int xLength, int yLength) {
-        setLimits(0, xLength, 0, yLength);
+        setLimits(0, xLength - 1, 0, yLength - 1);
     }
 
     public GameLocation() {
