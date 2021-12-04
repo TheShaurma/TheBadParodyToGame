@@ -1,8 +1,9 @@
-package game_logic;
+package game_logic.visualizatons;
 
-import game_logic.basis_exceptions.PositionException;
-import game_logic.intarfaces.Location;
-import game_logic.intarfaces.LocationVisualization;
+import game_logic.IntegerPosition;
+import game_logic.abstractions.basis_exceptions.PositionException;
+import game_logic.abstractions.intarfaces.Location;
+import game_logic.abstractions.intarfaces.LocationVisualization;
 
 public class GameLocationVisualization implements LocationVisualization {
     Location field;

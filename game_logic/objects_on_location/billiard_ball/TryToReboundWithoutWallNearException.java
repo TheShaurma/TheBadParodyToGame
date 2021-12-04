@@ -1,6 +1,6 @@
-package game_logic.objects_on_field.billiard_ball;
+package game_logic.objects_on_location.billiard_ball;
 
-import game_logic.basis_exceptions.GameLogicException;
+import game_logic.abstractions.basis_exceptions.GameLogicException;
 
 public class TryToReboundWithoutWallNearException extends GameLogicException {
     public String toString() {

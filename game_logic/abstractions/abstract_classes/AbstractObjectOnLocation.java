@@ -1,8 +1,8 @@
-package game_logic.abstract_classes;
+package game_logic.abstractions.abstract_classes;
 
-import game_logic.intarfaces.IntegerPos;
-import game_logic.intarfaces.Location;
-import game_logic.intarfaces.ObjectOnLocation;
+import game_logic.abstractions.intarfaces.IntegerPos;
+import game_logic.abstractions.intarfaces.Location;
+import game_logic.abstractions.intarfaces.ObjectOnLocation;
 
 public abstract class AbstractObjectOnLocation implements ObjectOnLocation {
     private Location location;

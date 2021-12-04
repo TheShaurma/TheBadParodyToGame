@@ -1,6 +1,6 @@
 package game_logic;
 
-import game_logic.intarfaces.IntegerPos;
+import game_logic.abstractions.intarfaces.IntegerPos;
 
 public class IntegerPosition implements IntegerPos {
     private final int xPos;

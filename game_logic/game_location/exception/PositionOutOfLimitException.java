@@ -1,7 +1,7 @@
 package game_logic.game_location.exception;
 
-import game_logic.basis_exceptions.PositionException;
-import game_logic.intarfaces.IntegerPos;
+import game_logic.abstractions.basis_exceptions.PositionException;
+import game_logic.abstractions.intarfaces.IntegerPos;
 
 public class PositionOutOfLimitException extends PositionException {
     private Limit limit;

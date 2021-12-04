@@ -1,4 +1,4 @@
-package game_logic.intarfaces;
+package game_logic.abstractions.intarfaces;
 
 // TODO: create an better name
 public interface IntegerPos {

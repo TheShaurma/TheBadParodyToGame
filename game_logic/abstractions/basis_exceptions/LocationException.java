@@ -1,4 +1,4 @@
-package game_logic.basis_exceptions;
+package game_logic.abstractions.basis_exceptions;
 
 public abstract class LocationException extends GameLogicException {
 }

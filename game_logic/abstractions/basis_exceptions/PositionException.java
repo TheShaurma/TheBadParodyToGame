@@ -1,6 +1,6 @@
-package game_logic.basis_exceptions;
+package game_logic.abstractions.basis_exceptions;
 
-import game_logic.intarfaces.IntegerPos;
+import game_logic.abstractions.intarfaces.IntegerPos;
 
 public class PositionException extends LocationException {
     private IntegerPos position;
