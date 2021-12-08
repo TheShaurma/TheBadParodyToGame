@@ -5,14 +5,14 @@ import game_logic.abstractions.basis_exceptions.PositionException;
 import game_logic.abstractions.intarfaces.Location;
 import game_logic.abstractions.intarfaces.LocationVisualization;
 
-public class GameLocationVisualization implements LocationVisualization {
+public class ConsoleGameLocationVisualization implements LocationVisualization {
     Location field;
 
-    public GameLocationVisualization(Location field) {
+    public ConsoleGameLocationVisualization(Location field) {
         this.field = field;
     }
 
-    public GameLocationVisualization() {
+    public ConsoleGameLocationVisualization() {
     }
 
     public void setField(Location field) {

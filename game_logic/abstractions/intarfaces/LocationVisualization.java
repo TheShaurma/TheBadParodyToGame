@@ -6,4 +6,7 @@ public interface LocationVisualization {
     void setField(Location field);
 
     void showField() throws PositionException;
+
+    default public void close() {
+    }
 }
