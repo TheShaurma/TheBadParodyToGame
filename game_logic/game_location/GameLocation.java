@@ -2,11 +2,11 @@ package game_logic.game_location;
 
 import java.util.HashMap;
 
-import game_logic.game_location.exception.PositionOutOfLimitException;
 import game_logic.abstractions.intarfaces.IntegerPos;
 import game_logic.abstractions.intarfaces.Location;
 import game_logic.abstractions.intarfaces.ObjectOnLocation;
-import game_logic.game_location.exception.Limit;
+import game_logic.game_location.exceptions.Limit;
+import game_logic.game_location.exceptions.PositionOutOfLimitException;
 
 public class GameLocation implements Location {
     private FieldItself fieldItself = new FieldItself();
