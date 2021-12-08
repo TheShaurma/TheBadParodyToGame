@@ -2,9 +2,9 @@ package game_logic.game_location;
 
 import java.util.HashMap;
 
-import game_logic.abstractions.intarfaces.IntegerPos;
-import game_logic.abstractions.intarfaces.Location;
-import game_logic.abstractions.intarfaces.ObjectOnLocation;
+import game_logic.abstractions.interfaces.IntegerPos;
+import game_logic.abstractions.interfaces.Location;
+import game_logic.abstractions.interfaces.ObjectOnLocation;
 import game_logic.game_location.exceptions.Limit;
 import game_logic.game_location.exceptions.PositionOutOfLimitException;
 

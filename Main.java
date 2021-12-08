@@ -1,5 +1,5 @@
-import game_logic.abstractions.intarfaces.Location;
-import game_logic.abstractions.intarfaces.LocationVisualization;
+import game_logic.abstractions.interfaces.Location;
+import game_logic.abstractions.interfaces.LocationVisualization;
 import game_logic.game_location.GameLocation;
 import game_logic.objects_on_location.billiard_ball.BilliardBall;
 import game_logic.visualizatons.ConsoleGameLocationVisualization;

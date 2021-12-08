@@ -2,9 +2,9 @@ package game_logic.objects_on_location.billiard_ball;
 
 import game_logic.IntegerPosition;
 import game_logic.abstractions.basis_exceptions.GameLogicException;
-import game_logic.abstractions.intarfaces.IntegerPos;
-import game_logic.abstractions.intarfaces.Location;
-import game_logic.abstractions.intarfaces.ObjectOnLocation;
+import game_logic.abstractions.interfaces.IntegerPos;
+import game_logic.abstractions.interfaces.Location;
+import game_logic.abstractions.interfaces.ObjectOnLocation;
 
 public class BilliardBall implements ObjectOnLocation {
     private final Location location;

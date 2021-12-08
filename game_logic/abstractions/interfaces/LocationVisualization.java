@@ -1,4 +1,4 @@
-package game_logic.abstractions.intarfaces;
+package game_logic.abstractions.interfaces;
 
 import game_logic.abstractions.basis_exceptions.PositionException;
 

@@ -2,8 +2,8 @@ package game_logic.visualizatons;
 
 import game_logic.IntegerPosition;
 import game_logic.abstractions.basis_exceptions.PositionException;
-import game_logic.abstractions.intarfaces.Location;
-import game_logic.abstractions.intarfaces.LocationVisualization;
+import game_logic.abstractions.interfaces.Location;
+import game_logic.abstractions.interfaces.LocationVisualization;
 
 public class ConsoleGameLocationVisualization implements LocationVisualization {
     Location field;
