@@ -1,8 +1,8 @@
-package game_logic.objects_on_location.object_conditions.interfaces;
+package game_logic.objects_on_location.conditions.interfaces;
 
 import game_logic.abstractions.interfaces.IntegerPos;
 
-public interface ObjectConditionOfPositionImp {
+public interface ConditionOfPositionImp {
     IntegerPos getPosition();
 
     void updatePosition(IntegerPos pos);

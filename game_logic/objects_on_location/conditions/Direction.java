@@ -1,6 +1,6 @@
-package game_logic.objects_on_location.object_conditions;
+package game_logic.objects_on_location.conditions;
 
-public enum ObjectDirection {
+public enum Direction {
     UP, DOWN,
     LEFT, RIGHT,
     UP_LEFT,
@@ -8,11 +8,11 @@ public enum ObjectDirection {
     DOWN_LEFT,
     DOWN_RIGHT;
 
-    public ObjectDirection getOpposite() {
+    public Direction getOpposite() {
         return this.getShiftedHorizontally().getShiftedVertically();
     }
 
-    public ObjectDirection getShiftedVertically() {
+    public Direction getShiftedVertically() {
         switch (this) {
             case UP:
                 return DOWN;
@@ -31,7 +31,7 @@ public enum ObjectDirection {
         }
     }
 
-    public ObjectDirection getShiftedHorizontally() {
+    public Direction getShiftedHorizontally() {
         switch (this) {
             case LEFT:
                 return RIGHT;
