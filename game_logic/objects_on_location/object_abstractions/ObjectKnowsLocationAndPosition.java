@@ -2,24 +2,24 @@ package game_logic.objects_on_location.object_abstractions;
 
 import game_logic.abstractions.interfaces.IntegerPos;
 import game_logic.abstractions.interfaces.Location;
-import game_logic.objects_on_location.conditions.ConditionOfPosition;
-import game_logic.objects_on_location.conditions.interfaces.ConditionOfLocationImp;
-import game_logic.objects_on_location.conditions.interfaces.ConditionOfPositionImp;
+import game_logic.objects_on_location.conditions.PositionCondition;
+import game_logic.objects_on_location.conditions.interfaces.LocationConditionImp;
+import game_logic.objects_on_location.conditions.interfaces.PositionConditionImp;
 
 public abstract class ObjectKnowsLocationAndPosition extends ObjectKnowsLocation {
-    private ConditionOfPositionImp positionCondition;
+    private PositionConditionImp positionCondition;
 
     public ObjectKnowsLocationAndPosition(Location loc, IntegerPos pos) {
         super(loc);
-        positionCondition = new ConditionOfPosition(pos);
+        positionCondition = new PositionCondition(pos);
     }
 
-    protected ObjectKnowsLocationAndPosition(ConditionOfLocationImp locationCond, ConditionOfPositionImp positionCond) {
+    protected ObjectKnowsLocationAndPosition(LocationConditionImp locationCond, PositionConditionImp positionCond) {
         super(locationCond);
         positionCondition = positionCond;
     }
 
-    protected ConditionOfPositionImp getPositionCondition() {
+    protected PositionConditionImp getPositionCondition() {
         return positionCondition;
     }
 }

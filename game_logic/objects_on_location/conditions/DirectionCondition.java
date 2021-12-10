@@ -1,11 +1,11 @@
 package game_logic.objects_on_location.conditions;
 
-import game_logic.objects_on_location.conditions.interfaces.ConditionOfDirectionImp;
+import game_logic.objects_on_location.conditions.interfaces.DirectionConditionImp;
 
-public class ConditionOfDirection implements ConditionOfDirectionImp {
+public class DirectionCondition implements DirectionConditionImp {
     private Direction direction;
 
-    public ConditionOfDirection(Direction dir) {
+    public DirectionCondition(Direction dir) {
         direction = dir;
     }
 

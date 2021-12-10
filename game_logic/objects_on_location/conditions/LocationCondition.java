@@ -1,12 +1,12 @@
 package game_logic.objects_on_location.conditions;
 
 import game_logic.abstractions.interfaces.Location;
-import game_logic.objects_on_location.conditions.interfaces.ConditionOfLocationImp;
+import game_logic.objects_on_location.conditions.interfaces.LocationConditionImp;
 
-public class ConditionOfLocation implements ConditionOfLocationImp {
+public class LocationCondition implements LocationConditionImp {
     private final Location location;
 
-    public ConditionOfLocation(Location loc) {
+    public LocationCondition(Location loc) {
         location = loc;
     }
 
