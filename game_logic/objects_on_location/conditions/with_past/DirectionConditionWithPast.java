@@ -16,4 +16,10 @@ public class DirectionConditionWithPast extends DirectionCondition implements Di
     public DirectionConditionCannotUpdateImp getPast() {
         return past;
     }
+
+    @Override
+    public void updateDirection(Direction dir) {
+        super.updateDirection(dir);
+        past.updateDirection(dir);
+    }
 }

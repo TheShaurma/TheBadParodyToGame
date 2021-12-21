@@ -16,4 +16,10 @@ public class PositionConditionWithPast extends PositionCondition implements Posi
     public PositionConditionCannotUpdateImp getPast() {
         return past;
     }
+
+    @Override
+    public void updatePosition(IntegerPos pos) {
+        super.updatePosition(pos);
+        past.updatePosition(pos);
+    }
 }
