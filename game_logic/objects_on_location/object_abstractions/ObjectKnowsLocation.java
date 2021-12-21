@@ -3,7 +3,7 @@ package game_logic.objects_on_location.object_abstractions;
 import game_logic.abstractions.interfaces.Location;
 import game_logic.abstractions.interfaces.ObjectOnLocation;
 import game_logic.objects_on_location.conditions.LocationCondition;
-import game_logic.objects_on_location.conditions.interfaces.LocationConditionImp;
+import game_logic.objects_on_location.conditions.interfaces.cannot_update.LocationConditionImp;
 
 public abstract class ObjectKnowsLocation implements ObjectOnLocation {
     private LocationConditionImp locationCondition;

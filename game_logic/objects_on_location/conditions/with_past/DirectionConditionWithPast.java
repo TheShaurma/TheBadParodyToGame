@@ -2,7 +2,7 @@ package game_logic.objects_on_location.conditions.with_past;
 
 import game_logic.objects_on_location.conditions.Direction;
 import game_logic.objects_on_location.conditions.DirectionCondition;
-import game_logic.objects_on_location.conditions.interfaces.DirectionConditionImp;
+import game_logic.objects_on_location.conditions.interfaces.cannot_update.DirectionConditionCannotUpdateImp;
 import game_logic.objects_on_location.conditions.interfaces.with_past.DirectionConditionWithPastImp;
 
 public class DirectionConditionWithPast extends DirectionCondition implements DirectionConditionWithPastImp {
@@ -13,7 +13,7 @@ public class DirectionConditionWithPast extends DirectionCondition implements Di
         past = new DirectionCondition(dir);
     }
 
-    public DirectionConditionImp getPast() {
+    public DirectionConditionCannotUpdateImp getPast() {
         return past;
     }
 }

@@ -3,8 +3,8 @@ package game_logic.objects_on_location.object_abstractions;
 import game_logic.abstractions.interfaces.Location;
 import game_logic.abstractions.interfaces.IntegerPos;
 import game_logic.objects_on_location.conditions.Direction;
-import game_logic.objects_on_location.conditions.interfaces.LocationConditionImp;
 import game_logic.objects_on_location.conditions.interfaces.PositionConditionImp;
+import game_logic.objects_on_location.conditions.interfaces.cannot_update.LocationConditionImp;
 import game_logic.objects_on_location.conditions.interfaces.DirectionConditionImp;
 import game_logic.objects_on_location.conditions.DirectionCondition;
 

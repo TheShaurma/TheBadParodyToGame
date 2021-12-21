@@ -2,7 +2,7 @@ package game_logic.objects_on_location.conditions.with_past;
 
 import game_logic.abstractions.interfaces.IntegerPos;
 import game_logic.objects_on_location.conditions.PositionCondition;
-import game_logic.objects_on_location.conditions.interfaces.PositionConditionImp;
+import game_logic.objects_on_location.conditions.interfaces.cannot_update.PositionConditionCannotUpdateImp;
 import game_logic.objects_on_location.conditions.interfaces.with_past.PositionConditionWithPastImp;
 
 public class PositionConditionWithPast extends PositionCondition implements PositionConditionWithPastImp {
@@ -13,7 +13,7 @@ public class PositionConditionWithPast extends PositionCondition implements Posi
         past = new PositionCondition(pos);
     }
 
-    public PositionConditionImp getPast() {
+    public PositionConditionCannotUpdateImp getPast() {
         return past;
     }
 }
