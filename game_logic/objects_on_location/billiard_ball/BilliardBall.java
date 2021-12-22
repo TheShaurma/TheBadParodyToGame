@@ -1,6 +1,7 @@
 package game_logic.objects_on_location.billiard_ball;
 
 import game_logic.IntegerPosition;
+import game_logic.abstractions.basis_exceptions.ObjectOnLocationException;
 import game_logic.abstractions.basis_exceptions.PositionException;
 import game_logic.abstractions.interfaces.IntegerPos;
 import game_logic.abstractions.interfaces.Location;
@@ -9,13 +10,27 @@ import game_logic.objects_on_location.conditions.Direction;
 import game_logic.objects_on_location.object_abstractions.ObjectWithFoolConditionWithPast;
 
 public class BilliardBall extends ObjectWithFoolConditionWithPast {
+    boolean haveToWriteLine = false;
+
     public BilliardBall(Location loc) throws PositionException {
         super(loc, new IntegerPosition(loc.getXMinLimit(), loc.getYMaxLimit()), Direction.DOWN_RIGHT);
     }
 
-    public void step() throws PositionException {
+    public void moveByEnd() throws PositionException {
+        while (true) {
+            try {
+                step();
+            } catch (InAngleException e) {
+                break;
+            }
+        }
+    }
+
+    public void step() throws PositionException, InAngleException {
         moveToStep();
-        writeLineInPastBallPosition();
+        if (haveToWriteLine) {
+            writeLineInPastBallPosition();
+        }
     }
 
     private void writeLineInPastBallPosition() throws PositionException {
@@ -27,12 +42,14 @@ public class BilliardBall extends ObjectWithFoolConditionWithPast {
     }
 
     // moving
-    private void moveToStep() throws PositionException {
+    private void moveToStep() throws PositionException, InAngleException {
         IntegerPos newPos = getNewPosition();
         Direction newDir = getNewDirection();
 
         moveToPosition(newPos);
         getDirectionCondition().updateDirection(newDir);
+
+        haveToWriteLine = !haveToWriteLine;
     }
 
     private Direction getNewDirection() {
@@ -61,7 +78,11 @@ public class BilliardBall extends ObjectWithFoolConditionWithPast {
         getLocationCondition().getLocation().putObject(newPos, this);
     }
 
-    private IntegerPos getNewPosition() {
+    private IntegerPos getNewPosition() throws InAngleException {
+        if (movingInAngle()) {
+            throw new InAngleException();
+        }
+
         try {
             return getPositionAfterRebound();
         } catch (WillNotReboundException e) {
@@ -181,7 +202,14 @@ public class BilliardBall extends ObjectWithFoolConditionWithPast {
     }
 }
 
-class WillNotReboundException extends Exception {
+class WillNotReboundException extends ObjectOnLocationException {
+}
+
+class InAngleException extends ObjectOnLocationException {
+    @Override
+    public String toString() {
+        return "Ball can't move because it's in angle.";
+    }
 }
 
 class Line implements ObjectOnLocation {
