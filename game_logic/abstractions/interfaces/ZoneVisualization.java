@@ -2,8 +2,8 @@ package game_logic.abstractions.interfaces;
 
 import game_logic.abstractions.basis_exceptions.PositionException;
 
-public interface LocationVisualization {
-    void setField(Location field);
+public interface ZoneVisualization {
+    void setField(Zone field);
 
     void showField() throws PositionException;
 

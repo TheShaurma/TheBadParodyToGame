@@ -1,9 +1,9 @@
-package game_logic.objects_on_location.conditions.with_past;
+package game_logic.objects_on_zone.conditions.with_past;
 
-import game_logic.objects_on_location.conditions.Direction;
-import game_logic.objects_on_location.conditions.DirectionCondition;
-import game_logic.objects_on_location.conditions.interfaces.cannot_update.DirectionConditionCannotUpdateImp;
-import game_logic.objects_on_location.conditions.interfaces.with_past.DirectionConditionWithPastImp;
+import game_logic.objects_on_zone.conditions.Direction;
+import game_logic.objects_on_zone.conditions.DirectionCondition;
+import game_logic.objects_on_zone.conditions.interfaces.cannot_update.DirectionConditionCannotUpdateImp;
+import game_logic.objects_on_zone.conditions.interfaces.with_past.DirectionConditionWithPastImp;
 
 public class DirectionConditionWithPast extends DirectionCondition implements DirectionConditionWithPastImp {
     private DirectionCondition past;

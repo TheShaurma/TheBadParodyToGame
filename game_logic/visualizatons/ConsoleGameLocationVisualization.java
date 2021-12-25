@@ -2,20 +2,20 @@ package game_logic.visualizatons;
 
 import game_logic.IntegerPosition;
 import game_logic.abstractions.basis_exceptions.PositionException;
-import game_logic.abstractions.interfaces.Location;
-import game_logic.abstractions.interfaces.LocationVisualization;
+import game_logic.abstractions.interfaces.Zone;
+import game_logic.abstractions.interfaces.ZoneVisualization;
 
-public class ConsoleGameLocationVisualization implements LocationVisualization {
-    Location field;
+public class ConsoleGameLocationVisualization implements ZoneVisualization {
+    Zone field;
 
-    public ConsoleGameLocationVisualization(Location field) {
+    public ConsoleGameLocationVisualization(Zone field) {
         this.field = field;
     }
 
     public ConsoleGameLocationVisualization() {
     }
 
-    public void setField(Location field) {
+    public void setField(Zone field) {
         this.field = field;
     }
 

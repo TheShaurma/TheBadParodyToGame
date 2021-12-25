@@ -1,18 +1,18 @@
-package game_logic.objects_on_location.billiard_ball;
+package game_logic.objects_on_zone.billiard_ball;
 
 import game_logic.IntegerPosition;
 import game_logic.abstractions.basis_exceptions.ObjectOnLocationException;
 import game_logic.abstractions.basis_exceptions.PositionException;
 import game_logic.abstractions.interfaces.IntegerPos;
-import game_logic.abstractions.interfaces.Location;
+import game_logic.abstractions.interfaces.Zone;
+import game_logic.objects_on_zone.conditions.Direction;
+import game_logic.objects_on_zone.object_abstractions.ObjectWithFoolConditionWithPast;
 import game_logic.abstractions.interfaces.ObjectOnLocation;
-import game_logic.objects_on_location.conditions.Direction;
-import game_logic.objects_on_location.object_abstractions.ObjectWithFoolConditionWithPast;
 
 public class BilliardBall extends ObjectWithFoolConditionWithPast {
     boolean haveToWriteLine = false;
 
-    public BilliardBall(Location loc) throws PositionException {
+    public BilliardBall(Zone loc) throws PositionException {
         super(loc, new IntegerPosition(loc.getXMinLimit(), loc.getYMaxLimit()), Direction.DOWN_RIGHT);
     }
 
@@ -43,7 +43,7 @@ public class BilliardBall extends ObjectWithFoolConditionWithPast {
     }
 
     private void writeLineInPastBallPosition() throws PositionException {
-        Location location = getLocationCondition().getLocation();
+        Zone location = getLocationCondition().getLocation();
         IntegerPos pastPosition = getPositionCondition().getPast().getPosition();
         Direction pastDirection = getDirectionCondition().getPast().getDirection();
 

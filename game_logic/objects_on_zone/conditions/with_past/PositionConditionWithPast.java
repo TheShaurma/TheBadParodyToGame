@@ -1,9 +1,9 @@
-package game_logic.objects_on_location.conditions.with_past;
+package game_logic.objects_on_zone.conditions.with_past;
 
 import game_logic.abstractions.interfaces.IntegerPos;
-import game_logic.objects_on_location.conditions.PositionCondition;
-import game_logic.objects_on_location.conditions.interfaces.cannot_update.PositionConditionCannotUpdateImp;
-import game_logic.objects_on_location.conditions.interfaces.with_past.PositionConditionWithPastImp;
+import game_logic.objects_on_zone.conditions.PositionCondition;
+import game_logic.objects_on_zone.conditions.interfaces.cannot_update.PositionConditionCannotUpdateImp;
+import game_logic.objects_on_zone.conditions.interfaces.with_past.PositionConditionWithPastImp;
 
 public class PositionConditionWithPast extends PositionCondition implements PositionConditionWithPastImp {
     PositionCondition past;

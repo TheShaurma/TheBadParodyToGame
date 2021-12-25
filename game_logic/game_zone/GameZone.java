@@ -1,14 +1,14 @@
-package game_logic.game_location;
+package game_logic.game_zone;
 
 import java.util.HashMap;
 
 import game_logic.abstractions.interfaces.IntegerPos;
-import game_logic.abstractions.interfaces.Location;
+import game_logic.abstractions.interfaces.Zone;
+import game_logic.game_zone.exceptions.Limit;
+import game_logic.game_zone.exceptions.PositionOutOfLimitException;
 import game_logic.abstractions.interfaces.ObjectOnLocation;
-import game_logic.game_location.exceptions.Limit;
-import game_logic.game_location.exceptions.PositionOutOfLimitException;
 
-public class GameLocation implements Location {
+public class GameZone implements Zone {
     private FieldItself fieldItself = new FieldItself();
     private int xMin;
     private int xMax;
@@ -16,19 +16,19 @@ public class GameLocation implements Location {
     private int yMax;
 
     //
-    public GameLocation(int xMin, int xMax, int yMin, int yMax) {
+    public GameZone(int xMin, int xMax, int yMin, int yMax) {
         setLimits(xMin, xMax, yMin, yMax);
     }
 
-    public GameLocation(IntegerPos minPos, IntegerPos maxPos) {
+    public GameZone(IntegerPos minPos, IntegerPos maxPos) {
         setLimits(minPos.getX(), maxPos.getY(), minPos.getY(), maxPos.getY());
     }
 
-    public GameLocation(int xLength, int yLength) {
+    public GameZone(int xLength, int yLength) {
         setLimits(0, xLength - 1, 0, yLength - 1);
     }
 
-    public GameLocation() {
+    public GameZone() {
         setLimits(-10, 10, -10, 10);
     }
 

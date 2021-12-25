@@ -1,4 +1,4 @@
-package game_logic.game_location.exceptions;
+package game_logic.game_zone.exceptions;
 
 import game_logic.abstractions.basis_exceptions.PositionException;
 import game_logic.abstractions.interfaces.IntegerPos;

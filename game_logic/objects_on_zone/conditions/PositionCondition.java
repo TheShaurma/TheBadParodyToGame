@@ -1,7 +1,7 @@
-package game_logic.objects_on_location.conditions;
+package game_logic.objects_on_zone.conditions;
 
 import game_logic.abstractions.interfaces.IntegerPos;
-import game_logic.objects_on_location.conditions.interfaces.PositionConditionCanUpdateImp;
+import game_logic.objects_on_zone.conditions.interfaces.PositionConditionCanUpdateImp;
 
 public class PositionCondition implements PositionConditionCanUpdateImp {
     private IntegerPos position;

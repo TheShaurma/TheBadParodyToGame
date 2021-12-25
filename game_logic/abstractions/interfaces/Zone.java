@@ -2,7 +2,7 @@ package game_logic.abstractions.interfaces;
 
 import game_logic.abstractions.basis_exceptions.PositionException;
 
-public interface Location {
+public interface Zone {
     void putObject(IntegerPos pos, ObjectOnLocation obj) throws PositionException;
 
     void putObject(int x, int y, ObjectOnLocation obj) throws PositionException;

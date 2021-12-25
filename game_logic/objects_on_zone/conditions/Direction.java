@@ -1,4 +1,4 @@
-package game_logic.objects_on_location.conditions;
+package game_logic.objects_on_zone.conditions;
 
 public enum Direction {
     UP, DOWN,
