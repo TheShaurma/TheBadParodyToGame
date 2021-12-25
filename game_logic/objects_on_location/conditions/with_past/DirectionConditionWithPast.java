@@ -19,7 +19,7 @@ public class DirectionConditionWithPast extends DirectionCondition implements Di
 
     @Override
     public void updateDirection(Direction dir) {
+        past.updateDirection(getDirection());
         super.updateDirection(dir);
-        past.updateDirection(dir);
     }
 }

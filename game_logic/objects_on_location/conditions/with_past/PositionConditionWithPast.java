@@ -19,7 +19,7 @@ public class PositionConditionWithPast extends PositionCondition implements Posi
 
     @Override
     public void updatePosition(IntegerPos pos) {
+        past.updatePosition(getPosition());
         super.updatePosition(pos);
-        past.updatePosition(pos);
     }
 }

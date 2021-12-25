@@ -37,6 +37,11 @@ public class BilliardBall extends ObjectWithFoolConditionWithPast {
         return !movingInAngle();
     }
 
+    @Override
+    public String toString() {
+        return "O";
+    }
+
     private void writeLineInPastBallPosition() throws PositionException {
         Location location = getLocationCondition().getLocation();
         IntegerPos pastPosition = getPositionCondition().getPast().getPosition();
