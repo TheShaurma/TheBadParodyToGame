@@ -116,27 +116,27 @@ public class BilliardBall extends ObjectWithFoolConditionWithPast {
     }
 
     private IntegerPos getPositionAfterRebound() throws WillNotReboundException {
-        if (!willRebound()) {
-            throw new WillNotReboundException();
-        }
-
         Direction direction = getDirectionCondition().getDirection();
         int x = getPositionCondition().getPosition().getX();
         int y = getPositionCondition().getPosition().getY();
 
-        if (nearHorizontalWall()) {
-            if (direction.isLeft()) {
-                return new IntegerPosition(x - 1, y);
-            } else { // if (direction.isRight()) {
-                return new IntegerPosition(x + 1, y);
-            }
-        } else { // if (nearVerticalWall()) {
-            if (direction.isUp()) {
-                return new IntegerPosition(x, y + 1);
-            } else { // if (direction.isDown()) {
-                return new IntegerPosition(x, y - 1);
-            }
+        if ((nearTopWall() && direction == Direction.UP_LEFT)
+                || (nearDownWall() && direction == Direction.DOWN_LEFT)) {
+            return new IntegerPosition(x - 1, y);
+        } else if ((nearTopWall() && direction == Direction.UP_RIGHT)
+                || (nearDownWall() && direction == Direction.DOWN_RIGHT)) {
+            return new IntegerPosition(x + 1, y);
         }
+        if ((nearLeftWall() && direction == Direction.UP_LEFT)
+                || (nearRightWall() && direction == Direction.UP_RIGHT)) {
+            return new IntegerPosition(x, y + 1);
+        }
+        if ((nearLeftWall() && direction == Direction.DOWN_LEFT)
+                || (nearRightWall() && direction == Direction.DOWN_RIGHT)) {
+            return new IntegerPosition(x, y - 1);
+        }
+
+        throw new WillNotReboundException();
     }
 
     // checkers
@@ -151,10 +151,6 @@ public class BilliardBall extends ObjectWithFoolConditionWithPast {
                 || (nearDownWall() && direction.isDown())
                 || (nearLeftWall() && direction.isLeft())
                 || (nearRightWall() && direction.isRight());
-    }
-
-    private boolean nearHorizontalWall() {
-        return nearTopWall() || nearDownWall();
     }
 
     private boolean nearTopWall() {

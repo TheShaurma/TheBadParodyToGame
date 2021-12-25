@@ -6,14 +6,11 @@ import game_logic.visualizatons.ConsoleGameLocationVisualization;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        Location location = new GameLocation(17, 10);
+        Location location = new GameLocation(70, 89 + 70);
         LocationVisualization visual = new ConsoleGameLocationVisualization(location);
         BilliardBall ball = new BilliardBall(location);
 
-        while (ball.canMoving()) {
-            visual.showField();
-            ball.step();
-        }
+        ball.moveByEnd();
         visual.showField();
 
         visual.close();
