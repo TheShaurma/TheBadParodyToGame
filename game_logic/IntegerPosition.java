@@ -11,11 +11,11 @@ public class IntegerPosition implements IntegerPos {
         yPos = y;
     }
 
-    public int getX() {
+    public Integer getX() {
         return xPos;
     }
 
-    public int getY() {
+    public Integer getY() {
         return yPos;
     }
 
