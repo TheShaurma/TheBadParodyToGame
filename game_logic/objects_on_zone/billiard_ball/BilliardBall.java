@@ -4,7 +4,7 @@ import game_logic.IntegerPosition;
 import game_logic.abstractions.basis_exceptions.ObjectOnLocationException;
 import game_logic.abstractions.basis_exceptions.PositionException;
 import game_logic.abstractions.interfaces.IntegerPos;
-import game_logic.abstractions.interfaces.Zone;
+import game_logic.abstractions.interfaces.CheckeredZone;
 import game_logic.objects_on_zone.conditions.Direction;
 import game_logic.objects_on_zone.object_abstractions.ObjectWithFoolConditionWithPast;
 import game_logic.abstractions.interfaces.ObjectOnLocation;
@@ -12,7 +12,7 @@ import game_logic.abstractions.interfaces.ObjectOnLocation;
 public class BilliardBall extends ObjectWithFoolConditionWithPast {
     boolean haveToWriteLine = false;
 
-    public BilliardBall(Zone loc) throws PositionException {
+    public BilliardBall(CheckeredZone loc) throws PositionException {
         super(loc, new IntegerPosition(loc.getXMinLimit(), loc.getYMaxLimit()), Direction.DOWN_RIGHT);
     }
 
@@ -43,7 +43,7 @@ public class BilliardBall extends ObjectWithFoolConditionWithPast {
     }
 
     private void writeLineInPastBallPosition() throws PositionException {
-        Zone location = getLocationCondition().getLocation();
+        CheckeredZone location = getLocationCondition().getLocation();
         IntegerPos pastPosition = getPositionCondition().getPast().getPosition();
         Direction pastDirection = getDirectionCondition().getPast().getDirection();
 

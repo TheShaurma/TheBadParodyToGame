@@ -2,7 +2,7 @@ package game_logic.objects_on_zone.object_abstractions;
 
 import game_logic.abstractions.basis_exceptions.PositionException;
 import game_logic.abstractions.interfaces.IntegerPos;
-import game_logic.abstractions.interfaces.Zone;
+import game_logic.abstractions.interfaces.CheckeredZone;
 import game_logic.objects_on_zone.conditions.Direction;
 import game_logic.objects_on_zone.conditions.LocationCondition;
 import game_logic.objects_on_zone.conditions.interfaces.cannot_update.LocationConditionImp;
@@ -17,7 +17,7 @@ public abstract class ObjectWithFoolConditionWithPast implements ObjectOnLocatio
     private final PositionConditionWithPastImp positionCondition;
     private final DirectionConditionWithPastImp directionCondition;
 
-    public ObjectWithFoolConditionWithPast(Zone loc, IntegerPos pos, Direction dir) throws PositionException {
+    public ObjectWithFoolConditionWithPast(CheckeredZone loc, IntegerPos pos, Direction dir) throws PositionException {
         locationCondition = new LocationCondition(loc);
         positionCondition = new PositionConditionWithPast(pos);
         directionCondition = new DirectionConditionWithPast(dir);

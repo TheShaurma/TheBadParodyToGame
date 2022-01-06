@@ -1,7 +1,7 @@
 package game_logic.objects_on_zone.conditions.interfaces.cannot_update;
 
-import game_logic.abstractions.interfaces.Zone;
+import game_logic.abstractions.interfaces.CheckeredZone;
 
 public interface LocationConditionImp {
-    Zone getLocation();
+    CheckeredZone getLocation();
 }

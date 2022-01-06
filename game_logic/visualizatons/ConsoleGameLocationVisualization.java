@@ -2,20 +2,20 @@ package game_logic.visualizatons;
 
 import game_logic.IntegerPosition;
 import game_logic.abstractions.basis_exceptions.PositionException;
-import game_logic.abstractions.interfaces.Zone;
+import game_logic.abstractions.interfaces.CheckeredZone;
 import game_logic.abstractions.interfaces.ZoneVisualization;
 
 public class ConsoleGameLocationVisualization implements ZoneVisualization {
-    Zone field;
+    CheckeredZone field;
 
-    public ConsoleGameLocationVisualization(Zone field) {
+    public ConsoleGameLocationVisualization(CheckeredZone field) {
         this.field = field;
     }
 
     public ConsoleGameLocationVisualization() {
     }
 
-    public void setField(Zone field) {
+    public void setField(CheckeredZone field) {
         this.field = field;
     }
 

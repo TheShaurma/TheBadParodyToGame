@@ -1,16 +1,16 @@
 package game_logic.objects_on_zone.conditions;
 
-import game_logic.abstractions.interfaces.Zone;
+import game_logic.abstractions.interfaces.CheckeredZone;
 import game_logic.objects_on_zone.conditions.interfaces.cannot_update.LocationConditionImp;
 
 public class LocationCondition implements LocationConditionImp {
-    private final Zone location;
+    private final CheckeredZone location;
 
-    public LocationCondition(Zone loc) {
+    public LocationCondition(CheckeredZone loc) {
         location = loc;
     }
 
-    public Zone getLocation() {
+    public CheckeredZone getLocation() {
         return location;
     }
 }

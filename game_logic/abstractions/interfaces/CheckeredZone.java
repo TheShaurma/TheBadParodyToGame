@@ -2,7 +2,7 @@ package game_logic.abstractions.interfaces;
 
 import game_logic.abstractions.basis_exceptions.PositionException;
 
-public interface Zone {
+public interface CheckeredZone {
     void putObject(IntegerPos pos, ObjectOnLocation obj) throws PositionException;
 
     void putObject(int x, int y, ObjectOnLocation obj) throws PositionException;
@@ -16,7 +16,6 @@ public interface Zone {
     void removeObject(int x, int y) throws PositionException;
 
     //
-
     int getXMinLimit();
 
     int getXMaxLimit();

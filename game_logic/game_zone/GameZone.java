@@ -3,12 +3,12 @@ package game_logic.game_zone;
 import java.util.HashMap;
 
 import game_logic.abstractions.interfaces.IntegerPos;
-import game_logic.abstractions.interfaces.Zone;
+import game_logic.abstractions.interfaces.CheckeredZone;
 import game_logic.game_zone.exceptions.Limit;
 import game_logic.game_zone.exceptions.PositionOutOfLimitException;
 import game_logic.abstractions.interfaces.ObjectOnLocation;
 
-public class GameZone implements Zone {
+public class GameZone implements CheckeredZone {
     private FieldItself fieldItself = new FieldItself();
     private int xMin;
     private int xMax;
