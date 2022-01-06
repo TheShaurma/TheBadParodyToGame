@@ -2,7 +2,7 @@ package game_logic.abstractions.basis_exceptions;
 
 import game_logic.abstractions.interfaces.IntegerPos;
 
-public class PositionException extends ZoneException {
+public class PositionException extends AreaException {
     private IntegerPos position;
 
     public PositionException(IntegerPos pos) {
