@@ -1,4 +1,4 @@
-package game_logic.objects_in_area.object_abstractions;
+package game_logic.objects_in_area.conditions.object_abstractions;
 
 import game_logic.abstractions.basis_exceptions.PositionException;
 import game_logic.abstractions.interfaces.IntegerPos;

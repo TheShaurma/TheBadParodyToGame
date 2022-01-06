@@ -7,7 +7,7 @@ import game_logic.abstractions.interfaces.IntegerPos;
 import game_logic.abstractions.interfaces.CheckeredArea;
 import game_logic.abstractions.interfaces.ObjectInArea;
 import game_logic.objects_in_area.conditions.Direction;
-import game_logic.objects_in_area.object_abstractions.ObjectWithFoolConditionWithPast;
+import game_logic.objects_in_area.conditions.object_abstractions.ObjectWithFoolConditionWithPast;
 
 public class BilliardBall extends ObjectWithFoolConditionWithPast {
     boolean haveToWriteLine = false;
