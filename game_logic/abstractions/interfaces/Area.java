@@ -15,6 +15,8 @@ public interface Area<PT extends Position<?>> {
 
     void removeObject(int x, int y) throws PositionException;
 
+    boolean posIsEmpty(PT pos) throws PositionException;
+
     //
     int getXMinLimit();
 

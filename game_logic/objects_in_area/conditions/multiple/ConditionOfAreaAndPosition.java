@@ -4,12 +4,12 @@ import game_logic.objects_in_area.conditions.multiple.interfaces.ConditionOfArea
 import game_logic.objects_in_area.conditions.single.interfaces.AreaConditionImp;
 import game_logic.objects_in_area.conditions.single.interfaces.PositionConditionImp;
 
-public class ConditionOfAreaAndPosition<AC extends AreaConditionImp, PC extends PositionConditionImp>
+public class ConditionOfAreaAndPosition<AC extends AreaConditionImp<?>, PC extends PositionConditionImp<?>>
         implements ConditionOfAreaAndPositionImp<AC, PC> {
     private final AC areaCondition;
     private final PC positionCondition;
 
-    protected ConditionOfAreaAndPosition(AC ac, PC pc) {
+    public ConditionOfAreaAndPosition(AC ac, PC pc) {
         areaCondition = ac;
         positionCondition = pc;
     }

@@ -32,6 +32,10 @@ public class GameArea implements CheckeredArea {
         setLimits(-10, 10, -10, 10);
     }
 
+    public boolean posIsEmpty(IntegerPos pos) throws PositionOutOfLimitException {
+        return getObject(pos).isNull();
+    }
+
     //
     public void putObject(IntegerPos dot, ObjectInArea obj) throws PositionOutOfLimitException {
         PosOnFieldAdapter pos = new PosOnFieldAdapter(dot);
