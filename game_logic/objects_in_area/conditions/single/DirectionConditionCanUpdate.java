@@ -1,5 +1,6 @@
 package game_logic.objects_in_area.conditions.single;
 
+import game_logic.objects_in_area.conditions.Direction;
 import game_logic.objects_in_area.conditions.single.interfaces.ConditionCanUpdate;
 import game_logic.objects_in_area.conditions.single.interfaces.DirectionConditionImp;
 

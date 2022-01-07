@@ -1,4 +1,4 @@
-package game_logic.objects_in_area.conditions.single;
+package game_logic.objects_in_area.conditions;
 
 public enum Direction {
     UP, DOWN,
