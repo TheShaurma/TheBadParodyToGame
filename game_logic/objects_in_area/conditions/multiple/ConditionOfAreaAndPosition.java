@@ -2,9 +2,9 @@ package game_logic.objects_in_area.conditions.multiple;
 
 import game_logic.objects_in_area.conditions.multiple.interfaces.ConditionOfAreaAndPositionImp;
 import game_logic.objects_in_area.conditions.single.interfaces.AreaConditionImp;
-import game_logic.objects_in_area.conditions.single.interfaces.PositionConditionImp;
+import game_logic.objects_in_area.conditions.single.interfaces.PositionConditionCanUpdateImp;
 
-public class ConditionOfAreaAndPosition<AC extends AreaConditionImp<?>, PC extends PositionConditionImp<?>>
+public class ConditionOfAreaAndPosition<AC extends AreaConditionImp<?>, PC extends PositionConditionCanUpdateImp<?>>
         implements ConditionOfAreaAndPositionImp<AC, PC> {
     private final AC areaCondition;
     private final PC positionCondition;

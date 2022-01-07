@@ -1,10 +1,10 @@
 package game_logic.objects_in_area.conditions.multiple.interfaces;
 
 import game_logic.objects_in_area.conditions.single.interfaces.AreaConditionImp;
-import game_logic.objects_in_area.conditions.single.interfaces.DirectionConditionImp;
-import game_logic.objects_in_area.conditions.single.interfaces.PositionConditionImp;
+import game_logic.objects_in_area.conditions.single.interfaces.DirectionConditionCanUpdateImp;
+import game_logic.objects_in_area.conditions.single.interfaces.PositionConditionCanUpdateImp;
 
-public interface ConditionOfAreaPositionAndDirectionImp<AC extends AreaConditionImp<?>, PC extends PositionConditionImp<?>, DC extends DirectionConditionImp>
+public interface ConditionOfAreaPositionAndDirectionImp<AC extends AreaConditionImp<?>, PC extends PositionConditionCanUpdateImp<?>, DC extends DirectionConditionCanUpdateImp>
         extends ConditionOfAreaAndPositionImp<AC, PC> {
     DC getDirectionCondition();
 }
