@@ -1,8 +1,8 @@
 package game_logic.objects_in_area.conditions.multiple;
 
-import game_logic.objects_in_area.conditions.interfaces.AreaConditionImp;
-import game_logic.objects_in_area.conditions.interfaces.PositionConditionImp;
 import game_logic.objects_in_area.conditions.multiple.interfaces.ConditionOfAreaAndPositionImp;
+import game_logic.objects_in_area.conditions.single.interfaces.AreaConditionImp;
+import game_logic.objects_in_area.conditions.single.interfaces.PositionConditionImp;
 
 public class ConditionOfAreaAndPosition<AC extends AreaConditionImp, PC extends PositionConditionImp>
         implements ConditionOfAreaAndPositionImp<AC, PC> {
