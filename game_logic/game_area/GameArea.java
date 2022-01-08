@@ -33,6 +33,7 @@ public class GameArea implements CheckeredArea {
     }
 
     public boolean posIsEmpty(IntegerPos pos) throws PositionOutOfLimitException {
+        checkPos(new PosOnFieldAdapter(pos));
         return getObject(pos).isNull();
     }
 
