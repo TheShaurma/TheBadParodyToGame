@@ -5,25 +5,17 @@ import game_logic.abstractions.basis_exceptions.PositionException;
 import game_logic.abstractions.interfaces.CheckeredArea;
 import game_logic.abstractions.interfaces.IntegerPos;
 import game_logic.objects_in_area.conditions.Direction;
-import game_logic.objects_in_area.conditions.multiple.ConditionOfAreaPositionAndDirection;
 import game_logic.objects_in_area.conditions.multiple.interfaces.ConditionOfAreaPositionAndDirectionImp;
-import game_logic.objects_in_area.conditions.single.AreaCondition;
-import game_logic.objects_in_area.conditions.single.DirectionConditionCanUpdate;
-import game_logic.objects_in_area.conditions.single.PositionConditionCanUpdate;
 import game_logic.objects_in_area.conditions.single.interfaces.AreaConditionImp;
-import game_logic.objects_in_area.conditions.single.interfaces.DirectionConditionCanUpdateImp;
-import game_logic.objects_in_area.conditions.single.interfaces.PositionConditionCanUpdateImp;
+import game_logic.objects_in_area.conditions.single.interfaces.can_update.DirectionConditionCanUpdateImp;
+import game_logic.objects_in_area.conditions.single.interfaces.can_update.PositionConditionCanUpdateImp;
 import game_logic.objects_in_area.objects_abstractions.can_moving.exceptions.BusyPositionException;
 
-public abstract class ObjectCanMovingByCurrentDirectionInCheckeredArea extends
-        ObjectCanMoving<CheckeredArea, IntegerPos, ConditionOfAreaPositionAndDirectionImp<AreaConditionImp<CheckeredArea>, PositionConditionCanUpdateImp<IntegerPos>, DirectionConditionCanUpdateImp>> {
+public abstract class ObjectCanMovingByCurrentDirectionInCheckeredArea<C extends ConditionOfAreaPositionAndDirectionImp<? extends AreaConditionImp<CheckeredArea>, ? extends PositionConditionCanUpdateImp<IntegerPos>, ? extends DirectionConditionCanUpdateImp>>
+        extends ObjectCanMoving<CheckeredArea, IntegerPos, C> {
 
-    public ObjectCanMovingByCurrentDirectionInCheckeredArea(CheckeredArea area, IntegerPos pos, Direction dir)
-            throws PositionException {
-        super(new ConditionOfAreaPositionAndDirection<>(
-                new AreaCondition<>(area),
-                new PositionConditionCanUpdate<>(pos),
-                new DirectionConditionCanUpdate(dir)));
+    protected ObjectCanMovingByCurrentDirectionInCheckeredArea(C condWillBeUse) throws PositionException {
+        super(condWillBeUse);
     }
 
     protected void moveByCurrentDirection() throws PositionException, BusyPositionException {

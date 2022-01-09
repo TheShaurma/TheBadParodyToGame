@@ -1,8 +1,7 @@
-package game_logic.objects_in_area.conditions.single;
+package game_logic.objects_in_area.conditions.single.can_update;
 
 import game_logic.objects_in_area.conditions.Direction;
-
-import game_logic.objects_in_area.conditions.single.interfaces.DirectionConditionCanUpdateImp;
+import game_logic.objects_in_area.conditions.single.interfaces.can_update.DirectionConditionCanUpdateImp;
 
 public class DirectionConditionCanUpdate implements DirectionConditionCanUpdateImp {
     private Direction direction;
