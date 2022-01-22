@@ -12,6 +12,7 @@ public class ConditionOfAreaAndPosition<AC extends SingleConditionImp<Area<?>>, 
 
     public ConditionOfAreaAndPosition(AC ac, PC pc) {
         areaCondition = ac;
+        positionCondition = pc;
     }
 
     public AC getAreaCondition() {
