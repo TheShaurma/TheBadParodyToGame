@@ -11,14 +11,38 @@ import game_logic.objects_in_area.conditions.Direction;
 
 public class BilliardBall extends ObjectCanMovingByDirection {
     private IntegerPos oldPosition;
-    private boolean shouldPaintOverCell;
+    private boolean shouldPaintOverCell = true;
 
-    public BilliardBall(CheckeredArea ar, IntegerPos pos) throws PositionException {
-        super(ar, pos);
-        shouldPaintOverCell = true;
+    public BilliardBall(CheckeredArea area, IntegerPos pos, Direction dir) throws PositionException {
+        super(area, pos, dir);
     }
 
-    public void step() throws PositionException, BusyPositionException {
+    public BilliardBall(CheckeredArea area) throws PositionException {
+        super(area, new IntegerPosition(area.getXMinLimit(), area.getYMaxLimit()), Direction.DOWN_RIGHT);
+    }
+
+    @Override
+    public String toString() {
+        return "O";
+    }
+
+    public void runToEnd() throws PositionException, BusyPositionException {
+        while (true) {
+            try {
+                step();
+            } catch (InAngleException e) {
+                break;
+            }
+        }
+    }
+
+    public void step() throws PositionException, BusyPositionException, InAngleException {
+        if (movingInAngle()) {
+            throw new InAngleException();
+        }
+
+        Direction newDirection = getNewDirection();
+
         try {
             moveToPos(getPositionAfterRebound());
         } catch (DontMovingToNearWallException e) {
@@ -31,6 +55,8 @@ public class BilliardBall extends ObjectCanMovingByDirection {
         } else {
             shouldPaintOverCell = true;
         }
+
+        setDirection(newDirection);
     }
 
     private void paintOverCellInPosition(IntegerPos pos) throws PositionException {
@@ -73,6 +99,36 @@ public class BilliardBall extends ObjectCanMovingByDirection {
         throw new DontMovingToNearWallException();
     }
 
+    private Direction getNewDirection() {
+        Direction currentDirection = getDirection();
+
+        if (!willRebound()) {
+            return currentDirection;
+        } else {
+            if ((nearTopWall() && currentDirection.isUp())
+                    || (nearDownWall() && currentDirection.isDown())) {
+                return currentDirection.getShiftedVertically();
+            } else { // if ((nearLeftWall() && currentDirection.isLeft())
+                // || (nearRightWall() && currentDirection.isRight())) {
+                return currentDirection.getShiftedHorizontally();
+            }
+        }
+    }
+
+    // checkers
+    private boolean willRebound() {
+        return movingToNearWall() && !movingInAngle();
+    }
+
+    private boolean movingToNearWall() {
+        Direction direction = getDirection();
+
+        return (nearTopWall() && direction.isUp())
+                || (nearDownWall() && direction.isDown())
+                || (nearLeftWall() && direction.isLeft())
+                || (nearRightWall() && direction.isRight());
+    }
+
     private boolean nearTopWall() {
         int y = getPosition().getY();
         int yMax = getArea().getYMaxLimit();
@@ -99,6 +155,31 @@ public class BilliardBall extends ObjectCanMovingByDirection {
         int xMax = getArea().getXMaxLimit();
 
         return x == xMax;
+    }
+
+    private boolean movingInAngle() {
+        Direction direction = getDirection();
+
+        return (inTopLeftAngle() && direction == Direction.UP_LEFT)
+                || (inTopRightAngle() && direction == Direction.UP_RIGHT)
+                || (inDownLeftAngle() && direction == Direction.DOWN_LEFT)
+                || (inDownRightAngle() && direction == Direction.DOWN_RIGHT);
+    }
+
+    private boolean inTopLeftAngle() {
+        return nearTopWall() && nearLeftWall();
+    }
+
+    private boolean inTopRightAngle() {
+        return nearTopWall() && nearRightWall();
+    }
+
+    private boolean inDownLeftAngle() {
+        return nearDownWall() && nearLeftWall();
+    }
+
+    private boolean inDownRightAngle() {
+        return nearDownWall() && nearRightWall();
     }
 }
 

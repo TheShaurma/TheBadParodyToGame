@@ -10,8 +10,9 @@ import game_logic.objects_in_area.conditions.Direction;
 public abstract class ObjectCanMovingByDirection extends ObjectCanMoving<CheckeredArea, IntegerPos> {
     private Direction direction;
 
-    public ObjectCanMovingByDirection(CheckeredArea ar, IntegerPos pos) throws PositionException {
+    public ObjectCanMovingByDirection(CheckeredArea ar, IntegerPos pos, Direction dir) throws PositionException {
         super(ar, pos);
+        direction = dir;
     }
 
     public void moveByDirection() throws PositionException, BusyPositionException {
@@ -54,7 +55,7 @@ public abstract class ObjectCanMovingByDirection extends ObjectCanMoving<Checker
     private void moveUp() throws PositionException, BusyPositionException {
         IntegerPos oldPos = getPosition();
         int newX = oldPos.getX();
-        int newY = oldPos.getY();
+        int newY = oldPos.getY() + 1;
         IntegerPos newPos = new IntegerPosition(newX, newY);
 
         moveToPos(newPos);
@@ -63,7 +64,7 @@ public abstract class ObjectCanMovingByDirection extends ObjectCanMoving<Checker
     private void moveDown() throws PositionException, BusyPositionException {
         IntegerPos oldPos = getPosition();
         int newX = oldPos.getX();
-        int newY = oldPos.getY();
+        int newY = oldPos.getY() - 1;
         IntegerPos newPos = new IntegerPosition(newX, newY);
 
         moveToPos(newPos);
@@ -71,7 +72,7 @@ public abstract class ObjectCanMovingByDirection extends ObjectCanMoving<Checker
 
     private void moveLeft() throws PositionException, BusyPositionException {
         IntegerPos oldPos = getPosition();
-        int newX = oldPos.getX();
+        int newX = oldPos.getX() - 1;
         int newY = oldPos.getY();
         IntegerPos newPos = new IntegerPosition(newX, newY);
 
@@ -80,7 +81,7 @@ public abstract class ObjectCanMovingByDirection extends ObjectCanMoving<Checker
 
     private void moveRight() throws PositionException, BusyPositionException {
         IntegerPos oldPos = getPosition();
-        int newX = oldPos.getX();
+        int newX = oldPos.getX() + 1;
         int newY = oldPos.getY();
         IntegerPos newPos = new IntegerPosition(newX, newY);
 
@@ -89,8 +90,8 @@ public abstract class ObjectCanMovingByDirection extends ObjectCanMoving<Checker
 
     private void moveUpLeft() throws PositionException, BusyPositionException {
         IntegerPos oldPos = getPosition();
-        int newX = oldPos.getX();
-        int newY = oldPos.getY();
+        int newX = oldPos.getX() - 1;
+        int newY = oldPos.getY() + 1;
         IntegerPos newPos = new IntegerPosition(newX, newY);
 
         moveToPos(newPos);
@@ -98,8 +99,8 @@ public abstract class ObjectCanMovingByDirection extends ObjectCanMoving<Checker
 
     private void moveUpRight() throws PositionException, BusyPositionException {
         IntegerPos oldPos = getPosition();
-        int newX = oldPos.getX();
-        int newY = oldPos.getY();
+        int newX = oldPos.getX() + 1;
+        int newY = oldPos.getY() + 1;
         IntegerPos newPos = new IntegerPosition(newX, newY);
 
         moveToPos(newPos);
@@ -107,8 +108,8 @@ public abstract class ObjectCanMovingByDirection extends ObjectCanMoving<Checker
 
     private void moveDownLeft() throws PositionException, BusyPositionException {
         IntegerPos oldPos = getPosition();
-        int newX = oldPos.getX();
-        int newY = oldPos.getY();
+        int newX = oldPos.getX() - 1;
+        int newY = oldPos.getY() - 1;
         IntegerPos newPos = new IntegerPosition(newX, newY);
 
         moveToPos(newPos);
@@ -116,8 +117,8 @@ public abstract class ObjectCanMovingByDirection extends ObjectCanMoving<Checker
 
     private void moveDownRight() throws PositionException, BusyPositionException {
         IntegerPos oldPos = getPosition();
-        int newX = oldPos.getX();
-        int newY = oldPos.getY();
+        int newX = oldPos.getX() + 1;
+        int newY = oldPos.getY() - 1;
         IntegerPos newPos = new IntegerPosition(newX, newY);
 
         moveToPos(newPos);
