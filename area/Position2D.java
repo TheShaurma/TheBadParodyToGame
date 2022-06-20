@@ -4,10 +4,10 @@ public interface Position2D<N extends Number> {
     /**
      * @return x coordinate
      */
-    int getX();
+    N getX();
 
     /**
      * @return y coordinate
      */
-    int getY();
+    N getY();
 }
