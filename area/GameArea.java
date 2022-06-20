@@ -51,6 +51,16 @@ public class GameArea implements Area<IntegerPosition2D> {
         areaItself.del(pos);
     }
 
+    @Override
+    public boolean positionIsEmpty(IntegerPosition2D pos) {
+        return areaItself.positionIsEmpty(pos);
+    }
+
+    @Override
+    public boolean positionIsBusy(IntegerPosition2D pos) {
+        return areaItself.positionIsBusy(pos);
+    }
+
 }
 
 /**

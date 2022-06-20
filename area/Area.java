@@ -51,4 +51,8 @@ public interface Area<P extends Position2D<?>> {
      * @throws PositionException if oldPos is empty ot newPos isn't empty.
      */
     void relocate(P oldPos, P newPos) throws PositionException;
+
+    boolean positionIsEmpty(IntegerPosition2D pos);
+
+    boolean positionIsBusy(IntegerPosition2D pos);
 }
