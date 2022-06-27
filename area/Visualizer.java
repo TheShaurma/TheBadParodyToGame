@@ -13,8 +13,8 @@ public class Visualizer {
     private int yMin;
     private int yMax;
 
-    private HashMap<Class<?>, Color> visualMap = new HashMap<>();
-    private HashMap<Class<?>, String> consoleVisualMap = new HashMap<>();
+    private HashMap<Class<?>, Color> visualMap = new ColorMap();
+    private HashMap<Class<?>, String> consoleVisualMap = new SymbolMap();
 
     public Visualizer(IntegerPosition2D minPos, IntegerPosition2D maxPos, GameArea area) {
         this.area = area;
@@ -71,6 +71,32 @@ public class Visualizer {
         }
         for (int x = xMin; x <= xMax; x++) {
             System.out.print("=");
+        }
+    }
+}
+
+class SymbolMap extends HashMap<Class<?>, String> {
+    @Override
+    public String get(Object key) {
+        String out = super.get(key);
+
+        if (out == null) {
+            return "?";
+        } else {
+            return out;
+        }
+    }
+}
+
+class ColorMap extends HashMap<Class<?>, Color> {
+    @Override
+    public Color get(Object key) {
+        Color out = super.get(key);
+
+        if (out == null) {
+            return new Color(200, 50, 200);
+        } else {
+            return out;
         }
     }
 }
