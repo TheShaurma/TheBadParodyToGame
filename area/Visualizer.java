@@ -68,9 +68,9 @@ public class Visualizer {
             System.out.print("|");
             System.out.println();
 
-            for (int x = xMin; x <= xMax; x++) {
-                System.out.print("=");
-            }
+        }
+        for (int x = xMin; x <= xMax; x++) {
+            System.out.print("=");
         }
     }
 }

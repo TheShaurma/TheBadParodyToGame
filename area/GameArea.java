@@ -69,6 +69,10 @@ public class GameArea implements Area<IntegerPosition2D> {
 class AreaItself {
     private HashMap<Integer, HashMap<Integer, ObjectInArea>> area;
 
+    public AreaItself() {
+        area = new HashMap<>();
+    }
+
     public synchronized ObjectInArea get(IntegerPosition2D pos) throws EmptyPositionException {
         int x = pos.getX();
         int y = pos.getY();
