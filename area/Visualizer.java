@@ -48,11 +48,19 @@ public class Visualizer {
     }
 
     public void showConsole() throws PositionException {
+        System.out.print(" ");
         for (int x = xMin; x <= xMax; x++) {
-            System.out.print("=");
+            if (x == 0) {
+                System.out.print("X");
+            } else {
+                System.out.print(Math.abs(x % 10));
+            }
         }
+        System.out.println();
 
         for (int y = yMax; y >= yMin; y--) {
+            System.out.print("|");
+
             for (int x = xMin; x <= xMax; x++) {
                 IntegerPosition2D currentPos = new IntegerPosition2D(x, y);
 
@@ -65,7 +73,7 @@ public class Visualizer {
                     System.out.print(str);
                 }
             }
-            System.out.print("|");
+            System.out.print(y);
             System.out.println();
 
         }

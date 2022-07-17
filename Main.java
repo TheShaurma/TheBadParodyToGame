@@ -1,3 +1,5 @@
+import java.util.HashMap;
+
 import area.GameArea;
 import area.IntegerPosition2D;
 import area.PositionException;
@@ -17,17 +19,23 @@ public class Main {
         initVariables();
         placeStones();
 
-        playerManager.start();
-        Thread thread = new Thread(new Vis(visualizer));
-        thread.start();
+        playerManager.movePlayerDown();
+        playerManager.movePlayerDown();
+        playerManager.movePlayerDown();
+
+        visualizer.showConsole();
     }
 
     private static void initVariables() throws PositionException {
         area = new GameArea();
+
         visualizer = new Visualizer(new IntegerPosition2D(-10, -10),
                 new IntegerPosition2D(10, 10), area);
-        playerManager = new PlayerManager(area,
-                new Player(), new IntegerPosition2D(0, 0));
+        HashMap<Class<?>, String> consoleVisualMap = visualizer.getConsoleVisualMap();
+        consoleVisualMap.put(new Player().getClass(), "P");
+        consoleVisualMap.put(new Stone().getClass(), "s");
+
+        playerManager = new PlayerManager(area, new Player(), new IntegerPosition2D(0, 0));
     }
 
     private static void placeStones() throws PositionException {
@@ -44,24 +52,5 @@ public class Main {
             area.place(new IntegerPosition2D(10, y), new Stone());
         }
 
-    }
-}
-
-class Vis implements Runnable {
-    private Visualizer visualizer;
-
-    public Vis(Visualizer visualizer) {
-        this.visualizer = visualizer;
-    }
-
-    @Override
-    public void run() {
-        for (int i = 0; i < 100; i++) {
-            try {
-                visualizer.showConsole();
-                wait(10);
-            } catch (PositionException | InterruptedException a) {
-            }
-        }
     }
 }
