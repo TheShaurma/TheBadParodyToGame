@@ -1,8 +1,8 @@
-package area.ObjectsInArea.player;
+package game.ObjectsInArea.player;
 
-import area.GameArea;
-import area.IntegerPosition2D;
-import area.PositionException;
+import game.area.GameArea;
+import game.area.IntegerPosition2D;
+import game.area.PositionException;
 
 public class PlayerManager {
     private GameArea area;

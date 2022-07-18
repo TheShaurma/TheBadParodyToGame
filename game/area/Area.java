@@ -1,4 +1,6 @@
-package area;
+package game.area;
+
+import game.ObjectsInArea.ObjectInArea;
 
 public interface Area<P extends Position2D<?>> {
     /**

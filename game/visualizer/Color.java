@@ -1,4 +1,4 @@
-package area;
+package game.visualizer;
 
 public class Color {
     private int r;

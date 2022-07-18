@@ -1,4 +1,4 @@
-package area;
+package game.area;
 
 public interface Position2D<N extends Number> {
     /**

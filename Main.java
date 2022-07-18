@@ -1,12 +1,12 @@
 import java.util.HashMap;
 
-import area.GameArea;
-import area.IntegerPosition2D;
-import area.PositionException;
-import area.Visualizer;
-import area.ObjectsInArea.Stone;
-import area.ObjectsInArea.player.Player;
-import area.ObjectsInArea.player.PlayerManager;
+import game.ObjectsInArea.Stone;
+import game.ObjectsInArea.player.Player;
+import game.ObjectsInArea.player.PlayerManager;
+import game.area.GameArea;
+import game.area.IntegerPosition2D;
+import game.area.PositionException;
+import game.visualizer.Visualizer;
 
 public class Main {
     private static GameArea area;

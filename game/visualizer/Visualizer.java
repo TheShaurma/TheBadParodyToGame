@@ -1,6 +1,11 @@
-package area;
+package game.visualizer;
 
 import java.util.HashMap;
+
+import game.ObjectsInArea.ObjectInArea;
+import game.area.GameArea;
+import game.area.IntegerPosition2D;
+import game.area.PositionException;
 
 /**
  * Visualizer

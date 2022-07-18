@@ -1,4 +1,4 @@
-package area;
+package game.ObjectsInArea;
 
 public interface ObjectInArea {
 }

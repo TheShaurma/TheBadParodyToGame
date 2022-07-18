@@ -1,4 +1,4 @@
-package area;
+package game.area;
 
 public class IntegerPosition2D implements Position2D<Integer> {
     private int x;

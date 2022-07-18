@@ -1,6 +1,8 @@
-package area;
+package game.area;
 
 import java.util.HashMap;
+
+import game.ObjectsInArea.ObjectInArea;
 
 public class GameArea implements Area<IntegerPosition2D> {
     private AreaItself areaItself = new AreaItself();
