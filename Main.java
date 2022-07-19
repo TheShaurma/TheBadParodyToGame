@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.Scanner;
 
 import game.ObjectsInArea.Stone;
 import game.ObjectsInArea.player.Player;
@@ -12,6 +13,8 @@ public class Main {
     private static GameArea area;
     private static Visualizer visualizer;
     private static PlayerManager playerManager;
+    private static Scanner in;
+    private static boolean run;
 
     public static void main(String[] args) throws PositionException {
         System.out.println("Hello World!");
@@ -19,11 +22,35 @@ public class Main {
         initVariables();
         placeStones();
 
-        playerManager.movePlayerDown();
-        playerManager.movePlayerDown();
-        playerManager.movePlayerDown();
+        String input;
+        while (run) {
+            visualizer.showConsole();
 
-        visualizer.showConsole();
+            System.out.print("Use WASD to move:");
+            input = in.next();
+
+            if (input.equals("w") ||
+                    input.equals("W")) {
+                playerManager.movePlayerUp();
+
+            } else if (input.equals("a") ||
+                    input.equals("A")) {
+                playerManager.movePlayerLeft();
+
+            } else if (input.equals("s") ||
+                    input.equals("S")) {
+                playerManager.movePlayerDown();
+
+            } else if (input.equals("d") ||
+                    input.equals("D")) {
+                playerManager.movePlayerRight();
+
+            } else if (input.equals("q") ||
+                    input.equals("Q")) {
+                // quit
+                run = false;
+            }
+        }
     }
 
     private static void initVariables() throws PositionException {
@@ -36,6 +63,9 @@ public class Main {
         consoleVisualMap.put(new Stone().getClass(), "s");
 
         playerManager = new PlayerManager(area, new Player(), new IntegerPosition2D(0, 0));
+
+        in = new Scanner(System.in);
+        run = true;
     }
 
     private static void placeStones() throws PositionException {
