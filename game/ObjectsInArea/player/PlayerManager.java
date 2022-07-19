@@ -20,8 +20,7 @@ public class PlayerManager {
         int newY = playerPosition.getY() + 1;
         IntegerPosition2D newPosition = new IntegerPosition2D(newX, newY);
 
-        area.relocate(playerPosition, newPosition);
-        playerPosition = newPosition;
+        movePlayerToPosition(newPosition);
     }
 
     public void movePlayerDown() throws PositionException {
@@ -29,8 +28,7 @@ public class PlayerManager {
         int newY = playerPosition.getY() - 1;
         IntegerPosition2D newPosition = new IntegerPosition2D(newX, newY);
 
-        area.relocate(playerPosition, newPosition);
-        playerPosition = newPosition;
+        movePlayerToPosition(newPosition);
     }
 
     public void movePlayerRight() throws PositionException {
@@ -38,8 +36,7 @@ public class PlayerManager {
         int newY = playerPosition.getY();
         IntegerPosition2D newPosition = new IntegerPosition2D(newX, newY);
 
-        area.relocate(playerPosition, newPosition);
-        playerPosition = newPosition;
+        movePlayerToPosition(newPosition);
     }
 
     public void movePlayerLeft() throws PositionException {
@@ -47,8 +44,11 @@ public class PlayerManager {
         int newY = playerPosition.getY();
         IntegerPosition2D newPosition = new IntegerPosition2D(newX, newY);
 
-        area.relocate(playerPosition, newPosition);
-        playerPosition = newPosition;
+        movePlayerToPosition(newPosition);
     }
 
+    private void movePlayerToPosition(IntegerPosition2D newPos) throws PositionException {
+        area.relocate(playerPosition, newPos);
+        playerPosition = newPos;
+    }
 }
