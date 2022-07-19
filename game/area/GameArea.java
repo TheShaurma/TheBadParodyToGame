@@ -7,6 +7,7 @@ import game.ObjectsInArea.ObjectInArea;
 public class GameArea implements Area<IntegerPosition2D> {
     private AreaItself areaItself = new AreaItself();
 
+    // TODO: more concrete documentation
     @Override
     public synchronized ObjectInArea get(IntegerPosition2D pos) throws PositionException {
         return areaItself.get(pos);

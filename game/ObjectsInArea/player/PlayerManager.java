@@ -1,5 +1,6 @@
 package game.ObjectsInArea.player;
 
+import game.area.BusyPositionException;
 import game.area.GameArea;
 import game.area.IntegerPosition2D;
 import game.area.PositionException;
@@ -7,6 +8,8 @@ import game.area.PositionException;
 public class PlayerManager {
     private GameArea area;
     private IntegerPosition2D playerPosition;
+
+    private final static Class<?> fireClass = new Fire().getClass();
 
     public PlayerManager(GameArea area, Player player, IntegerPosition2D startPlayerPosition) throws PositionException {
         area.place(startPlayerPosition, player);
@@ -48,7 +51,14 @@ public class PlayerManager {
     }
 
     private void movePlayerToPosition(IntegerPosition2D newPos) throws PositionException {
-        area.relocate(playerPosition, newPos);
-        playerPosition = newPos;
+        try {
+            area.relocate(playerPosition, newPos);
+            playerPosition = newPos;
+        } catch (BusyPositionException e) {
+            if (area.get(newPos).getClass() == fireClass) {
+                area.remove(playerPosition);
+                System.out.println("Game Over!");
+            }
+        }
     }
 }

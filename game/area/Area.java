@@ -50,7 +50,7 @@ public interface Area<P extends Position2D<?>> {
      * 
      * @param oldPos
      * @param newPos
-     * @throws PositionException if oldPos is empty ot newPos is busy.
+     * @throws PositionException if oldPos is empty or newPos is busy.
      */
     void relocate(P oldPos, P newPos) throws PositionException;
 
