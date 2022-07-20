@@ -1,5 +1,6 @@
 package game.ObjectsInArea.player;
 
+import game.ObjectsInArea.fire.Fire;
 import game.area.BusyPositionException;
 import game.area.GameArea;
 import game.area.IntegerPosition2D;

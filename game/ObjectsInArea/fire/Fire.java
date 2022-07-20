@@ -1,4 +1,4 @@
-package game.ObjectsInArea.player;
+package game.ObjectsInArea.fire;
 
 import game.ObjectsInArea.ObjectInArea;
 
