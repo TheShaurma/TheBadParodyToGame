@@ -26,7 +26,8 @@ public class Main {
         while (run) {
             visualizer.showConsole();
 
-            System.out.print("Use WASD to move:");
+            System.out.print("Use WASD to move and Q to quit:");
+
             input = in.next();
 
             if (input.equals("w") ||
