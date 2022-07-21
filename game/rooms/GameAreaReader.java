@@ -1,12 +1,9 @@
 package game.rooms;
 
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Scanner;
 
-import javax.lang.model.util.ElementScanner14;
+import java.util.Scanner;
 
 import game.ObjectsInArea.ObjectInArea;
 import game.ObjectsInArea.Stone;
