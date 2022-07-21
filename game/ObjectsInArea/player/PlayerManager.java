@@ -19,7 +19,7 @@ public class PlayerManager {
     }
 
     // TODO: move methods should be private in future
-    public void movePlayerUp() throws PositionException {
+    public void movePlayerUp() throws PositionException, PlayerDiedException {
         int newX = playerPosition.getX();
         int newY = playerPosition.getY() + 1;
         IntegerPosition2D newPosition = new IntegerPosition2D(newX, newY);
@@ -27,7 +27,7 @@ public class PlayerManager {
         movePlayerToPosition(newPosition);
     }
 
-    public void movePlayerDown() throws PositionException {
+    public void movePlayerDown() throws PositionException, PlayerDiedException {
         int newX = playerPosition.getX();
         int newY = playerPosition.getY() - 1;
         IntegerPosition2D newPosition = new IntegerPosition2D(newX, newY);
@@ -35,7 +35,7 @@ public class PlayerManager {
         movePlayerToPosition(newPosition);
     }
 
-    public void movePlayerRight() throws PositionException {
+    public void movePlayerRight() throws PositionException, PlayerDiedException {
         int newX = playerPosition.getX() + 1;
         int newY = playerPosition.getY();
         IntegerPosition2D newPosition = new IntegerPosition2D(newX, newY);
@@ -43,7 +43,7 @@ public class PlayerManager {
         movePlayerToPosition(newPosition);
     }
 
-    public void movePlayerLeft() throws PositionException {
+    public void movePlayerLeft() throws PositionException, PlayerDiedException {
         int newX = playerPosition.getX() - 1;
         int newY = playerPosition.getY();
         IntegerPosition2D newPosition = new IntegerPosition2D(newX, newY);
@@ -51,14 +51,14 @@ public class PlayerManager {
         movePlayerToPosition(newPosition);
     }
 
-    private void movePlayerToPosition(IntegerPosition2D newPos) throws PositionException {
+    private void movePlayerToPosition(IntegerPosition2D newPos) throws PositionException, PlayerDiedException {
         try {
             area.relocate(playerPosition, newPos);
             playerPosition = newPos;
         } catch (BusyPositionException e) {
             if (area.get(newPos).getClass() == fireClass) {
                 area.remove(playerPosition);
-                System.out.println("Game Over!");
+                throw new PlayerDiedException();
             }
         }
     }
