@@ -18,4 +18,9 @@ public class IntegerPosition2D implements Position2D<Integer> {
     public Integer getY() {
         return y;
     }
+
+    @Override
+    public String toString() {
+        return "IntegerPosition(" + getX() + "; " + getY() + ")";
+    }
 }
