@@ -1,10 +1,16 @@
 package game.area;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
 import game.ObjectsInArea.ObjectInArea;
+import game.area.position.BusyPositionException;
+import game.area.position.EmptyPositionException;
+import game.area.position.IntegerPosition2D;
+import game.area.position.PositionException;
 
-public class GameArea implements Area<IntegerPosition2D> {
+public class GameArea implements Area<IntegerPosition2D>, Serializable {
+    private static final long serialVersionUID = 1L;
     private AreaItself areaItself = new AreaItself();
 
     // TODO: more concrete documentation
@@ -69,7 +75,8 @@ public class GameArea implements Area<IntegerPosition2D> {
 /**
  * AreaItself
  */
-class AreaItself {
+class AreaItself implements Serializable {
+    private static final long serialVersionUID = 2L;
     private HashMap<Integer, HashMap<Integer, ObjectInArea>> area;
 
     public AreaItself() {

@@ -1,10 +1,10 @@
 package game.ObjectsInArea.player;
 
 import game.ObjectsInArea.fire.Fire;
-import game.area.BusyPositionException;
 import game.area.GameArea;
-import game.area.IntegerPosition2D;
-import game.area.PositionException;
+import game.area.position.BusyPositionException;
+import game.area.position.IntegerPosition2D;
+import game.area.position.PositionException;
 
 public class PlayerManager {
     private GameArea area;

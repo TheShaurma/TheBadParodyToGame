@@ -1,6 +1,8 @@
-package game.area;
+package game.area.position;
 
 public class IntegerPosition2D implements Position2D<Integer> {
+    private static final long serialVersionUID = 3L;
+
     private int x;
     private int y;
 

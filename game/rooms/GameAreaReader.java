@@ -9,8 +9,8 @@ import game.ObjectsInArea.ObjectInArea;
 import game.ObjectsInArea.Stone;
 import game.ObjectsInArea.fire.Fire;
 import game.area.GameArea;
-import game.area.IntegerPosition2D;
-import game.area.PositionException;
+import game.area.position.IntegerPosition2D;
+import game.area.position.PositionException;
 
 public class GameAreaReader {
     public static GameArea readArea(String areaName) throws IOException, UnknownSymbolException, PositionException {

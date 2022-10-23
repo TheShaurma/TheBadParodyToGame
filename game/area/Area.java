@@ -1,6 +1,9 @@
 package game.area;
 
 import game.ObjectsInArea.ObjectInArea;
+import game.area.position.IntegerPosition2D;
+import game.area.position.Position2D;
+import game.area.position.PositionException;
 
 public interface Area<P extends Position2D<?>> {
     /**

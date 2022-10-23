@@ -4,8 +4,8 @@ import java.util.Iterator;
 import java.util.Vector;
 
 import game.area.GameArea;
-import game.area.IntegerPosition2D;
-import game.area.PositionException;
+import game.area.position.IntegerPosition2D;
+import game.area.position.PositionException;
 
 public class FireManager {
     private Vector<IntegerPosition2D> firePositions;

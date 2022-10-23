@@ -1,4 +1,6 @@
 package game.ObjectsInArea;
 
-public interface ObjectInArea {
+import java.io.Serializable;
+
+public interface ObjectInArea extends Serializable {
 }

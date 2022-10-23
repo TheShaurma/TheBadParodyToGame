@@ -8,9 +8,10 @@ import game.ObjectsInArea.player.Player;
 import game.ObjectsInArea.player.PlayerDiedException;
 import game.ObjectsInArea.player.PlayerManager;
 import game.area.GameArea;
-import game.area.IntegerPosition2D;
-import game.area.PositionException;
+import game.area.position.IntegerPosition2D;
+import game.area.position.PositionException;
 import game.rooms.GameAreaReader;
+import game.rooms.GameAreaSerializer;
 import game.rooms.UnknownSymbolException;
 import game.visualizer.Visualizer;
 
@@ -59,6 +60,8 @@ public class Main {
                 run = false;
             }
         }
+
+        GameAreaSerializer.writeArea(area, "startArea");
     }
 
     private static void initVariables() throws PositionException, IOException, UnknownSymbolException {
