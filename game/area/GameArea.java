@@ -13,7 +13,7 @@ public class GameArea implements Area<IntegerPosition2D>, Serializable {
     private static final long serialVersionUID = 1L;
     private AreaItself areaItself = new AreaItself();
 
-    // TODO: more concrete documentation
+    // TODO: remove useless "sinchronezed"
     @Override
     public synchronized ObjectInArea get(IntegerPosition2D pos) throws PositionException {
         return areaItself.get(pos);
@@ -27,7 +27,7 @@ public class GameArea implements Area<IntegerPosition2D>, Serializable {
     @Override
     public synchronized void place(IntegerPosition2D pos, ObjectInArea obj) throws PositionException {
         if (areaItself.positionIsBusy(pos)) {
-            throw new BusyPositionException();
+            throw new BusyPositionException(pos);
         }
 
         areaItself.set(pos, obj);
@@ -36,7 +36,7 @@ public class GameArea implements Area<IntegerPosition2D>, Serializable {
     @Override
     public synchronized void replace(IntegerPosition2D pos, ObjectInArea obj) throws PositionException {
         if (areaItself.positionIsEmpty(pos)) {
-            throw new EmptyPositionException();
+            throw new EmptyPositionException(pos);
         }
 
         areaItself.set(pos, obj);
@@ -45,9 +45,9 @@ public class GameArea implements Area<IntegerPosition2D>, Serializable {
     @Override
     public synchronized void relocate(IntegerPosition2D oldPos, IntegerPosition2D newPos) throws PositionException {
         if (areaItself.positionIsEmpty(oldPos)) {
-            throw new EmptyPositionException();
+            throw new EmptyPositionException(oldPos);
         } else if (areaItself.positionIsBusy(newPos)) {
-            throw new BusyPositionException();
+            throw new BusyPositionException(newPos);
         }
 
         ObjectInArea obj = areaItself.get(oldPos);
@@ -74,6 +74,8 @@ public class GameArea implements Area<IntegerPosition2D>, Serializable {
 
 /**
  * AreaItself
+ * 
+ * This is adaptor for HashMap.
  */
 class AreaItself implements Serializable {
     private static final long serialVersionUID = 2L;
@@ -90,7 +92,7 @@ class AreaItself implements Serializable {
         try {
             return area.get(x).get(y);
         } catch (NullPointerException e) {
-            throw new EmptyPositionException();
+            throw new EmptyPositionException(pos);
         }
     }
 
@@ -111,7 +113,7 @@ class AreaItself implements Serializable {
         int y = pos.getY();
 
         if (area.get(x) == null || area.get(x).get(y) == null) {
-            throw new EmptyPositionException();
+            throw new EmptyPositionException(pos);
         }
 
         area.get(x).remove(y);

@@ -1,5 +1,6 @@
 package game.rooms;
 
+@Deprecated
 public class UnknownSymbolException extends Exception {
     private char ch;
 
@@ -10,5 +11,9 @@ public class UnknownSymbolException extends Exception {
     @Override
     public String toString() {
         return "Unknown symbol \"" + ch + "\"";
+    }
+
+    public char getSymbol() {
+        return ch;
     }
 }

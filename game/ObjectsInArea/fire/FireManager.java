@@ -7,6 +7,9 @@ import game.area.GameArea;
 import game.area.position.IntegerPosition2D;
 import game.area.position.PositionException;
 
+/**
+ * FireManager manage one "Fire" object in area.
+ */
 public class FireManager {
     private Vector<IntegerPosition2D> firePositions;
     private Iterator<IntegerPosition2D> firePositionIterator;
@@ -14,6 +17,17 @@ public class FireManager {
     private GameArea area;
     private Fire fire = new Fire();
 
+    /**
+     * When you create FireManager you should give it GameArea where "Fire" object
+     * will be and Vector with all position where fire will be.
+     * FireManager will create "Fire" object itself on first position of assigned
+     * vector in area.
+     * 
+     * @param area
+     * @param firePositions
+     * @throws PositionException if can't place object on first position.
+     *                           {@code area.place<firstFirePosition, fire)}
+     */
     public FireManager(GameArea area, Vector<IntegerPosition2D> firePositions) throws PositionException {
         this.firePositions = firePositions;
         firePositionIterator = firePositions.iterator();
@@ -22,9 +36,15 @@ public class FireManager {
         area.place(currentPosition, fire);
     }
 
+    /**
+     * Move fire to next position in "firePositions" vector.
+     * 
+     * @throws PositionException   if next position isn't empty or isn't valid.
+     * @throws LostObjectException if Fire isn't at current position.
+     */
     public void moveFire() throws PositionException, LostObjectException {
         if (!(area.get(currentPosition) == fire)) {
-            throw new LostObjectException();
+            throw new LostObjectException(currentPosition);
         }
 
         IntegerPosition2D newPosition;

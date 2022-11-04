@@ -12,6 +12,10 @@ import game.area.GameArea;
 import game.area.position.IntegerPosition2D;
 import game.area.position.PositionException;
 
+/**
+ * GameAreaReader
+ */
+@Deprecated
 public class GameAreaReader {
     public static GameArea readArea(String areaName) throws IOException, UnknownSymbolException, PositionException {
         GameArea area = new GameArea();
