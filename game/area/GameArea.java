@@ -13,19 +13,18 @@ public class GameArea implements CheckeredArea, Serializable {
     private static final long serialVersionUID = 1L;
     private AreaItself areaItself = new AreaItself();
 
-    // TODO: remove useless "sinchronezed"
     @Override
-    public synchronized ObjectInArea get(IntegerPosition2D pos) throws PositionException {
+    public ObjectInArea get(IntegerPosition2D pos) throws PositionException {
         return areaItself.get(pos);
     }
 
     @Override
-    public synchronized void set(IntegerPosition2D pos, ObjectInArea obj) throws PositionException {
+    public void set(IntegerPosition2D pos, ObjectInArea obj) throws PositionException {
         areaItself.set(pos, obj);
     }
 
     @Override
-    public synchronized void place(IntegerPosition2D pos, ObjectInArea obj) throws PositionException {
+    public void place(IntegerPosition2D pos, ObjectInArea obj) throws PositionException {
         if (areaItself.positionIsBusy(pos)) {
             throw new BusyPositionException(pos);
         }
@@ -34,7 +33,7 @@ public class GameArea implements CheckeredArea, Serializable {
     }
 
     @Override
-    public synchronized void replace(IntegerPosition2D pos, ObjectInArea obj) throws PositionException {
+    public void replace(IntegerPosition2D pos, ObjectInArea obj) throws PositionException {
         if (areaItself.positionIsEmpty(pos)) {
             throw new EmptyPositionException(pos);
         }
@@ -43,7 +42,7 @@ public class GameArea implements CheckeredArea, Serializable {
     }
 
     @Override
-    public synchronized void relocate(IntegerPosition2D oldPos, IntegerPosition2D newPos) throws PositionException {
+    public void relocate(IntegerPosition2D oldPos, IntegerPosition2D newPos) throws PositionException {
         if (areaItself.positionIsEmpty(oldPos)) {
             throw new EmptyPositionException(oldPos);
         } else if (areaItself.positionIsBusy(newPos)) {
@@ -56,7 +55,7 @@ public class GameArea implements CheckeredArea, Serializable {
     }
 
     @Override
-    public synchronized void remove(IntegerPosition2D pos) throws PositionException {
+    public void remove(IntegerPosition2D pos) throws PositionException {
         areaItself.del(pos);
     }
 
@@ -85,7 +84,7 @@ class AreaItself implements Serializable {
         area = new HashMap<>();
     }
 
-    public synchronized ObjectInArea get(IntegerPosition2D pos) throws EmptyPositionException {
+    public ObjectInArea get(IntegerPosition2D pos) throws EmptyPositionException {
         int x = pos.getX();
         int y = pos.getY();
 
@@ -96,7 +95,7 @@ class AreaItself implements Serializable {
         }
     }
 
-    public synchronized void set(IntegerPosition2D pos, ObjectInArea obj) {
+    public void set(IntegerPosition2D pos, ObjectInArea obj) {
         int x = pos.getX();
         int y = pos.getY();
 
@@ -108,7 +107,7 @@ class AreaItself implements Serializable {
         }
     }
 
-    public synchronized void del(IntegerPosition2D pos) throws EmptyPositionException {
+    public void del(IntegerPosition2D pos) throws EmptyPositionException {
         int x = pos.getX();
         int y = pos.getY();
 
