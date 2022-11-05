@@ -7,3 +7,6 @@
 * 4L - Fire.java, class Fire;
 * 5L - Player.java, class Player;
 * 6L - Stone.java, class Stone;
+
+## Responsibilities:
+* JUnit 5;

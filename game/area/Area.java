@@ -1,7 +1,6 @@
 package game.area;
 
 import game.ObjectsInArea.ObjectInArea;
-import game.area.position.IntegerPosition2D;
 import game.area.position.Position2D;
 import game.area.position.PositionException;
 
@@ -61,11 +60,11 @@ public interface Area<P extends Position2D<?>> {
      * @param pos
      * @return if position is empty
      */
-    boolean positionIsEmpty(IntegerPosition2D pos);
+    boolean positionIsEmpty(P pos);
 
     /**
      * @param pos
      * @return if position is busy
      */
-    boolean positionIsBusy(IntegerPosition2D pos);
+    boolean positionIsBusy(P pos);
 }
