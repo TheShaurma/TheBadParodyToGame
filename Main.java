@@ -7,16 +7,16 @@ import game.ObjectsInArea.fire.Fire;
 import game.ObjectsInArea.player.Player;
 import game.ObjectsInArea.player.PlayerDiedException;
 import game.ObjectsInArea.player.PlayerManager;
-import game.area.GameArea;
-import game.area.position.IntegerPosition2D;
+import game.area.CheckeredArea;
+import game.area.position.GameIntegerPosition2D;
 import game.area.position.PositionException;
-import game.rooms.GameAreaReader;
-import game.rooms.GameAreaSerializer;
+import game.rooms.CheckeredAreaReader;
+import game.rooms.CheckeredAreaSerializer;
 import game.rooms.UnknownSymbolException;
 import game.visualizer.Visualizer;
 
 public class Main {
-    private static GameArea area;
+    private static CheckeredArea area;
     private static Visualizer visualizer;
     private static PlayerManager playerManager;
     private static Scanner in;
@@ -61,20 +61,20 @@ public class Main {
             }
         }
 
-        GameAreaSerializer.writeArea(area, "startArea");
+        CheckeredAreaSerializer.writeArea(area, "startArea");
     }
 
     private static void initVariables() throws PositionException, IOException, UnknownSymbolException {
-        area = GameAreaReader.readArea("game\\rooms\\StartLevel.txt");
+        area = CheckeredAreaReader.readArea("game\\rooms\\StartLevel.txt");
 
-        visualizer = new Visualizer(new IntegerPosition2D(0, 0),
-                new IntegerPosition2D(30, 30), area);
+        visualizer = new Visualizer(new GameIntegerPosition2D(0, 0),
+                new GameIntegerPosition2D(30, 30), area);
         HashMap<Class<?>, String> consoleVisualMap = visualizer.getConsoleVisualMap();
         consoleVisualMap.put(new Player().getClass(), "P");
         consoleVisualMap.put(new Stone().getClass(), "s");
         consoleVisualMap.put(new Fire().getClass(), "f");
 
-        playerManager = new PlayerManager(area, new Player(), new IntegerPosition2D(1, 1));
+        playerManager = new PlayerManager(area, new Player(), new GameIntegerPosition2D(1, 1));
 
         in = new Scanner(System.in);
         run = true;

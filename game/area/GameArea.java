@@ -9,7 +9,7 @@ import game.area.position.EmptyPositionException;
 import game.area.position.IntegerPosition2D;
 import game.area.position.PositionException;
 
-public class GameArea implements Area<IntegerPosition2D>, Serializable {
+public class GameArea implements CheckeredArea, Serializable {
     private static final long serialVersionUID = 1L;
     private AreaItself areaItself = new AreaItself();
 

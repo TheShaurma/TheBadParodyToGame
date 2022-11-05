@@ -8,17 +8,19 @@ import java.util.Scanner;
 import game.ObjectsInArea.ObjectInArea;
 import game.ObjectsInArea.Stone;
 import game.ObjectsInArea.fire.Fire;
+import game.area.CheckeredArea;
 import game.area.GameArea;
-import game.area.position.IntegerPosition2D;
+import game.area.position.GameIntegerPosition2D;
 import game.area.position.PositionException;
 
 /**
  * GameAreaReader
  */
 @Deprecated
-public class GameAreaReader {
-    public static GameArea readArea(String areaName) throws IOException, UnknownSymbolException, PositionException {
-        GameArea area = new GameArea();
+public class CheckeredAreaReader {
+    public static CheckeredArea readArea(String areaName)
+            throws IOException, UnknownSymbolException, PositionException {
+        CheckeredArea area = new GameArea();
 
         FileReader reader = new FileReader(areaName);
         try (Scanner scanner = new Scanner(reader)) {
@@ -35,7 +37,7 @@ public class GameAreaReader {
                     ch = line.charAt(i);
                     if (ch != ' ') {
                         obj = getObjectByCharacter(ch);
-                        area.place(new IntegerPosition2D(x, y), obj);
+                        area.place(new GameIntegerPosition2D(x, y), obj);
                     }
                     x++;
                 }
