@@ -3,7 +3,8 @@ package game.visualizer;
 import java.util.HashMap;
 
 import game.ObjectsInArea.ObjectInArea;
-import game.area.GameArea;
+import game.area.CheckeredArea;
+import game.area.position.GameIntegerPosition2D;
 import game.area.position.IntegerPosition2D;
 import game.area.position.PositionException;
 
@@ -11,7 +12,7 @@ import game.area.position.PositionException;
  * Visualizer
  */
 public class Visualizer {
-    private GameArea area;
+    private CheckeredArea area;
 
     private int xMin;
     private int xMax;
@@ -21,7 +22,7 @@ public class Visualizer {
     private HashMap<Class<?>, Color> visualMap = new ColorMap();
     private HashMap<Class<?>, String> consoleVisualMap = new SymbolMap();
 
-    public Visualizer(IntegerPosition2D minPos, IntegerPosition2D maxPos, GameArea area) {
+    public Visualizer(IntegerPosition2D minPos, IntegerPosition2D maxPos, CheckeredArea area) {
         this.area = area;
         int x1 = minPos.getX();
         int x2 = maxPos.getX();
@@ -67,7 +68,7 @@ public class Visualizer {
             System.out.print("|");
 
             for (int x = xMin; x <= xMax; x++) {
-                IntegerPosition2D currentPos = new IntegerPosition2D(x, y);
+                IntegerPosition2D currentPos = new GameIntegerPosition2D(x, y);
 
                 if (area.positionIsEmpty(currentPos)) {
                     System.out.print(" ");

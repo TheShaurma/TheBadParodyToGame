@@ -7,22 +7,22 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-import game.area.GameArea;
+import game.area.CheckeredArea;
 
-public class GameAreaSerializer {
-    public static GameArea readArea(String fileName) throws IOException, ClassNotFoundException {
+public class CheckeredAreaSerializer {
+    public static CheckeredArea readArea(String fileName) throws IOException, ClassNotFoundException {
         File file = new File("data\\" + fileName);
         FileInputStream fis = new FileInputStream(file);
         ObjectInputStream ois = new ObjectInputStream(fis);
 
         try {
-            return (GameArea) ois.readObject();
+            return (CheckeredArea) ois.readObject();
         } finally {
             ois.close();
         }
     }
 
-    public static void writeArea(GameArea area, String fileName) throws IOException {
+    public static void writeArea(CheckeredArea area, String fileName) throws IOException {
         File file = new File("data\\" + fileName + ".data");
         FileOutputStream fos = new FileOutputStream(file);
         ObjectOutputStream oos = new ObjectOutputStream(fos);

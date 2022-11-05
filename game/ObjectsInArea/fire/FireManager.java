@@ -3,7 +3,7 @@ package game.ObjectsInArea.fire;
 import java.util.Iterator;
 import java.util.Vector;
 
-import game.area.GameArea;
+import game.area.CheckeredArea;
 import game.area.position.IntegerPosition2D;
 import game.area.position.PositionException;
 
@@ -14,11 +14,12 @@ public class FireManager {
     private Vector<IntegerPosition2D> firePositions;
     private Iterator<IntegerPosition2D> firePositionIterator;
     private IntegerPosition2D currentPosition;
-    private GameArea area;
+    private CheckeredArea area;
     private Fire fire = new Fire();
 
     /**
-     * When you create FireManager you should give it GameArea where "Fire" object
+     * When you create FireManager you should give it CheckeredArea where "Fire"
+     * object
      * will be and Vector with all position where fire will be.
      * FireManager will create "Fire" object itself on first position of assigned
      * vector in area.
@@ -28,7 +29,7 @@ public class FireManager {
      * @throws PositionException if can't place object on first position.
      *                           {@code area.place<firstFirePosition, fire)}
      */
-    public FireManager(GameArea area, Vector<IntegerPosition2D> firePositions) throws PositionException {
+    public FireManager(CheckeredArea area, Vector<IntegerPosition2D> firePositions) throws PositionException {
         this.firePositions = firePositions;
         firePositionIterator = firePositions.iterator();
 
