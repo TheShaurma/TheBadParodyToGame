@@ -3,23 +3,27 @@ package tests.area.position;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 
-import game.area.position.GameIntegerPosition2D;
+import game.area.position.GameIntegerPosition2D;;
 
 /**
  * This is test for IntegerPosition2DTest.
  */
 public class GameIntegerPosition2DTest {
-    private static int expectedX = 10;
-    private static int expectedY = -10;
-    private static GameIntegerPosition2D position = new GameIntegerPosition2D(expectedX, expectedY);
-
     @Test
-    public void getXTest() {
-        Assertions.assertEquals(expectedX, position.getX());
+    public void getX_call_10Returned() {
+        GameIntegerPosition2D pos = new GameIntegerPosition2D(10, -10);
+
+        int result = pos.getX();
+
+        Assertions.assertEquals(10, result);
     }
 
     @Test
-    public void getYTest() {
-        Assertions.assertEquals(expectedY, position.getY());
+    public void getY_call_minus10Returned() {
+        GameIntegerPosition2D position = new GameIntegerPosition2D(10, -10);
+
+        int result = position.getY();
+
+        Assertions.assertEquals(-10, result);
     }
 }
