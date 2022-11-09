@@ -26,16 +26,18 @@ public interface Area<P extends Position2D<?>> {
      * 
      * @param pos
      * @param obj
-     * @throws PositionException if pos isn't empty or can't exist in Area.
+     * @throws EmptyPositionException if pos is empty;
+     * @throws PositionException      if pos can't exist in Area.
      */
     void place(P pos, ObjectInArea obj) throws PositionException;
 
     /**
-     * Replace object at pos to assigned obj.
+     * Replace old object at pos to new assigned obj.
      * 
      * @param pos
      * @param obj
-     * @throws PositionException if pos is empty or can't exist in Area.
+     * @throws EmptyPositionException if pos is empty;
+     * @throws PositionException      if pos can't exist in Area.
      */
     void replace(P pos, ObjectInArea obj) throws PositionException;
 
@@ -43,7 +45,8 @@ public interface Area<P extends Position2D<?>> {
      * Removes object from assigned pos.
      * 
      * @param pos
-     * @throws PositionException if pos is empty.
+     * @throws EmptyPositionException if pos is empty;
+     * @throws PositionException      if pos can't exist in Area.
      */
     void remove(P pos) throws PositionException;
 
@@ -52,7 +55,11 @@ public interface Area<P extends Position2D<?>> {
      * 
      * @param oldPos
      * @param newPos
-     * @throws PositionException if oldPos is empty or newPos is busy.
+     * @throws EmptyPositionException if oldPos is empty;
+     * @throws BusyPositionException  newPos is busy;
+     *                                If oldPos is empty and newPos is Busy
+     *                                synchronically, throws EmptyPositionException
+     * @throws PositionException      if oldPos or newPos can't exist in Area.
      */
     void relocate(P oldPos, P newPos) throws PositionException;
 
