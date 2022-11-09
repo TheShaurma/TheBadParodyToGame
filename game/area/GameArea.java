@@ -78,6 +78,7 @@ public class GameArea implements CheckeredArea, Serializable {
  */
 class AreaItself implements Serializable {
     private static final long serialVersionUID = 2L;
+    // Use area.get(x).get(y) to get object from area.
     private HashMap<Integer, HashMap<Integer, ObjectInArea>> area;
 
     public AreaItself() {
@@ -88,10 +89,10 @@ class AreaItself implements Serializable {
         int x = pos.getX();
         int y = pos.getY();
 
-        try {
-            return area.get(x).get(y);
-        } catch (NullPointerException e) {
+        if (area.get(x) == null || area.get(x).get(y) == null) {
             throw new EmptyPositionException(pos);
+        } else {
+            return area.get(x).get(y);
         }
     }
 
