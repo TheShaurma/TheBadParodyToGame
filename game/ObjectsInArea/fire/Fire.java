@@ -8,6 +8,5 @@ import game.ObjectsInArea.ObjectInArea;
  * 
  * serialVersionUID = 4L.
  */
-public class Fire implements ObjectInArea {
-    private static final long serialVersionUID = 4L;
+public interface Fire extends ObjectInArea {
 }

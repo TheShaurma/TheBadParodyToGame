@@ -3,7 +3,7 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 import game.ObjectsInArea.Stone;
-import game.ObjectsInArea.fire.Fire;
+import game.ObjectsInArea.fire.GameFire;
 import game.ObjectsInArea.player.Player;
 import game.ObjectsInArea.player.PlayerDiedException;
 import game.ObjectsInArea.player.PlayerManager;
@@ -72,7 +72,7 @@ public class Main {
         HashMap<Class<?>, String> consoleVisualMap = visualizer.getConsoleVisualMap();
         consoleVisualMap.put(new Player().getClass(), "P");
         consoleVisualMap.put(new Stone().getClass(), "s");
-        consoleVisualMap.put(new Fire().getClass(), "f");
+        consoleVisualMap.put(new GameFire().getClass(), "f");
 
         playerManager = new PlayerManager(area, new Player(), new GameIntegerPosition2D(1, 1));
 

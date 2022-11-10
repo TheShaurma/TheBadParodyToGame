@@ -1,6 +1,6 @@
 package game.ObjectsInArea.player;
 
-import game.ObjectsInArea.fire.Fire;
+import game.ObjectsInArea.fire.GameFire;
 import game.area.CheckeredArea;
 import game.area.position.BusyPositionException;
 import game.area.position.GameIntegerPosition2D;
@@ -11,7 +11,7 @@ public class PlayerManager {
     private CheckeredArea area;
     private IntegerPosition2D playerPosition;
 
-    private final static Class<?> fireClass = new Fire().getClass();
+    private final static Class<?> fireClass = new GameFire().getClass();
 
     public PlayerManager(CheckeredArea area, Player player, IntegerPosition2D startPlayerPosition)
             throws PositionException {

@@ -15,7 +15,7 @@ public class FireManager {
     private Iterator<IntegerPosition2D> firePositionIterator;
     private IntegerPosition2D currentPosition;
     private CheckeredArea area;
-    private Fire fire = new Fire();
+    private Fire fire;
 
     /**
      * When you create FireManager you should give it CheckeredArea where "Fire"
@@ -29,7 +29,8 @@ public class FireManager {
      * @throws PositionException if can't place object on first position.
      *                           {@code area.place<firstFirePosition, fire)}
      */
-    public FireManager(CheckeredArea area, Vector<IntegerPosition2D> firePositions) throws PositionException {
+    public FireManager(CheckeredArea area, Fire fire, Vector<IntegerPosition2D> firePositions)
+            throws PositionException {
         this.firePositions = firePositions;
         firePositionIterator = firePositions.iterator();
 
@@ -48,11 +49,7 @@ public class FireManager {
             throw new LostObjectException(currentPosition);
         }
 
-        IntegerPosition2D newPosition;
-        if (!firePositionIterator.hasNext()) {
-            firePositionIterator = firePositions.iterator();
-        }
-        newPosition = firePositionIterator.next();
+        IntegerPosition2D newPosition = getNextPosition();
 
         moveFire(newPosition);
     }
@@ -60,5 +57,15 @@ public class FireManager {
     private void moveFire(IntegerPosition2D newPos) throws PositionException {
         area.relocate(currentPosition, newPos);
         currentPosition = newPos;
+    }
+
+    private IntegerPosition2D getNextPosition() {
+        IntegerPosition2D nextPos;
+        if (!firePositionIterator.hasNext()) {
+            firePositionIterator = firePositions.iterator();
+        }
+        nextPos = firePositionIterator.next();
+
+        return nextPos;
     }
 }

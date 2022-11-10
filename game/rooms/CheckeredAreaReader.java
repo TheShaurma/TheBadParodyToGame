@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 import game.ObjectsInArea.ObjectInArea;
 import game.ObjectsInArea.Stone;
-import game.ObjectsInArea.fire.Fire;
+import game.ObjectsInArea.fire.GameFire;
 import game.area.CheckeredArea;
 import game.area.GameArea;
 import game.area.position.GameIntegerPosition2D;
@@ -53,7 +53,7 @@ public class CheckeredAreaReader {
         if (ch == 's') {
             return new Stone();
         } else if (ch == 'f') {
-            return new Fire();
+            return new GameFire();
         }
         throw new UnknownSymbolException(ch);
     }
