@@ -1,6 +1,6 @@
-package tests.area.position;
+package Tests.area.position;
 
-import game.area.position.IntegerPosition2D;
+import TheBadParodyToGame.area.position.IntegerPosition2D;
 
 public class IntegerPosition2DStub implements IntegerPosition2D {
     private int x;

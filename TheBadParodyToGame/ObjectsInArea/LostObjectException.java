@@ -1,7 +1,7 @@
-package game.ObjectsInArea;
+package TheBadParodyToGame.ObjectsInArea;
 
-import game.area.position.Position2D;
-import game.area.position.PositionException;
+import TheBadParodyToGame.area.position.Position2D;
+import TheBadParodyToGame.area.position.PositionException;
 
 public class LostObjectException extends PositionException {
     private ObjectInArea object;

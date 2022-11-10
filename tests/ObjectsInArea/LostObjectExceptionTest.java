@@ -1,13 +1,13 @@
-package tests.ObjectsInArea;
+package Tests.ObjectsInArea;
 
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 
-import game.ObjectsInArea.LostObjectException;
-import game.ObjectsInArea.ObjectInArea;
-import game.area.position.IntegerPosition2D;
-import game.area.position.Position2D;
-import tests.area.position.IntegerPosition2DStub;
+import Tests.area.position.IntegerPosition2DStub;
+import TheBadParodyToGame.ObjectsInArea.LostObjectException;
+import TheBadParodyToGame.ObjectsInArea.ObjectInArea;
+import TheBadParodyToGame.area.position.IntegerPosition2D;
+import TheBadParodyToGame.area.position.Position2D;
 
 public class LostObjectExceptionTest {
     @Test

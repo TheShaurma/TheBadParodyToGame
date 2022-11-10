@@ -1,4 +1,4 @@
-package game.rooms;
+package TheBadParodyToGame.rooms;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-import game.area.CheckeredArea;
+import TheBadParodyToGame.area.CheckeredArea;
 
 public class CheckeredAreaSerializer {
     public static CheckeredArea readArea(String fileName) throws IOException, ClassNotFoundException {

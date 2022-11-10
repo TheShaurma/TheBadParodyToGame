@@ -1,4 +1,4 @@
-package game.area.position;
+package TheBadParodyToGame.area.position;
 
 public class GameIntegerPosition2D implements IntegerPosition2D {
     private static final long serialVersionUID = 3L;

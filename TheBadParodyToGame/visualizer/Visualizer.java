@@ -1,12 +1,12 @@
-package game.visualizer;
+package TheBadParodyToGame.visualizer;
 
 import java.util.HashMap;
 
-import game.ObjectsInArea.ObjectInArea;
-import game.area.CheckeredArea;
-import game.area.position.GameIntegerPosition2D;
-import game.area.position.IntegerPosition2D;
-import game.area.position.PositionException;
+import TheBadParodyToGame.ObjectsInArea.ObjectInArea;
+import TheBadParodyToGame.area.CheckeredArea;
+import TheBadParodyToGame.area.position.GameIntegerPosition2D;
+import TheBadParodyToGame.area.position.IntegerPosition2D;
+import TheBadParodyToGame.area.position.PositionException;
 
 /**
  * Visualizer

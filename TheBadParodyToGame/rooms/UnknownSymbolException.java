@@ -1,4 +1,4 @@
-package game.rooms;
+package TheBadParodyToGame.rooms;
 
 @Deprecated
 public class UnknownSymbolException extends Exception {

@@ -1,4 +1,4 @@
-package game.ObjectsInArea;
+package TheBadParodyToGame.ObjectsInArea;
 
 import java.io.Serializable;
 

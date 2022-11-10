@@ -1,9 +1,9 @@
-package tests.area.position;
+package Tests.area.position;
 
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 
-import game.area.position.GameIntegerPosition2D;;
+import TheBadParodyToGame.area.position.GameIntegerPosition2D;;
 
 /**
  * This is test for IntegerPosition2DTest.

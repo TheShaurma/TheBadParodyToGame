@@ -2,18 +2,18 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Scanner;
 
-import game.ObjectsInArea.Stone;
-import game.ObjectsInArea.fire.GameFire;
-import game.ObjectsInArea.player.Player;
-import game.ObjectsInArea.player.PlayerDiedException;
-import game.ObjectsInArea.player.PlayerManager;
-import game.area.CheckeredArea;
-import game.area.position.GameIntegerPosition2D;
-import game.area.position.PositionException;
-import game.rooms.CheckeredAreaReader;
-import game.rooms.CheckeredAreaSerializer;
-import game.rooms.UnknownSymbolException;
-import game.visualizer.Visualizer;
+import TheBadParodyToGame.ObjectsInArea.Stone;
+import TheBadParodyToGame.ObjectsInArea.fire.GameFire;
+import TheBadParodyToGame.ObjectsInArea.player.Player;
+import TheBadParodyToGame.ObjectsInArea.player.PlayerDiedException;
+import TheBadParodyToGame.ObjectsInArea.player.PlayerManager;
+import TheBadParodyToGame.area.CheckeredArea;
+import TheBadParodyToGame.area.position.GameIntegerPosition2D;
+import TheBadParodyToGame.area.position.PositionException;
+import TheBadParodyToGame.rooms.CheckeredAreaReader;
+import TheBadParodyToGame.rooms.CheckeredAreaSerializer;
+import TheBadParodyToGame.rooms.UnknownSymbolException;
+import TheBadParodyToGame.visualizer.Visualizer;
 
 public class Main {
     private static CheckeredArea area;

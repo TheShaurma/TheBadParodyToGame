@@ -1,4 +1,4 @@
-package game.ObjectsInArea.player;
+package TheBadParodyToGame.ObjectsInArea.player;
 
 public class PlayerDiedException extends Exception {
     @Override

@@ -1,4 +1,4 @@
-package game.area.position;
+package TheBadParodyToGame.area.position;
 
 public abstract class PositionException extends Exception {
     private final Position2D<?> position;

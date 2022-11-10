@@ -1,12 +1,12 @@
-package game.ObjectsInArea.fire;
+package TheBadParodyToGame.ObjectsInArea.fire;
 
 import java.util.Iterator;
 import java.util.Vector;
 
-import game.ObjectsInArea.LostObjectException;
-import game.area.CheckeredArea;
-import game.area.position.IntegerPosition2D;
-import game.area.position.PositionException;
+import TheBadParodyToGame.ObjectsInArea.LostObjectException;
+import TheBadParodyToGame.area.CheckeredArea;
+import TheBadParodyToGame.area.position.IntegerPosition2D;
+import TheBadParodyToGame.area.position.PositionException;
 
 /**
  * FireManager manage one "Fire" object in area.

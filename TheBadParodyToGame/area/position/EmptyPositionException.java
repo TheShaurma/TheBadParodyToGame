@@ -1,4 +1,4 @@
-package game.area.position;
+package TheBadParodyToGame.area.position;
 
 public class EmptyPositionException extends PositionException {
 

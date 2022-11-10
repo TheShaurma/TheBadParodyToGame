@@ -1,13 +1,13 @@
-package game.area;
+package TheBadParodyToGame.area;
 
 import java.io.Serializable;
 import java.util.HashMap;
 
-import game.ObjectsInArea.ObjectInArea;
-import game.area.position.BusyPositionException;
-import game.area.position.EmptyPositionException;
-import game.area.position.IntegerPosition2D;
-import game.area.position.PositionException;
+import TheBadParodyToGame.ObjectsInArea.ObjectInArea;
+import TheBadParodyToGame.area.position.BusyPositionException;
+import TheBadParodyToGame.area.position.EmptyPositionException;
+import TheBadParodyToGame.area.position.IntegerPosition2D;
+import TheBadParodyToGame.area.position.PositionException;
 
 public class GameArea implements CheckeredArea, Serializable {
     private static final long serialVersionUID = 1L;

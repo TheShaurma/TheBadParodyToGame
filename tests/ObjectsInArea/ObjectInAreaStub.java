@@ -1,6 +1,6 @@
-package tests.ObjectsInArea;
+package Tests.ObjectsInArea;
 
-import game.ObjectsInArea.ObjectInArea;
+import TheBadParodyToGame.ObjectsInArea.ObjectInArea;
 
 public class ObjectInAreaStub implements ObjectInArea {
 }

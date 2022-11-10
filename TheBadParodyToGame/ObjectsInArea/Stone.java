@@ -1,4 +1,4 @@
-package game.ObjectsInArea;
+package TheBadParodyToGame.ObjectsInArea;
 
 /**
  * Stone is object for Area.

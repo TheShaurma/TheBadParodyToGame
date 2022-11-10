@@ -1,11 +1,11 @@
-package game.ObjectsInArea.player;
+package TheBadParodyToGame.ObjectsInArea.player;
 
-import game.ObjectsInArea.fire.GameFire;
-import game.area.CheckeredArea;
-import game.area.position.BusyPositionException;
-import game.area.position.GameIntegerPosition2D;
-import game.area.position.IntegerPosition2D;
-import game.area.position.PositionException;
+import TheBadParodyToGame.ObjectsInArea.fire.GameFire;
+import TheBadParodyToGame.area.CheckeredArea;
+import TheBadParodyToGame.area.position.BusyPositionException;
+import TheBadParodyToGame.area.position.GameIntegerPosition2D;
+import TheBadParodyToGame.area.position.IntegerPosition2D;
+import TheBadParodyToGame.area.position.PositionException;
 
 public class PlayerManager {
     private CheckeredArea area;

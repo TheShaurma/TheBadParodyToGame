@@ -1,17 +1,17 @@
-package game.rooms;
+package TheBadParodyToGame.rooms;
 
 import java.io.FileReader;
 import java.io.IOException;
 
 import java.util.Scanner;
 
-import game.ObjectsInArea.ObjectInArea;
-import game.ObjectsInArea.Stone;
-import game.ObjectsInArea.fire.GameFire;
-import game.area.CheckeredArea;
-import game.area.GameArea;
-import game.area.position.GameIntegerPosition2D;
-import game.area.position.PositionException;
+import TheBadParodyToGame.ObjectsInArea.ObjectInArea;
+import TheBadParodyToGame.ObjectsInArea.Stone;
+import TheBadParodyToGame.ObjectsInArea.fire.GameFire;
+import TheBadParodyToGame.area.CheckeredArea;
+import TheBadParodyToGame.area.GameArea;
+import TheBadParodyToGame.area.position.GameIntegerPosition2D;
+import TheBadParodyToGame.area.position.PositionException;
 
 /**
  * GameAreaReader

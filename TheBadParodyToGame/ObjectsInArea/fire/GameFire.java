@@ -1,4 +1,4 @@
-package game.ObjectsInArea.fire;
+package TheBadParodyToGame.ObjectsInArea.fire;
 
 /**
  * serialVersionUID = 4L.

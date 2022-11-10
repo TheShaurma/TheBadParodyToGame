@@ -1,15 +1,16 @@
-package tests.area;
+package Tests.area;
 
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
-import game.ObjectsInArea.ObjectInArea;
-import game.area.GameArea;
-import game.area.position.BusyPositionException;
-import game.area.position.EmptyPositionException;
-import game.area.position.IntegerPosition2D;
-import game.area.position.PositionException;
-import tests.area.position.IntegerPosition2DStub;
-import tests.ObjectsInArea.ObjectInAreaStub;
+
+import Tests.ObjectsInArea.ObjectInAreaStub;
+import Tests.area.position.IntegerPosition2DStub;
+import TheBadParodyToGame.ObjectsInArea.ObjectInArea;
+import TheBadParodyToGame.area.GameArea;
+import TheBadParodyToGame.area.position.BusyPositionException;
+import TheBadParodyToGame.area.position.EmptyPositionException;
+import TheBadParodyToGame.area.position.IntegerPosition2D;
+import TheBadParodyToGame.area.position.PositionException;
 
 public class GameAreaTest {
     /**
