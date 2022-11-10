@@ -3,6 +3,7 @@ package game.ObjectsInArea.fire;
 import java.util.Iterator;
 import java.util.Vector;
 
+import game.ObjectsInArea.LostObjectException;
 import game.area.CheckeredArea;
 import game.area.position.IntegerPosition2D;
 import game.area.position.PositionException;
@@ -46,7 +47,7 @@ public class FireManager {
      */
     public void moveFire() throws PositionException, LostObjectException {
         if (!(area.get(currentPosition) == fire)) {
-            throw new LostObjectException(currentPosition);
+            throw new LostObjectException(currentPosition, fire);
         }
 
         IntegerPosition2D newPosition = getNextPosition();
