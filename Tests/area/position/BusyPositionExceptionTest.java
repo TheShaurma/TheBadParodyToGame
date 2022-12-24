@@ -4,14 +4,14 @@ import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 
 import TheBadParodyToGame.area.position.BusyPositionException;
-import TheBadParodyToGame.area.position.Position2D;
+import TheBadParodyToGame.area.position.IntegerPosition2D;
 
 public class BusyPositionExceptionTest {
     @Test
     public void getPosition_call_minus1Minus1Returned() {
-        Position2D<?> expectedPosition = new IntegerPosition2DStub();
+        IntegerPosition2D expectedPosition = new IntegerPosition2DStub();
         BusyPositionException exception = new BusyPositionException(expectedPosition);
-        Position2D<?> actualPosition;
+        IntegerPosition2D actualPosition;
 
         try {
             throw exception;
@@ -24,7 +24,7 @@ public class BusyPositionExceptionTest {
 
     @Test
     public void toString_call_normalStringReturned() {
-        Position2D<?> position = new IntegerPosition2DStub();
+        IntegerPosition2D position = new IntegerPosition2DStub();
         BusyPositionException exception = new BusyPositionException(position);
         String expectedString = "Position is busy: " + position.toString();
         String actualString;

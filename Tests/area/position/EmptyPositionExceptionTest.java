@@ -4,14 +4,14 @@ import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 
 import TheBadParodyToGame.area.position.EmptyPositionException;
-import TheBadParodyToGame.area.position.Position2D;
+import TheBadParodyToGame.area.position.IntegerPosition2D;
 
 public class EmptyPositionExceptionTest {
     @Test
     public void getPosition_call_minus1Minus1Returned() {
-        Position2D<?> expectedPosition = new IntegerPosition2DStub();
+        IntegerPosition2D expectedPosition = new IntegerPosition2DStub();
         EmptyPositionException exception = new EmptyPositionException(expectedPosition);
-        Position2D<?> actualPosition;
+        IntegerPosition2D actualPosition;
 
         try {
             throw exception;
@@ -24,7 +24,7 @@ public class EmptyPositionExceptionTest {
 
     @Test
     public void toString_call_normalStringReturned() {
-        Position2D<?> position = new IntegerPosition2DStub();
+        IntegerPosition2D position = new IntegerPosition2DStub();
         EmptyPositionException exception = new EmptyPositionException(position);
         String expectedString = "Position is empty: " + position.toString();
         String actualString;

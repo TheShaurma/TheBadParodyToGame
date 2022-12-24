@@ -12,12 +12,12 @@ public class GameIntegerPosition2D implements IntegerPosition2D {
     }
 
     @Override
-    public Integer getX() {
+    public int getX() {
         return x;
     }
 
     @Override
-    public Integer getY() {
+    public int getY() {
         return y;
     }
 

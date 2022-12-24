@@ -2,7 +2,7 @@ package TheBadParodyToGame.area.position;
 
 public class EmptyPositionException extends PositionException {
 
-    public EmptyPositionException(Position2D<?> position) {
+    public EmptyPositionException(IntegerPosition2D position) {
         super(position);
     }
 

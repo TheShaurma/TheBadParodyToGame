@@ -7,7 +7,6 @@ import Tests.area.position.IntegerPosition2DStub;
 import TheBadParodyToGame.ObjectsInArea.LostObjectException;
 import TheBadParodyToGame.ObjectsInArea.ObjectInArea;
 import TheBadParodyToGame.area.position.IntegerPosition2D;
-import TheBadParodyToGame.area.position.Position2D;
 
 public class LostObjectExceptionTest {
     @Test
@@ -15,7 +14,7 @@ public class LostObjectExceptionTest {
         IntegerPosition2D expectedPos = new IntegerPosition2DStub();
         ObjectInArea obj = new ObjectInAreaStub();
         LostObjectException exception = new LostObjectException(expectedPos, obj);
-        Position2D<?> actualPos;
+        IntegerPosition2D actualPos;
 
         actualPos = exception.getPosition();
 

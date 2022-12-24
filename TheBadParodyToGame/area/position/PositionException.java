@@ -1,13 +1,13 @@
 package TheBadParodyToGame.area.position;
 
 public abstract class PositionException extends Exception {
-    private final Position2D<?> position;
+    private final IntegerPosition2D position;
 
-    public PositionException(Position2D<?> position) {
+    public PositionException(IntegerPosition2D position) {
         this.position = position;
     }
 
-    public Position2D<?> getPosition() {
+    public IntegerPosition2D getPosition() {
         return position;
     }
 

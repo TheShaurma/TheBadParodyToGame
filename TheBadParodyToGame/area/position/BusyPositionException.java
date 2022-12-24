@@ -2,7 +2,7 @@ package TheBadParodyToGame.area.position;
 
 public class BusyPositionException extends PositionException {
 
-    public BusyPositionException(Position2D<?> position) {
+    public BusyPositionException(IntegerPosition2D position) {
         super(position);
     }
 
