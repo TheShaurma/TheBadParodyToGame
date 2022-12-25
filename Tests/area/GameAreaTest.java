@@ -163,8 +163,8 @@ public class GameAreaTest {
     @Test
     public void relocate_callWithNormalInput_objectRelocated() throws PositionException {
         GameArea area = new GameArea();
-        IntegerPosition2D oldPos = IntegerPosition2DStub.getUniqPosition();
-        IntegerPosition2D newPos = IntegerPosition2DStub.getUniqPosition();
+        IntegerPosition2D oldPos = IntegerPosition2DStub.getRandomPosition();
+        IntegerPosition2D newPos = IntegerPosition2DStub.getRandomPosition();
         ObjectInArea obj = new ObjectInAreaStub();
         ObjectInArea resultFromNewPos;
         area.set(oldPos, obj);
@@ -184,8 +184,8 @@ public class GameAreaTest {
     @Test
     public void relocate_relocateFromEmptyPosition_willThrowEmptyPositionException() {
         GameArea area = new GameArea();
-        IntegerPosition2D oldPos = IntegerPosition2DStub.getUniqPosition();
-        IntegerPosition2D newPos = IntegerPosition2DStub.getUniqPosition();
+        IntegerPosition2D oldPos = IntegerPosition2DStub.getRandomPosition();
+        IntegerPosition2D newPos = IntegerPosition2DStub.getRandomPosition();
 
         Assertions.assertThrows(EmptyPositionException.class, () -> {
             area.relocate(oldPos, newPos);
@@ -198,8 +198,8 @@ public class GameAreaTest {
     @Test
     public void relocate_relocateToBusyPosition_willThrowBusyPositionException() throws PositionException {
         GameArea area = new GameArea();
-        IntegerPosition2D oldPos = IntegerPosition2DStub.getUniqPosition();
-        IntegerPosition2D newPos = IntegerPosition2DStub.getUniqPosition();
+        IntegerPosition2D oldPos = IntegerPosition2DStub.getRandomPosition();
+        IntegerPosition2D newPos = IntegerPosition2DStub.getRandomPosition();
         ObjectInArea obj = new ObjectInAreaStub();
         area.set(oldPos, obj);
         ObjectInArea otherObj = new ObjectInAreaStub();
@@ -217,8 +217,8 @@ public class GameAreaTest {
     public void relocate_relocateFromEmptyPositionToBusyPosition_willThrowEmptyPositionException()
             throws PositionException {
         GameArea area = new GameArea();
-        IntegerPosition2D oldPos = IntegerPosition2DStub.getUniqPosition();
-        IntegerPosition2D newPos = IntegerPosition2DStub.getUniqPosition();
+        IntegerPosition2D oldPos = IntegerPosition2DStub.getRandomPosition();
+        IntegerPosition2D newPos = IntegerPosition2DStub.getRandomPosition();
         ObjectInArea obj = new ObjectInAreaStub();
         area.set(newPos, obj);
 

@@ -8,7 +8,8 @@ public interface CheckeredArea {
     /**
      * @param pos
      * @return object at this pos
-     * @throws PositionException if pos is empty or can't exist in Area
+     * @throws EmptyPositionException if pos is empty;
+     * @throws PositionException      if pos can't exist in Area.
      */
     ObjectInArea get(IntegerPosition2D pos) throws PositionException;
 

@@ -1,6 +1,7 @@
 package TheBadParodyToGame.ObjectsInArea;
 
 import TheBadParodyToGame.area.CheckeredArea;
+import TheBadParodyToGame.area.position.BusyPositionException;
 import TheBadParodyToGame.area.position.GameIntegerPosition2D;
 import TheBadParodyToGame.area.position.IntegerPosition2D;
 import TheBadParodyToGame.area.position.PositionException;
@@ -11,11 +12,11 @@ public abstract class ObjectManager {
     private final ObjectInArea object;
 
     public ObjectManager(IntegerPosition2D pos, CheckeredArea area, ObjectInArea obj) throws PositionException {
-        checkObjectAvailability();
-
         this.area = area;
         currentPosition = pos;
         object = obj;
+
+        checkObjectAvailability();
     }
 
     protected void moveObjectUp() throws PositionException {
@@ -91,10 +92,17 @@ public abstract class ObjectManager {
     }
 
     protected void moveObjectToPosition(IntegerPosition2D newPos) throws PositionException {
+        checkObjectAvailability();
+
         CheckeredArea area = getArea();
         IntegerPosition2D oldPos = getCurrentPosition();
 
-        area.relocate(oldPos, newPos);
+        try {
+            area.relocate(oldPos, newPos);
+        } catch (BusyPositionException e) {
+            throw new CannotMoveObjectException(newPos, getObject());
+        }
+
         setCurrentPosition(newPos);
     }
 
