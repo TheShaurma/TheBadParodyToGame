@@ -6,6 +6,7 @@ import TheBadParodyToGame.area.position.GameIntegerPosition2D;
 import TheBadParodyToGame.area.position.IntegerPosition2D;
 import TheBadParodyToGame.area.position.PositionException;
 
+// TODO: write documentation fo ObjectManager
 public abstract class ObjectManager {
     private IntegerPosition2D currentPosition;
     private final CheckeredArea area;
