@@ -7,7 +7,7 @@ public abstract class PositionException extends Exception {
         this.position = position;
     }
 
-    public IntegerPosition2D getPosition() {
+    public final IntegerPosition2D getPosition() {
         return position;
     }
 

@@ -16,7 +16,7 @@ public class LostObjectException extends PositionException {
         return "Manager lost its object in position:" + getPosition() + ".";
     }
 
-    public ObjectInArea getObject() {
+    public final ObjectInArea getObject() {
         return this.object;
     }
 }
