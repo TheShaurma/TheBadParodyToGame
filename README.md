@@ -1,5 +1,7 @@
 # A Java Project
 
+## !!! structure.uxf isn't actual for now !!!
+
 ## Busy serialVersionUID values:
 * 1L - GameArea.java, class GameArea;
 * 2L - GameArea.java, class AreaItself;
