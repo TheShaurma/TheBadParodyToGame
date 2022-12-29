@@ -9,6 +9,7 @@ import TheBadParodyToGame.ObjectsInArea.player.PlayerDiedException;
 import TheBadParodyToGame.ObjectsInArea.player.PlayerManager;
 import TheBadParodyToGame.area.CheckeredArea;
 import TheBadParodyToGame.area.position.GameIntegerPosition2D;
+import TheBadParodyToGame.area.position.IntegerPosition2D;
 import TheBadParodyToGame.area.position.PositionException;
 import TheBadParodyToGame.rooms.CheckeredAreaReader;
 import TheBadParodyToGame.rooms.CheckeredAreaSerializer;
@@ -34,27 +35,7 @@ public class Main {
 
             input = in.next();
             try {
-                if (input.equals("w") ||
-                        input.equals("W")) {
-                    playerManager.movePlayerUp();
-
-                } else if (input.equals("a") ||
-                        input.equals("A")) {
-                    playerManager.movePlayerLeft();
-
-                } else if (input.equals("s") ||
-                        input.equals("S")) {
-                    playerManager.movePlayerDown();
-
-                } else if (input.equals("d") ||
-                        input.equals("D")) {
-                    playerManager.movePlayerRight();
-
-                } else if (input.equals("q") ||
-                        input.equals("Q")) {
-                    // quit
-                    run = false;
-                }
+                playerManager.moveByDirections(input);
             } catch (PlayerDiedException e) {
                 System.out.println("Game Over!");
                 run = false;
@@ -70,11 +51,14 @@ public class Main {
         visualizer = new Visualizer(new GameIntegerPosition2D(0, 0),
                 new GameIntegerPosition2D(30, 30), area);
         HashMap<Class<?>, String> consoleVisualMap = visualizer.getConsoleVisualMap();
-        consoleVisualMap.put(new Player().getClass(), "P");
-        consoleVisualMap.put(new Stone().getClass(), "s");
-        consoleVisualMap.put(new GameFire().getClass(), "f");
+        consoleVisualMap.put(Player.class, "P");
+        consoleVisualMap.put(Stone.class, "s");
+        consoleVisualMap.put(GameFire.class, "f");
 
-        playerManager = new PlayerManager(area, new Player(), new GameIntegerPosition2D(1, 1));
+        IntegerPosition2D startPos = new GameIntegerPosition2D(1, 1);
+        Player player = new Player();
+        area.place(startPos, player);
+        playerManager = new PlayerManager(startPos, area, player);
 
         in = new Scanner(System.in);
         run = true;

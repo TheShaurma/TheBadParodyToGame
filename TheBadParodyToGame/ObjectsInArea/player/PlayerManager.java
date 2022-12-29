@@ -1,67 +1,56 @@
 package TheBadParodyToGame.ObjectsInArea.player;
 
-import TheBadParodyToGame.ObjectsInArea.fire.GameFire;
+import TheBadParodyToGame.ObjectsInArea.ObjectInArea;
+import TheBadParodyToGame.ObjectsInArea.ObjectManager;
+import TheBadParodyToGame.ObjectsInArea.fire.Fire;
 import TheBadParodyToGame.area.CheckeredArea;
-import TheBadParodyToGame.area.position.BusyPositionException;
-import TheBadParodyToGame.area.position.GameIntegerPosition2D;
 import TheBadParodyToGame.area.position.IntegerPosition2D;
 import TheBadParodyToGame.area.position.PositionException;
 
-public class PlayerManager {
-    private CheckeredArea area;
-    private IntegerPosition2D playerPosition;
+public class PlayerManager extends ObjectManager {
 
-    private final static Class<?> fireClass = new GameFire().getClass();
-
-    public PlayerManager(CheckeredArea area, Player player, IntegerPosition2D startPlayerPosition)
-            throws PositionException {
-        area.place(startPlayerPosition, player);
-        this.area = area;
-        playerPosition = startPlayerPosition;
+    public PlayerManager(IntegerPosition2D pos, CheckeredArea area, ObjectInArea obj) throws PositionException {
+        super(pos, area, obj);
     }
 
-    // TODO: move methods should be private in future
-    public void movePlayerUp() throws PositionException, PlayerDiedException {
-        int newX = playerPosition.getX();
-        int newY = playerPosition.getY() + 1;
-        IntegerPosition2D newPosition = new GameIntegerPosition2D(newX, newY);
+    /**
+     * Takes string and iterate it.
+     * u or U — move player up;
+     * d ot D — move player down;
+     * l or L — move player left;
+     * r or R — move player right;
+     * 
+     * @param directions
+     * @throws PositionException if moving has problems.
+     */
+    public void moveByDirections(String directions) throws PositionException {
+        for (int i = 0; i < directions.length(); i++) {
+            char d = directions.charAt(i);
 
-        movePlayerToPosition(newPosition);
-    }
-
-    public void movePlayerDown() throws PositionException, PlayerDiedException {
-        int newX = playerPosition.getX();
-        int newY = playerPosition.getY() - 1;
-        IntegerPosition2D newPosition = new GameIntegerPosition2D(newX, newY);
-
-        movePlayerToPosition(newPosition);
-    }
-
-    public void movePlayerRight() throws PositionException, PlayerDiedException {
-        int newX = playerPosition.getX() + 1;
-        int newY = playerPosition.getY();
-        IntegerPosition2D newPosition = new GameIntegerPosition2D(newX, newY);
-
-        movePlayerToPosition(newPosition);
-    }
-
-    public void movePlayerLeft() throws PositionException, PlayerDiedException {
-        int newX = playerPosition.getX() - 1;
-        int newY = playerPosition.getY();
-        IntegerPosition2D newPosition = new GameIntegerPosition2D(newX, newY);
-
-        movePlayerToPosition(newPosition);
-    }
-
-    private void movePlayerToPosition(IntegerPosition2D newPos) throws PositionException, PlayerDiedException {
-        try {
-            area.relocate(playerPosition, newPos);
-            playerPosition = newPos;
-        } catch (BusyPositionException e) {
-            if (area.get(newPos).getClass() == fireClass) {
-                area.remove(playerPosition);
-                throw new PlayerDiedException();
+            if (d == 'u' || d == 'U') {
+                moveObjectUp();
+            } else if (d == 'd' || d == 'D') {
+                moveObjectDown();
+            } else if (d == 'l' || d == 'L') {
+                moveObjectLeft();
+            } else if (d == 'r' || d == 'R') {
+                moveObjectRight();
             }
         }
+    }
+
+    /**
+     * 
+     */
+    @Override
+    protected void moveObjectToPosition(IntegerPosition2D newPos) throws PositionException {
+        CheckeredArea area = getArea();
+
+        if (area.positionIsBusy(newPos) &&
+                area.get(newPos).getClass() == Fire.class) {
+            throw new PlayerDiedException(newPos);
+        }
+
+        super.moveObjectToPosition(newPos);
     }
 }

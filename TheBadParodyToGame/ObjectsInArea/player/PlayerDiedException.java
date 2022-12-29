@@ -1,8 +1,15 @@
 package TheBadParodyToGame.ObjectsInArea.player;
 
-public class PlayerDiedException extends Exception {
+import TheBadParodyToGame.area.position.IntegerPosition2D;
+import TheBadParodyToGame.area.position.PositionException;
+
+public class PlayerDiedException extends PositionException {
+    public PlayerDiedException(IntegerPosition2D position) {
+        super(position);
+    }
+
     @Override
     public String toString() {
-        return "Player died";
+        return "Player died at position: " + getPosition();
     }
 }
