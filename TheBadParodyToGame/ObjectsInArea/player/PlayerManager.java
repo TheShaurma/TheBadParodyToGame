@@ -1,5 +1,7 @@
 package TheBadParodyToGame.ObjectsInArea.player;
 
+import org.junit.jupiter.params.shadow.com.univocity.parsers.common.RetryableErrorHandler;
+
 import TheBadParodyToGame.ObjectsInArea.ObjectInArea;
 import TheBadParodyToGame.ObjectsInArea.ObjectManager;
 import TheBadParodyToGame.ObjectsInArea.fire.Fire;
@@ -15,10 +17,10 @@ public class PlayerManager extends ObjectManager {
 
     /**
      * Takes string and iterate it.
-     * u or U — move player up;
-     * d ot D — move player down;
-     * l or L — move player left;
-     * r or R — move player right;
+     * w or W — move player up;
+     * s ot S — move player down;
+     * a or A — move player left;
+     * d or D — move player right;
      * 
      * @param directions
      * @throws PositionException if moving has problems.
@@ -27,13 +29,13 @@ public class PlayerManager extends ObjectManager {
         for (int i = 0; i < directions.length(); i++) {
             char d = directions.charAt(i);
 
-            if (d == 'u' || d == 'U') {
+            if (d == 'w' || d == 'W') {
                 moveObjectUp();
-            } else if (d == 'd' || d == 'D') {
+            } else if (d == 's' || d == 'S') {
                 moveObjectDown();
-            } else if (d == 'l' || d == 'L') {
+            } else if (d == 'a' || d == 'A') {
                 moveObjectLeft();
-            } else if (d == 'r' || d == 'R') {
+            } else if (d == 'd' || d == 'D') {
                 moveObjectRight();
             }
         }
@@ -46,9 +48,12 @@ public class PlayerManager extends ObjectManager {
     protected void moveObjectToPosition(IntegerPosition2D newPos) throws PositionException {
         CheckeredArea area = getArea();
 
-        if (area.positionIsBusy(newPos) &&
-                area.get(newPos).getClass() == Fire.class) {
-            throw new PlayerDiedException(newPos);
+        if (area.positionIsBusy(newPos)) {
+            if (area.get(newPos).getClass() == Fire.class) {
+                throw new PlayerDiedException(newPos);
+            } else {
+                return;
+            }
         }
 
         super.moveObjectToPosition(newPos);

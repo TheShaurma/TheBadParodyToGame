@@ -34,6 +34,11 @@ public class Main {
             System.out.print("Use WASD to move and Q to quit:");
 
             input = in.next();
+
+            if (input.equals("q") || input.equals("Q")) {
+                run = false;
+            }
+
             try {
                 playerManager.moveByDirections(input);
             } catch (PlayerDiedException e) {
@@ -46,7 +51,7 @@ public class Main {
     }
 
     private static void initVariables() throws PositionException, IOException, UnknownSymbolException {
-        area = CheckeredAreaReader.readArea("game\\rooms\\StartLevel.txt");
+        area = CheckeredAreaReader.readArea("TheBadParodyToGame\\rooms\\StartLevel.txt");
 
         visualizer = new Visualizer(new GameIntegerPosition2D(0, 0),
                 new GameIntegerPosition2D(30, 30), area);
