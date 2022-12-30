@@ -1,7 +1,5 @@
 package TheBadParodyToGame.ObjectsInArea.player;
 
-import org.junit.jupiter.params.shadow.com.univocity.parsers.common.RetryableErrorHandler;
-
 import TheBadParodyToGame.ObjectsInArea.ObjectInArea;
 import TheBadParodyToGame.ObjectsInArea.ObjectManager;
 import TheBadParodyToGame.ObjectsInArea.fire.Fire;
@@ -42,7 +40,16 @@ public class PlayerManager extends ObjectManager {
     }
 
     /**
+     * Move object to assigned position in checkered area.
      * 
+     * If in {@code newPos} has a place a Fire, player will die (PlayerDiedException
+     * will be thrawn).
+     * 
+     * @param pos
+     * @throws LostObjectException       if obj isn't in pos;
+     * @throws CannotMoveObjectException if position where object should be after
+     *                                   moving is busy;
+     * @throws PlayerDiedException       if player died;
      */
     @Override
     protected void moveObjectToPosition(IntegerPosition2D newPos) throws PositionException {
