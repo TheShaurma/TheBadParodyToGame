@@ -11,6 +11,7 @@ import TheBadParodyToGame.area.position.PositionException;
  * ObjectManager is abstract class with logic to move one object in
  * CheckeredArea.
  */
+@Deprecated
 public abstract class ObjectManager {
     private IntegerPosition2D currentPosition;
     private final CheckeredArea area;

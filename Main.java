@@ -24,8 +24,6 @@ public class Main {
     private static boolean run;
 
     public static void main(String[] args) throws PositionException, IOException, UnknownSymbolException {
-        System.out.println("Hello World!");
-
         initVariables();
 
         String input;
@@ -54,7 +52,7 @@ public class Main {
         area = CheckeredAreaReader.readArea("TheBadParodyToGame\\rooms\\StartLevel.txt");
 
         visualizer = new Visualizer(new GameIntegerPosition2D(0, 0),
-                new GameIntegerPosition2D(30, 30), area);
+                new GameIntegerPosition2D(50, 30), area);
         HashMap<Class<?>, String> consoleVisualMap = visualizer.getConsoleVisualMap();
         consoleVisualMap.put(Player.class, "P");
         consoleVisualMap.put(Stone.class, "s");

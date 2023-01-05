@@ -7,7 +7,7 @@ import TheBadParodyToGame.area.position.IntegerPosition2D;
  * CannotMoveObjectException should be thrown were object manager can't move
  * object.
  */
-public class CannotMoveObjectException extends ManageObjectException {
+public class CannotMoveObjectException extends ObjectException {
     /**
      * @param position where manager can't move object;
      * @param object   which can't be moved;

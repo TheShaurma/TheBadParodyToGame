@@ -1,9 +1,12 @@
 package TheBadParodyToGame.area;
 
 import TheBadParodyToGame.ObjectsInArea.ObjectInArea;
+import TheBadParodyToGame.area.position.EmptyPositionException;
 import TheBadParodyToGame.area.position.IntegerPosition2D;
 import TheBadParodyToGame.area.position.PositionException;
 
+// TODO: PositionException is abstraction it can't be thrown
+// TODO: replase PositionException to PositionCannotExistException in javadocs
 public interface CheckeredArea {
     /**
      * @param pos
@@ -27,10 +30,12 @@ public interface CheckeredArea {
      * 
      * @param pos
      * @param obj
-     * @throws EmptyPositionException if pos is empty;
-     * @throws PositionException      if pos can't exist in Area.
+     * @throws BusyPositionException if pos is busy;
+     * @throws PositionException     if pos can't exist in Area.
      */
     void place(IntegerPosition2D pos, ObjectInArea obj) throws PositionException;
+
+    // TODO: create tryPlace(pos, obj): place, if pos is busy nothing will happen
 
     /**
      * Replace old object at pos to new assigned obj.
@@ -41,6 +46,7 @@ public interface CheckeredArea {
      * @throws PositionException      if pos can't exist in Area.
      */
     void replace(IntegerPosition2D pos, ObjectInArea obj) throws PositionException;
+    // TODO: create tryReplace(pos, obj): if pos is empty, nothing will happen
 
     /**
      * Removes object from assigned pos.
@@ -50,6 +56,7 @@ public interface CheckeredArea {
      * @throws PositionException      if pos can't exist in Area.
      */
     void remove(IntegerPosition2D pos) throws PositionException;
+    // TODO: create tryRemove(pos): if pos is empty, nothing will happen
 
     /**
      * Relocate object from oldPos to newPos.
@@ -63,6 +70,9 @@ public interface CheckeredArea {
      * @throws PositionException      if oldPos or newPos can't exist in Area.
      */
     void relocate(IntegerPosition2D oldPos, IntegerPosition2D newPos) throws PositionException;
+
+    // TODO: create tryRelocate(oldPos, newPos): if oldPos is empty or/end newPos is
+    // busy, nothing will happen
 
     /**
      * @param pos

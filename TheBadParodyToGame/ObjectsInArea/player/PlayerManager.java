@@ -7,6 +7,7 @@ import TheBadParodyToGame.area.CheckeredArea;
 import TheBadParodyToGame.area.position.IntegerPosition2D;
 import TheBadParodyToGame.area.position.PositionException;
 
+@Deprecated
 public class PlayerManager extends ObjectManager {
 
     public PlayerManager(IntegerPosition2D pos, CheckeredArea area, ObjectInArea obj) throws PositionException {
@@ -55,6 +56,7 @@ public class PlayerManager extends ObjectManager {
     protected void moveObjectToPosition(IntegerPosition2D newPos) throws PositionException {
         CheckeredArea area = getArea();
 
+        // FIXME: player can't die
         if (area.positionIsBusy(newPos)) {
             if (area.get(newPos).getClass() == Fire.class) {
                 throw new PlayerDiedException(newPos);

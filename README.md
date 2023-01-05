@@ -1,7 +1,5 @@
 # A Java Project
 
-## !!! structure.uxf isn't actual for now !!!
-
 ## Busy serialVersionUID values:
 * 1L - GameArea.java, class GameArea;
 * 2L - GameArea.java, class AreaItself;
@@ -10,4 +8,7 @@
 * 6L - Stone.java, class Stone;
 
 ## Responsibilities:
+* Java 17;
 * JUnit 5;
+
+structure.uxf doesn't contains some classes.
