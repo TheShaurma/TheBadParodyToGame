@@ -6,7 +6,7 @@ import TheBadParodyToGame.area.position.IntegerPosition2D;
 import TheBadParodyToGame.area.position.PositionException;
 
 // TODO: PositionException is abstraction it can't be thrown
-// TODO: replase PositionException to PositionCannotExistException in javadocs
+// TODO: replace PositionException to PositionCannotExistException in javadocs
 public interface CheckeredArea {
     /**
      * @param pos

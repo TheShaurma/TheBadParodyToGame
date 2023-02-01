@@ -7,11 +7,11 @@ public class IntegerPosition2DStub implements IntegerPosition2D {
     private int y;
 
     public IntegerPosition2DStub() {
-        x = -1;
-        y = -1;
+        x = getX() + (int) (-1000 + Math.random() * 2000);
+        y = getY() + (int) (-1000 + Math.random() * 2000);
     }
 
-    private IntegerPosition2DStub(int x, int y) {
+    public IntegerPosition2DStub(int x, int y) {
         this.x = x;
         this.y = y;
     }
@@ -32,6 +32,21 @@ public class IntegerPosition2DStub implements IntegerPosition2D {
         int newY = getY() + (int) (-1000 + Math.random() * 2000);
 
         return new IntegerPosition2DStub(newX, newY);
+    }
+
+    /**
+     * @param pos
+     * @return new position contrasts current and assigned {@code pos}
+     */
+    public IntegerPosition2DStub getOther(IntegerPosition2D pos) {
+        IntegerPosition2DStub newPos;
+        while (true) {
+            newPos = getOther();
+            if (getX() != newPos.getX() &&
+                    getY() != newPos.getY()) {
+                return newPos;
+            }
+        }
     }
 
     public static IntegerPosition2DStub getRandomPosition() {

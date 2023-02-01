@@ -3,7 +3,7 @@ package TheBadParodyToGame.ObjectsInArea;
 import TheBadParodyToGame.area.position.IntegerPosition2D;
 import TheBadParodyToGame.area.position.PositionException;
 
-// FIXME: showldn't extend from PositionException
+// FIXME: shouldn't extends from PositionException
 public abstract class ObjectException extends PositionException {
     private ObjectInArea object;
 

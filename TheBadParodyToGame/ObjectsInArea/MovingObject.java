@@ -323,6 +323,8 @@ public abstract class MovingObject implements ObjectInArea {
         } catch (BusyPositionException e) {
             throw new CannotMoveObjectException(newPos, this);
         }
+
+        setCurrentPosition(newPos);
     }
 
     /**
@@ -352,7 +354,7 @@ public abstract class MovingObject implements ObjectInArea {
         CheckeredArea area = getArea();
         IntegerPosition2D pos = getCurrentPosition();
 
-        if (area.get(pos) != this) {
+        if (area.positionIsEmpty(pos) || area.get(pos) != this) {
             throw new LostObjectException(pos, this);
         }
     }
