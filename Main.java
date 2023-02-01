@@ -6,7 +6,6 @@ import TheBadParodyToGame.ObjectsInArea.Stone;
 import TheBadParodyToGame.ObjectsInArea.fire.GameFire;
 import TheBadParodyToGame.ObjectsInArea.player.Player;
 import TheBadParodyToGame.ObjectsInArea.player.PlayerDiedException;
-import TheBadParodyToGame.ObjectsInArea.player.PlayerManager;
 import TheBadParodyToGame.area.CheckeredArea;
 import TheBadParodyToGame.area.position.GameIntegerPosition2D;
 import TheBadParodyToGame.area.position.IntegerPosition2D;
@@ -19,7 +18,7 @@ import TheBadParodyToGame.visualizer.Visualizer;
 public class Main {
     private static CheckeredArea area;
     private static Visualizer visualizer;
-    private static PlayerManager playerManager;
+    private static Player player;
     private static Scanner in;
     private static boolean run;
 
@@ -38,7 +37,7 @@ public class Main {
             }
 
             try {
-                playerManager.moveByDirections(input);
+                player.moveByDirections(input);
             } catch (PlayerDiedException e) {
                 System.out.println("Game Over!");
                 run = false;
@@ -59,9 +58,7 @@ public class Main {
         consoleVisualMap.put(GameFire.class, "f");
 
         IntegerPosition2D startPos = new GameIntegerPosition2D(1, 1);
-        Player player = new Player();
-        area.place(startPos, player);
-        playerManager = new PlayerManager(startPos, area, player);
+        player = new Player("Valera", area, startPos);
 
         in = new Scanner(System.in);
         run = true;

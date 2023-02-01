@@ -6,6 +6,7 @@
 * 4L - GameFire.java, class GameFire;
 * 5L - Player.java, class Player;
 * 6L - Stone.java, class Stone;
+* 7L — GameIntegerPosition2D.java, class GameIntegerPosition2D;
 
 ## Responsibilities:
 * Java 17;

@@ -1918,6 +1918,8 @@ public class MovingObjectTest {
         });
     }
 
+    // TODO: move object not once
+
     private static Random random = new Random();
 
     public int getRandomPositiveInt() {

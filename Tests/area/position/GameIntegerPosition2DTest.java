@@ -9,6 +9,8 @@ import TheBadParodyToGame.area.position.GameIntegerPosition2D;;
  * This is test for IntegerPosition2DTest.
  */
 public class GameIntegerPosition2DTest {
+    private static final long serialVersionUID = 7L;
+
     @Test
     public void getX_call_10Returned() {
         GameIntegerPosition2D pos = new GameIntegerPosition2D(10, -10);

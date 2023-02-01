@@ -8,7 +8,7 @@ import TheBadParodyToGame.area.position.PositionException;
 
 public abstract class MovingObject implements ObjectInArea {
     private final CheckeredArea area;
-    private IntegerPosition2D currentPosition;
+    private IntegerPosition2D startPos;
 
     /**
      * Call {@code area.place(pos, this)} after creating.
@@ -20,7 +20,7 @@ public abstract class MovingObject implements ObjectInArea {
      */
     public MovingObject(CheckeredArea area, IntegerPosition2D pos) throws PositionException {
         this.area = area;
-        currentPosition = pos;
+        startPos = pos;
 
         area.place(pos, this);
     }
@@ -338,7 +338,7 @@ public abstract class MovingObject implements ObjectInArea {
      * @return current position of object.
      */
     protected final IntegerPosition2D getCurrentPosition() {
-        return currentPosition;
+        return startPos;
     }
 
     /**
@@ -347,7 +347,7 @@ public abstract class MovingObject implements ObjectInArea {
      * @param pos
      */
     protected final void setCurrentPosition(IntegerPosition2D pos) {
-        currentPosition = pos;
+        startPos = pos;
     }
 
     private void checkForBeingInCurrentPosition() throws PositionException {
