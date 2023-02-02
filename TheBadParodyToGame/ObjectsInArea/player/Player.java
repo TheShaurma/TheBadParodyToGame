@@ -3,7 +3,7 @@ package TheBadParodyToGame.ObjectsInArea.player;
 import TheBadParodyToGame.ObjectsInArea.CannotMoveObjectException;
 import TheBadParodyToGame.ObjectsInArea.MovingObject;
 import TheBadParodyToGame.ObjectsInArea.ObjectInArea;
-import TheBadParodyToGame.ObjectsInArea.fire.DangerObject;
+import TheBadParodyToGame.ObjectsInArea.fire.PassableObject;
 import TheBadParodyToGame.area.CheckeredArea;
 import TheBadParodyToGame.area.position.IntegerPosition2D;
 import TheBadParodyToGame.area.position.PositionException;
@@ -120,7 +120,7 @@ public class Player extends MovingObject {
             super.moveToPosition(newPos);
         } catch (CannotMoveObjectException e) {
             ObjectInArea obj = getArea().get(e.getPosition());
-            if (obj instanceof DangerObject) {
+            if (obj instanceof PassableObject) {
                 harm(obj.getDamage());
                 checkAlive(); // if player died, code execution will stop here
 

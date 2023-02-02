@@ -3,7 +3,7 @@ package TheBadParodyToGame.ObjectsInArea.fire;
 /**
  * serialVersionUID = 4L.
  */
-public class GameFire implements DangerObject {
+public class GameFire implements PassableObject {
     private static final long serialVersionUID = 4L;
 
     @Override
