@@ -8,7 +8,6 @@ import TheBadParodyToGame.area.CheckeredArea;
 import TheBadParodyToGame.area.position.IntegerPosition2D;
 import TheBadParodyToGame.area.position.PositionException;
 
-// TODO: create HP barr
 /**
  * Player should be moved by user.
  *
