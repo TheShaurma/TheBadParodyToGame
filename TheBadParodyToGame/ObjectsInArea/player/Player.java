@@ -2,13 +2,20 @@ package TheBadParodyToGame.ObjectsInArea.player;
 
 import TheBadParodyToGame.ObjectsInArea.CannotMoveObjectException;
 import TheBadParodyToGame.ObjectsInArea.MovingObject;
-import TheBadParodyToGame.ObjectsInArea.fire.Fire;
+import TheBadParodyToGame.ObjectsInArea.ObjectInArea;
+import TheBadParodyToGame.ObjectsInArea.fire.DangerObject;
 import TheBadParodyToGame.area.CheckeredArea;
 import TheBadParodyToGame.area.position.IntegerPosition2D;
 import TheBadParodyToGame.area.position.PositionException;
 
 // TODO: create HP barr
+/**
+ * Player should be moved by user.
+ *
+ * <div>"Player died" = "{@code PlayerDiedException} thrown".
+ */
 public class Player extends MovingObject {
+    private int heatPoints = 100;
     private String name;
     private static final long serialVersionUID = 5L;
 
@@ -18,10 +25,66 @@ public class Player extends MovingObject {
         name = "NoName";
     }
 
+    @Override
+    public String toString() {
+        String result = "Player(\"" + name + "\", [";
+
+        for (int i = getHP(); i > 0; i -= 10) {
+            result += '@';
+        }
+        for (int i = 100 - getHP(); i > 0; i -= 10) {
+            result += ' ';
+        }
+
+        return result + "])";
+    }
+
     public Player(String name, CheckeredArea area, IntegerPosition2D startPos) throws PositionException {
         super(area, startPos);
 
         this.name = name;
+    }
+
+    /**
+     * @return HP value of the Player.
+     */
+    public int getHP() {
+        return heatPoints;
+    }
+
+    /**
+     * Sets HP value of the Player to {@code n}
+     * 
+     * @param n
+     * @throws PlayerDiedException if {@code n <= 0}.
+     */
+    public void setHP(int n) throws PlayerDiedException {
+        heatPoints = n;
+        checkAlive();
+    }
+
+    /**
+     * Heals the player to n.
+     * Player can die by healing if {@code n < 0 and |n| >= HP} (|...| — absolute).
+     * 
+     * @param n
+     * @throws PlayerDiedException if {@code n < 0 and |n| >= HP}.
+     */
+    public void heal(int n) throws PlayerDiedException {
+        heatPoints += n;
+        checkAlive();
+    }
+
+    /**
+     * Harm the player to n.
+     * Player can die if {@code n >= HP}.
+     * 
+     * @param n
+     * @throws PlayerDiedException if {@code n >= HP}.
+     */
+    public void harm(int n) throws PlayerDiedException {
+        heatPoints -= n;
+        checkAlive();
     }
 
     /**
@@ -53,17 +116,29 @@ public class Player extends MovingObject {
     @Override
     protected void moveToPosition(IntegerPosition2D newPos) throws PositionException {
         CheckeredArea area = getArea();
-        if (area.positionIsBusy(newPos) && area.get(newPos) instanceof Fire) {
-            throw new PlayerDiedException(newPos);
-        }
+
         try {
             super.moveToPosition(newPos);
         } catch (CannotMoveObjectException e) {
+            ObjectInArea obj = getArea().get(e.getPosition());
+            if (obj instanceof DangerObject) {
+                harm(obj.getDamage());
+                checkAlive(); // if player died, code execution will stop here
+
+                area.remove(newPos);
+                moveToPosition(newPos);
+            }
         }
     }
 
-    @Override
-    public String toString() {
-        return "Player \"" + name + "\"";
+    /**
+     * Checks if player alive.
+     * 
+     * @throws PlayerDiedException if {@code n <= 0}.
+     */
+    public void checkAlive() throws PlayerDiedException {
+        if (getHP() <= 0) {
+            throw new PlayerDiedException(getCurrentPosition(), this);
+        }
     }
 }

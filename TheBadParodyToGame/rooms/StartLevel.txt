@@ -1,22 +1,10 @@
 sssssssssssssssssssssssssssssssssssssssssssssssssss
-s                                                 s
-s                                                 s
-s                                                 s
-s                                                 s
-s                                                 s
-s                                                 s
-s              f                        f         s
-s              f                        f         s
-s                                       f         s
-s          f  f                         f         s
-s                                       f         s
-s                                       f         s
-s                                       f         s
-s                                                 s
-s                                                 s
-s                                                 s
-s                                                 s
-s          fffffffffffffffffffffff                s
+s    sfffffffff  s      fffffffffffffffffffffffff s
+s    sfffffffff  s                                s
+s    sfffffffff  s                                s
+s    sfffffffff  s                                s
+s    sfffffffff  s      fffffffffffffffffffffffff s
+sffff            s                                s
 s                                                 s
 s                                                 s
 s                                                 s
@@ -28,4 +16,16 @@ s                                                 s
 s                                                 s
 s                                                 s
 s                                                 s
+s                                                 s
+s                                                 s
+s                                                 s
+s                                                 s
+s                                                 s
+s                                                 s
+s                                                 s
+sffffsssssssssss                                  s
+s    sfffffffff  s                                s
+s    sfffffffff  s                                s
+s    sfffffffff  s                                s
+s    sfffffffff  s      fffffffffffffffffffffffff s
 sssssssssssssssssssssssssssssssssssssssssssssssssss

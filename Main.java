@@ -26,6 +26,7 @@ public class Main {
 
         String input;
         while (run) {
+            System.out.println(player);
             visualizer.showConsole();
             System.out.print("Use WASD to move and Q to quit:");
 

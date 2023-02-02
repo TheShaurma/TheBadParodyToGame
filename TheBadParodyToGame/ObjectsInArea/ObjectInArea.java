@@ -7,4 +7,7 @@ import java.io.Serializable;
  * Areas can contain only Object of class implements this interface.
  */
 public interface ObjectInArea extends Serializable {
+    default public int getDamage() {
+        return 0;
+    }
 }

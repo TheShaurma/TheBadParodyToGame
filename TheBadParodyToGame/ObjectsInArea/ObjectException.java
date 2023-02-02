@@ -7,6 +7,10 @@ import TheBadParodyToGame.area.position.PositionException;
 public abstract class ObjectException extends PositionException {
     private ObjectInArea object;
 
+    /**
+     * @param position where problem appeared;
+     * @param object   which have the problem;
+     */
     public ObjectException(IntegerPosition2D position, ObjectInArea object) {
         super(position);
         this.object = object;
