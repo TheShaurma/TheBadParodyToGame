@@ -1,5 +1,6 @@
 package TheBadParodyToGame.ObjectsInArea.player;
 
+import TheBadParodyToGame.ObjectsInArea.CannotMoveObjectException;
 import TheBadParodyToGame.ObjectsInArea.MovingObject;
 import TheBadParodyToGame.ObjectsInArea.fire.Fire;
 import TheBadParodyToGame.area.CheckeredArea;
@@ -55,8 +56,10 @@ public class Player extends MovingObject {
         if (area.positionIsBusy(newPos) && area.get(newPos) instanceof Fire) {
             throw new PlayerDiedException(newPos);
         }
-
-        super.moveToPosition(newPos);
+        try {
+            super.moveToPosition(newPos);
+        } catch (CannotMoveObjectException e) {
+        }
     }
 
     @Override
