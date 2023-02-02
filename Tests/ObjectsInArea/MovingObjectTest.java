@@ -3,7 +3,6 @@ package Tests.ObjectsInArea;
 import static org.junit.Assert.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.lang.invoke.LambdaMetafactory;
 import java.util.Random;
 
 import org.junit.Test;
@@ -1916,6 +1915,61 @@ public class MovingObjectTest {
         assertThrows(LostObjectException.class, () -> {
             obj.moveToPosition(pos.getOther());
         });
+    }
+
+    @Test
+    public void allMoveMethods_moveALotOfTimes_objectMoved() throws PositionException {
+        CheckeredArea area = new CheckeredAreaStub();
+        int inUp = getRandomPositiveInt();
+        int inDown = getRandomPositiveInt();
+        int inLeft = getRandomPositiveInt();
+        int inRight = getRandomPositiveInt();
+        int inUpLeft = getRandomPositiveInt();
+        int inUpRight = getRandomPositiveInt();
+        int inDownLeft = getRandomPositiveInt();
+        int inDownRight = getRandomPositiveInt();
+        int inUp1 = getRandomPositiveInt();
+        int inLeft1 = getRandomPositiveInt();
+        int inUp2 = getRandomPositiveInt();
+        int inRight2 = getRandomPositiveInt();
+        int intDown3 = getRandomPositiveInt();
+        int inLeft3 = getRandomPositiveInt();
+        int intDown4 = getRandomPositiveInt();
+        int inRight4 = getRandomPositiveInt();
+        IntegerPosition2DStub startPos = new IntegerPosition2DStub();
+        IntegerPosition2D middlePos = startPos.getOther();
+        IntegerPosition2D finalPos = new IntegerPosition2DStub(
+                middlePos.getX() + inRight + inRight2 + inRight4
+                        + inUpRight + inDownRight
+                        - inLeft - inLeft1 - inLeft3
+                        - inUpLeft - inDownLeft,
+                middlePos.getY() + inUp + inUp1 + inUp2
+                        + inUpLeft + inUpRight
+                        - inDown - intDown3 - intDown4
+                        - inDownLeft - inDownRight);
+        MovingObjectStub expectedObj = new MovingObjectStub(area, startPos);
+        ObjectInArea actualObj;
+
+        expectedObj.moveToPosition(middlePos);
+        expectedObj.moveUp();
+        expectedObj.moveDown();
+        expectedObj.moveLeft();
+        expectedObj.moveRight();
+        expectedObj.moveUp(inUp);
+        expectedObj.moveDown(inDown);
+        expectedObj.moveLeft(inLeft);
+        expectedObj.moveRight(inRight);
+        expectedObj.moveUpLeft(inUpLeft);
+        expectedObj.moveUpRight(inUpRight);
+        expectedObj.moveDownLeft(inDownLeft);
+        expectedObj.moveDownRight(inDownRight);
+        expectedObj.moveUpLeft(inUp1, inLeft1);
+        expectedObj.moveUpRight(inUp2, inRight2);
+        expectedObj.moveDownLeft(intDown3, inLeft3);
+        expectedObj.moveDownRight(intDown4, inRight4);
+        actualObj = area.get(finalPos);
+
+        assertEquals(expectedObj, actualObj);
     }
 
     // TODO: move object not once
