@@ -1972,8 +1972,6 @@ public class MovingObjectTest {
         assertEquals(expectedObj, actualObj);
     }
 
-    // TODO: move object not once
-
     private static Random random = new Random();
 
     public int getRandomPositiveInt() {
