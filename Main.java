@@ -11,7 +11,6 @@ import TheBadParodyToGame.area.position.GameIntegerPosition2D;
 import TheBadParodyToGame.area.position.IntegerPosition2D;
 import TheBadParodyToGame.area.position.PositionException;
 import TheBadParodyToGame.rooms.CheckeredAreaReader;
-import TheBadParodyToGame.rooms.CheckeredAreaSerializer;
 import TheBadParodyToGame.rooms.UnknownSymbolException;
 import TheBadParodyToGame.visualizer.Visualizer;
 
@@ -43,8 +42,6 @@ public class Main {
                 run = false;
             }
         }
-
-        CheckeredAreaSerializer.writeArea(area, "startArea");
     }
 
     private static void initVariables() throws PositionException, IOException, UnknownSymbolException {
