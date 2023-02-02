@@ -26,16 +26,23 @@ public class Player extends MovingObject {
 
     @Override
     public String toString() {
-        String result = "Player(\"" + name + "\", [";
+        return "Player(\"" + getName() + "\", \"" + getHPString() + "\")";
+    }
 
-        for (int i = getHP(); i > 0; i -= 10) {
+    public String getName() {
+        return name;
+    }
+
+    public String getHPString() {
+        String result = "";
+        for (int i = getHP(); i > 0; i -= 5) {
             result += '@';
         }
-        for (int i = 100 - getHP(); i > 0; i -= 10) {
-            result += ' ';
+        for (int i = 500 - getHP(); i > 0; i -= 5) {
+            result += '-';
         }
 
-        return result + "])";
+        return result;
     }
 
     public Player(String name, CheckeredArea area, IntegerPosition2D startPos) throws PositionException {

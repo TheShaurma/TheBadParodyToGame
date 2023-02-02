@@ -8,6 +8,6 @@ public class GameFire implements PassableObject {
 
     @Override
     public int getDamage() {
-        return 10;
+        return 5;
     }
 }
