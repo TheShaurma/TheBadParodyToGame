@@ -3,7 +3,8 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 import TheBadParodyToGame.ObjectsInArea.Stone;
-import TheBadParodyToGame.ObjectsInArea.fire.GameFire;
+import TheBadParodyToGame.ObjectsInArea.affectingToHP.Apple;
+import TheBadParodyToGame.ObjectsInArea.affectingToHP.Fire;
 import TheBadParodyToGame.ObjectsInArea.player.Player;
 import TheBadParodyToGame.ObjectsInArea.player.PlayerDiedException;
 import TheBadParodyToGame.area.CheckeredArea;
@@ -53,7 +54,8 @@ public class Main {
         HashMap<Class<?>, String> consoleVisualMap = visualizer.getConsoleVisualMap();
         consoleVisualMap.put(Player.class, "P");
         consoleVisualMap.put(Stone.class, "s");
-        consoleVisualMap.put(GameFire.class, "f");
+        consoleVisualMap.put(Fire.class, "f");
+        consoleVisualMap.put(Apple.class, "a");
 
         IntegerPosition2D startPos = new GameIntegerPosition2D(1, 1);
         player = new Player("Valera", area, startPos);

@@ -3,7 +3,7 @@ package TheBadParodyToGame.ObjectsInArea.player;
 import TheBadParodyToGame.ObjectsInArea.CannotMoveObjectException;
 import TheBadParodyToGame.ObjectsInArea.MovingObject;
 import TheBadParodyToGame.ObjectsInArea.ObjectInArea;
-import TheBadParodyToGame.ObjectsInArea.fire.PassableObject;
+import TheBadParodyToGame.ObjectsInArea.PassableObject;
 import TheBadParodyToGame.area.CheckeredArea;
 import TheBadParodyToGame.area.position.IntegerPosition2D;
 import TheBadParodyToGame.area.position.PositionException;
@@ -34,15 +34,44 @@ public class Player extends MovingObject {
     }
 
     public String getHPString() {
-        String result = "";
-        for (int i = getHP(); i > 0; i -= 5) {
-            result += '@';
-        }
-        for (int i = 500 - getHP(); i > 0; i -= 5) {
-            result += '-';
+        int HP = getHP();
+        if (HP < 5) {
+            return "!!!!!!!!!! - " + getHP();
         }
 
-        return result;
+        String result = "";
+        int[] line = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+
+        while (HP >= 5) {
+            for (int i = 0; (i < line.length) && HP >= 5; i++) {
+                line[i] += 1;
+                HP -= 5;
+            }
+        }
+
+        for (int i : line) {
+            if (i == 0) {
+                result += '-';
+            } else if (i < 10) {
+                result += i;
+            } else {
+                switch (i) {
+                    case 10:
+                        result += '^';
+                        break;
+                    case 11:
+                        result += '*';
+                        break;
+                    case 12:
+                        result += '#';
+                        break;
+                    default:
+                        result += '@';
+                }
+            }
+        }
+
+        return result + " - " + getHP();
     }
 
     public Player(String name, CheckeredArea area, IntegerPosition2D startPos) throws PositionException {
@@ -130,6 +159,8 @@ public class Player extends MovingObject {
             if (obj instanceof PassableObject) {
                 harm(obj.getDamage());
                 checkAlive(); // if player died, code execution will stop here
+
+                heal(obj.getHealing());
 
                 area.remove(newPos);
                 moveToPosition(newPos);

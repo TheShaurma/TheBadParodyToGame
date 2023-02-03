@@ -10,4 +10,8 @@ public interface ObjectInArea extends Serializable {
     default public int getDamage() {
         return 0;
     }
+
+    default public int getHealing() {
+        return 0;
+    }
 }

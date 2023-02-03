@@ -1,6 +1,4 @@
-package TheBadParodyToGame.ObjectsInArea.fire;
-
-import TheBadParodyToGame.ObjectsInArea.ObjectInArea;
+package TheBadParodyToGame.ObjectsInArea;
 
 /**
  * Fire is interface for Area.

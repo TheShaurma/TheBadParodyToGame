@@ -7,7 +7,8 @@ import java.util.Scanner;
 
 import TheBadParodyToGame.ObjectsInArea.ObjectInArea;
 import TheBadParodyToGame.ObjectsInArea.Stone;
-import TheBadParodyToGame.ObjectsInArea.fire.GameFire;
+import TheBadParodyToGame.ObjectsInArea.affectingToHP.Apple;
+import TheBadParodyToGame.ObjectsInArea.affectingToHP.Fire;
 import TheBadParodyToGame.area.CheckeredArea;
 import TheBadParodyToGame.area.GameArea;
 import TheBadParodyToGame.area.position.GameIntegerPosition2D;
@@ -53,7 +54,9 @@ public class CheckeredAreaReader {
         if (ch == 's') {
             return new Stone();
         } else if (ch == 'f') {
-            return new GameFire();
+            return new Fire();
+        } else if (ch == 'a') {
+            return new Apple((int) (1 + Math.random() * 9));
         }
         throw new UnknownSymbolException(ch);
     }

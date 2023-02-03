@@ -1,9 +1,9 @@
-package TheBadParodyToGame.ObjectsInArea.fire;
+package TheBadParodyToGame.ObjectsInArea.affectingToHP;
 
 /**
  * serialVersionUID = 4L.
  */
-public class GameFire implements PassableObject {
+public class Fire implements DangerObject {
     private static final long serialVersionUID = 4L;
 
     @Override
