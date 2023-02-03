@@ -1,10 +1,10 @@
 package TheBadParodyToGame.ObjectsInArea.player;
 
-import TheBadParodyToGame.ObjectsInArea.ObjectException;
+import TheBadParodyToGame.ObjectsInArea.ObjectOnPositionException;
 import TheBadParodyToGame.ObjectsInArea.ObjectInArea;
 import TheBadParodyToGame.area.position.IntegerPosition2D;
 
-public class PlayerDiedException extends ObjectException {
+public class PlayerDiedException extends ObjectOnPositionException {
     /**
      * @param position where problem appeared;
      * @param object   which have the problem;

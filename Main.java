@@ -13,11 +13,11 @@ import TheBadParodyToGame.area.position.IntegerPosition2D;
 import TheBadParodyToGame.area.position.PositionException;
 import TheBadParodyToGame.rooms.CheckeredAreaReader;
 import TheBadParodyToGame.rooms.UnknownSymbolException;
-import TheBadParodyToGame.visualizer.Visualizer;
+import TheBadParodyToGame.visualizer.SimpleVisualizer;
 
 public class Main {
     private static CheckeredArea area;
-    private static Visualizer visualizer;
+    private static SimpleVisualizer visualizer;
     private static Player player;
     private static Scanner in;
     private static boolean run;
@@ -49,8 +49,8 @@ public class Main {
     private static void initVariables() throws PositionException, IOException, UnknownSymbolException {
         area = CheckeredAreaReader.readArea("TheBadParodyToGame\\rooms\\StartLevel.txt");
 
-        visualizer = new Visualizer(new GameIntegerPosition2D(0, 0),
-                new GameIntegerPosition2D(50, 30), area);
+        visualizer = new SimpleVisualizer(new GameIntegerPosition2D(0, 0),
+                new GameIntegerPosition2D(101, 30), area);
         HashMap<Class<?>, String> consoleVisualMap = visualizer.getConsoleVisualMap();
         consoleVisualMap.put(Player.class, "P");
         consoleVisualMap.put(Stone.class, "s");

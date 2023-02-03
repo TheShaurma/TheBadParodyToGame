@@ -11,7 +11,7 @@ import TheBadParodyToGame.area.position.PositionException;
 /**
  * Visualizer
  */
-public class Visualizer {
+public class SimpleVisualizer {
     private CheckeredArea area;
 
     private int xMin;
@@ -22,7 +22,7 @@ public class Visualizer {
     private HashMap<Class<?>, Color> visualMap = new ColorMap();
     private HashMap<Class<?>, String> consoleVisualMap = new SymbolMap();
 
-    public Visualizer(IntegerPosition2D minPos, IntegerPosition2D maxPos, CheckeredArea area) {
+    public SimpleVisualizer(IntegerPosition2D minPos, IntegerPosition2D maxPos, CheckeredArea area) {
         this.area = area;
         int x1 = minPos.getX();
         int x2 = maxPos.getX();
