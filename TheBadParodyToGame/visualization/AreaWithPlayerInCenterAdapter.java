@@ -1,4 +1,4 @@
-package TheBadParodyToGame.visualizer;
+package TheBadParodyToGame.visualization;
 
 import TheBadParodyToGame.ObjectsInArea.ObjectInArea;
 import TheBadParodyToGame.ObjectsInArea.player.Player;
@@ -9,12 +9,14 @@ import TheBadParodyToGame.area.position.PositionException;
 
 /**
  * Like GameArea, but player always in [0; 0] coordinates.
+ * 
+ * Used only for visualization. That's why this class isn't in area package.
  */
-public class AreaWithPlayerInCenter implements CheckeredArea {
+public class AreaWithPlayerInCenterAdapter implements CheckeredArea {
     private CheckeredArea areaItself;
     private Player player;
 
-    public AreaWithPlayerInCenter(CheckeredArea area, Player player) {
+    public AreaWithPlayerInCenterAdapter(CheckeredArea area, Player player) {
         areaItself = area;
         this.player = player;
     }

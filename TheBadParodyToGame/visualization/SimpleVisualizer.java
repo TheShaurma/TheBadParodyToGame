@@ -1,4 +1,4 @@
-package TheBadParodyToGame.visualizer;
+package TheBadParodyToGame.visualization;
 
 import java.util.HashMap;
 

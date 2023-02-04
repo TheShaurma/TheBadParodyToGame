@@ -1,4 +1,4 @@
-package TheBadParodyToGame.visualizer;
+package TheBadParodyToGame.visualization;
 
 public class Color {
     private int r;

@@ -13,8 +13,8 @@ import TheBadParodyToGame.area.position.IntegerPosition2D;
 import TheBadParodyToGame.area.position.PositionException;
 import TheBadParodyToGame.rooms.CheckeredAreaReader;
 import TheBadParodyToGame.rooms.UnknownSymbolException;
-import TheBadParodyToGame.visualizer.AreaWithPlayerInCenter;
-import TheBadParodyToGame.visualizer.SimpleVisualizer;
+import TheBadParodyToGame.visualization.AreaWithPlayerInCenterAdapter;
+import TheBadParodyToGame.visualization.SimpleVisualizer;
 
 public class Main {
     private static CheckeredArea area;
@@ -55,7 +55,7 @@ public class Main {
 
         visualizer = new SimpleVisualizer(new GameIntegerPosition2D(-20, -10),
                 new GameIntegerPosition2D(20, 10),
-                new AreaWithPlayerInCenter(area, player));
+                new AreaWithPlayerInCenterAdapter(area, player));
         HashMap<Class<?>, String> consoleVisualMap = visualizer.getConsoleVisualMap();
         consoleVisualMap.put(Player.class, "P");
         consoleVisualMap.put(Stone.class, "s");
