@@ -81,6 +81,16 @@ public class Player extends MovingObject {
     }
 
     /**
+     * This method exist for AreaWithPlayerInCenter.
+     * It uses this method to convert positions.
+     * 
+     * @return current {@code pos}
+     */
+    public IntegerPosition2D getPos() {
+        return getCurrentPosition();
+    }
+
+    /**
      * @return HP value of the Player.
      */
     public int getHP() {
@@ -173,7 +183,7 @@ public class Player extends MovingObject {
      * 
      * @throws PlayerDiedException if {@code n <= 0}.
      */
-    public void checkAlive() throws PlayerDiedException {
+    private void checkAlive() throws PlayerDiedException {
         if (getHP() <= 0) {
             throw new PlayerDiedException(getCurrentPosition(), this);
         }
