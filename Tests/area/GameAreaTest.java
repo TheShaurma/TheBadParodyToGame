@@ -12,6 +12,7 @@ import TheBadParodyToGame.area.position.EmptyPositionException;
 import TheBadParodyToGame.area.position.IntegerPosition2D;
 import TheBadParodyToGame.area.position.PositionException;
 
+// TODO: create test for try... methods
 public class GameAreaTest {
     /**
      * Calls {@code get(pos)} besides {@code set(pos, obj)}.
