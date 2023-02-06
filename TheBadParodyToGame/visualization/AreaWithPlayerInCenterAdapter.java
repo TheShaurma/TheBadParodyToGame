@@ -2,7 +2,7 @@ package TheBadParodyToGame.visualization;
 
 import TheBadParodyToGame.ObjectsInArea.ObjectInArea;
 import TheBadParodyToGame.ObjectsInArea.player.Player;
-import TheBadParodyToGame.area.CheckeredArea;
+import TheBadParodyToGame.area.CheckeredAreaContainsAll;
 import TheBadParodyToGame.area.position.GameIntegerPosition2D;
 import TheBadParodyToGame.area.position.IntegerPosition2D;
 import TheBadParodyToGame.area.position.PositionException;
@@ -12,11 +12,11 @@ import TheBadParodyToGame.area.position.PositionException;
  * 
  * Used only for visualization. That's why this class isn't in area package.
  */
-public class AreaWithPlayerInCenterAdapter implements CheckeredArea {
-    private CheckeredArea areaItself;
+public class AreaWithPlayerInCenterAdapter implements CheckeredAreaContainsAll {
+    private CheckeredAreaContainsAll areaItself;
     private Player player;
 
-    public AreaWithPlayerInCenterAdapter(CheckeredArea area, Player player) {
+    public AreaWithPlayerInCenterAdapter(CheckeredAreaContainsAll area, Player player) {
         areaItself = area;
         this.player = player;
     }

@@ -7,7 +7,7 @@ import TheBadParodyToGame.ObjectsInArea.affectingToHP.Fire;
 import TheBadParodyToGame.ObjectsInArea.buildingMaterials.Stone;
 import TheBadParodyToGame.ObjectsInArea.player.Player;
 import TheBadParodyToGame.ObjectsInArea.player.PlayerDiedException;
-import TheBadParodyToGame.area.CheckeredArea;
+import TheBadParodyToGame.area.CheckeredAreaContainsAll;
 import TheBadParodyToGame.area.position.GameIntegerPosition2D;
 import TheBadParodyToGame.area.position.IntegerPosition2D;
 import TheBadParodyToGame.area.position.PositionException;
@@ -17,7 +17,7 @@ import TheBadParodyToGame.visualization.AreaWithPlayerInCenterAdapter;
 import TheBadParodyToGame.visualization.SimpleVisualizer;
 
 public class Main {
-    private static CheckeredArea area;
+    private static CheckeredAreaContainsAll area;
     private static SimpleVisualizer visualizer;
     private static Player player;
     private static Scanner in;

@@ -9,7 +9,7 @@ import org.junit.Test;
 import Tests.area.CheckeredAreaStub;
 import Tests.area.position.IntegerPosition2DStub;
 import TheBadParodyToGame.ObjectsInArea.player.Player;
-import TheBadParodyToGame.area.CheckeredArea;
+import TheBadParodyToGame.area.CheckeredAreaContainsAll;
 import TheBadParodyToGame.area.position.IntegerPosition2D;
 import TheBadParodyToGame.area.position.PositionException;
 import TheBadParodyToGame.visualization.AreaWithPlayerInCenterAdapter;
@@ -24,7 +24,7 @@ public class AreaWithPlayerInCenterAdaptorTest {
         IntegerPosition2D posWillBeConverted = new IntegerPosition2DStub(xDiff, yDiff);
         IntegerPosition2D expectedPos = new IntegerPosition2DStub(playerPos.getX() + xDiff, playerPos.getY() + yDiff);
         IntegerPosition2D actualPos;
-        CheckeredArea area = new CheckeredAreaStub();
+        CheckeredAreaContainsAll area = new CheckeredAreaStub();
         Player player = new Player(area, playerPos);
         AreaWithPlayerInCenterAdaptorStub playerArea = new AreaWithPlayerInCenterAdaptorStub(area, player);
 
@@ -40,7 +40,7 @@ public class AreaWithPlayerInCenterAdaptorTest {
 }
 
 class AreaWithPlayerInCenterAdaptorStub extends AreaWithPlayerInCenterAdapter {
-    public AreaWithPlayerInCenterAdaptorStub(CheckeredArea area, Player player) {
+    public AreaWithPlayerInCenterAdaptorStub(CheckeredAreaContainsAll area, Player player) {
         super(area, player);
     }
 

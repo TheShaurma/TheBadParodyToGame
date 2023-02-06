@@ -8,7 +8,7 @@ import TheBadParodyToGame.ObjectsInArea.ObjectInArea;
 import TheBadParodyToGame.ObjectsInArea.affectingToHP.Apple;
 import TheBadParodyToGame.ObjectsInArea.affectingToHP.Fire;
 import TheBadParodyToGame.ObjectsInArea.buildingMaterials.Stone;
-import TheBadParodyToGame.area.CheckeredArea;
+import TheBadParodyToGame.area.CheckeredAreaContainsAll;
 import TheBadParodyToGame.area.GameArea;
 import TheBadParodyToGame.area.position.GameIntegerPosition2D;
 import TheBadParodyToGame.area.position.PositionException;
@@ -18,9 +18,9 @@ import TheBadParodyToGame.area.position.PositionException;
  */
 @Deprecated
 public class CheckeredAreaReader {
-    public static CheckeredArea readArea(String areaName)
+    public static CheckeredAreaContainsAll readArea(String areaName)
             throws IOException, UnknownSymbolException, PositionException {
-        CheckeredArea area = new GameArea();
+        CheckeredAreaContainsAll area = new GameArea();
 
         FileReader reader = new FileReader(areaName);
         try (Scanner scanner = new Scanner(reader)) {

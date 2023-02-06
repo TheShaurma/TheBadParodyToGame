@@ -1,13 +1,13 @@
 package TheBadParodyToGame.ObjectsInArea;
 
-import TheBadParodyToGame.area.CheckeredArea;
+import TheBadParodyToGame.area.CheckeredAreaContainsAll;
 import TheBadParodyToGame.area.position.BusyPositionException;
 import TheBadParodyToGame.area.position.GameIntegerPosition2D;
 import TheBadParodyToGame.area.position.IntegerPosition2D;
 import TheBadParodyToGame.area.position.PositionException;
 
 public abstract class MovingObject implements ObjectInArea {
-    private final CheckeredArea area;
+    private final CheckeredAreaContainsAll area;
     private IntegerPosition2D startPos;
 
     /**
@@ -18,7 +18,7 @@ public abstract class MovingObject implements ObjectInArea {
      * @throws BusyPositionException if {@code pos} is empty;
      * @throws PositionException     if {@code pos} can't exist in {@code area}.
      */
-    public MovingObject(CheckeredArea area, IntegerPosition2D pos) throws PositionException {
+    public MovingObject(CheckeredAreaContainsAll area, IntegerPosition2D pos) throws PositionException {
         this.area = area;
         startPos = pos;
 
@@ -330,7 +330,7 @@ public abstract class MovingObject implements ObjectInArea {
     /**
      * @return area where object is.
      */
-    protected final CheckeredArea getArea() {
+    protected final CheckeredAreaContainsAll getArea() {
         return area;
     }
 
@@ -351,7 +351,7 @@ public abstract class MovingObject implements ObjectInArea {
     }
 
     private void checkForBeingInCurrentPosition() throws PositionException {
-        CheckeredArea area = getArea();
+        CheckeredAreaContainsAll area = getArea();
         IntegerPosition2D pos = getCurrentPosition();
 
         if (area.positionIsEmpty(pos) || area.get(pos) != this) {

@@ -4,13 +4,13 @@ import java.io.Serializable;
 import java.util.HashMap;
 
 import TheBadParodyToGame.ObjectsInArea.ObjectInArea;
-import TheBadParodyToGame.area.CheckeredArea;
+import TheBadParodyToGame.area.CheckeredAreaContainsAll;
 import TheBadParodyToGame.area.position.BusyPositionException;
 import TheBadParodyToGame.area.position.EmptyPositionException;
 import TheBadParodyToGame.area.position.IntegerPosition2D;
 import TheBadParodyToGame.area.position.PositionException;
 
-public class CheckeredAreaStub implements CheckeredArea {
+public class CheckeredAreaStub implements CheckeredAreaContainsAll {
     private AreaItself areaItself = new AreaItself();
 
     @Override
@@ -69,6 +69,33 @@ public class CheckeredAreaStub implements CheckeredArea {
         return areaItself.positionIsBusy(pos);
     }
 
+    @Override
+    public void tryReplace(IntegerPosition2D pos, ObjectInArea obj) throws PositionException {
+        if (positionIsBusy(pos)) {
+            replace(pos, obj);
+        }
+    }
+
+    @Override
+    public void tryRemove(IntegerPosition2D pos) throws PositionException {
+        if (positionIsBusy(pos)) {
+            remove(pos);
+        }
+    }
+
+    @Override
+    public void tryRelocate(IntegerPosition2D oldPos, IntegerPosition2D newPos) throws PositionException {
+        if (positionIsBusy(oldPos) && positionIsEmpty(newPos)) {
+            relocate(oldPos, newPos);
+        }
+    }
+
+    @Override
+    public void tryPlace(IntegerPosition2D pos, ObjectInArea obj) throws PositionException {
+        if (positionIsEmpty(pos)) {
+            place(pos, obj);
+        }
+    }
 }
 
 /**

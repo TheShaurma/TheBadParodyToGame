@@ -1,21 +1,19 @@
 package TheBadParodyToGame.area;
 
 import TheBadParodyToGame.ObjectsInArea.ObjectInArea;
-import TheBadParodyToGame.area.position.BusyPositionException;
-import TheBadParodyToGame.area.position.EmptyPositionException;
 import TheBadParodyToGame.area.position.IntegerPosition2D;
 import TheBadParodyToGame.area.position.PositionException;
 
 // TODO: PositionException is abstraction, it can't be thrown
 // TODO: replace PositionException to PositionCannotExistException in javadocs
-public interface CheckeredArea {
+public interface CheckeredArea<OBJ extends ObjectInArea> {
     /**
      * @param pos
      * @return object at this {@code pos}
      * @throws EmptyPositionException if {@code pos} is empty;
      * @throws PositionException      if {@code pos} can't exist in Area.
      */
-    ObjectInArea get(IntegerPosition2D pos) throws PositionException;
+    OBJ get(IntegerPosition2D pos) throws PositionException;
 
     /**
      * Anyways place {@code obj} at {@code pos}.
@@ -24,7 +22,7 @@ public interface CheckeredArea {
      * @param obj
      * @throws PositionException if {@code pos} can't exist in Area.
      */
-    void set(IntegerPosition2D pos, ObjectInArea obj) throws PositionException;
+    void set(IntegerPosition2D pos, OBJ obj) throws PositionException;
 
     /**
      * Place {@code obj} at {@code pos} in Area
@@ -34,7 +32,7 @@ public interface CheckeredArea {
      * @throws BusyPositionException if {@code pos} is busy;
      * @throws PositionException     if {@code pos} can't exist in Area.
      */
-    void place(IntegerPosition2D pos, ObjectInArea obj) throws PositionException;
+    void place(IntegerPosition2D pos, OBJ obj) throws PositionException;
 
     /**
      * If {@code pos} is busy, nothing will happen,
@@ -44,12 +42,7 @@ public interface CheckeredArea {
      * @param obj
      * @throws PositionException if pos can't exist in Area.
      */
-
-    default public void tryPlace(IntegerPosition2D pos, ObjectInArea obj) throws PositionException {
-        if (positionIsEmpty(pos)) {
-            place(pos, obj);
-        }
-    }
+    void tryPlace(IntegerPosition2D pos, OBJ obj) throws PositionException;
 
     /**
      * Replace old object at {@code pos} to new assigned {@code obj}.
@@ -59,7 +52,7 @@ public interface CheckeredArea {
      * @throws EmptyPositionException if {@code pos} is empty;
      * @throws PositionException      if {@code pos} can't exist in Area.
      */
-    void replace(IntegerPosition2D pos, ObjectInArea obj) throws PositionException;
+    void replace(IntegerPosition2D pos, OBJ obj) throws PositionException;
 
     /**
      * If {@code pos} is empty do nothing, else replace old object at {@code pos} to
@@ -69,11 +62,7 @@ public interface CheckeredArea {
      * @param obj
      * @throws PositionException if {@code pos} can't exist in Area.
      */
-    default public void tryReplace(IntegerPosition2D pos, ObjectInArea obj) throws PositionException {
-        if (positionIsBusy(pos)) {
-            replace(pos, obj);
-        }
-    }
+    void tryReplace(IntegerPosition2D pos, OBJ obj) throws PositionException;
 
     /**
      * Removes object from assigned {@code pos}.
@@ -91,11 +80,7 @@ public interface CheckeredArea {
      * @param pos
      * @throws PositionException if {@code pos} can't exist in Area.
      */
-    default public void tryRemove(IntegerPosition2D pos) throws PositionException {
-        if (positionIsBusy(pos)) {
-            remove(pos);
-        }
-    }
+    void tryRemove(IntegerPosition2D pos) throws PositionException;
 
     /**
      * Relocate object from {@code oldPos} to {@code newPos}.
@@ -122,11 +107,7 @@ public interface CheckeredArea {
      * @throws PositionException if {@code oldPos} or {@code newPos} can't
      *                           exist in Area.
      */
-    default public void tryRelocate(IntegerPosition2D oldPos, IntegerPosition2D newPos) throws PositionException {
-        if (positionIsBusy(oldPos) && positionIsEmpty(newPos)) {
-            relocate(oldPos, newPos);
-        }
-    }
+    void tryRelocate(IntegerPosition2D oldPos, IntegerPosition2D newPos) throws PositionException;
 
     /**
      * @param pos

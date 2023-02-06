@@ -4,7 +4,7 @@ import TheBadParodyToGame.ObjectsInArea.CannotMoveObjectException;
 import TheBadParodyToGame.ObjectsInArea.MovingObject;
 import TheBadParodyToGame.ObjectsInArea.ObjectInArea;
 import TheBadParodyToGame.ObjectsInArea.PassableObject;
-import TheBadParodyToGame.area.CheckeredArea;
+import TheBadParodyToGame.area.CheckeredAreaContainsAll;
 import TheBadParodyToGame.area.position.IntegerPosition2D;
 import TheBadParodyToGame.area.position.PositionException;
 
@@ -18,7 +18,7 @@ public class Player extends MovingObject {
     private String name;
     private static final long serialVersionUID = 5L;
 
-    public Player(CheckeredArea area, IntegerPosition2D startPos) throws PositionException {
+    public Player(CheckeredAreaContainsAll area, IntegerPosition2D startPos) throws PositionException {
         super(area, startPos);
 
         name = "NoName";
@@ -74,7 +74,7 @@ public class Player extends MovingObject {
         return result + " - " + getHP();
     }
 
-    public Player(String name, CheckeredArea area, IntegerPosition2D startPos) throws PositionException {
+    public Player(String name, CheckeredAreaContainsAll area, IntegerPosition2D startPos) throws PositionException {
         super(area, startPos);
 
         this.name = name;
@@ -160,7 +160,7 @@ public class Player extends MovingObject {
 
     @Override
     protected void moveToPosition(IntegerPosition2D newPos) throws PositionException {
-        CheckeredArea area = getArea();
+        CheckeredAreaContainsAll area = getArea();
 
         try {
             super.moveToPosition(newPos);
