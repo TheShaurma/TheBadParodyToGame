@@ -1,6 +1,6 @@
 package TheBadParodyToGame.area;
 
-import TheBadParodyToGame.ObjectsInArea.buildingMaterials.Portal;
+import TheBadParodyToGame.ObjectsInArea.buildingMaterials.portals.Portal;
 
-class PortalsArea extends AbstractCheckeredArea<Portal> {
+public class PortalsArea extends AbstractCheckeredArea<Portal> {
 }
