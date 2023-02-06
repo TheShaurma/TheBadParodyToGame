@@ -2,17 +2,17 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Scanner;
 
-import TheBadParodyToGame.ObjectsInArea.Stone;
 import TheBadParodyToGame.ObjectsInArea.affectingToHP.Apple;
 import TheBadParodyToGame.ObjectsInArea.affectingToHP.Fire;
+import TheBadParodyToGame.ObjectsInArea.buildingMaterials.Stone;
 import TheBadParodyToGame.ObjectsInArea.player.Player;
 import TheBadParodyToGame.ObjectsInArea.player.PlayerDiedException;
 import TheBadParodyToGame.area.CheckeredArea;
 import TheBadParodyToGame.area.position.GameIntegerPosition2D;
 import TheBadParodyToGame.area.position.IntegerPosition2D;
 import TheBadParodyToGame.area.position.PositionException;
-import TheBadParodyToGame.rooms.CheckeredAreaReader;
-import TheBadParodyToGame.rooms.UnknownSymbolException;
+import TheBadParodyToGame.read.CheckeredAreaReader;
+import TheBadParodyToGame.read.UnknownSymbolException;
 import TheBadParodyToGame.visualization.AreaWithPlayerInCenterAdapter;
 import TheBadParodyToGame.visualization.SimpleVisualizer;
 
@@ -48,7 +48,7 @@ public class Main {
     }
 
     private static void initVariables() throws PositionException, IOException, UnknownSymbolException {
-        area = CheckeredAreaReader.readArea("TheBadParodyToGame\\rooms\\StartLevel.txt");
+        area = CheckeredAreaReader.readArea("TheBadParodyToGame\\read\\StartLevel.txt");
 
         IntegerPosition2D startPos = new GameIntegerPosition2D(1, 1);
         player = new Player("Valera", area, startPos);

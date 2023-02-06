@@ -1,14 +1,13 @@
-package TheBadParodyToGame.rooms;
+package TheBadParodyToGame.read;
 
 import java.io.FileReader;
 import java.io.IOException;
-
 import java.util.Scanner;
 
 import TheBadParodyToGame.ObjectsInArea.ObjectInArea;
-import TheBadParodyToGame.ObjectsInArea.Stone;
 import TheBadParodyToGame.ObjectsInArea.affectingToHP.Apple;
 import TheBadParodyToGame.ObjectsInArea.affectingToHP.Fire;
+import TheBadParodyToGame.ObjectsInArea.buildingMaterials.Stone;
 import TheBadParodyToGame.area.CheckeredArea;
 import TheBadParodyToGame.area.GameArea;
 import TheBadParodyToGame.area.position.GameIntegerPosition2D;
