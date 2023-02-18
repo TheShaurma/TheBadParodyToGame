@@ -141,9 +141,14 @@ public class Player extends MovingObject {
      * d or D — move player right;
      * 
      * @param directions
-     * @throws PositionException if moving has problems.
+     * @throws PositionCannotExistInAreaException
+     * @throws CannotMoveObjectException
+     * @throws LostObjectException
+     * @throws PlayerDiedException
+     * @throws PositionException                  if moving has problems.
      */
-    public void moveByDirections(String directions) throws PositionException {
+    public void moveByDirections(String directions) throws LostObjectException, CannotMoveObjectException,
+            PositionCannotExistInAreaException, PlayerDiedException {
         for (int i = 0; i < directions.length(); i++) {
             char d = directions.charAt(i);
 
@@ -156,6 +161,7 @@ public class Player extends MovingObject {
             } else if (d == 'd' || d == 'D') {
                 moveRight();
             }
+            checkAlive();
         }
     }
 
