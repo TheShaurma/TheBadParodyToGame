@@ -10,6 +10,7 @@ import TheBadParodyToGame.area.GameArea;
 import TheBadParodyToGame.area.position.BusyPositionException;
 import TheBadParodyToGame.area.position.EmptyPositionException;
 import TheBadParodyToGame.area.position.IntegerPosition2D;
+import TheBadParodyToGame.area.position.PositionCannotExistInAreaException;
 import TheBadParodyToGame.area.position.PositionException;
 
 // TODO: create test for try... methods
@@ -230,9 +231,11 @@ public class GameAreaTest {
 
     /**
      * Calls {@code positionIsEmpty(pos)} only.
+     * 
+     * @throws PositionCannotExistInAreaException
      */
     @Test
-    public void positionIsEmpty_callWithEmptyPosition_trueReturned() {
+    public void positionIsEmpty_callWithEmptyPosition_trueReturned() throws PositionCannotExistInAreaException {
         GameArea area = new GameArea();
         IntegerPosition2D pos = new IntegerPosition2DStub();
         boolean result;
@@ -260,9 +263,11 @@ public class GameAreaTest {
 
     /**
      * Calls {@code positionIsBusy(pos)} only.
+     * 
+     * @throws PositionCannotExistInAreaException
      */
     @Test
-    public void positionIsBusy_callWithEmptyPosition_falseReturned() {
+    public void positionIsBusy_callWithEmptyPosition_falseReturned() throws PositionCannotExistInAreaException {
         GameArea area = new GameArea();
         IntegerPosition2D pos = new IntegerPosition2DStub();
         boolean result;

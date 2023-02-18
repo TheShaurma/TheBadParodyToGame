@@ -1,11 +1,14 @@
 package TheBadParodyToGame.ObjectsInArea.player;
 
 import TheBadParodyToGame.ObjectsInArea.CannotMoveObjectException;
+import TheBadParodyToGame.ObjectsInArea.LostObjectException;
 import TheBadParodyToGame.ObjectsInArea.MovingObject;
 import TheBadParodyToGame.ObjectsInArea.ObjectInArea;
 import TheBadParodyToGame.ObjectsInArea.PassableObject;
 import TheBadParodyToGame.area.CheckeredAreaContainsAll;
+import TheBadParodyToGame.area.position.EmptyPositionException;
 import TheBadParodyToGame.area.position.IntegerPosition2D;
+import TheBadParodyToGame.area.position.PositionCannotExistInAreaException;
 import TheBadParodyToGame.area.position.PositionException;
 
 /**
@@ -115,9 +118,8 @@ public class Player extends MovingObject {
      * @param n
      * @throws PlayerDiedException if {@code n < 0 and |n| >= HP}.
      */
-    public void heal(int n) throws PlayerDiedException {
+    public void heal(int n) {
         heatPoints += n;
-        checkAlive();
     }
 
     /**
@@ -127,9 +129,8 @@ public class Player extends MovingObject {
      * @param n
      * @throws PlayerDiedException if {@code n >= HP}.
      */
-    public void harm(int n) throws PlayerDiedException {
+    public void harm(int n) {
         heatPoints -= n;
-        checkAlive();
     }
 
     /**
@@ -159,21 +160,26 @@ public class Player extends MovingObject {
     }
 
     @Override
-    protected void moveToPosition(IntegerPosition2D newPos) throws PositionException {
+    protected void moveToPosition(IntegerPosition2D newPos)
+            throws LostObjectException, PositionCannotExistInAreaException {
         CheckeredAreaContainsAll area = getArea();
 
         try {
             super.moveToPosition(newPos);
         } catch (CannotMoveObjectException e) {
-            ObjectInArea obj = getArea().get(e.getPosition());
-            if (obj instanceof PassableObject) {
-                harm(obj.getDamage());
-                checkAlive(); // if player died, code execution will stop here
+            ObjectInArea obj;
+            try {
+                obj = getArea().get(e.getPosition());
 
-                heal(obj.getHealing());
+                if (obj instanceof PassableObject) {
+                    heal(obj.getHealing());
+                    harm(obj.getDamage());
 
-                area.remove(newPos);
-                moveToPosition(newPos);
+                    area.remove(newPos);
+                    moveToPosition(newPos);
+                }
+            } catch (EmptyPositionException e1) {
+                throw new LostObjectException(newPos, this);
             }
         }
     }

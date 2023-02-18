@@ -8,36 +8,37 @@ import TheBadParodyToGame.ObjectsInArea.ObjectInArea;
 import TheBadParodyToGame.area.position.BusyPositionException;
 import TheBadParodyToGame.area.position.EmptyPositionException;
 import TheBadParodyToGame.area.position.IntegerPosition2D;
-import TheBadParodyToGame.area.position.PositionException;
+import TheBadParodyToGame.area.position.PositionCannotExistInAreaException;
 
 // TODO: docs
-public abstract class AbstractCheckeredArea<OBJ extends ObjectInArea> implements CheckeredArea<OBJ> {
+public abstract class ModifiableCheckeredArea<OBJ extends ObjectInArea> implements CheckeredArea<OBJ> {
     private AreaItself<OBJ> areaItself = new AreaItself<>();
 
     @Override
-    public OBJ get(IntegerPosition2D pos) throws PositionException {
+    public OBJ get(IntegerPosition2D pos) throws EmptyPositionException, PositionCannotExistInAreaException {
         return areaItself.get(pos);
     }
 
     @Override
-    public void set(IntegerPosition2D pos, OBJ obj) throws PositionException {
+    public void set(IntegerPosition2D pos, OBJ obj) throws PositionCannotExistInAreaException {
         areaItself.set(pos, obj);
     }
 
     @Override
-    public void remove(IntegerPosition2D pos) throws PositionException {
+    public void remove(IntegerPosition2D pos) throws EmptyPositionException, PositionCannotExistInAreaException {
         areaItself.del(pos);
     }
 
     @Override
-    public void tryRemove(IntegerPosition2D pos) throws PositionException {
-        if (positionIsBusy(pos)) {
+    public void tryRemove(IntegerPosition2D pos) throws PositionCannotExistInAreaException {
+        try {
             remove(pos);
+        } catch (EmptyPositionException e) {
         }
     }
 
     @Override
-    public void place(IntegerPosition2D pos, OBJ obj) throws PositionException {
+    public void place(IntegerPosition2D pos, OBJ obj) throws BusyPositionException, PositionCannotExistInAreaException {
         if (positionIsBusy(pos)) {
             throw new BusyPositionException(pos);
         }
@@ -46,14 +47,16 @@ public abstract class AbstractCheckeredArea<OBJ extends ObjectInArea> implements
     }
 
     @Override
-    public void tryPlace(IntegerPosition2D pos, OBJ obj) throws PositionException {
-        if (positionIsEmpty(pos)) {
+    public void tryPlace(IntegerPosition2D pos, OBJ obj) throws PositionCannotExistInAreaException {
+        try {
             place(pos, obj);
+        } catch (BusyPositionException e) {
         }
     }
 
     @Override
-    public void replace(IntegerPosition2D pos, OBJ obj) throws PositionException {
+    public void replace(IntegerPosition2D pos, OBJ obj)
+            throws EmptyPositionException, PositionCannotExistInAreaException {
         if (positionIsEmpty(pos)) {
             throw new EmptyPositionException(pos);
         }
@@ -62,14 +65,16 @@ public abstract class AbstractCheckeredArea<OBJ extends ObjectInArea> implements
     }
 
     @Override
-    public void tryReplace(IntegerPosition2D pos, OBJ obj) throws PositionException {
-        if (positionIsBusy(pos)) {
+    public void tryReplace(IntegerPosition2D pos, OBJ obj) throws PositionCannotExistInAreaException {
+        try {
             replace(pos, obj);
+        } catch (EmptyPositionException e) {
         }
     }
 
     @Override
-    public void relocate(IntegerPosition2D oldPos, IntegerPosition2D newPos) throws PositionException {
+    public void relocate(IntegerPosition2D oldPos, IntegerPosition2D newPos)
+            throws EmptyPositionException, BusyPositionException, PositionCannotExistInAreaException {
         if (positionIsEmpty(oldPos)) {
             throw new EmptyPositionException(oldPos);
         } else if (positionIsBusy(newPos)) {
@@ -82,19 +87,22 @@ public abstract class AbstractCheckeredArea<OBJ extends ObjectInArea> implements
     }
 
     @Override
-    public void tryRelocate(IntegerPosition2D oldPos, IntegerPosition2D newPos) throws PositionException {
-        if (positionIsBusy(oldPos) && positionIsEmpty(newPos)) {
+    public void tryRelocate(IntegerPosition2D oldPos, IntegerPosition2D newPos)
+            throws PositionCannotExistInAreaException {
+        try {
             relocate(oldPos, newPos);
+        } catch (EmptyPositionException e) {
+        } catch (BusyPositionException e) {
         }
     }
 
     @Override
-    public boolean positionIsEmpty(IntegerPosition2D pos) {
+    public boolean positionIsEmpty(IntegerPosition2D pos) throws PositionCannotExistInAreaException {
         return areaItself.positionIsEmpty(pos);
     }
 
     @Override
-    public boolean positionIsBusy(IntegerPosition2D pos) {
+    public boolean positionIsBusy(IntegerPosition2D pos) throws PositionCannotExistInAreaException {
         return areaItself.positionIsBusy(pos);
     }
 }

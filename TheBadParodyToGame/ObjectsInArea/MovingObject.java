@@ -2,8 +2,10 @@ package TheBadParodyToGame.ObjectsInArea;
 
 import TheBadParodyToGame.area.CheckeredAreaContainsAll;
 import TheBadParodyToGame.area.position.BusyPositionException;
+import TheBadParodyToGame.area.position.EmptyPositionException;
 import TheBadParodyToGame.area.position.GameIntegerPosition2D;
 import TheBadParodyToGame.area.position.IntegerPosition2D;
+import TheBadParodyToGame.area.position.PositionCannotExistInAreaException;
 import TheBadParodyToGame.area.position.PositionException;
 
 public abstract class MovingObject implements ObjectInArea {
@@ -15,10 +17,13 @@ public abstract class MovingObject implements ObjectInArea {
      * 
      * @param area where object will be after creating;
      * @param pos  in {@code area} where object will be after creating;
-     * @throws BusyPositionException if {@code pos} is empty;
-     * @throws PositionException     if {@code pos} can't exist in {@code area}.
+     * @throws PositionCannotExistInAreaException
+     * @throws BusyPositionException              if {@code pos} is empty;
+     * @throws PositionException                  if {@code pos} can't exist in
+     *                                            {@code area}.
      */
-    public MovingObject(CheckeredAreaContainsAll area, IntegerPosition2D pos) throws PositionException {
+    public MovingObject(CheckeredAreaContainsAll area, IntegerPosition2D pos)
+            throws BusyPositionException, PositionCannotExistInAreaException {
         this.area = area;
         startPos = pos;
 
@@ -33,88 +38,119 @@ public abstract class MovingObject implements ObjectInArea {
     /**
      * Move object to 1 in up.
      * 
-     * @throws LostObjectException       if object isn't on position which written
-     *                                   in object's data;
-     * @throws CannotMoveObjectException if pos in up is busy.
+     * @throws PositionCannotExistInAreaException
+     * 
+     * @throws LostObjectException                if object isn't on position which
+     *                                            written
+     *                                            in object's data;
+     * @throws CannotMoveObjectException          if pos in up is busy.
      */
-    protected void moveUp() throws PositionException {
+    protected void moveUp() throws LostObjectException, CannotMoveObjectException, PositionCannotExistInAreaException {
         moveUp(1);
     }
 
     /**
      * Move object to 1 in down.
      * 
-     * @throws LostObjectException       if object isn't on position which written
-     *                                   in object's data;
-     * @throws CannotMoveObjectException if pos in down is busy.
+     * @throws PositionCannotExistInAreaException
+     * 
+     * @throws LostObjectException                if object isn't on position which
+     *                                            written
+     *                                            in object's data;
+     * @throws CannotMoveObjectException          if pos in down is busy.
      */
-    protected void moveDown() throws PositionException {
+    protected void moveDown()
+            throws LostObjectException, CannotMoveObjectException, PositionCannotExistInAreaException {
         moveDown(1);
     }
 
     /**
      * Move object to 1 in left.
      * 
-     * @throws LostObjectException       if object isn't on position which written
-     *                                   in object's data;
-     * @throws CannotMoveObjectException if pos in left is busy.
+     * @throws PositionCannotExistInAreaException
+     * 
+     * @throws LostObjectException                if object isn't on position which
+     *                                            written
+     *                                            in object's data;
+     * @throws CannotMoveObjectException          if pos in left is busy.
      */
-    protected void moveLeft() throws PositionException {
+    protected void moveLeft()
+            throws LostObjectException, CannotMoveObjectException, PositionCannotExistInAreaException {
         moveLeft(1);
     }
 
     /**
      * Move object to 1 in right.
      * 
-     * @throws LostObjectException       if object isn't on position which written
-     *                                   in object's data;
-     * @throws CannotMoveObjectException if pos in right is busy.
+     * @throws PositionCannotExistInAreaException
+     * 
+     * @throws LostObjectException                if object isn't on position which
+     *                                            written
+     *                                            in object's data;
+     * @throws CannotMoveObjectException          if pos in right is busy.
      */
-    protected void moveRight() throws PositionException {
+    protected void moveRight()
+            throws LostObjectException, CannotMoveObjectException, PositionCannotExistInAreaException {
         moveRight(1);
     }
 
     /**
      * Move object to 1 in up and left.
      * 
-     * @throws LostObjectException       if object isn't on position which written
-     *                                   in object's data;
-     * @throws CannotMoveObjectException if pos in up of left is busy.
+     * @throws PositionCannotExistInAreaException
+     * 
+     * @throws LostObjectException                if object isn't on position which
+     *                                            written
+     *                                            in object's data;
+     * @throws CannotMoveObjectException          if pos in up of left is busy.
      */
-    protected void moveUpLeft() throws PositionException {
+    protected void moveUpLeft()
+            throws LostObjectException, CannotMoveObjectException, PositionCannotExistInAreaException {
         moveUpLeft(1);
     }
 
     /**
      * Move object to 1 in up and right.
      * 
-     * @throws LostObjectException       if object isn't on position which written
-     *                                   in object's data;
-     * @throws CannotMoveObjectException if pos in up of right is busy.
+     * @throws PositionCannotExistInAreaException
+     * 
+     * @throws LostObjectException                if object isn't on position which
+     *                                            written
+     *                                            in object's data;
+     * @throws CannotMoveObjectException          if pos in up of right is busy.
      */
-    protected void moveUpRight() throws PositionException {
+    protected void moveUpRight()
+            throws LostObjectException, CannotMoveObjectException, PositionCannotExistInAreaException {
         moveUpRight(1);
     }
 
     /**
      * Move object to 1 in down and left.
      * 
-     * @throws LostObjectException       if object isn't on position which written
-     *                                   in object's data;
-     * @throws CannotMoveObjectException if pos in down of left is busy.
+     * @throws PositionCannotExistInAreaException
+     * 
+     * @throws LostObjectException                if object isn't on position which
+     *                                            written
+     *                                            in object's data;
+     * @throws CannotMoveObjectException          if pos in down of left is busy.
      */
-    protected void moveDownLeft() throws PositionException {
+    protected void moveDownLeft()
+            throws LostObjectException, CannotMoveObjectException, PositionCannotExistInAreaException {
         moveDownLeft(1);
     }
 
     /**
      * Move object to 1 in down and right.
      * 
-     * @throws LostObjectException       if object isn't on position which written
-     *                                   in object's data;
-     * @throws CannotMoveObjectException if pos in down of right is busy.
+     * @throws PositionCannotExistInAreaException
+     * 
+     * @throws LostObjectException                if object isn't on position which
+     *                                            written
+     *                                            in object's data;
+     * @throws CannotMoveObjectException          if pos in down of right is busy.
      */
-    protected void moveDownRight() throws PositionException {
+    protected void moveDownRight()
+            throws LostObjectException, CannotMoveObjectException, PositionCannotExistInAreaException {
         moveDownRight(1);
     }
 
@@ -122,11 +158,14 @@ public abstract class MovingObject implements ObjectInArea {
      * Move object to {@code n} in up.
      * 
      * @param n
-     * @throws LostObjectException       if object isn't on position which written
-     *                                   in object's data;
-     * @throws CannotMoveObjectException if pos in up is busy.
+     * @throws PositionCannotExistInAreaException
+     * @throws LostObjectException                if object isn't on position which
+     *                                            written
+     *                                            in object's data;
+     * @throws CannotMoveObjectException          if pos in up is busy.
      */
-    protected void moveUp(int n) throws PositionException {
+    protected void moveUp(int n)
+            throws LostObjectException, CannotMoveObjectException, PositionCannotExistInAreaException {
         IntegerPosition2D oldPos = getCurrentPosition();
         int newX = oldPos.getX();
         int newY = oldPos.getY() + n;
@@ -139,11 +178,14 @@ public abstract class MovingObject implements ObjectInArea {
      * Move object to {@code n} in down.
      * 
      * @param n
-     * @throws LostObjectException       if object isn't on position which written
-     *                                   in object's data;
-     * @throws CannotMoveObjectException if pos in down is busy.
+     * @throws PositionCannotExistInAreaException
+     * @throws LostObjectException                if object isn't on position which
+     *                                            written
+     *                                            in object's data;
+     * @throws CannotMoveObjectException          if pos in down is busy.
      */
-    protected void moveDown(int n) throws PositionException {
+    protected void moveDown(int n)
+            throws LostObjectException, CannotMoveObjectException, PositionCannotExistInAreaException {
         IntegerPosition2D oldPos = getCurrentPosition();
         int newX = oldPos.getX();
         int newY = oldPos.getY() - n;
@@ -156,11 +198,14 @@ public abstract class MovingObject implements ObjectInArea {
      * Move object to {@code n} in left.
      * 
      * @param n
-     * @throws LostObjectException       if object isn't on position which written
-     *                                   in object's data;
-     * @throws CannotMoveObjectException if pos in left is busy.
+     * @throws PositionCannotExistInAreaException
+     * @throws LostObjectException                if object isn't on position which
+     *                                            written
+     *                                            in object's data;
+     * @throws CannotMoveObjectException          if pos in left is busy.
      */
-    protected void moveLeft(int n) throws PositionException {
+    protected void moveLeft(int n)
+            throws LostObjectException, CannotMoveObjectException, PositionCannotExistInAreaException {
         IntegerPosition2D oldPos = getCurrentPosition();
         int newX = oldPos.getX() - n;
         int newY = oldPos.getY();
@@ -173,11 +218,14 @@ public abstract class MovingObject implements ObjectInArea {
      * Move object to {@code n} in right.
      * 
      * @param n
-     * @throws LostObjectException       if object isn't on position which written
-     *                                   in object's data;
-     * @throws CannotMoveObjectException if pos in right is busy.
+     * @throws PositionCannotExistInAreaException
+     * @throws LostObjectException                if object isn't on position which
+     *                                            written
+     *                                            in object's data;
+     * @throws CannotMoveObjectException          if pos in right is busy.
      */
-    protected void moveRight(int n) throws PositionException {
+    protected void moveRight(int n)
+            throws LostObjectException, CannotMoveObjectException, PositionCannotExistInAreaException {
         IntegerPosition2D oldPos = getCurrentPosition();
         int newX = oldPos.getX() + n;
         int newY = oldPos.getY();
@@ -190,11 +238,14 @@ public abstract class MovingObject implements ObjectInArea {
      * Move object to {@code n} in up and left.
      * 
      * @param n
-     * @throws LostObjectException       if object isn't on position which written
-     *                                   in object's data;
-     * @throws CannotMoveObjectException if pos in up of left is busy.
+     * @throws PositionCannotExistInAreaException
+     * @throws LostObjectException                if object isn't on position which
+     *                                            written
+     *                                            in object's data;
+     * @throws CannotMoveObjectException          if pos in up of left is busy.
      */
-    protected void moveUpLeft(int n) throws PositionException {
+    protected void moveUpLeft(int n)
+            throws LostObjectException, CannotMoveObjectException, PositionCannotExistInAreaException {
         moveUpLeft(n, n);
     }
 
@@ -202,11 +253,14 @@ public abstract class MovingObject implements ObjectInArea {
      * Move object to {@code n} in up and right.
      * 
      * @param n
-     * @throws LostObjectException       if object isn't on position which written
-     *                                   in object's data;
-     * @throws CannotMoveObjectException if pos in up of right is busy.
+     * @throws PositionCannotExistInAreaException
+     * @throws LostObjectException                if object isn't on position which
+     *                                            written
+     *                                            in object's data;
+     * @throws CannotMoveObjectException          if pos in up of right is busy.
      */
-    protected void moveUpRight(int n) throws PositionException {
+    protected void moveUpRight(int n)
+            throws LostObjectException, CannotMoveObjectException, PositionCannotExistInAreaException {
         moveUpRight(n, n);
     }
 
@@ -214,11 +268,14 @@ public abstract class MovingObject implements ObjectInArea {
      * Move object to {@code n} in down and left.
      * 
      * @param n
-     * @throws LostObjectException       if object isn't on position which written
-     *                                   in object's data;
-     * @throws CannotMoveObjectException if pos in down of left is busy.
+     * @throws PositionCannotExistInAreaException
+     * @throws LostObjectException                if object isn't on position which
+     *                                            written
+     *                                            in object's data;
+     * @throws CannotMoveObjectException          if pos in down of left is busy.
      */
-    protected void moveDownLeft(int n) throws PositionException {
+    protected void moveDownLeft(int n)
+            throws LostObjectException, CannotMoveObjectException, PositionCannotExistInAreaException {
         moveDownLeft(n, n);
     }
 
@@ -226,11 +283,14 @@ public abstract class MovingObject implements ObjectInArea {
      * Move object to {@code n} in down and right.
      * 
      * @param n
-     * @throws LostObjectException       if object isn't on position which written
-     *                                   in object's data;
-     * @throws CannotMoveObjectException if pos in down of right is busy.
+     * @throws PositionCannotExistInAreaException
+     * @throws LostObjectException                if object isn't on position which
+     *                                            written
+     *                                            in object's data;
+     * @throws CannotMoveObjectException          if pos in down of right is busy.
      */
-    protected void moveDownRight(int n) throws PositionException {
+    protected void moveDownRight(int n)
+            throws LostObjectException, CannotMoveObjectException, PositionCannotExistInAreaException {
         moveDownRight(n, n);
     }
 
@@ -239,11 +299,14 @@ public abstract class MovingObject implements ObjectInArea {
      * 
      * @param inUp
      * @param inLeft
-     * @throws LostObjectException       if object isn't on position which written
-     *                                   in object's data;
-     * @throws CannotMoveObjectException if pos in up of left is busy.
+     * @throws PositionCannotExistInAreaException
+     * @throws LostObjectException                if object isn't on position which
+     *                                            written
+     *                                            in object's data;
+     * @throws CannotMoveObjectException          if pos in up of left is busy.
      */
-    protected void moveUpLeft(int inUp, int inLeft) throws PositionException {
+    protected void moveUpLeft(int inUp, int inLeft)
+            throws LostObjectException, CannotMoveObjectException, PositionCannotExistInAreaException {
         IntegerPosition2D oldPos = getCurrentPosition();
         int newX = oldPos.getX() - inLeft;
         int newY = oldPos.getY() + inUp;
@@ -257,11 +320,14 @@ public abstract class MovingObject implements ObjectInArea {
      * 
      * @param inUp
      * @param inRight
-     * @throws LostObjectException       if object isn't on position which written
-     *                                   in object's data;
-     * @throws CannotMoveObjectException if pos in up of right is busy.
+     * @throws PositionCannotExistInAreaException
+     * @throws LostObjectException                if object isn't on position which
+     *                                            written
+     *                                            in object's data;
+     * @throws CannotMoveObjectException          if pos in up of right is busy.
      */
-    protected void moveUpRight(int inUp, int inRight) throws PositionException {
+    protected void moveUpRight(int inUp, int inRight)
+            throws LostObjectException, CannotMoveObjectException, PositionCannotExistInAreaException {
         IntegerPosition2D oldPos = getCurrentPosition();
         int newX = oldPos.getX() + inRight;
         int newY = oldPos.getY() + inUp;
@@ -275,11 +341,14 @@ public abstract class MovingObject implements ObjectInArea {
      * 
      * @param inDown
      * @param inLeft
-     * @throws LostObjectException       if object isn't on position which written
-     *                                   in object's data;
-     * @throws CannotMoveObjectException if pos in down of left is busy.
+     * @throws PositionCannotExistInAreaException
+     * @throws LostObjectException                if object isn't on position which
+     *                                            written
+     *                                            in object's data;
+     * @throws CannotMoveObjectException          if pos in down of left is busy.
      */
-    protected void moveDownLeft(int inDown, int inLeft) throws PositionException {
+    protected void moveDownLeft(int inDown, int inLeft)
+            throws LostObjectException, CannotMoveObjectException, PositionCannotExistInAreaException {
         IntegerPosition2D oldPos = getCurrentPosition();
         int newX = oldPos.getX() - inLeft;
         int newY = oldPos.getY() - inDown;
@@ -293,11 +362,14 @@ public abstract class MovingObject implements ObjectInArea {
      * 
      * @param inDown
      * @param inLeft
-     * @throws LostObjectException       if object isn't on position which written
-     *                                   in object's data;
-     * @throws CannotMoveObjectException if pos in down of right is busy.
+     * @throws PositionCannotExistInAreaException
+     * @throws LostObjectException                if object isn't on position which
+     *                                            written
+     *                                            in object's data;
+     * @throws CannotMoveObjectException          if pos in down of right is busy.
      */
-    protected void moveDownRight(int inDown, int inRight) throws PositionException {
+    protected void moveDownRight(int inDown, int inRight)
+            throws LostObjectException, CannotMoveObjectException, PositionCannotExistInAreaException {
         IntegerPosition2D oldPos = getCurrentPosition();
         int newX = oldPos.getX() + inRight;
         int newY = oldPos.getY() - inDown;
@@ -310,16 +382,23 @@ public abstract class MovingObject implements ObjectInArea {
      * Method moves object in {@code newPos}.
      * 
      * @param newPos
-     * @throws LostObjectException       if object isn't on position which written
-     *                                   in object's data;
-     * @throws CannotMoveObjectException if {@code newPos} is busy.
+     * @throws PositionCannotExistInAreaException
+     * @throws LostObjectException                if object isn't on position which
+     *                                            written
+     *                                            in object's data;
+     * @throws CannotMoveObjectException          if {@code newPos} is busy.
      */
-    protected void moveToPosition(IntegerPosition2D newPos) throws PositionException {
+    protected void moveToPosition(IntegerPosition2D newPos)
+            throws LostObjectException, PositionCannotExistInAreaException, CannotMoveObjectException {
         checkForBeingInCurrentPosition();
 
         IntegerPosition2D oldPos = getCurrentPosition();
         try {
-            getArea().relocate(oldPos, newPos);
+            try {
+                getArea().relocate(oldPos, newPos);
+            } catch (EmptyPositionException e) {
+                throw new LostObjectException(oldPos, this);
+            }
         } catch (BusyPositionException e) {
             throw new CannotMoveObjectException(newPos, this);
         }
@@ -350,11 +429,15 @@ public abstract class MovingObject implements ObjectInArea {
         startPos = pos;
     }
 
-    private void checkForBeingInCurrentPosition() throws PositionException {
+    private void checkForBeingInCurrentPosition() throws LostObjectException, PositionCannotExistInAreaException {
         CheckeredAreaContainsAll area = getArea();
         IntegerPosition2D pos = getCurrentPosition();
 
-        if (area.positionIsEmpty(pos) || area.get(pos) != this) {
+        try {
+            if (area.get(pos) != this) {
+                throw new LostObjectException(pos, this);
+            }
+        } catch (EmptyPositionException e) {
             throw new LostObjectException(pos, this);
         }
     }
