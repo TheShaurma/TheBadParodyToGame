@@ -1,18 +1,20 @@
-package TheBadParodyToGame.area;
+package TheBadParodyToGame.area.abstractions;
 
 import java.io.Serializable;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 import TheBadParodyToGame.ObjectsInArea.ObjectInArea;
 import TheBadParodyToGame.area.position.BusyPositionException;
 import TheBadParodyToGame.area.position.EmptyPositionException;
+import TheBadParodyToGame.area.position.GameIntegerPosition2D;
 import TheBadParodyToGame.area.position.IntegerPosition2D;
 import TheBadParodyToGame.area.position.PositionCannotExistInAreaException;
 
 // TODO: docs
-public abstract class ModifiableCheckeredArea<OBJ extends ObjectInArea> implements CheckeredArea<OBJ> {
-    private AreaItself<OBJ> areaItself = new AreaItself<>();
+public abstract class AbstractCheckeredArea<OBJ extends ObjectInArea> implements CheckeredArea<OBJ> {
+    private AreaItself areaItself = new AreaItself();
 
     @Override
     public OBJ get(IntegerPosition2D pos) throws EmptyPositionException, PositionCannotExistInAreaException {
@@ -105,69 +107,110 @@ public abstract class ModifiableCheckeredArea<OBJ extends ObjectInArea> implemen
     public boolean positionIsBusy(IntegerPosition2D pos) throws PositionCannotExistInAreaException {
         return areaItself.positionIsBusy(pos);
     }
-}
 
-// FIXME: Bad Code!
-/**
- * AreaItself
- * 
- * This is adaptor for HashMap.
- */
-class AreaItself<OBJ extends ObjectInArea> implements Serializable {
-    private static final long serialVersionUID = 2L;
-    // Use area.get(x).get(y) to get object from area.
-    private Map<Integer, HashMap<Integer, OBJ>> area;
-
-    public AreaItself() {
-        area = new HashMap<>();
+    @Override
+    public Iterator<IntegerPosition2D> iterator() {
+        return new AreaIterator();
     }
 
-    public OBJ get(IntegerPosition2D pos) throws EmptyPositionException {
-        int x = pos.getX();
-        int y = pos.getY();
+    private class AreaIterator implements Iterator<IntegerPosition2D> {
+        private Iterator<Integer> xIterator;
+        private Iterator<Integer> yIterator;
+        private int currentX;
 
-        if (area.get(x) == null || area.get(x).get(y) == null) {
-            throw new EmptyPositionException(pos);
-        } else {
-            return area.get(x).get(y);
+        public AreaIterator() {
+            xIterator = areaItself.area.keySet().iterator();
+            currentX = xIterator.next();
+
+            yIterator = areaItself.area.get(currentX).keySet().iterator();
+        }
+
+        @Override
+        public boolean hasNext() {
+            return xIterator.hasNext();
+        }
+
+        @Override
+        public IntegerPosition2D next() {
+            int x, y;
+
+            if (yIterator.hasNext()) {
+                x = currentX;
+                y = yIterator.next();
+            } else {
+                x = xIterator.next();
+                currentX = x;
+
+                yIterator = areaItself.area.get(x).keySet().iterator();
+                y = yIterator.next();
+            }
+
+            return new GameIntegerPosition2D(x, y);
         }
     }
 
-    public void set(IntegerPosition2D pos, OBJ obj) {
-        int x = pos.getX();
-        int y = pos.getY();
+    // FIXME: Bad Code!
+    /**
+     * AreaItself
+     * 
+     * This is adaptor for HashMap.
+     */
+    private class AreaItself implements Serializable {
+        private static final long serialVersionUID = 2L;
+        // Use area.get(x).get(y) to get object from area.
+        private Map<Integer, Map<Integer, OBJ>> area;
 
-        try {
-            area.get(x).put(y, obj);
-        } catch (NullPointerException e) {
-            area.put(x, new HashMap<>());
-            area.get(x).put(y, obj);
-        }
-    }
-
-    public void del(IntegerPosition2D pos) throws EmptyPositionException {
-        int x = pos.getX();
-        int y = pos.getY();
-
-        if (area.get(x) == null || area.get(x).get(y) == null) {
-            throw new EmptyPositionException(pos);
+        public AreaItself() {
+            area = new HashMap<>();
         }
 
-        area.get(x).remove(y);
-    }
+        public OBJ get(IntegerPosition2D pos) throws EmptyPositionException {
+            int x = pos.getX();
+            int y = pos.getY();
 
-    public boolean positionIsEmpty(IntegerPosition2D pos) {
-        int x = pos.getX();
-        int y = pos.getY();
-
-        if (area.get(x) == null || area.get(x).get(y) == null) {
-            return true;
-        } else {
-            return false;
+            if (area.get(x) == null || area.get(x).get(y) == null) {
+                throw new EmptyPositionException(pos);
+            } else {
+                return area.get(x).get(y);
+            }
         }
-    }
 
-    public boolean positionIsBusy(IntegerPosition2D pos) {
-        return !positionIsEmpty(pos);
+        public void set(IntegerPosition2D pos, OBJ obj) {
+            int x = pos.getX();
+            int y = pos.getY();
+
+            try {
+                area.get(x).put(y, obj);
+            } catch (NullPointerException e) {
+                area.put(x, new HashMap<>());
+                area.get(x).put(y, obj);
+            }
+        }
+
+        public void del(IntegerPosition2D pos) throws EmptyPositionException {
+            int x = pos.getX();
+            int y = pos.getY();
+
+            if (area.get(x) == null || area.get(x).get(y) == null) {
+                throw new EmptyPositionException(pos);
+            }
+
+            area.get(x).remove(y);
+        }
+
+        public boolean positionIsEmpty(IntegerPosition2D pos) {
+            int x = pos.getX();
+            int y = pos.getY();
+
+            if (area.get(x) == null || area.get(x).get(y) == null) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        public boolean positionIsBusy(IntegerPosition2D pos) {
+            return !positionIsEmpty(pos);
+        }
     }
 }

@@ -2,9 +2,10 @@ package Tests.area;
 
 import java.io.Serializable;
 import java.util.HashMap;
+import java.util.Iterator;
 
 import TheBadParodyToGame.ObjectsInArea.ObjectInArea;
-import TheBadParodyToGame.area.CheckeredAreaContainsAll;
+import TheBadParodyToGame.area.abstractions.CheckeredAreaContainsAll;
 import TheBadParodyToGame.area.position.BusyPositionException;
 import TheBadParodyToGame.area.position.EmptyPositionException;
 import TheBadParodyToGame.area.position.IntegerPosition2D;
@@ -104,6 +105,12 @@ public class CheckeredAreaStub implements CheckeredAreaContainsAll {
     @Override
     public boolean positionIsBusy(IntegerPosition2D pos) throws PositionCannotExistInAreaException {
         return areaItself.positionIsBusy(pos);
+    }
+
+    @Override
+    public Iterator<IntegerPosition2D> iterator() {
+        // TODO Auto-generated method stub
+        return null;
     }
 }
 

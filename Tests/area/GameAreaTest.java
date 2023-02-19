@@ -1,5 +1,7 @@
 package Tests.area;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 
@@ -291,5 +293,21 @@ public class GameAreaTest {
         result = area.positionIsBusy(pos);
 
         Assertions.assertEquals(result, true);
+    }
+
+    @Test
+    public void iterator_iterate_iterated() throws BusyPositionException, PositionCannotExistInAreaException {
+        GameArea area = new GameArea();
+        IntegerPosition2DStub pos1 = new IntegerPosition2DStub();
+        IntegerPosition2DStub pos2 = pos1.getOther();
+        IntegerPosition2D pos3 = pos2.getOther(pos1);
+        area.place(pos1, new ObjectInAreaStub());
+        area.place(pos2, new ObjectInAreaStub());
+        area.place(pos3, new ObjectInAreaStub());
+
+        for (IntegerPosition2D pos : area) {
+
+            assertTrue(area.positionIsBusy(pos));
+        }
     }
 }

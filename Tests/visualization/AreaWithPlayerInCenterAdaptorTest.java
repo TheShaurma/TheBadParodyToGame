@@ -9,7 +9,7 @@ import org.junit.Test;
 import Tests.area.CheckeredAreaStub;
 import Tests.area.position.IntegerPosition2DStub;
 import TheBadParodyToGame.ObjectsInArea.player.Player;
-import TheBadParodyToGame.area.CheckeredAreaContainsAll;
+import TheBadParodyToGame.area.abstractions.CheckeredAreaContainsAll;
 import TheBadParodyToGame.area.position.IntegerPosition2D;
 import TheBadParodyToGame.area.position.PositionException;
 import TheBadParodyToGame.visualization.AreaWithPlayerInCenterAdapter;
