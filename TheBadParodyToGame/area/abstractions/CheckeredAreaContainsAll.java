@@ -1,4 +1,4 @@
-package TheBadParodyToGame.area;
+package TheBadParodyToGame.area.abstractions;
 
 import TheBadParodyToGame.ObjectsInArea.ObjectInArea;
 

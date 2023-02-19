@@ -1,8 +1,10 @@
 package TheBadParodyToGame.visualization;
 
+import java.util.Iterator;
+
 import TheBadParodyToGame.ObjectsInArea.ObjectInArea;
 import TheBadParodyToGame.ObjectsInArea.player.Player;
-import TheBadParodyToGame.area.CheckeredAreaContainsAll;
+import TheBadParodyToGame.area.abstractions.CheckeredAreaContainsAll;
 import TheBadParodyToGame.area.position.BusyPositionException;
 import TheBadParodyToGame.area.position.EmptyPositionException;
 import TheBadParodyToGame.area.position.GameIntegerPosition2D;
@@ -98,5 +100,10 @@ public class AreaWithPlayerInCenterAdapter implements CheckeredAreaContainsAll {
         IntegerPosition2D convertedPos = new GameIntegerPosition2D(playerX + pos.getX(), playerY + pos.getY());
 
         return convertedPos;
+    }
+
+    @Override
+    public Iterator<IntegerPosition2D> iterator() {
+        return areaItself.iterator();
     }
 }

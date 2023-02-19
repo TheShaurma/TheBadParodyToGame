@@ -12,7 +12,7 @@ import Tests.area.position.IntegerPosition2DStub;
 import TheBadParodyToGame.ObjectsInArea.CannotMoveObjectException;
 import TheBadParodyToGame.ObjectsInArea.LostObjectException;
 import TheBadParodyToGame.ObjectsInArea.ObjectInArea;
-import TheBadParodyToGame.area.CheckeredAreaContainsAll;
+import TheBadParodyToGame.area.abstractions.CheckeredAreaContainsAll;
 import TheBadParodyToGame.area.position.IntegerPosition2D;
 import TheBadParodyToGame.area.position.PositionException;
 

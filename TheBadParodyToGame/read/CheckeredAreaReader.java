@@ -8,8 +8,8 @@ import TheBadParodyToGame.ObjectsInArea.ObjectInArea;
 import TheBadParodyToGame.ObjectsInArea.affectingToHP.Apple;
 import TheBadParodyToGame.ObjectsInArea.affectingToHP.Fire;
 import TheBadParodyToGame.ObjectsInArea.buildingMaterials.Stone;
-import TheBadParodyToGame.area.CheckeredAreaContainsAll;
 import TheBadParodyToGame.area.GameArea;
+import TheBadParodyToGame.area.abstractions.CheckeredAreaContainsAll;
 import TheBadParodyToGame.area.position.GameIntegerPosition2D;
 import TheBadParodyToGame.area.position.PositionException;
 

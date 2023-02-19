@@ -7,7 +7,7 @@ import TheBadParodyToGame.ObjectsInArea.affectingToHP.Fire;
 import TheBadParodyToGame.ObjectsInArea.buildingMaterials.Stone;
 import TheBadParodyToGame.ObjectsInArea.player.Player;
 import TheBadParodyToGame.ObjectsInArea.player.PlayerDiedException;
-import TheBadParodyToGame.area.CheckeredAreaContainsAll;
+import TheBadParodyToGame.area.abstractions.CheckeredAreaContainsAll;
 import TheBadParodyToGame.area.position.GameIntegerPosition2D;
 import TheBadParodyToGame.area.position.IntegerPosition2D;
 import TheBadParodyToGame.area.position.PositionException;
