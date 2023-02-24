@@ -6,6 +6,7 @@ import TheBadParodyToGame.area.position.EmptyPositionException;
 import TheBadParodyToGame.area.position.IntegerPosition2D;
 import TheBadParodyToGame.area.position.PositionCannotExistInAreaException;
 
+// FIXME: doesn't work
 public class AreaWithPortals extends GameArea {
     private PortalsArea portalsArea = new PortalsArea();
 
