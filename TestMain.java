@@ -17,10 +17,12 @@ import TheBadParodyToGame.read.CheckeredAreaReader;
 import TheBadParodyToGame.read.UnknownSymbolException;
 import TheBadParodyToGame.visualization.AreaWithPlayerInCenterAdapter;
 import TheBadParodyToGame.visualization.SimpleVisualizer;
+import TheBadParodyToGame.visualization.WindowVisualizer;
 
 public class TestMain {
     private static CheckeredAreaContainsAll area;
-    private static SimpleVisualizer visualizer;
+    private static SimpleVisualizer consoleVisualizer;
+    private static WindowVisualizer windowVisualizer;
     private static Player player;
     private static Scanner in;
     private static boolean run;
@@ -31,7 +33,7 @@ public class TestMain {
         String input;
         while (run) {
             System.out.println(player.getHPString() + " - " + player.getName());
-            visualizer.showConsole();
+            consoleVisualizer.showConsole();
             System.out.print("Use WASD to move and Q to quit:");
 
             input = in.next();
@@ -57,14 +59,19 @@ public class TestMain {
         IntegerPosition2D startPos = new GameIntegerPosition2D(1, 1);
         player = new Player("Valera", area, startPos);
 
-        visualizer = new SimpleVisualizer(new GameIntegerPosition2D(-20, -10),
-                new GameIntegerPosition2D(20, 10),
+        IntegerPosition2D minPos = new GameIntegerPosition2D(-20, -10);
+        IntegerPosition2D maxPos = new GameIntegerPosition2D(20, 10);
+        AreaWithPlayerInCenterAdapter areaWithPlayerInCenter = new AreaWithPlayerInCenterAdapter(TestMain.area, player);
+
+        consoleVisualizer = new SimpleVisualizer(minPos, maxPos,
                 new AreaWithPlayerInCenterAdapter(area, player));
-        HashMap<Class<?>, String> consoleVisualMap = visualizer.getConsoleVisualMap();
+        HashMap<Class<?>, String> consoleVisualMap = consoleVisualizer.getConsoleVisualMap();
         consoleVisualMap.put(Player.class, "P");
         consoleVisualMap.put(Stone.class, "s");
         consoleVisualMap.put(Fire.class, "f");
         consoleVisualMap.put(Apple.class, "a");
+
+        windowVisualizer = new WindowVisualizer(areaWithPlayerInCenter, minPos, maxPos, player);
 
         in = new Scanner(System.in);
         run = true;

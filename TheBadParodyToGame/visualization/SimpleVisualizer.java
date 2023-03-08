@@ -19,7 +19,6 @@ public class SimpleVisualizer {
     private int yMin;
     private int yMax;
 
-    private HashMap<Class<?>, Color> visualMap = new ColorMap();
     private HashMap<Class<?>, String> consoleVisualMap = new SymbolMap();
 
     public SimpleVisualizer(IntegerPosition2D minPos, IntegerPosition2D maxPos, CheckeredAreaContainsAll area) {
@@ -43,10 +42,6 @@ public class SimpleVisualizer {
             yMin = y1;
             yMax = y2;
         }
-    }
-
-    public HashMap<Class<?>, Color> getVisualMap() {
-        return visualMap;
     }
 
     public HashMap<Class<?>, String> getConsoleVisualMap() {
@@ -97,19 +92,6 @@ class SymbolMap extends HashMap<Class<?>, String> {
 
         if (out == null) {
             return "?";
-        } else {
-            return out;
-        }
-    }
-}
-
-class ColorMap extends HashMap<Class<?>, Color> {
-    @Override
-    public Color get(Object key) {
-        Color out = super.get(key);
-
-        if (out == null) {
-            return new Color(200, 50, 200);
         } else {
             return out;
         }

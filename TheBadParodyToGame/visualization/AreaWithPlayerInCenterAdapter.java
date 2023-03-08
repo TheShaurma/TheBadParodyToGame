@@ -5,6 +5,7 @@ import java.util.Iterator;
 import TheBadParodyToGame.ObjectsInArea.ObjectInArea;
 import TheBadParodyToGame.ObjectsInArea.player.Player;
 import TheBadParodyToGame.area.abstractions.CheckeredAreaContainsAll;
+import TheBadParodyToGame.area.abstractions.ConstantCheckeredAreaContainsAll;
 import TheBadParodyToGame.area.position.BusyPositionException;
 import TheBadParodyToGame.area.position.EmptyPositionException;
 import TheBadParodyToGame.area.position.GameIntegerPosition2D;
@@ -16,7 +17,7 @@ import TheBadParodyToGame.area.position.PositionCannotExistInAreaException;
  * 
  * Used only for visualization. That's why this class isn't in area package.
  */
-public class AreaWithPlayerInCenterAdapter implements CheckeredAreaContainsAll {
+public class AreaWithPlayerInCenterAdapter implements CheckeredAreaContainsAll, ConstantCheckeredAreaContainsAll {
     private CheckeredAreaContainsAll areaItself;
     private Player player;
 

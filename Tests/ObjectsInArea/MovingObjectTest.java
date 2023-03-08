@@ -1932,9 +1932,9 @@ public class MovingObjectTest {
         int inLeft1 = getRandomPositiveInt();
         int inUp2 = getRandomPositiveInt();
         int inRight2 = getRandomPositiveInt();
-        int intDown3 = getRandomPositiveInt();
+        int inDown3 = getRandomPositiveInt();
         int inLeft3 = getRandomPositiveInt();
-        int intDown4 = getRandomPositiveInt();
+        int inDown4 = getRandomPositiveInt();
         int inRight4 = getRandomPositiveInt();
         IntegerPosition2DStub startPos = new IntegerPosition2DStub();
         IntegerPosition2D middlePos = startPos.getOther();
@@ -1945,7 +1945,7 @@ public class MovingObjectTest {
                         - inUpLeft - inDownLeft,
                 middlePos.getY() + inUp + inUp1 + inUp2
                         + inUpLeft + inUpRight
-                        - inDown - intDown3 - intDown4
+                        - inDown - inDown3 - inDown4
                         - inDownLeft - inDownRight);
         MovingObjectStub expectedObj = new MovingObjectStub(area, startPos);
         ObjectInArea actualObj;
@@ -1965,8 +1965,8 @@ public class MovingObjectTest {
         expectedObj.moveDownRight(inDownRight);
         expectedObj.moveUpLeft(inUp1, inLeft1);
         expectedObj.moveUpRight(inUp2, inRight2);
-        expectedObj.moveDownLeft(intDown3, inLeft3);
-        expectedObj.moveDownRight(intDown4, inRight4);
+        expectedObj.moveDownLeft(inDown3, inLeft3);
+        expectedObj.moveDownRight(inDown4, inRight4);
         actualObj = area.get(finalPos);
 
         assertEquals(expectedObj, actualObj);
