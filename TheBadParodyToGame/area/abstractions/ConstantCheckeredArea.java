@@ -5,6 +5,9 @@ import TheBadParodyToGame.area.position.EmptyPositionException;
 import TheBadParodyToGame.area.position.IntegerPosition2D;
 import TheBadParodyToGame.area.position.PositionCannotExistInAreaException;
 
+/**
+ * This is area, which can't be updated by user.
+ */
 public interface ConstantCheckeredArea<OBJ extends ObjectInArea> extends Iterable<IntegerPosition2D> {
     /**
      * @param pos

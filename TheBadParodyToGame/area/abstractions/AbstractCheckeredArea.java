@@ -12,7 +12,10 @@ import TheBadParodyToGame.area.position.GameIntegerPosition2D;
 import TheBadParodyToGame.area.position.IntegerPosition2D;
 import TheBadParodyToGame.area.position.PositionCannotExistInAreaException;
 
-// TODO: docs
+/**
+ * This is abstract class implements of CheckeredArea.
+ * OBJ showld extend from ObjectInArea.
+ */
 public abstract class AbstractCheckeredArea<OBJ extends ObjectInArea> implements CheckeredArea<OBJ> {
     private AreaItself areaItself = new AreaItself();
 

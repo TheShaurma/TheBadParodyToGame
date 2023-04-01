@@ -2,6 +2,8 @@ package TheBadParodyToGame.area.abstractions;
 
 import TheBadParodyToGame.ObjectsInArea.ObjectInArea;
 
-// TODO: create docs
+/**
+ * Extends from ConstantCheckeredArea<ObjectInArea>.
+ */
 public interface ConstantCheckeredAreaContainsAll extends ConstantCheckeredArea<ObjectInArea> {
 }

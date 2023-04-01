@@ -9,6 +9,7 @@ import TheBadParodyToGame.area.position.PositionCannotExistInAreaException;
 public interface CheckeredArea<OBJ extends ObjectInArea> extends ConstantCheckeredArea<OBJ> {
     /**
      * Anyways place {@code obj} at {@code pos}.
+     * Contrast to {@code place}, doesn't throws {@code BusyPositionException}.
      * 
      * @param pos
      * @param obj
