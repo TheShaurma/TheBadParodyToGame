@@ -19,7 +19,6 @@ import TheBadParodyToGame.area.position.PositionException;
 public class Player extends MovingObject {
     private int heatPoints = 100;
     private String name;
-    private static final long serialVersionUID = 5L;
 
     public Player(CheckeredAreaContainsAll area, IntegerPosition2D startPos) throws PositionException {
         super(area, startPos);

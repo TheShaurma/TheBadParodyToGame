@@ -1,6 +1,5 @@
 package Tests.area;
 
-import java.io.Serializable;
 import java.util.HashMap;
 
 import TheBadParodyToGame.ObjectsInArea.ObjectInArea;
@@ -112,8 +111,7 @@ public class CheckeredAreaStub implements CheckeredAreaContainsAll {
  * 
  * This is adaptor for HashMap.
  */
-class AreaItself implements Serializable {
-    private static final long serialVersionUID = 2L;
+class AreaItself {
     // Use area.get(x).get(y) to get object from area.
     private HashMap<Integer, HashMap<Integer, ObjectInArea>> area;
 

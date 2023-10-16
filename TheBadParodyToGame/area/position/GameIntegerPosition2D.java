@@ -1,11 +1,8 @@
 package TheBadParodyToGame.area.position;
 
-import java.io.Serializable;
-
-public class GameIntegerPosition2D implements IntegerPosition2D, Serializable {
+public class GameIntegerPosition2D implements IntegerPosition2D {
     private int x;
     private int y;
-    private static final long serialVersionUID = 7L;
 
     public GameIntegerPosition2D(int x, int y) {
         this.x = x;
