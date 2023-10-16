@@ -3,7 +3,7 @@ package TheBadParodyToGame.visualization;
 import java.util.HashMap;
 
 import TheBadParodyToGame.ObjectsInArea.ObjectInArea;
-import TheBadParodyToGame.area.CheckeredAreaContainsAll;
+import TheBadParodyToGame.area.AreaContainsAll;
 import TheBadParodyToGame.area.position.GameIntegerPosition2D;
 import TheBadParodyToGame.area.position.IntegerPosition2D;
 import TheBadParodyToGame.area.position.PositionException;
@@ -12,7 +12,7 @@ import TheBadParodyToGame.area.position.PositionException;
  * Visualizer
  */
 public class SimpleVisualizer {
-    private CheckeredAreaContainsAll area;
+    private AreaContainsAll area;
 
     private int xMin;
     private int xMax;
@@ -22,7 +22,7 @@ public class SimpleVisualizer {
     private HashMap<Class<?>, Color> visualMap = new ColorMap();
     private HashMap<Class<?>, String> consoleVisualMap = new SymbolMap();
 
-    public SimpleVisualizer(IntegerPosition2D minPos, IntegerPosition2D maxPos, CheckeredAreaContainsAll area) {
+    public SimpleVisualizer(IntegerPosition2D minPos, IntegerPosition2D maxPos, AreaContainsAll area) {
         this.area = area;
         int x1 = minPos.getX();
         int x2 = maxPos.getX();

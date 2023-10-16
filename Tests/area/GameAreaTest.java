@@ -220,12 +220,68 @@ public class GameAreaTest {
             throws PositionException {
         GameArea area = new GameArea();
         IntegerPosition2D oldPos = IntegerPosition2DStub.getRandomPosition();
+        // TODO: shift to oldpos.getOther
         IntegerPosition2D newPos = IntegerPosition2DStub.getRandomPosition();
         ObjectInArea obj = new ObjectInAreaStub();
         area.set(newPos, obj);
 
+        // TODO: test if position in exception object right
         Assertions.assertThrows(EmptyPositionException.class, () -> {
             area.relocate(oldPos, newPos);
+        });
+    }
+
+    @Test
+    public void relocateToEverywhere_relocateFromBusyToEmpty_objectRelocated()
+            throws PositionCannotExistInAreaException, EmptyPositionException {
+        GameArea area = new GameArea();
+        IntegerPosition2DStub oldPos = IntegerPosition2DStub.getRandomPosition();
+        IntegerPosition2D newPos = oldPos.getOther();
+        ObjectInArea obj = new ObjectInAreaStub();
+        area.set(oldPos, obj);
+
+        area.relocateToEverywhere(oldPos, newPos);
+
+        Assertions.assertEquals(area.get(newPos), obj);
+    }
+
+    @Test
+    public void relocateToEverywhere_relocateFromBusyToBusy_objectRelocated()
+            throws PositionCannotExistInAreaException, EmptyPositionException {
+        GameArea area = new GameArea();
+        IntegerPosition2DStub oldPos = IntegerPosition2DStub.getRandomPosition();
+        IntegerPosition2D newPos = oldPos.getOther();
+        ObjectInArea obj = new ObjectInAreaStub();
+        area.set(oldPos, obj);
+        area.set(newPos, new ObjectInAreaStub());
+
+        area.relocateToEverywhere(oldPos, newPos);
+
+        Assertions.assertEquals(area.get(newPos), obj);
+    }
+
+    @Test
+    public void relocateToEverywhere_relocateFromEmptyToEmpty_EmptyPositionExceptionThroned()
+            throws PositionCannotExistInAreaException, EmptyPositionException {
+        GameArea area = new GameArea();
+        IntegerPosition2DStub oldPos = IntegerPosition2DStub.getRandomPosition();
+        IntegerPosition2D newPos = oldPos.getOther();
+
+        Assertions.assertThrows(EmptyPositionException.class, () -> {
+            area.relocateToEverywhere(oldPos, newPos);
+        });
+    }
+
+    @Test
+    public void relocateToEverywhere_relocateFromEmptyToBusy_EmptyPositionExceptionThroned()
+            throws PositionCannotExistInAreaException, EmptyPositionException {
+        GameArea area = new GameArea();
+        IntegerPosition2DStub oldPos = IntegerPosition2DStub.getRandomPosition();
+        IntegerPosition2D newPos = oldPos.getOther();
+        area.set(newPos, new ObjectInAreaStub());
+
+        Assertions.assertThrows(EmptyPositionException.class, () -> {
+            area.relocateToEverywhere(oldPos, newPos);
         });
     }
 

@@ -3,13 +3,13 @@ package Tests.area;
 import java.util.HashMap;
 
 import TheBadParodyToGame.ObjectsInArea.ObjectInArea;
-import TheBadParodyToGame.area.CheckeredAreaContainsAll;
+import TheBadParodyToGame.area.AreaContainsAll;
 import TheBadParodyToGame.area.position.BusyPositionException;
 import TheBadParodyToGame.area.position.EmptyPositionException;
 import TheBadParodyToGame.area.position.IntegerPosition2D;
 import TheBadParodyToGame.area.position.PositionCannotExistInAreaException;
 
-public class CheckeredAreaStub implements CheckeredAreaContainsAll {
+public class CheckeredAreaStub implements AreaContainsAll {
     private AreaItself areaItself = new AreaItself();
 
     @Override
@@ -103,6 +103,13 @@ public class CheckeredAreaStub implements CheckeredAreaContainsAll {
     @Override
     public boolean positionIsBusy(IntegerPosition2D pos) throws PositionCannotExistInAreaException {
         return areaItself.positionIsBusy(pos);
+    }
+
+    @Override
+    public void relocateToEverywhere(IntegerPosition2D oldPos, IntegerPosition2D newPos)
+            throws EmptyPositionException, PositionCannotExistInAreaException {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'relocateToEverywhere'");
     }
 }
 

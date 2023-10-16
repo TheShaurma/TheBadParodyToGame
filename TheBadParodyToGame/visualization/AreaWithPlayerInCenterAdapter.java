@@ -2,7 +2,7 @@ package TheBadParodyToGame.visualization;
 
 import TheBadParodyToGame.ObjectsInArea.ObjectInArea;
 import TheBadParodyToGame.ObjectsInArea.player.Player;
-import TheBadParodyToGame.area.CheckeredAreaContainsAll;
+import TheBadParodyToGame.area.AreaContainsAll;
 import TheBadParodyToGame.area.position.BusyPositionException;
 import TheBadParodyToGame.area.position.EmptyPositionException;
 import TheBadParodyToGame.area.position.GameIntegerPosition2D;
@@ -14,11 +14,11 @@ import TheBadParodyToGame.area.position.PositionCannotExistInAreaException;
  * 
  * Used only for visualization. That's why this class isn't in area package.
  */
-public class AreaWithPlayerInCenterAdapter implements CheckeredAreaContainsAll {
-    private CheckeredAreaContainsAll areaItself;
+public class AreaWithPlayerInCenterAdapter implements AreaContainsAll {
+    private AreaContainsAll areaItself;
     private Player player;
 
-    public AreaWithPlayerInCenterAdapter(CheckeredAreaContainsAll area, Player player) {
+    public AreaWithPlayerInCenterAdapter(AreaContainsAll area, Player player) {
         areaItself = area;
         this.player = player;
     }
@@ -78,6 +78,12 @@ public class AreaWithPlayerInCenterAdapter implements CheckeredAreaContainsAll {
     }
 
     @Override
+    public void relocateToEverywhere(IntegerPosition2D oldPos, IntegerPosition2D newPos)
+            throws EmptyPositionException, PositionCannotExistInAreaException {
+        areaItself.relocateToEverywhere(convertPos(oldPos), convertPos(newPos));
+    }
+
+    @Override
     public boolean positionIsEmpty(IntegerPosition2D pos) throws PositionCannotExistInAreaException {
         return areaItself.positionIsEmpty(convertPos(pos));
     }
@@ -99,4 +105,5 @@ public class AreaWithPlayerInCenterAdapter implements CheckeredAreaContainsAll {
 
         return convertedPos;
     }
+
 }

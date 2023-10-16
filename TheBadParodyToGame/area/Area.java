@@ -6,16 +6,7 @@ import TheBadParodyToGame.area.position.EmptyPositionException;
 import TheBadParodyToGame.area.position.IntegerPosition2D;
 import TheBadParodyToGame.area.position.PositionCannotExistInAreaException;
 
-public interface CheckeredArea<OBJ extends ObjectInArea> {
-    /**
-     * @param pos
-     * @return object at this {@code pos}
-     * @throws EmptyPositionException             if {@code pos} is empty;
-     * @throws PositionCannotExistInAreaException if {@code pos} can't exist in
-     *                                            Area.
-     */
-    OBJ get(IntegerPosition2D pos) throws EmptyPositionException, PositionCannotExistInAreaException;
-
+public interface Area<OBJ extends ObjectInArea> extends ConstantArea<OBJ> {
     /**
      * Anyways place {@code obj} at {@code pos}.
      * 
@@ -121,14 +112,16 @@ public interface CheckeredArea<OBJ extends ObjectInArea> {
     void tryRelocate(IntegerPosition2D oldPos, IntegerPosition2D newPos) throws PositionCannotExistInAreaException;
 
     /**
-     * @param pos
-     * @return if {@code pos} is empty
+     * Relocate object from {@code oldPos} to {@code newPos} even if {@code newPos}
+     * is busy.
+     * 
+     * @param oldPos
+     * @param newPos
+     * @throws EmptyPositionException             if {@code oldPos} is empty;
+     * @throws PositionCannotExistInAreaException if {@code oldPos} or
+     *                                            {@code newPos} can't
+     *                                            exist in Area.
      */
-    boolean positionIsEmpty(IntegerPosition2D pos) throws PositionCannotExistInAreaException;
-
-    /**
-     * @param pos
-     * @return if {@code pos} is busy
-     */
-    boolean positionIsBusy(IntegerPosition2D pos) throws PositionCannotExistInAreaException;
+    void relocateToEverywhere(IntegerPosition2D oldPos, IntegerPosition2D newPos)
+            throws EmptyPositionException, PositionCannotExistInAreaException;
 }

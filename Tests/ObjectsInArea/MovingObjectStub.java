@@ -3,13 +3,13 @@ package Tests.ObjectsInArea;
 import TheBadParodyToGame.ObjectsInArea.CannotMoveObjectException;
 import TheBadParodyToGame.ObjectsInArea.LostObjectException;
 import TheBadParodyToGame.ObjectsInArea.MovingObject;
-import TheBadParodyToGame.area.CheckeredAreaContainsAll;
+import TheBadParodyToGame.area.AreaContainsAll;
 import TheBadParodyToGame.area.position.IntegerPosition2D;
 import TheBadParodyToGame.area.position.PositionCannotExistInAreaException;
 import TheBadParodyToGame.area.position.PositionException;
 
 public class MovingObjectStub extends MovingObject {
-    public MovingObjectStub(CheckeredAreaContainsAll area, IntegerPosition2D pos) throws PositionException {
+    public MovingObjectStub(AreaContainsAll area, IntegerPosition2D pos) throws PositionException {
         super(area, pos);
     }
 
@@ -134,7 +134,7 @@ public class MovingObjectStub extends MovingObject {
         super.moveToPosition(newPos);
     }
 
-    public CheckeredAreaContainsAll callGetArea() {
+    public AreaContainsAll callGetArea() {
         return getArea();
     }
 

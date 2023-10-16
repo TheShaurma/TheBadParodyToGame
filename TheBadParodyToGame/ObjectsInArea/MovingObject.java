@@ -1,6 +1,6 @@
 package TheBadParodyToGame.ObjectsInArea;
 
-import TheBadParodyToGame.area.CheckeredAreaContainsAll;
+import TheBadParodyToGame.area.AreaContainsAll;
 import TheBadParodyToGame.area.position.BusyPositionException;
 import TheBadParodyToGame.area.position.EmptyPositionException;
 import TheBadParodyToGame.area.position.GameIntegerPosition2D;
@@ -9,7 +9,7 @@ import TheBadParodyToGame.area.position.PositionCannotExistInAreaException;
 import TheBadParodyToGame.area.position.PositionException;
 
 public abstract class MovingObject implements ObjectInArea {
-    private final CheckeredAreaContainsAll area;
+    private final AreaContainsAll area;
     private IntegerPosition2D startPos;
 
     /**
@@ -22,7 +22,7 @@ public abstract class MovingObject implements ObjectInArea {
      * @throws PositionException                  if {@code pos} can't exist in
      *                                            {@code area}.
      */
-    public MovingObject(CheckeredAreaContainsAll area, IntegerPosition2D pos)
+    public MovingObject(AreaContainsAll area, IntegerPosition2D pos)
             throws BusyPositionException, PositionCannotExistInAreaException {
         this.area = area;
         startPos = pos;
@@ -409,7 +409,7 @@ public abstract class MovingObject implements ObjectInArea {
     /**
      * @return area where object is.
      */
-    protected final CheckeredAreaContainsAll getArea() {
+    protected final AreaContainsAll getArea() {
         return area;
     }
 
@@ -430,7 +430,7 @@ public abstract class MovingObject implements ObjectInArea {
     }
 
     private void checkForBeingInCurrentPosition() throws LostObjectException, PositionCannotExistInAreaException {
-        CheckeredAreaContainsAll area = getArea();
+        AreaContainsAll area = getArea();
         IntegerPosition2D pos = getCurrentPosition();
 
         try {

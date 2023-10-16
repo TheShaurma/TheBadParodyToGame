@@ -5,7 +5,7 @@ import TheBadParodyToGame.ObjectsInArea.LostObjectException;
 import TheBadParodyToGame.ObjectsInArea.MovingObject;
 import TheBadParodyToGame.ObjectsInArea.ObjectInArea;
 import TheBadParodyToGame.ObjectsInArea.PassableObject;
-import TheBadParodyToGame.area.CheckeredAreaContainsAll;
+import TheBadParodyToGame.area.AreaContainsAll;
 import TheBadParodyToGame.area.position.EmptyPositionException;
 import TheBadParodyToGame.area.position.IntegerPosition2D;
 import TheBadParodyToGame.area.position.PositionCannotExistInAreaException;
@@ -20,7 +20,7 @@ public class Player extends MovingObject {
     private int heatPoints = 100;
     private String name;
 
-    public Player(CheckeredAreaContainsAll area, IntegerPosition2D startPos) throws PositionException {
+    public Player(AreaContainsAll area, IntegerPosition2D startPos) throws PositionException {
         super(area, startPos);
 
         name = "NoName";
@@ -76,7 +76,7 @@ public class Player extends MovingObject {
         return result + " - " + getHP();
     }
 
-    public Player(String name, CheckeredAreaContainsAll area, IntegerPosition2D startPos) throws PositionException {
+    public Player(String name, AreaContainsAll area, IntegerPosition2D startPos) throws PositionException {
         super(area, startPos);
 
         this.name = name;
@@ -167,7 +167,7 @@ public class Player extends MovingObject {
     @Override
     protected void moveToPosition(IntegerPosition2D newPos)
             throws LostObjectException, PositionCannotExistInAreaException {
-        CheckeredAreaContainsAll area = getArea();
+        AreaContainsAll area = getArea();
 
         try {
             super.moveToPosition(newPos);
