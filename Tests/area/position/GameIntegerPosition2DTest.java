@@ -91,11 +91,54 @@ public class GameIntegerPosition2DTest {
         }
     }
 
+    /**
+     * x.equals(null) is always false
+     */
     @Test
     public void equals_compareNull_falseReturned() {
         IntegerPosition2D pos = getRandomPosition();
 
         Assertions.assertFalse(pos.equals(null));
+    }
+
+    /*
+     * Повторный вызов hashCode для одного и того же объекта должен возвращать
+     * одинаковые хеш-значения, если поля объекта, участвующие в вычислении
+     * значения, не менялись.
+     * Если equals() для двух объектов возвращает true, hashCode() также должен
+     * возвращать для них одно и то же число.
+     * При этом неравные между собой объекты могут иметь одинаковый hashCode.
+     */
+
+    @Test
+    public void hashCode_multipleCallForSingePos_singleHashCode() {
+        IntegerPosition2D pos = getRandomPosition();
+
+        final int COUNT = 1000;
+        int prevHash;
+        int currentHash = pos.hashCode();
+        for (int i = 0; i < COUNT; i++) {
+            prevHash = currentHash;
+            currentHash = pos.hashCode();
+
+            Assertions.assertEquals(prevHash, currentHash);
+        }
+    }
+
+    @Test
+    public void hashCode_callForEqualsPoses_singleHashReturned() {
+        final int COUNT = 1000;
+        IntegerPosition2D pos = getRandomPosition();
+        IntegerPosition2D[] poses = new IntegerPosition2D[COUNT];
+        for (int i = 0; i < COUNT; i++) {
+            poses[i] = getPositionCopy(pos);
+        }
+
+        for (IntegerPosition2D i : poses) {
+            for (IntegerPosition2D j : poses) {
+                Assertions.assertEquals(i.hashCode(), j.hashCode());
+            }
+        }
     }
 
     private static IntegerPosition2D getRandomPosition() {

@@ -34,6 +34,11 @@ public class GameIntegerPosition2D implements IntegerPosition2D {
     }
 
     @Override
+    public int hashCode() {
+        return getX() * getY();
+    }
+
+    @Override
     public String toString() {
         return "GameIntegerPosition(" + getX() + "; " + getY() + ")";
     }
