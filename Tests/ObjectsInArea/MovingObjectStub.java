@@ -138,7 +138,7 @@ public class MovingObjectStub extends MovingObject {
         return getArea();
     }
 
-    public Position callGetCurrentIntegerPosition2D() {
+    public Position callGetCurrentIntegerPosition() {
         return getCurrentPosition();
     }
 

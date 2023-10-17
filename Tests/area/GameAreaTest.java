@@ -400,6 +400,60 @@ public class GameAreaTest {
         area.tryRelocate(oldPos, newPos);
     }
 
+    @Test
+    public void relocateToEverywhere_relocateFromBusyToEmpty_objectRelocated()
+            throws PositionCannotExistInAreaException, EmptyPositionException {
+        GameArea area = new GameArea();
+        PositionStub oldPos = PositionStub.getRandomPosition();
+        Position newPos = oldPos.getOther();
+        ObjectInArea obj = new ObjectInAreaStub();
+        area.set(oldPos, obj);
+
+        area.relocateToEverywhere(oldPos, newPos);
+
+        Assertions.assertEquals(area.get(newPos), obj);
+    }
+
+    @Test
+    public void relocateToEverywhere_relocateFromBusyToBusy_objectRelocated()
+            throws PositionCannotExistInAreaException, EmptyPositionException {
+        GameArea area = new GameArea();
+        PositionStub oldPos = PositionStub.getRandomPosition();
+        Position newPos = oldPos.getOther();
+        ObjectInArea obj = new ObjectInAreaStub();
+        area.set(oldPos, obj);
+        area.set(newPos, new ObjectInAreaStub());
+
+        area.relocateToEverywhere(oldPos, newPos);
+
+        Assertions.assertEquals(area.get(newPos), obj);
+    }
+
+    @Test
+    public void relocateToEverywhere_relocateFromEmptyToEmpty_EmptyPositionExceptionThroned()
+            throws PositionCannotExistInAreaException, EmptyPositionException {
+        GameArea area = new GameArea();
+        PositionStub oldPos = PositionStub.getRandomPosition();
+        Position newPos = oldPos.getOther();
+
+        Assertions.assertThrows(EmptyPositionException.class, () -> {
+            area.relocateToEverywhere(oldPos, newPos);
+        });
+    }
+
+    @Test
+    public void relocateToEverywhere_relocateFromEmptyToBusy_EmptyPositionExceptionThroned()
+            throws PositionCannotExistInAreaException, EmptyPositionException {
+        GameArea area = new GameArea();
+        PositionStub oldPos = PositionStub.getRandomPosition();
+        Position newPos = oldPos.getOther();
+        area.set(newPos, new ObjectInAreaStub());
+
+        Assertions.assertThrows(EmptyPositionException.class, () -> {
+            area.relocateToEverywhere(oldPos, newPos);
+        });
+    }
+
     /**
      * Calls {@code positionIsEmpty(pos)} only.
      * 

@@ -101,15 +101,6 @@ public class PositionTest {
         Assertions.assertFalse(pos.equals(null));
     }
 
-    /*
-     * Повторный вызов hashCode для одного и того же объекта должен возвращать
-     * одинаковые хеш-значения, если поля объекта, участвующие в вычислении
-     * значения, не менялись.
-     * Если equals() для двух объектов возвращает true, hashCode() также должен
-     * возвращать для них одно и то же число.
-     * При этом неравные между собой объекты могут иметь одинаковый hashCode.
-     */
-
     @Test
     public void hashCode_multipleCallForSingePos_singleHashCode() {
         Position pos = getRandomPosition();
