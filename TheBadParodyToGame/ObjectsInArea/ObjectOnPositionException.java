@@ -1,6 +1,6 @@
 package TheBadParodyToGame.ObjectsInArea;
 
-import TheBadParodyToGame.area.position.IntegerPosition2D;
+import TheBadParodyToGame.area.position.Position;
 import TheBadParodyToGame.area.position.PositionException;
 
 public abstract class ObjectOnPositionException extends PositionException {
@@ -10,7 +10,7 @@ public abstract class ObjectOnPositionException extends PositionException {
      * @param position where problem appeared;
      * @param object   which have the problem;
      */
-    public ObjectOnPositionException(IntegerPosition2D position, ObjectInArea object) {
+    public ObjectOnPositionException(Position position, ObjectInArea object) {
         super(position);
         this.object = object;
     }

@@ -8,19 +8,19 @@ import TheBadParodyToGame.ObjectsInArea.ObjectInArea;
 import TheBadParodyToGame.ObjectsInArea.affectingToHP.Apple;
 import TheBadParodyToGame.ObjectsInArea.affectingToHP.Fire;
 import TheBadParodyToGame.ObjectsInArea.buildingMaterials.Stone;
+import TheBadParodyToGame.area.AreaContainsAll;
 import TheBadParodyToGame.area.GameArea;
-import TheBadParodyToGame.area.abstractions.CheckeredAreaContainsAll;
-import TheBadParodyToGame.area.position.GameIntegerPosition2D;
+import TheBadParodyToGame.area.position.GamePosition;
 import TheBadParodyToGame.area.position.PositionException;
 
 /**
  * GameAreaReader
  */
 @Deprecated
-public class CheckeredAreaReader {
-    public static CheckeredAreaContainsAll readArea(String areaName)
+public class AreaReader {
+    public static AreaContainsAll readArea(String areaName)
             throws IOException, UnknownSymbolException, PositionException {
-        CheckeredAreaContainsAll area = new GameArea();
+        AreaContainsAll area = new GameArea();
 
         FileReader reader = new FileReader(areaName);
         try (Scanner scanner = new Scanner(reader)) {
@@ -37,7 +37,7 @@ public class CheckeredAreaReader {
                     ch = line.charAt(i);
                     if (ch != ' ') {
                         obj = getObjectByCharacter(ch);
-                        area.place(new GameIntegerPosition2D(x, y), obj);
+                        area.place(new GamePosition(x, y), obj);
                     }
                     x++;
                 }

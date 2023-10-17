@@ -3,18 +3,18 @@ package Tests.ObjectsInArea;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 
-import Tests.area.position.IntegerPosition2DStub;
+import Tests.area.position.PositionStub;
 import TheBadParodyToGame.ObjectsInArea.LostObjectException;
 import TheBadParodyToGame.ObjectsInArea.ObjectInArea;
-import TheBadParodyToGame.area.position.IntegerPosition2D;
+import TheBadParodyToGame.area.position.Position;
 
 public class LostObjectExceptionTest {
     @Test
     public void getPosition_call_positionReturned() {
-        IntegerPosition2D expectedPos = new IntegerPosition2DStub();
+        Position expectedPos = new PositionStub();
         ObjectInArea obj = new ObjectInAreaStub();
         LostObjectException exception = new LostObjectException(expectedPos, obj);
-        IntegerPosition2D actualPos;
+        Position actualPos;
 
         actualPos = exception.getPosition();
 
@@ -23,7 +23,7 @@ public class LostObjectExceptionTest {
 
     @Test
     public void getObject_call_objectReturned() {
-        IntegerPosition2D pos = new IntegerPosition2DStub();
+        Position pos = new PositionStub();
         ObjectInArea expectedObj = new ObjectInAreaStub();
         LostObjectException exception = new LostObjectException(pos, expectedObj);
         ObjectInArea actualObj;
@@ -35,7 +35,7 @@ public class LostObjectExceptionTest {
 
     @Test
     public void toString_Call_normalStringReturned() {
-        IntegerPosition2D pos = new IntegerPosition2DStub();
+        Position pos = new PositionStub();
         ObjectInArea obj = new ObjectInAreaStub();
         LostObjectException exception = new LostObjectException(pos, obj);
         String expectedString = "Manager lost its object in position:" + exception.getPosition() + ".";

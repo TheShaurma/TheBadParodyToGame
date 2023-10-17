@@ -17,12 +17,12 @@ import TheBadParodyToGame.ObjectsInArea.affectingToHP.Apple;
 import TheBadParodyToGame.ObjectsInArea.affectingToHP.Fire;
 import TheBadParodyToGame.ObjectsInArea.buildingMaterials.Stone;
 import TheBadParodyToGame.ObjectsInArea.player.Player;
-import TheBadParodyToGame.area.abstractions.AbstractCheckeredArea;
-import TheBadParodyToGame.area.abstractions.ConstantCheckeredAreaContainsAll;
+import TheBadParodyToGame.area.AbstractArea;
+import TheBadParodyToGame.area.ConstantAreaContainsAll;
 import TheBadParodyToGame.area.position.BusyPositionException;
 import TheBadParodyToGame.area.position.EmptyPositionException;
-import TheBadParodyToGame.area.position.GameIntegerPosition2D;
-import TheBadParodyToGame.area.position.IntegerPosition2D;
+import TheBadParodyToGame.area.position.GamePosition;
+import TheBadParodyToGame.area.position.Position;
 import TheBadParodyToGame.area.position.PositionCannotExistInAreaException;
 
 public class WindowVisualizer {
@@ -34,7 +34,7 @@ public class WindowVisualizer {
     private final int maxX;
     private final int minY;
     private final int maxY;
-    private final ConstantCheckeredAreaContainsAll area;
+    private final ConstantAreaContainsAll area;
     private final PanelsArea panelsArea = new PanelsArea();
     private final JFrame frame;
     private final Player player;
@@ -48,7 +48,7 @@ public class WindowVisualizer {
         colorMap.put(Fire.class, new Color(195, 15, 14));
     }
 
-    public WindowVisualizer(ConstantCheckeredAreaContainsAll area, IntegerPosition2D minPos, IntegerPosition2D maxPos,
+    public WindowVisualizer(ConstantAreaContainsAll area, Position minPos, Position maxPos,
             Player player) throws BusyPositionException, PositionCannotExistInAreaException, EmptyPositionException {
         width = max(minPos.getX(), maxPos.getX()) -
                 min(minPos.getX(), maxPos.getX()) * GamePanel.WIDTH___;
@@ -71,7 +71,7 @@ public class WindowVisualizer {
     public void showArea() throws PositionCannotExistInAreaException, EmptyPositionException {
         GamePanel panel;
         Color color;
-        for (IntegerPosition2D pos : panelsArea) {
+        for (Position pos : panelsArea) {
             panel = panelsArea.get(pos);
             try {
                 color = colorMap.get(area.get(pos).getClass());
@@ -89,7 +89,7 @@ public class WindowVisualizer {
 
         for (int x = minX; x < maxX + 1; x++) {
             for (int y = minY; y < maxY + 1; y++) {
-                GameIntegerPosition2D pos = new GameIntegerPosition2D(x, y);
+                GamePosition pos = new GamePosition(x, y);
                 GamePanel panel = new GamePanel(EMPTY_POSITION_COLOR, convertPos(pos));
                 panelsArea.place(pos, panel);
                 frame.add(panel);
@@ -113,8 +113,8 @@ public class WindowVisualizer {
         bottomLabel.setText(text);
     }
 
-    private IntegerPosition2D convertPos(IntegerPosition2D pos) {
-        return new GameIntegerPosition2D(
+    private Position convertPos(Position pos) {
+        return new GamePosition(
                 pos.getX() - minX,
                 maxY - pos.getY());
     }
@@ -134,5 +134,5 @@ class ColorMap extends HashMap<Class<?>, Color> {
     }
 }
 
-class PanelsArea extends AbstractCheckeredArea<GamePanel> {
+class PanelsArea extends AbstractArea<GamePanel> {
 }

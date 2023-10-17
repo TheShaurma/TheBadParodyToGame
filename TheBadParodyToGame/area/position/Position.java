@@ -1,6 +1,6 @@
 package TheBadParodyToGame.area.position;
 
-public interface IntegerPosition2D {
+public interface Position {
     /**
      * @return x coordinate
      */

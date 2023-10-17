@@ -6,11 +6,11 @@ import java.util.Random;
 
 import org.junit.Test;
 
-import Tests.area.CheckeredAreaStub;
-import Tests.area.position.IntegerPosition2DStub;
+import Tests.area.AreaStub;
+import Tests.area.position.PositionStub;
 import TheBadParodyToGame.ObjectsInArea.player.Player;
-import TheBadParodyToGame.area.abstractions.CheckeredAreaContainsAll;
-import TheBadParodyToGame.area.position.IntegerPosition2D;
+import TheBadParodyToGame.area.AreaContainsAll;
+import TheBadParodyToGame.area.position.Position;
 import TheBadParodyToGame.area.position.PositionException;
 import TheBadParodyToGame.visualization.AreaWithPlayerInCenterAdapter;
 
@@ -18,13 +18,13 @@ public class AreaWithPlayerInCenterAdaptorTest {
     @Test
     public void convertPos() throws PositionException {
         Random random = new Random();
-        IntegerPosition2D playerPos = new IntegerPosition2DStub();
+        Position playerPos = new PositionStub();
         int xDiff = random.nextInt(-1000000, 1000000);
         int yDiff = random.nextInt(-1000000, 1000000);
-        IntegerPosition2D posWillBeConverted = new IntegerPosition2DStub(xDiff, yDiff);
-        IntegerPosition2D expectedPos = new IntegerPosition2DStub(playerPos.getX() + xDiff, playerPos.getY() + yDiff);
-        IntegerPosition2D actualPos;
-        CheckeredAreaContainsAll area = new CheckeredAreaStub();
+        Position posWillBeConverted = new PositionStub(xDiff, yDiff);
+        Position expectedPos = new PositionStub(playerPos.getX() + xDiff, playerPos.getY() + yDiff);
+        Position actualPos;
+        AreaContainsAll area = new AreaStub();
         Player player = new Player(area, playerPos);
         AreaWithPlayerInCenterAdaptorStub playerArea = new AreaWithPlayerInCenterAdaptorStub(area, player);
 
@@ -40,12 +40,12 @@ public class AreaWithPlayerInCenterAdaptorTest {
 }
 
 class AreaWithPlayerInCenterAdaptorStub extends AreaWithPlayerInCenterAdapter {
-    public AreaWithPlayerInCenterAdaptorStub(CheckeredAreaContainsAll area, Player player) {
+    public AreaWithPlayerInCenterAdaptorStub(AreaContainsAll area, Player player) {
         super(area, player);
     }
 
     @Override
-    public IntegerPosition2D convertPos(IntegerPosition2D pos) {
+    public Position convertPos(Position pos) {
         return super.convertPos(pos);
     }
 }

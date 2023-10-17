@@ -4,12 +4,11 @@ import java.util.Iterator;
 
 import TheBadParodyToGame.ObjectsInArea.ObjectInArea;
 import TheBadParodyToGame.ObjectsInArea.player.Player;
-import TheBadParodyToGame.area.abstractions.CheckeredAreaContainsAll;
-import TheBadParodyToGame.area.abstractions.ConstantCheckeredAreaContainsAll;
+import TheBadParodyToGame.area.AreaContainsAll;
 import TheBadParodyToGame.area.position.BusyPositionException;
 import TheBadParodyToGame.area.position.EmptyPositionException;
-import TheBadParodyToGame.area.position.GameIntegerPosition2D;
-import TheBadParodyToGame.area.position.IntegerPosition2D;
+import TheBadParodyToGame.area.position.GamePosition;
+import TheBadParodyToGame.area.position.Position;
 import TheBadParodyToGame.area.position.PositionCannotExistInAreaException;
 
 /**
@@ -17,76 +16,82 @@ import TheBadParodyToGame.area.position.PositionCannotExistInAreaException;
  * 
  * Used only for visualization. That's why this class isn't in area package.
  */
-public class AreaWithPlayerInCenterAdapter implements CheckeredAreaContainsAll, ConstantCheckeredAreaContainsAll {
-    private CheckeredAreaContainsAll areaItself;
+public class AreaWithPlayerInCenterAdapter implements AreaContainsAll {
+    private AreaContainsAll areaItself;
     private Player player;
 
-    public AreaWithPlayerInCenterAdapter(CheckeredAreaContainsAll area, Player player) {
+    public AreaWithPlayerInCenterAdapter(AreaContainsAll area, Player player) {
         areaItself = area;
         this.player = player;
     }
 
     @Override
-    public ObjectInArea get(IntegerPosition2D pos) throws EmptyPositionException, PositionCannotExistInAreaException {
+    public ObjectInArea get(Position pos) throws EmptyPositionException, PositionCannotExistInAreaException {
         return areaItself.get(convertPos(pos));
     }
 
     @Override
-    public void set(IntegerPosition2D pos, ObjectInArea obj) throws PositionCannotExistInAreaException {
+    public void set(Position pos, ObjectInArea obj) throws PositionCannotExistInAreaException {
         areaItself.set(convertPos(pos), obj);
     }
 
     @Override
-    public void place(IntegerPosition2D pos, ObjectInArea obj)
+    public void place(Position pos, ObjectInArea obj)
             throws BusyPositionException, PositionCannotExistInAreaException {
         areaItself.place(convertPos(pos), obj);
     }
 
     @Override
-    public void tryPlace(IntegerPosition2D pos, ObjectInArea obj) throws PositionCannotExistInAreaException {
+    public void tryPlace(Position pos, ObjectInArea obj) throws PositionCannotExistInAreaException {
         areaItself.tryPlace(convertPos(pos), obj);
     }
 
     @Override
-    public void replace(IntegerPosition2D pos, ObjectInArea obj)
+    public void replace(Position pos, ObjectInArea obj)
             throws EmptyPositionException, PositionCannotExistInAreaException {
         areaItself.replace(convertPos(pos), obj);
     }
 
     @Override
-    public void tryReplace(IntegerPosition2D pos, ObjectInArea obj) throws PositionCannotExistInAreaException {
+    public void tryReplace(Position pos, ObjectInArea obj) throws PositionCannotExistInAreaException {
         areaItself.tryReplace(convertPos(pos), obj);
     }
 
     @Override
-    public void remove(IntegerPosition2D pos) throws EmptyPositionException, PositionCannotExistInAreaException {
+    public void remove(Position pos) throws EmptyPositionException, PositionCannotExistInAreaException {
         areaItself.remove(convertPos(pos));
     }
 
     @Override
-    public void tryRemove(IntegerPosition2D pos) throws PositionCannotExistInAreaException {
+    public void tryRemove(Position pos) throws PositionCannotExistInAreaException {
         areaItself.tryRemove(convertPos(pos));
     }
 
     @Override
-    public void relocate(IntegerPosition2D oldPos, IntegerPosition2D newPos)
+    public void relocate(Position oldPos, Position newPos)
             throws EmptyPositionException, BusyPositionException, PositionCannotExistInAreaException {
         areaItself.relocate(convertPos(oldPos), convertPos(newPos));
     }
 
     @Override
-    public void tryRelocate(IntegerPosition2D oldPos, IntegerPosition2D newPos)
+    public void tryRelocate(Position oldPos, Position newPos)
             throws PositionCannotExistInAreaException {
         areaItself.tryRelocate(convertPos(oldPos), convertPos(newPos));
     }
 
     @Override
-    public boolean positionIsEmpty(IntegerPosition2D pos) throws PositionCannotExistInAreaException {
+    public void relocateToEverywhere(Position oldPos, Position newPos)
+            throws EmptyPositionException, PositionCannotExistInAreaException {
+        areaItself.relocateToEverywhere(convertPos(oldPos), convertPos(newPos));
+    }
+
+    @Override
+    public boolean positionIsEmpty(Position pos) throws PositionCannotExistInAreaException {
         return areaItself.positionIsEmpty(convertPos(pos));
     }
 
     @Override
-    public boolean positionIsBusy(IntegerPosition2D pos) throws PositionCannotExistInAreaException {
+    public boolean positionIsBusy(Position pos) throws PositionCannotExistInAreaException {
         return areaItself.positionIsBusy(convertPos(pos));
     }
 
@@ -94,17 +99,17 @@ public class AreaWithPlayerInCenterAdapter implements CheckeredAreaContainsAll, 
         return player;
     }
 
-    protected IntegerPosition2D convertPos(IntegerPosition2D pos) {
-        IntegerPosition2D playerPosition = getPlayer().getPos();
+    protected Position convertPos(Position pos) {
+        Position playerPosition = getPlayer().getPos();
         int playerX = playerPosition.getX();
         int playerY = playerPosition.getY();
-        IntegerPosition2D convertedPos = new GameIntegerPosition2D(playerX + pos.getX(), playerY + pos.getY());
+        Position convertedPos = new GamePosition(playerX + pos.getX(), playerY + pos.getY());
 
         return convertedPos;
     }
 
     @Override
-    public Iterator<IntegerPosition2D> iterator() {
+    public Iterator<Position> iterator() {
         return areaItself.iterator();
     }
 }

@@ -1,16 +1,16 @@
 package TheBadParodyToGame.ObjectsInArea.buildingMaterials.portals;
 
-import TheBadParodyToGame.area.position.IntegerPosition2D;
+import TheBadParodyToGame.area.position.Position;
 
 public class GamePortal implements Portal {
-    private IntegerPosition2D teleportPos;
+    private Position teleportPos;
 
-    public GamePortal(IntegerPosition2D pos) {
+    public GamePortal(Position pos) {
         teleportPos = pos;
     }
 
     @Override
-    public IntegerPosition2D getTeleportPosition() {
+    public Position getTeleportPosition() {
         return teleportPos;
     }
 

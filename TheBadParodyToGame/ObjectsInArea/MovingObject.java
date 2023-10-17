@@ -1,16 +1,16 @@
 package TheBadParodyToGame.ObjectsInArea;
 
-import TheBadParodyToGame.area.abstractions.CheckeredAreaContainsAll;
+import TheBadParodyToGame.area.AreaContainsAll;
 import TheBadParodyToGame.area.position.BusyPositionException;
 import TheBadParodyToGame.area.position.EmptyPositionException;
-import TheBadParodyToGame.area.position.GameIntegerPosition2D;
-import TheBadParodyToGame.area.position.IntegerPosition2D;
+import TheBadParodyToGame.area.position.GamePosition;
+import TheBadParodyToGame.area.position.Position;
 import TheBadParodyToGame.area.position.PositionCannotExistInAreaException;
 import TheBadParodyToGame.area.position.PositionException;
 
 public abstract class MovingObject implements ObjectInArea {
-    private final CheckeredAreaContainsAll area;
-    private IntegerPosition2D startPos;
+    private final AreaContainsAll area;
+    private Position startPos;
 
     /**
      * Call {@code area.place(pos, this)} after creating.
@@ -22,7 +22,7 @@ public abstract class MovingObject implements ObjectInArea {
      * @throws PositionException                  if {@code pos} can't exist in
      *                                            {@code area}.
      */
-    public MovingObject(CheckeredAreaContainsAll area, IntegerPosition2D pos)
+    public MovingObject(AreaContainsAll area, Position pos)
             throws BusyPositionException, PositionCannotExistInAreaException {
         this.area = area;
         startPos = pos;
@@ -166,10 +166,10 @@ public abstract class MovingObject implements ObjectInArea {
      */
     protected void moveUp(int n)
             throws LostObjectException, CannotMoveObjectException, PositionCannotExistInAreaException {
-        IntegerPosition2D oldPos = getCurrentPosition();
+        Position oldPos = getCurrentPosition();
         int newX = oldPos.getX();
         int newY = oldPos.getY() + n;
-        IntegerPosition2D newPos = new GameIntegerPosition2D(newX, newY);
+        Position newPos = new GamePosition(newX, newY);
 
         moveToPosition(newPos);
     }
@@ -186,10 +186,10 @@ public abstract class MovingObject implements ObjectInArea {
      */
     protected void moveDown(int n)
             throws LostObjectException, CannotMoveObjectException, PositionCannotExistInAreaException {
-        IntegerPosition2D oldPos = getCurrentPosition();
+        Position oldPos = getCurrentPosition();
         int newX = oldPos.getX();
         int newY = oldPos.getY() - n;
-        IntegerPosition2D newPos = new GameIntegerPosition2D(newX, newY);
+        Position newPos = new GamePosition(newX, newY);
 
         moveToPosition(newPos);
     }
@@ -206,10 +206,10 @@ public abstract class MovingObject implements ObjectInArea {
      */
     protected void moveLeft(int n)
             throws LostObjectException, CannotMoveObjectException, PositionCannotExistInAreaException {
-        IntegerPosition2D oldPos = getCurrentPosition();
+        Position oldPos = getCurrentPosition();
         int newX = oldPos.getX() - n;
         int newY = oldPos.getY();
-        IntegerPosition2D newPos = new GameIntegerPosition2D(newX, newY);
+        Position newPos = new GamePosition(newX, newY);
 
         moveToPosition(newPos);
     }
@@ -226,10 +226,10 @@ public abstract class MovingObject implements ObjectInArea {
      */
     protected void moveRight(int n)
             throws LostObjectException, CannotMoveObjectException, PositionCannotExistInAreaException {
-        IntegerPosition2D oldPos = getCurrentPosition();
+        Position oldPos = getCurrentPosition();
         int newX = oldPos.getX() + n;
         int newY = oldPos.getY();
-        IntegerPosition2D newPos = new GameIntegerPosition2D(newX, newY);
+        Position newPos = new GamePosition(newX, newY);
 
         moveToPosition(newPos);
     }
@@ -307,10 +307,10 @@ public abstract class MovingObject implements ObjectInArea {
      */
     protected void moveUpLeft(int inUp, int inLeft)
             throws LostObjectException, CannotMoveObjectException, PositionCannotExistInAreaException {
-        IntegerPosition2D oldPos = getCurrentPosition();
+        Position oldPos = getCurrentPosition();
         int newX = oldPos.getX() - inLeft;
         int newY = oldPos.getY() + inUp;
-        IntegerPosition2D newPos = new GameIntegerPosition2D(newX, newY);
+        Position newPos = new GamePosition(newX, newY);
 
         moveToPosition(newPos);
     }
@@ -328,10 +328,10 @@ public abstract class MovingObject implements ObjectInArea {
      */
     protected void moveUpRight(int inUp, int inRight)
             throws LostObjectException, CannotMoveObjectException, PositionCannotExistInAreaException {
-        IntegerPosition2D oldPos = getCurrentPosition();
+        Position oldPos = getCurrentPosition();
         int newX = oldPos.getX() + inRight;
         int newY = oldPos.getY() + inUp;
-        IntegerPosition2D newPos = new GameIntegerPosition2D(newX, newY);
+        Position newPos = new GamePosition(newX, newY);
 
         moveToPosition(newPos);
     }
@@ -349,10 +349,10 @@ public abstract class MovingObject implements ObjectInArea {
      */
     protected void moveDownLeft(int inDown, int inLeft)
             throws LostObjectException, CannotMoveObjectException, PositionCannotExistInAreaException {
-        IntegerPosition2D oldPos = getCurrentPosition();
+        Position oldPos = getCurrentPosition();
         int newX = oldPos.getX() - inLeft;
         int newY = oldPos.getY() - inDown;
-        IntegerPosition2D newPos = new GameIntegerPosition2D(newX, newY);
+        Position newPos = new GamePosition(newX, newY);
 
         moveToPosition(newPos);
     }
@@ -370,10 +370,10 @@ public abstract class MovingObject implements ObjectInArea {
      */
     protected void moveDownRight(int inDown, int inRight)
             throws LostObjectException, CannotMoveObjectException, PositionCannotExistInAreaException {
-        IntegerPosition2D oldPos = getCurrentPosition();
+        Position oldPos = getCurrentPosition();
         int newX = oldPos.getX() + inRight;
         int newY = oldPos.getY() - inDown;
-        IntegerPosition2D newPos = new GameIntegerPosition2D(newX, newY);
+        Position newPos = new GamePosition(newX, newY);
 
         moveToPosition(newPos);
     }
@@ -388,11 +388,11 @@ public abstract class MovingObject implements ObjectInArea {
      *                                            in object's data;
      * @throws CannotMoveObjectException          if {@code newPos} is busy.
      */
-    protected void moveToPosition(IntegerPosition2D newPos)
+    protected void moveToPosition(Position newPos)
             throws LostObjectException, PositionCannotExistInAreaException, CannotMoveObjectException {
         checkForBeingInCurrentPosition();
 
-        IntegerPosition2D oldPos = getCurrentPosition();
+        Position oldPos = getCurrentPosition();
         try {
             try {
                 getArea().relocate(oldPos, newPos);
@@ -409,14 +409,14 @@ public abstract class MovingObject implements ObjectInArea {
     /**
      * @return area where object is.
      */
-    protected final CheckeredAreaContainsAll getArea() {
+    protected final AreaContainsAll getArea() {
         return area;
     }
 
     /**
      * @return current position of object.
      */
-    protected final IntegerPosition2D getCurrentPosition() {
+    protected final Position getCurrentPosition() {
         return startPos;
     }
 
@@ -425,13 +425,13 @@ public abstract class MovingObject implements ObjectInArea {
      * 
      * @param pos
      */
-    protected final void setCurrentPosition(IntegerPosition2D pos) {
+    protected final void setCurrentPosition(Position pos) {
         startPos = pos;
     }
 
     private void checkForBeingInCurrentPosition() throws LostObjectException, PositionCannotExistInAreaException {
-        CheckeredAreaContainsAll area = getArea();
-        IntegerPosition2D pos = getCurrentPosition();
+        AreaContainsAll area = getArea();
+        Position pos = getCurrentPosition();
 
         try {
             if (area.get(pos) != this) {

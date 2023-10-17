@@ -1,9 +1,9 @@
 package TheBadParodyToGame.ObjectsInArea;
 
-import TheBadParodyToGame.area.position.IntegerPosition2D;
+import TheBadParodyToGame.area.position.Position;
 
 public class LostObjectException extends ObjectOnPositionException {
-    public LostObjectException(IntegerPosition2D pos, ObjectInArea obj) {
+    public LostObjectException(Position pos, ObjectInArea obj) {
         super(pos, obj);
     }
 
