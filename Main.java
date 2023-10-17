@@ -8,8 +8,8 @@ import TheBadParodyToGame.ObjectsInArea.buildingMaterials.Stone;
 import TheBadParodyToGame.ObjectsInArea.player.Player;
 import TheBadParodyToGame.ObjectsInArea.player.PlayerDiedException;
 import TheBadParodyToGame.area.AreaContainsAll;
-import TheBadParodyToGame.area.position.GameIntegerPosition2D;
-import TheBadParodyToGame.area.position.IntegerPosition2D;
+import TheBadParodyToGame.area.position.GamePosition;
+import TheBadParodyToGame.area.position.Position;
 import TheBadParodyToGame.area.position.PositionException;
 import TheBadParodyToGame.read.CheckeredAreaReader;
 import TheBadParodyToGame.read.UnknownSymbolException;
@@ -50,11 +50,11 @@ public class Main {
     private static void initVariables() throws PositionException, IOException, UnknownSymbolException {
         area = CheckeredAreaReader.readArea("TheBadParodyToGame\\read\\StartLevel.txt");
 
-        IntegerPosition2D startPos = new GameIntegerPosition2D(1, 1);
+        Position startPos = new GamePosition(1, 1);
         player = new Player("Valera", area, startPos);
 
-        visualizer = new SimpleVisualizer(new GameIntegerPosition2D(-20, -10),
-                new GameIntegerPosition2D(20, 10),
+        visualizer = new SimpleVisualizer(new GamePosition(-20, -10),
+                new GamePosition(20, 10),
                 new AreaWithPlayerInCenterAdapter(area, player));
         HashMap<Class<?>, String> consoleVisualMap = visualizer.getConsoleVisualMap();
         consoleVisualMap.put(Player.class, "P");

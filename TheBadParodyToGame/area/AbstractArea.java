@@ -5,7 +5,7 @@ import java.util.HashMap;
 import TheBadParodyToGame.ObjectsInArea.ObjectInArea;
 import TheBadParodyToGame.area.position.BusyPositionException;
 import TheBadParodyToGame.area.position.EmptyPositionException;
-import TheBadParodyToGame.area.position.IntegerPosition2D;
+import TheBadParodyToGame.area.position.Position;
 import TheBadParodyToGame.area.position.PositionCannotExistInAreaException;
 
 // TODO: adapt for multi-thread
@@ -13,14 +13,14 @@ import TheBadParodyToGame.area.position.PositionCannotExistInAreaException;
  * DIDN'T adapted for multi-thread using.
  */
 public abstract class AbstractArea<OBJ extends ObjectInArea> implements Area<OBJ> {
-    private final HashMap<IntegerPosition2D, OBJ> areaItself;
+    private final HashMap<Position, OBJ> areaItself;
 
     public AbstractArea() {
         areaItself = new HashMap<>();
     }
 
     @Override
-    public OBJ get(IntegerPosition2D pos) throws EmptyPositionException, PositionCannotExistInAreaException {
+    public OBJ get(Position pos) throws EmptyPositionException, PositionCannotExistInAreaException {
         if (positionIsEmpty(pos)) {
             throw new EmptyPositionException(pos);
         }
@@ -28,12 +28,12 @@ public abstract class AbstractArea<OBJ extends ObjectInArea> implements Area<OBJ
     }
 
     @Override
-    public void set(IntegerPosition2D pos, OBJ obj) throws PositionCannotExistInAreaException {
+    public void set(Position pos, OBJ obj) throws PositionCannotExistInAreaException {
         areaItself.put(pos, obj);
     }
 
     @Override
-    public void place(IntegerPosition2D pos, OBJ obj) throws BusyPositionException, PositionCannotExistInAreaException {
+    public void place(Position pos, OBJ obj) throws BusyPositionException, PositionCannotExistInAreaException {
         if (positionIsBusy(pos)) {
             throw new BusyPositionException(pos);
         }
@@ -42,7 +42,7 @@ public abstract class AbstractArea<OBJ extends ObjectInArea> implements Area<OBJ
     }
 
     @Override
-    public void tryPlace(IntegerPosition2D pos, OBJ obj) throws PositionCannotExistInAreaException {
+    public void tryPlace(Position pos, OBJ obj) throws PositionCannotExistInAreaException {
         if (positionIsEmpty(pos)) {
             set(pos, obj);
         }
@@ -50,7 +50,7 @@ public abstract class AbstractArea<OBJ extends ObjectInArea> implements Area<OBJ
     }
 
     @Override
-    public void replace(IntegerPosition2D pos, OBJ obj)
+    public void replace(Position pos, OBJ obj)
             throws EmptyPositionException, PositionCannotExistInAreaException {
         if (positionIsEmpty(pos)) {
             throw new EmptyPositionException(pos);
@@ -60,14 +60,14 @@ public abstract class AbstractArea<OBJ extends ObjectInArea> implements Area<OBJ
     }
 
     @Override
-    public void tryReplace(IntegerPosition2D pos, OBJ obj) throws PositionCannotExistInAreaException {
+    public void tryReplace(Position pos, OBJ obj) throws PositionCannotExistInAreaException {
         if (positionIsBusy(pos)) {
             set(pos, obj);
         }
     }
 
     @Override
-    public void remove(IntegerPosition2D pos) throws EmptyPositionException, PositionCannotExistInAreaException {
+    public void remove(Position pos) throws EmptyPositionException, PositionCannotExistInAreaException {
         if (positionIsEmpty(pos)) {
             throw new EmptyPositionException(pos);
         }
@@ -76,14 +76,14 @@ public abstract class AbstractArea<OBJ extends ObjectInArea> implements Area<OBJ
     }
 
     @Override
-    public void tryRemove(IntegerPosition2D pos) throws PositionCannotExistInAreaException {
+    public void tryRemove(Position pos) throws PositionCannotExistInAreaException {
         if (positionIsBusy(pos)) {
             areaItself.remove(pos);
         }
     }
 
     @Override
-    public void relocate(IntegerPosition2D oldPos, IntegerPosition2D newPos)
+    public void relocate(Position oldPos, Position newPos)
             throws EmptyPositionException, BusyPositionException, PositionCannotExistInAreaException {
         if (positionIsEmpty(oldPos)) {
             throw new EmptyPositionException(oldPos);
@@ -97,7 +97,7 @@ public abstract class AbstractArea<OBJ extends ObjectInArea> implements Area<OBJ
     }
 
     @Override
-    public void tryRelocate(IntegerPosition2D oldPos, IntegerPosition2D newPos)
+    public void tryRelocate(Position oldPos, Position newPos)
             throws PositionCannotExistInAreaException {
         if (positionIsBusy(oldPos) && positionIsEmpty(newPos)) {
             try {
@@ -110,7 +110,7 @@ public abstract class AbstractArea<OBJ extends ObjectInArea> implements Area<OBJ
     }
 
     @Override
-    public void relocateToEverywhere(IntegerPosition2D oldPos, IntegerPosition2D newPos)
+    public void relocateToEverywhere(Position oldPos, Position newPos)
             throws EmptyPositionException, PositionCannotExistInAreaException {
         if (positionIsEmpty(oldPos)) {
             throw new EmptyPositionException(oldPos);
@@ -121,12 +121,12 @@ public abstract class AbstractArea<OBJ extends ObjectInArea> implements Area<OBJ
     }
 
     @Override
-    public boolean positionIsEmpty(IntegerPosition2D pos) throws PositionCannotExistInAreaException {
+    public boolean positionIsEmpty(Position pos) throws PositionCannotExistInAreaException {
         return !areaItself.containsKey(pos);
     }
 
     @Override
-    public boolean positionIsBusy(IntegerPosition2D pos) throws PositionCannotExistInAreaException {
+    public boolean positionIsBusy(Position pos) throws PositionCannotExistInAreaException {
         return areaItself.containsKey(pos);
     }
 }

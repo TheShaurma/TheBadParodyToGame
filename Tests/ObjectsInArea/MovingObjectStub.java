@@ -4,12 +4,12 @@ import TheBadParodyToGame.ObjectsInArea.CannotMoveObjectException;
 import TheBadParodyToGame.ObjectsInArea.LostObjectException;
 import TheBadParodyToGame.ObjectsInArea.MovingObject;
 import TheBadParodyToGame.area.AreaContainsAll;
-import TheBadParodyToGame.area.position.IntegerPosition2D;
+import TheBadParodyToGame.area.position.Position;
 import TheBadParodyToGame.area.position.PositionCannotExistInAreaException;
 import TheBadParodyToGame.area.position.PositionException;
 
 public class MovingObjectStub extends MovingObject {
-    public MovingObjectStub(AreaContainsAll area, IntegerPosition2D pos) throws PositionException {
+    public MovingObjectStub(AreaContainsAll area, Position pos) throws PositionException {
         super(area, pos);
     }
 
@@ -129,7 +129,7 @@ public class MovingObjectStub extends MovingObject {
     }
 
     @Override
-    public void moveToPosition(IntegerPosition2D newPos)
+    public void moveToPosition(Position newPos)
             throws LostObjectException, CannotMoveObjectException, PositionCannotExistInAreaException {
         super.moveToPosition(newPos);
     }
@@ -138,11 +138,11 @@ public class MovingObjectStub extends MovingObject {
         return getArea();
     }
 
-    public IntegerPosition2D callGetCurrentIntegerPosition2D() {
+    public Position callGetCurrentIntegerPosition2D() {
         return getCurrentPosition();
     }
 
-    public void callSetCurrentPosition(IntegerPosition2D pos) {
+    public void callSetCurrentPosition(Position pos) {
         setCurrentPosition(pos);
     }
 }

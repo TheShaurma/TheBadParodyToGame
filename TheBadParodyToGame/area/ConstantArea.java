@@ -2,7 +2,7 @@ package TheBadParodyToGame.area;
 
 import TheBadParodyToGame.ObjectsInArea.ObjectInArea;
 import TheBadParodyToGame.area.position.EmptyPositionException;
-import TheBadParodyToGame.area.position.IntegerPosition2D;
+import TheBadParodyToGame.area.position.Position;
 import TheBadParodyToGame.area.position.PositionCannotExistInAreaException;
 
 public interface ConstantArea<OBJ extends ObjectInArea> {
@@ -13,17 +13,17 @@ public interface ConstantArea<OBJ extends ObjectInArea> {
      * @throws PositionCannotExistInAreaException if {@code pos} can't exist in
      *                                            Area.
      */
-    OBJ get(IntegerPosition2D pos) throws EmptyPositionException, PositionCannotExistInAreaException;
+    OBJ get(Position pos) throws EmptyPositionException, PositionCannotExistInAreaException;
 
     /**
      * @param pos
      * @return if {@code pos} is empty
      */
-    boolean positionIsEmpty(IntegerPosition2D pos) throws PositionCannotExistInAreaException;
+    boolean positionIsEmpty(Position pos) throws PositionCannotExistInAreaException;
 
     /**
      * @param pos
      * @return if {@code pos} is busy
      */
-    boolean positionIsBusy(IntegerPosition2D pos) throws PositionCannotExistInAreaException;
+    boolean positionIsBusy(Position pos) throws PositionCannotExistInAreaException;
 }

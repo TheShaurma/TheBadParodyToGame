@@ -1,10 +1,10 @@
 package TheBadParodyToGame.area.position;
 
-public class GameIntegerPosition2D implements IntegerPosition2D {
+public class GamePosition implements Position {
     private int x;
     private int y;
 
-    public GameIntegerPosition2D(int x, int y) {
+    public GamePosition(int x, int y) {
         this.x = x;
         this.y = y;
     }
@@ -21,11 +21,11 @@ public class GameIntegerPosition2D implements IntegerPosition2D {
 
     @Override
     public boolean equals(Object o) {
-        if (!(o instanceof IntegerPosition2D)) {
+        if (!(o instanceof Position)) {
             return false;
         }
 
-        IntegerPosition2D otherPos = (IntegerPosition2D) o;
+        Position otherPos = (Position) o;
         if (getX() == otherPos.getX() && getY() == otherPos.getY()) {
             return true;
         } else {

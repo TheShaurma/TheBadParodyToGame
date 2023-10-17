@@ -5,18 +5,18 @@ import java.util.Random;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 
-import TheBadParodyToGame.area.position.GameIntegerPosition2D;
-import TheBadParodyToGame.area.position.IntegerPosition2D;;
+import TheBadParodyToGame.area.position.GamePosition;
+import TheBadParodyToGame.area.position.Position;;
 
 /**
  * This is test for IntegerPosition2DTest.
  */
-public class GameIntegerPosition2DTest {
+public class PositionTest {
     private static final Random random = new Random();
 
     @Test
     public void getX_call_10Returned() {
-        GameIntegerPosition2D pos = new GameIntegerPosition2D(10, -10);
+        GamePosition pos = new GamePosition(10, -10);
 
         int result = pos.getX();
 
@@ -25,7 +25,7 @@ public class GameIntegerPosition2DTest {
 
     @Test
     public void getY_call_minus10Returned() {
-        GameIntegerPosition2D position = new GameIntegerPosition2D(10, -10);
+        GamePosition position = new GamePosition(10, -10);
 
         int result = position.getY();
 
@@ -37,7 +37,7 @@ public class GameIntegerPosition2DTest {
      */
     @Test
     public void equals_testReflection_trueReturned() {
-        IntegerPosition2D pos = getRandomPosition();
+        Position pos = getRandomPosition();
 
         Assertions.assertTrue(pos.equals(pos));
     }
@@ -47,9 +47,9 @@ public class GameIntegerPosition2DTest {
      */
     @Test
     public void equals_testSymmetry_doubleTrueAndDoubleFalseReturned() {
-        IntegerPosition2D pos = getRandomPosition();
-        IntegerPosition2D posCopy = getPositionCopy(pos);
-        IntegerPosition2D otherPos = getOtherPosition(pos);
+        Position pos = getRandomPosition();
+        Position posCopy = getPositionCopy(pos);
+        Position otherPos = getOtherPosition(pos);
 
         Assertions.assertTrue(pos.equals(posCopy));
         Assertions.assertTrue(posCopy.equals(pos));
@@ -62,11 +62,11 @@ public class GameIntegerPosition2DTest {
      */
     @Test
     public void equals_testTransitivity_tripleTrueAndTripleFalseReturned() {
-        IntegerPosition2D pos = getRandomPosition();
-        IntegerPosition2D posCopy1 = getPositionCopy(pos);
-        IntegerPosition2D posCopy2 = getPositionCopy(pos);
-        IntegerPosition2D otherPos1 = new GameIntegerPosition2D(pos.getX() + random.nextInt(), pos.getY());
-        IntegerPosition2D otherPos2 = new GameIntegerPosition2D(pos.getX(), pos.getY() + random.nextInt());
+        Position pos = getRandomPosition();
+        Position posCopy1 = getPositionCopy(pos);
+        Position posCopy2 = getPositionCopy(pos);
+        Position otherPos1 = new GamePosition(pos.getX() + random.nextInt(), pos.getY());
+        Position otherPos2 = new GamePosition(pos.getX(), pos.getY() + random.nextInt());
 
         Assertions.assertTrue(pos.equals(posCopy1));
         Assertions.assertTrue(posCopy1.equals(posCopy2));
@@ -81,9 +81,9 @@ public class GameIntegerPosition2DTest {
      */
     @Test
     public void equals_testCoherence_alwaysOneValueReturned() {
-        IntegerPosition2D pos = getRandomPosition();
-        IntegerPosition2D posCopy = getPositionCopy(pos);
-        IntegerPosition2D otherPos = getOtherPosition(pos);
+        Position pos = getRandomPosition();
+        Position posCopy = getPositionCopy(pos);
+        Position otherPos = getOtherPosition(pos);
 
         for (int i = 0; i < 100000; i++) {
             Assertions.assertTrue(pos.equals(posCopy));
@@ -96,7 +96,7 @@ public class GameIntegerPosition2DTest {
      */
     @Test
     public void equals_compareNull_falseReturned() {
-        IntegerPosition2D pos = getRandomPosition();
+        Position pos = getRandomPosition();
 
         Assertions.assertFalse(pos.equals(null));
     }
@@ -112,7 +112,7 @@ public class GameIntegerPosition2DTest {
 
     @Test
     public void hashCode_multipleCallForSingePos_singleHashCode() {
-        IntegerPosition2D pos = getRandomPosition();
+        Position pos = getRandomPosition();
 
         final int COUNT = 1000;
         int prevHash;
@@ -128,26 +128,26 @@ public class GameIntegerPosition2DTest {
     @Test
     public void hashCode_callForEqualsPoses_singleHashReturned() {
         final int COUNT = 1000;
-        IntegerPosition2D pos = getRandomPosition();
-        IntegerPosition2D[] poses = new IntegerPosition2D[COUNT];
+        Position pos = getRandomPosition();
+        Position[] poses = new Position[COUNT];
         for (int i = 0; i < COUNT; i++) {
             poses[i] = getPositionCopy(pos);
         }
 
-        for (IntegerPosition2D i : poses) {
-            for (IntegerPosition2D j : poses) {
+        for (Position i : poses) {
+            for (Position j : poses) {
                 Assertions.assertEquals(i.hashCode(), j.hashCode());
             }
         }
     }
 
-    private static IntegerPosition2D getRandomPosition() {
-        return new GameIntegerPosition2D(random.nextInt(), random.nextInt());
+    private static Position getRandomPosition() {
+        return new GamePosition(random.nextInt(), random.nextInt());
     }
 
-    private static IntegerPosition2D getOtherPosition(IntegerPosition2D pos) {
+    private static Position getOtherPosition(Position pos) {
         while (true) {
-            IntegerPosition2D otherPos = new GameIntegerPosition2D(
+            Position otherPos = new GamePosition(
                     pos.getX() + random.nextInt(),
                     pos.getY() + random.nextInt());
 
@@ -157,7 +157,7 @@ public class GameIntegerPosition2DTest {
         }
     }
 
-    private static IntegerPosition2D getPositionCopy(IntegerPosition2D pos) {
-        return new GameIntegerPosition2D(pos.getX(), pos.getY());
+    private static Position getPositionCopy(Position pos) {
+        return new GamePosition(pos.getX(), pos.getY());
     }
 }

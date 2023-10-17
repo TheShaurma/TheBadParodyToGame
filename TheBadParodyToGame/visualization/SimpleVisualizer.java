@@ -4,8 +4,8 @@ import java.util.HashMap;
 
 import TheBadParodyToGame.ObjectsInArea.ObjectInArea;
 import TheBadParodyToGame.area.AreaContainsAll;
-import TheBadParodyToGame.area.position.GameIntegerPosition2D;
-import TheBadParodyToGame.area.position.IntegerPosition2D;
+import TheBadParodyToGame.area.position.GamePosition;
+import TheBadParodyToGame.area.position.Position;
 import TheBadParodyToGame.area.position.PositionException;
 
 /**
@@ -22,7 +22,7 @@ public class SimpleVisualizer {
     private HashMap<Class<?>, Color> visualMap = new ColorMap();
     private HashMap<Class<?>, String> consoleVisualMap = new SymbolMap();
 
-    public SimpleVisualizer(IntegerPosition2D minPos, IntegerPosition2D maxPos, AreaContainsAll area) {
+    public SimpleVisualizer(Position minPos, Position maxPos, AreaContainsAll area) {
         this.area = area;
         int x1 = minPos.getX();
         int x2 = maxPos.getX();
@@ -68,7 +68,7 @@ public class SimpleVisualizer {
             System.out.print("|");
 
             for (int x = xMin; x <= xMax; x++) {
-                IntegerPosition2D currentPos = new GameIntegerPosition2D(x, y);
+                Position currentPos = new GamePosition(x, y);
 
                 if (area.positionIsEmpty(currentPos)) {
                     System.out.print(" ");

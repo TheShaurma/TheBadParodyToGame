@@ -10,7 +10,7 @@ import TheBadParodyToGame.ObjectsInArea.affectingToHP.Fire;
 import TheBadParodyToGame.ObjectsInArea.buildingMaterials.Stone;
 import TheBadParodyToGame.area.AreaContainsAll;
 import TheBadParodyToGame.area.GameArea;
-import TheBadParodyToGame.area.position.GameIntegerPosition2D;
+import TheBadParodyToGame.area.position.GamePosition;
 import TheBadParodyToGame.area.position.PositionException;
 
 /**
@@ -37,7 +37,7 @@ public class CheckeredAreaReader {
                     ch = line.charAt(i);
                     if (ch != ' ') {
                         obj = getObjectByCharacter(ch);
-                        area.place(new GameIntegerPosition2D(x, y), obj);
+                        area.place(new GamePosition(x, y), obj);
                     }
                     x++;
                 }

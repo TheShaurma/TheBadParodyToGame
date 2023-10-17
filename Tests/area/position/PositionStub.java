@@ -1,17 +1,17 @@
 package Tests.area.position;
 
-import TheBadParodyToGame.area.position.IntegerPosition2D;
+import TheBadParodyToGame.area.position.Position;
 
-public class IntegerPosition2DStub implements IntegerPosition2D {
+public class PositionStub implements Position {
     private int x;
     private int y;
 
-    public IntegerPosition2DStub() {
+    public PositionStub() {
         x = getX() + (int) (-1000 + Math.random() * 2000);
         y = getY() + (int) (-1000 + Math.random() * 2000);
     }
 
-    public IntegerPosition2DStub(int x, int y) {
+    public PositionStub(int x, int y) {
         this.x = x;
         this.y = y;
     }
@@ -26,20 +26,20 @@ public class IntegerPosition2DStub implements IntegerPosition2D {
         return y;
     }
 
-    public IntegerPosition2DStub getOther() {
+    public PositionStub getOther() {
         // self x and y + from -1000 to 1000
         int newX = getX() + (int) (-1000 + Math.random() * 2000);
         int newY = getY() + (int) (-1000 + Math.random() * 2000);
 
-        return new IntegerPosition2DStub(newX, newY);
+        return new PositionStub(newX, newY);
     }
 
     /**
      * @param pos
      * @return new position contrasts current and assigned {@code pos}
      */
-    public IntegerPosition2DStub getOther(IntegerPosition2D pos) {
-        IntegerPosition2DStub newPos;
+    public PositionStub getOther(Position pos) {
+        PositionStub newPos;
         while (true) {
             newPos = getOther();
             if (getX() != newPos.getX() &&
@@ -49,7 +49,7 @@ public class IntegerPosition2DStub implements IntegerPosition2D {
         }
     }
 
-    public static IntegerPosition2DStub getRandomPosition() {
+    public static PositionStub getRandomPosition() {
         int x;
         int y;
 
@@ -57,35 +57,35 @@ public class IntegerPosition2DStub implements IntegerPosition2D {
         x = (int) (-1000 + Math.random() * 2000);
         y = (int) (-1000 + Math.random() * 2000);
 
-        return new IntegerPosition2DStub(x, y);
+        return new PositionStub(x, y);
     }
 
-    public IntegerPosition2DStub getUp() {
+    public PositionStub getUp() {
         int newX = getX();
         int newY = getY() + 1;
 
-        return new IntegerPosition2DStub(newX, newY);
+        return new PositionStub(newX, newY);
     }
 
-    public IntegerPosition2DStub getDown() {
+    public PositionStub getDown() {
         int newX = getX();
         int newY = getY() - 1;
 
-        return new IntegerPosition2DStub(newX, newY);
+        return new PositionStub(newX, newY);
     }
 
-    public IntegerPosition2DStub getLeft() {
+    public PositionStub getLeft() {
         int newX = getX() - 1;
         int newY = getY();
 
-        return new IntegerPosition2DStub(newX, newY);
+        return new PositionStub(newX, newY);
     }
 
-    public IntegerPosition2DStub getRight() {
+    public PositionStub getRight() {
         int newX = getX() + 1;
         int newY = getY();
 
-        return new IntegerPosition2DStub(newX, newY);
+        return new PositionStub(newX, newY);
     }
 
     @Override

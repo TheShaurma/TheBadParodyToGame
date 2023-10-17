@@ -7,7 +7,7 @@ import TheBadParodyToGame.ObjectsInArea.ObjectInArea;
 import TheBadParodyToGame.ObjectsInArea.PassableObject;
 import TheBadParodyToGame.area.AreaContainsAll;
 import TheBadParodyToGame.area.position.EmptyPositionException;
-import TheBadParodyToGame.area.position.IntegerPosition2D;
+import TheBadParodyToGame.area.position.Position;
 import TheBadParodyToGame.area.position.PositionCannotExistInAreaException;
 import TheBadParodyToGame.area.position.PositionException;
 
@@ -20,7 +20,7 @@ public class Player extends MovingObject {
     private int heatPoints = 100;
     private String name;
 
-    public Player(AreaContainsAll area, IntegerPosition2D startPos) throws PositionException {
+    public Player(AreaContainsAll area, Position startPos) throws PositionException {
         super(area, startPos);
 
         name = "NoName";
@@ -76,7 +76,7 @@ public class Player extends MovingObject {
         return result + " - " + getHP();
     }
 
-    public Player(String name, AreaContainsAll area, IntegerPosition2D startPos) throws PositionException {
+    public Player(String name, AreaContainsAll area, Position startPos) throws PositionException {
         super(area, startPos);
 
         this.name = name;
@@ -88,7 +88,7 @@ public class Player extends MovingObject {
      * 
      * @return current {@code pos}
      */
-    public IntegerPosition2D getPos() {
+    public Position getPos() {
         return getCurrentPosition();
     }
 
@@ -165,7 +165,7 @@ public class Player extends MovingObject {
     }
 
     @Override
-    protected void moveToPosition(IntegerPosition2D newPos)
+    protected void moveToPosition(Position newPos)
             throws LostObjectException, PositionCannotExistInAreaException {
         AreaContainsAll area = getArea();
 

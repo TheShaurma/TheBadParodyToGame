@@ -7,10 +7,10 @@ import java.util.Random;
 import org.junit.Test;
 
 import Tests.area.CheckeredAreaStub;
-import Tests.area.position.IntegerPosition2DStub;
+import Tests.area.position.PositionStub;
 import TheBadParodyToGame.ObjectsInArea.player.Player;
 import TheBadParodyToGame.area.AreaContainsAll;
-import TheBadParodyToGame.area.position.IntegerPosition2D;
+import TheBadParodyToGame.area.position.Position;
 import TheBadParodyToGame.area.position.PositionException;
 import TheBadParodyToGame.visualization.AreaWithPlayerInCenterAdapter;
 
@@ -18,12 +18,12 @@ public class AreaWithPlayerInCenterAdaptorTest {
     @Test
     public void convertPos() throws PositionException {
         Random random = new Random();
-        IntegerPosition2D playerPos = new IntegerPosition2DStub();
+        Position playerPos = new PositionStub();
         int xDiff = random.nextInt(-1000000, 1000000);
         int yDiff = random.nextInt(-1000000, 1000000);
-        IntegerPosition2D posWillBeConverted = new IntegerPosition2DStub(xDiff, yDiff);
-        IntegerPosition2D expectedPos = new IntegerPosition2DStub(playerPos.getX() + xDiff, playerPos.getY() + yDiff);
-        IntegerPosition2D actualPos;
+        Position posWillBeConverted = new PositionStub(xDiff, yDiff);
+        Position expectedPos = new PositionStub(playerPos.getX() + xDiff, playerPos.getY() + yDiff);
+        Position actualPos;
         AreaContainsAll area = new CheckeredAreaStub();
         Player player = new Player(area, playerPos);
         AreaWithPlayerInCenterAdaptorStub playerArea = new AreaWithPlayerInCenterAdaptorStub(area, player);
@@ -45,7 +45,7 @@ class AreaWithPlayerInCenterAdaptorStub extends AreaWithPlayerInCenterAdapter {
     }
 
     @Override
-    public IntegerPosition2D convertPos(IntegerPosition2D pos) {
+    public Position convertPos(Position pos) {
         return super.convertPos(pos);
     }
 }

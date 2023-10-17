@@ -1,6 +1,6 @@
 package TheBadParodyToGame.ObjectsInArea;
 
-import TheBadParodyToGame.area.position.IntegerPosition2D;
+import TheBadParodyToGame.area.position.Position;
 
 // TODO: create tests for CannotMoveObjectException
 /**
@@ -12,7 +12,7 @@ public class CannotMoveObjectException extends ObjectOnPositionException {
      * @param position where manager can't move object;
      * @param object   which can't be moved;
      */
-    public CannotMoveObjectException(IntegerPosition2D position, ObjectInArea object) {
+    public CannotMoveObjectException(Position position, ObjectInArea object) {
         super(position, object);
     }
 
