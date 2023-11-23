@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import TheBadParodyToGame.area.AreaStub;
 import TheBadParodyToGame.area.position.PositionStub;
-import TheBadParodyToGame.ObjectsInArea.player.Player;
+import TheBadParodyToGame.objectsInArea.player.Player;
 import TheBadParodyToGame.area.AreaContainsAll;
 import TheBadParodyToGame.area.position.Position;
 import TheBadParodyToGame.area.position.PositionException;

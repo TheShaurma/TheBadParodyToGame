@@ -1,4 +1,4 @@
-package TheBadParodyToGame.ObjectsInArea;
+package TheBadParodyToGame.objectsInArea;
 
 /**
  * Fire is interface for Area.

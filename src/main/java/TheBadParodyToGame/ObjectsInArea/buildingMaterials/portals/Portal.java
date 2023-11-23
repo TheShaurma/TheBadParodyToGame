@@ -1,7 +1,7 @@
-package TheBadParodyToGame.ObjectsInArea.buildingMaterials.portals;
+package TheBadParodyToGame.objectsInArea.buildingMaterials.portals;
 
-import TheBadParodyToGame.ObjectsInArea.PassableObject;
 import TheBadParodyToGame.area.position.Position;
+import TheBadParodyToGame.objectsInArea.PassableObject;
 
 public interface Portal extends PassableObject {
     Position getTeleportPosition();

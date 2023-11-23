@@ -1,4 +1,4 @@
-package TheBadParodyToGame.ObjectsInArea;
+package TheBadParodyToGame.objectsInArea;
 
 import TheBadParodyToGame.area.position.Position;
 import TheBadParodyToGame.area.position.PositionException;

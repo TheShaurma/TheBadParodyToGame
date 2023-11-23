@@ -1,4 +1,4 @@
-package TheBadParodyToGame.ObjectsInArea.affectingToHP;
+package TheBadParodyToGame.objectsInArea.affectingToHP;
 
 public class Apple implements DangerObject {
     private int heal;

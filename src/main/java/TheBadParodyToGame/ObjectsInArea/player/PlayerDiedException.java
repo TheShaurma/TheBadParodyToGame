@@ -1,8 +1,8 @@
-package TheBadParodyToGame.ObjectsInArea.player;
+package TheBadParodyToGame.objectsInArea.player;
 
-import TheBadParodyToGame.ObjectsInArea.ObjectOnPositionException;
-import TheBadParodyToGame.ObjectsInArea.ObjectInArea;
 import TheBadParodyToGame.area.position.Position;
+import TheBadParodyToGame.objectsInArea.ObjectInArea;
+import TheBadParodyToGame.objectsInArea.ObjectOnPositionException;
 
 public class PlayerDiedException extends ObjectOnPositionException {
     /**

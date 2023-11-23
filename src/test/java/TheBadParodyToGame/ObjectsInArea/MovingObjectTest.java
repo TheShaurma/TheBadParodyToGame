@@ -9,6 +9,9 @@ import org.junit.jupiter.api.Test;
 
 import TheBadParodyToGame.area.AreaStub;
 import TheBadParodyToGame.area.position.PositionStub;
+import TheBadParodyToGame.objectsInArea.CannotMoveObjectException;
+import TheBadParodyToGame.objectsInArea.LostObjectException;
+import TheBadParodyToGame.objectsInArea.ObjectInArea;
 import TheBadParodyToGame.area.AreaContainsAll;
 import TheBadParodyToGame.area.position.Position;
 import TheBadParodyToGame.area.position.PositionException;

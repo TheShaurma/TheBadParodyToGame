@@ -4,14 +4,14 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
 
-import TheBadParodyToGame.ObjectsInArea.ObjectInArea;
-import TheBadParodyToGame.ObjectsInArea.affectingToHP.Apple;
-import TheBadParodyToGame.ObjectsInArea.affectingToHP.Fire;
-import TheBadParodyToGame.ObjectsInArea.buildingMaterials.Stone;
 import TheBadParodyToGame.area.AreaContainsAll;
 import TheBadParodyToGame.area.GameArea;
 import TheBadParodyToGame.area.position.GamePosition;
 import TheBadParodyToGame.area.position.PositionException;
+import TheBadParodyToGame.objectsInArea.ObjectInArea;
+import TheBadParodyToGame.objectsInArea.affectingToHP.Apple;
+import TheBadParodyToGame.objectsInArea.affectingToHP.Fire;
+import TheBadParodyToGame.objectsInArea.buildingMaterials.Stone;
 
 /**
  * GameAreaReader

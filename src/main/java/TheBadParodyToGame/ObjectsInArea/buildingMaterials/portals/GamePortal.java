@@ -1,4 +1,4 @@
-package TheBadParodyToGame.ObjectsInArea.buildingMaterials.portals;
+package TheBadParodyToGame.objectsInArea.buildingMaterials.portals;
 
 import TheBadParodyToGame.area.position.Position;
 

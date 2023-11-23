@@ -1,6 +1,6 @@
-package TheBadParodyToGame.ObjectsInArea.buildingMaterials;
+package TheBadParodyToGame.objectsInArea.buildingMaterials;
 
-import TheBadParodyToGame.ObjectsInArea.ObjectInArea;
+import TheBadParodyToGame.objectsInArea.ObjectInArea;
 
 /**
  * Stone is object for Area.

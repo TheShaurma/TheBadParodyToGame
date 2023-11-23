@@ -1,6 +1,6 @@
 package TheBadParodyToGame.area;
 
-import TheBadParodyToGame.ObjectsInArea.ObjectInArea;
+import TheBadParodyToGame.objectsInArea.ObjectInArea;
 
 public class GameArea extends AbstractArea<ObjectInArea> implements AreaContainsAll {
 }

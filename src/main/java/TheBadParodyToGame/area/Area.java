@@ -1,10 +1,10 @@
 package TheBadParodyToGame.area;
 
-import TheBadParodyToGame.ObjectsInArea.ObjectInArea;
 import TheBadParodyToGame.area.position.BusyPositionException;
 import TheBadParodyToGame.area.position.EmptyPositionException;
 import TheBadParodyToGame.area.position.Position;
 import TheBadParodyToGame.area.position.PositionCannotExistInAreaException;
+import TheBadParodyToGame.objectsInArea.ObjectInArea;
 
 public interface Area<OBJ extends ObjectInArea> extends ConstantArea<OBJ> {
         /**

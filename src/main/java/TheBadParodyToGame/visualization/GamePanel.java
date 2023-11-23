@@ -3,8 +3,8 @@ package TheBadParodyToGame.visualization;
 import java.awt.Color;
 import javax.swing.JPanel;
 
-import TheBadParodyToGame.ObjectsInArea.ObjectInArea;
 import TheBadParodyToGame.area.position.Position;
+import TheBadParodyToGame.objectsInArea.ObjectInArea;
 
 public class GamePanel extends JPanel implements ObjectInArea {
     public static final int WIDTH___ = 35; // ширина

@@ -13,10 +13,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.plaf.FontUIResource;
 
-import TheBadParodyToGame.ObjectsInArea.affectingToHP.Apple;
-import TheBadParodyToGame.ObjectsInArea.affectingToHP.Fire;
-import TheBadParodyToGame.ObjectsInArea.buildingMaterials.Stone;
-import TheBadParodyToGame.ObjectsInArea.player.Player;
 import TheBadParodyToGame.area.AbstractArea;
 import TheBadParodyToGame.area.ConstantAreaContainsAll;
 import TheBadParodyToGame.area.position.BusyPositionException;
@@ -24,6 +20,10 @@ import TheBadParodyToGame.area.position.EmptyPositionException;
 import TheBadParodyToGame.area.position.GamePosition;
 import TheBadParodyToGame.area.position.Position;
 import TheBadParodyToGame.area.position.PositionCannotExistInAreaException;
+import TheBadParodyToGame.objectsInArea.affectingToHP.Apple;
+import TheBadParodyToGame.objectsInArea.affectingToHP.Fire;
+import TheBadParodyToGame.objectsInArea.buildingMaterials.Stone;
+import TheBadParodyToGame.objectsInArea.player.Player;
 
 public class WindowVisualizer {
     private static final Color EMPTY_POSITION_COLOR = new Color(190, 189, 191);

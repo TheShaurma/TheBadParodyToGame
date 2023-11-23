@@ -2,14 +2,14 @@ package TheBadParodyToGame.visualization;
 
 import java.util.Iterator;
 
-import TheBadParodyToGame.ObjectsInArea.ObjectInArea;
-import TheBadParodyToGame.ObjectsInArea.player.Player;
 import TheBadParodyToGame.area.AreaContainsAll;
 import TheBadParodyToGame.area.position.BusyPositionException;
 import TheBadParodyToGame.area.position.EmptyPositionException;
 import TheBadParodyToGame.area.position.GamePosition;
 import TheBadParodyToGame.area.position.Position;
 import TheBadParodyToGame.area.position.PositionCannotExistInAreaException;
+import TheBadParodyToGame.objectsInArea.ObjectInArea;
+import TheBadParodyToGame.objectsInArea.player.Player;
 
 /**
  * Like GameArea, but player always in [0; 0] coordinates.

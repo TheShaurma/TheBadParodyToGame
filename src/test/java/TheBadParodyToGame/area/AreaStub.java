@@ -3,11 +3,11 @@ package TheBadParodyToGame.area;
 import java.util.HashMap;
 import java.util.Iterator;
 
-import TheBadParodyToGame.ObjectsInArea.ObjectInArea;
 import TheBadParodyToGame.area.position.BusyPositionException;
 import TheBadParodyToGame.area.position.EmptyPositionException;
 import TheBadParodyToGame.area.position.Position;
 import TheBadParodyToGame.area.position.PositionCannotExistInAreaException;
+import TheBadParodyToGame.objectsInArea.ObjectInArea;
 
 public class AreaStub implements AreaContainsAll {
     private AreaItself areaItself = new AreaItself();

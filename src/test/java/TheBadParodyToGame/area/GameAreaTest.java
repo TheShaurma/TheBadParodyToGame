@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Assertions;
 
 import TheBadParodyToGame.ObjectsInArea.ObjectInAreaStub;
 import TheBadParodyToGame.area.position.PositionStub;
-import TheBadParodyToGame.ObjectsInArea.ObjectInArea;
+import TheBadParodyToGame.objectsInArea.ObjectInArea;
 import TheBadParodyToGame.area.position.BusyPositionException;
 import TheBadParodyToGame.area.position.EmptyPositionException;
 import TheBadParodyToGame.area.position.Position;

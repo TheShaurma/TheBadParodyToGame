@@ -1,15 +1,15 @@
-package TheBadParodyToGame.ObjectsInArea.player;
+package TheBadParodyToGame.objectsInArea.player;
 
-import TheBadParodyToGame.ObjectsInArea.CannotMoveObjectException;
-import TheBadParodyToGame.ObjectsInArea.LostObjectException;
-import TheBadParodyToGame.ObjectsInArea.MovingObject;
-import TheBadParodyToGame.ObjectsInArea.ObjectInArea;
-import TheBadParodyToGame.ObjectsInArea.PassableObject;
 import TheBadParodyToGame.area.AreaContainsAll;
 import TheBadParodyToGame.area.position.EmptyPositionException;
 import TheBadParodyToGame.area.position.Position;
 import TheBadParodyToGame.area.position.PositionCannotExistInAreaException;
 import TheBadParodyToGame.area.position.PositionException;
+import TheBadParodyToGame.objectsInArea.CannotMoveObjectException;
+import TheBadParodyToGame.objectsInArea.LostObjectException;
+import TheBadParodyToGame.objectsInArea.MovingObject;
+import TheBadParodyToGame.objectsInArea.ObjectInArea;
+import TheBadParodyToGame.objectsInArea.PassableObject;
 
 /**
  * Player should be moved by user.

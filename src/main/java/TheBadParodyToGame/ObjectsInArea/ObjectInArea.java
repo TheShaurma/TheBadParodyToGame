@@ -1,4 +1,4 @@
-package TheBadParodyToGame.ObjectsInArea;
+package TheBadParodyToGame.objectsInArea;
 
 /**
  * Object in area is Interface used in Area.

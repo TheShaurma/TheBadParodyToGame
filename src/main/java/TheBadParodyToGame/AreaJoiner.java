@@ -1,11 +1,11 @@
 package TheBadParodyToGame;
 
-import TheBadParodyToGame.ObjectsInArea.ObjectInArea;
 import TheBadParodyToGame.area.AreaContainsAll;
 import TheBadParodyToGame.area.position.EmptyPositionException;
 import TheBadParodyToGame.area.position.GamePosition;
 import TheBadParodyToGame.area.position.Position;
 import TheBadParodyToGame.area.position.PositionCannotExistInAreaException;
+import TheBadParodyToGame.objectsInArea.ObjectInArea;
 
 // TODO: create docs
 public class AreaJoiner {

@@ -2,11 +2,11 @@ package TheBadParodyToGame.visualization;
 
 import java.util.HashMap;
 
-import TheBadParodyToGame.ObjectsInArea.ObjectInArea;
 import TheBadParodyToGame.area.AreaContainsAll;
 import TheBadParodyToGame.area.position.GamePosition;
 import TheBadParodyToGame.area.position.Position;
 import TheBadParodyToGame.area.position.PositionException;
+import TheBadParodyToGame.objectsInArea.ObjectInArea;
 
 /**
  * Visualizer
