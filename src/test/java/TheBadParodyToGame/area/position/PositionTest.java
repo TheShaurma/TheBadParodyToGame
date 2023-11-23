@@ -3,10 +3,7 @@ package TheBadParodyToGame.area.position;
 import java.util.Random;
 
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.Assertions;
-
-import TheBadParodyToGame.area.position.GamePosition;
-import TheBadParodyToGame.area.position.Position;;
+import org.junit.jupiter.api.Assertions;;
 
 /**
  * This is test for PositionTest.

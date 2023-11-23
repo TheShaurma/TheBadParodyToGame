@@ -1,7 +1,5 @@
 package TheBadParodyToGame.area.position;
 
-import TheBadParodyToGame.area.position.Position;
-
 public class PositionStub implements Position {
     private int x;
     private int y;

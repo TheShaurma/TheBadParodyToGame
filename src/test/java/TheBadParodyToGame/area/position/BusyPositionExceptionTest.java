@@ -3,9 +3,6 @@ package TheBadParodyToGame.area.position;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 
-import TheBadParodyToGame.area.position.BusyPositionException;
-import TheBadParodyToGame.area.position.Position;
-
 public class BusyPositionExceptionTest {
     @Test
     public void getPosition_call_minus1Minus1Returned() {

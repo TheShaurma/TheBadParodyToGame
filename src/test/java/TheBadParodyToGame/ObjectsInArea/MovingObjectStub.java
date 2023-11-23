@@ -1,8 +1,5 @@
 package TheBadParodyToGame.ObjectsInArea;
 
-import TheBadParodyToGame.ObjectsInArea.CannotMoveObjectException;
-import TheBadParodyToGame.ObjectsInArea.LostObjectException;
-import TheBadParodyToGame.ObjectsInArea.MovingObject;
 import TheBadParodyToGame.area.AreaContainsAll;
 import TheBadParodyToGame.area.position.Position;
 import TheBadParodyToGame.area.position.PositionCannotExistInAreaException;
