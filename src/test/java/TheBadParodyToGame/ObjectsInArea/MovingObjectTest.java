@@ -1,17 +1,14 @@
-package Tests.ObjectsInArea;
+package TheBadParodyToGame.ObjectsInArea;
 
-import static org.junit.Assert.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Random;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import Tests.area.AreaStub;
-import Tests.area.position.PositionStub;
-import TheBadParodyToGame.ObjectsInArea.CannotMoveObjectException;
-import TheBadParodyToGame.ObjectsInArea.LostObjectException;
-import TheBadParodyToGame.ObjectsInArea.ObjectInArea;
+import TheBadParodyToGame.area.AreaStub;
+import TheBadParodyToGame.area.position.PositionStub;
 import TheBadParodyToGame.area.AreaContainsAll;
 import TheBadParodyToGame.area.position.Position;
 import TheBadParodyToGame.area.position.PositionException;

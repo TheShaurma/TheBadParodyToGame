@@ -1,4 +1,4 @@
-package Tests.area;
+package TheBadParodyToGame.area;
 
 import java.util.HashMap;
 import java.util.Iterator;

@@ -1,4 +1,4 @@
-package Tests.area.position;
+package TheBadParodyToGame.area.position;
 
 import TheBadParodyToGame.area.position.Position;
 

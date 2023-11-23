@@ -1,9 +1,9 @@
-package Tests.ObjectsInArea;
+package TheBadParodyToGame.ObjectsInArea;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 
-import Tests.area.position.PositionStub;
+import TheBadParodyToGame.area.position.PositionStub;
 import TheBadParodyToGame.ObjectsInArea.LostObjectException;
 import TheBadParodyToGame.ObjectsInArea.ObjectInArea;
 import TheBadParodyToGame.area.position.Position;

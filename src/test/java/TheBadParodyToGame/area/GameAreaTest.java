@@ -1,15 +1,14 @@
-package Tests.area;
+package TheBadParodyToGame.area;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 
-import Tests.ObjectsInArea.ObjectInAreaStub;
-import Tests.area.position.PositionStub;
+import TheBadParodyToGame.ObjectsInArea.ObjectInAreaStub;
+import TheBadParodyToGame.area.position.PositionStub;
 import TheBadParodyToGame.ObjectsInArea.ObjectInArea;
-import TheBadParodyToGame.area.GameArea;
 import TheBadParodyToGame.area.position.BusyPositionException;
 import TheBadParodyToGame.area.position.EmptyPositionException;
 import TheBadParodyToGame.area.position.Position;

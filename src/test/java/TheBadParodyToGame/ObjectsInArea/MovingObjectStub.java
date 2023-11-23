@@ -1,4 +1,4 @@
-package Tests.ObjectsInArea;
+package TheBadParodyToGame.ObjectsInArea;
 
 import TheBadParodyToGame.ObjectsInArea.CannotMoveObjectException;
 import TheBadParodyToGame.ObjectsInArea.LostObjectException;

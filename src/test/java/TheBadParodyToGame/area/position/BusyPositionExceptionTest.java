@@ -1,21 +1,21 @@
-package Tests.area.position;
+package TheBadParodyToGame.area.position;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 
-import TheBadParodyToGame.area.position.EmptyPositionException;
+import TheBadParodyToGame.area.position.BusyPositionException;
 import TheBadParodyToGame.area.position.Position;
 
-public class EmptyPositionExceptionTest {
+public class BusyPositionExceptionTest {
     @Test
     public void getPosition_call_minus1Minus1Returned() {
         Position expectedPosition = new PositionStub();
-        EmptyPositionException exception = new EmptyPositionException(expectedPosition);
+        BusyPositionException exception = new BusyPositionException(expectedPosition);
         Position actualPosition;
 
         try {
             throw exception;
-        } catch (EmptyPositionException e) {
+        } catch (BusyPositionException e) {
             actualPosition = e.getPosition();
         }
 
@@ -25,13 +25,13 @@ public class EmptyPositionExceptionTest {
     @Test
     public void toString_call_normalStringReturned() {
         Position position = new PositionStub();
-        EmptyPositionException exception = new EmptyPositionException(position);
-        String expectedString = "Position is empty: " + position.toString();
+        BusyPositionException exception = new BusyPositionException(position);
+        String expectedString = "Position is busy: " + position.toString();
         String actualString;
 
         try {
             throw exception;
-        } catch (EmptyPositionException e) {
+        } catch (BusyPositionException e) {
             actualString = e.toString();
         }
 

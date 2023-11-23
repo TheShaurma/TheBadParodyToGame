@@ -1,13 +1,13 @@
-package Tests.visualization;
+package TheBadParodyToGame;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Random;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import Tests.area.AreaStub;
-import Tests.area.position.PositionStub;
+import TheBadParodyToGame.area.AreaStub;
+import TheBadParodyToGame.area.position.PositionStub;
 import TheBadParodyToGame.ObjectsInArea.player.Player;
 import TheBadParodyToGame.area.AreaContainsAll;
 import TheBadParodyToGame.area.position.Position;

@@ -1,8 +1,8 @@
-package Tests.area.position;
+package TheBadParodyToGame.area.position;
 
 import java.util.Random;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 
 import TheBadParodyToGame.area.position.GamePosition;
