@@ -1,12 +1,14 @@
+package TheBadParodyToGame;
+
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Scanner;
 
-import TheBadParodyToGame.ObjectsInArea.affectingToHP.Apple;
-import TheBadParodyToGame.ObjectsInArea.affectingToHP.Fire;
-import TheBadParodyToGame.ObjectsInArea.buildingMaterials.Stone;
-import TheBadParodyToGame.ObjectsInArea.player.Player;
-import TheBadParodyToGame.ObjectsInArea.player.PlayerDiedException;
+import TheBadParodyToGame.objectsInArea.affectingToHP.Apple;
+import TheBadParodyToGame.objectsInArea.affectingToHP.Fire;
+import TheBadParodyToGame.objectsInArea.buildingMaterials.Stone;
+import TheBadParodyToGame.objectsInArea.player.Player;
+import TheBadParodyToGame.objectsInArea.player.PlayerDiedException;
 import TheBadParodyToGame.area.AreaContainsAll;
 import TheBadParodyToGame.area.position.GamePosition;
 import TheBadParodyToGame.area.position.Position;
@@ -48,7 +50,7 @@ public class TestMain {
     }
 
     private static void initVariables() throws PositionException, IOException, UnknownSymbolException {
-        area = AreaReader.readArea("TheBadParodyToGame\\read\\StartLevel.txt");
+        area = AreaReader.readArea("StartLevel.txt");
 
         Position startPos = new GamePosition(1, 1);
         player = new Player("Valera", area, startPos);
