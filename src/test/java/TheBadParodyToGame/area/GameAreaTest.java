@@ -1,7 +1,10 @@
 package TheBadParodyToGame.area;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.Vector;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
@@ -526,9 +529,11 @@ public class GameAreaTest {
         area.place(pos1, new ObjectInAreaStub());
         area.place(pos2, new ObjectInAreaStub());
         area.place(pos3, new ObjectInAreaStub());
+        Vector<Position> poses = new Vector<>();
 
         for (Position pos : area) {
-
+            assertFalse(poses.contains(pos));
+            poses.add(pos);
             assertTrue(area.positionIsBusy(pos));
         }
     }
