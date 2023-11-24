@@ -2,7 +2,6 @@ package TheBadParodyToGame.visualization;
 
 import java.util.HashMap;
 
-import TheBadParodyToGame.area.AreaContainsAll;
 import TheBadParodyToGame.area.ConstantArea;
 import TheBadParodyToGame.area.position.GamePosition;
 import TheBadParodyToGame.area.position.Position;

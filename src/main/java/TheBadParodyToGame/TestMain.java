@@ -1,18 +1,14 @@
 package TheBadParodyToGame;
 
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.Scanner;
 
-import TheBadParodyToGame.objectsInArea.affectingToHP.Apple;
-import TheBadParodyToGame.objectsInArea.affectingToHP.Fire;
-import TheBadParodyToGame.objectsInArea.buildingMaterials.Stone;
-import TheBadParodyToGame.objectsInArea.movingObjects.player.Player;
-import TheBadParodyToGame.objectsInArea.movingObjects.player.PlayerDiedException;
 import TheBadParodyToGame.area.AreaContainsAll;
 import TheBadParodyToGame.area.position.GamePosition;
 import TheBadParodyToGame.area.position.Position;
 import TheBadParodyToGame.area.position.PositionException;
+import TheBadParodyToGame.objectsInArea.movingObjects.player.Player;
+import TheBadParodyToGame.objectsInArea.movingObjects.player.PlayerDiedException;
 import TheBadParodyToGame.read.AreaReader;
 import TheBadParodyToGame.read.UnknownSymbolException;
 import TheBadParodyToGame.visualization.AreaWithPlayerInCenterAdapter;

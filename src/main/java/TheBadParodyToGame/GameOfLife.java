@@ -1,3 +1,5 @@
+package TheBadParodyToGame;
+
 import java.util.Scanner;
 
 import TheBadParodyToGame.area.position.PositionException;
