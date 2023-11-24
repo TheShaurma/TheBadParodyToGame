@@ -4,7 +4,6 @@ import TheBadParodyToGame.area.position.GamePosition;
 import TheBadParodyToGame.area.position.Position;
 import TheBadParodyToGame.objectsInArea.ObjectKnowsPosition;
 
-// TODO: create tests
 public abstract class ObjectKnowsFourNeighborsPoses extends ObjectKnowsPosition {
     public ObjectKnowsFourNeighborsPoses(Position pos) {
         super(pos);

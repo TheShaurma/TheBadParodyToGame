@@ -3,7 +3,6 @@ package TheBadParodyToGame.objectsInArea.knowsNeighbors;
 import TheBadParodyToGame.area.position.GamePosition;
 import TheBadParodyToGame.area.position.Position;
 
-// TODO: create tests
 public abstract class ObjectKnowsEightNeighborsPoses extends ObjectKnowsFourNeighborsPoses {
     public ObjectKnowsEightNeighborsPoses(Position pos) {
         super(pos);
