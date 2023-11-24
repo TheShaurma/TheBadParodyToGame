@@ -1,4 +1,4 @@
-package TheBadParodyToGame.objectsInArea;
+package TheBadParodyToGame.objectsInArea.movingObjects;
 
 import TheBadParodyToGame.area.AreaContainsAll;
 import TheBadParodyToGame.area.position.BusyPositionException;
@@ -7,6 +7,9 @@ import TheBadParodyToGame.area.position.GamePosition;
 import TheBadParodyToGame.area.position.Position;
 import TheBadParodyToGame.area.position.PositionCannotExistInAreaException;
 import TheBadParodyToGame.area.position.PositionException;
+import TheBadParodyToGame.objectsInArea.CannotMoveObjectException;
+import TheBadParodyToGame.objectsInArea.LostObjectException;
+import TheBadParodyToGame.objectsInArea.ObjectInArea;
 
 public abstract class MovingObject implements ObjectInArea {
     private final AreaContainsAll area;

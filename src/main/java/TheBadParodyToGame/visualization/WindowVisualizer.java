@@ -23,7 +23,7 @@ import TheBadParodyToGame.area.position.PositionCannotExistInAreaException;
 import TheBadParodyToGame.objectsInArea.affectingToHP.Apple;
 import TheBadParodyToGame.objectsInArea.affectingToHP.Fire;
 import TheBadParodyToGame.objectsInArea.buildingMaterials.Stone;
-import TheBadParodyToGame.objectsInArea.player.Player;
+import TheBadParodyToGame.objectsInArea.movingObjects.player.Player;
 
 public class WindowVisualizer {
     private static final Color EMPTY_POSITION_COLOR = new Color(190, 189, 191);

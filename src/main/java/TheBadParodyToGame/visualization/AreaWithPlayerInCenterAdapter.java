@@ -9,7 +9,7 @@ import TheBadParodyToGame.area.position.GamePosition;
 import TheBadParodyToGame.area.position.Position;
 import TheBadParodyToGame.area.position.PositionCannotExistInAreaException;
 import TheBadParodyToGame.objectsInArea.ObjectInArea;
-import TheBadParodyToGame.objectsInArea.player.Player;
+import TheBadParodyToGame.objectsInArea.movingObjects.player.Player;
 
 /**
  * Like GameArea, but player always in [0; 0] coordinates.
