@@ -5,6 +5,10 @@ package TheBadParodyToGame.objectsInArea;
  * Areas can contain only Object of class implements this interface.
  */
 public interface ObjectInArea {
+    default char getChar() {
+        return ' ';
+    }
+
     default public int getDamage() {
         return 0;
     }

@@ -8,4 +8,9 @@ public class Fire implements DangerObject {
     public int getDamage() {
         return 5;
     }
+
+    @Override
+    public char getChar() {
+        return 'f';
+    }
 }

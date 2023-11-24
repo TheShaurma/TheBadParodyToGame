@@ -58,11 +58,6 @@ public class TestMain {
         visualizer = new SimpleVisualizer(new GamePosition(-20, -10),
                 new GamePosition(20, 10),
                 new AreaWithPlayerInCenterAdapter(area, player));
-        HashMap<Class<?>, String> consoleVisualMap = visualizer.getConsoleVisualMap();
-        consoleVisualMap.put(Player.class, "P");
-        consoleVisualMap.put(Stone.class, "s");
-        consoleVisualMap.put(Fire.class, "f");
-        consoleVisualMap.put(Apple.class, "a");
 
         in = new Scanner(System.in);
         run = true;

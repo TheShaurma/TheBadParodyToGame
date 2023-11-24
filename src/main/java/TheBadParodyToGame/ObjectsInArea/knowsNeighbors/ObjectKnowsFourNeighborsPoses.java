@@ -1,12 +1,14 @@
 package TheBadParodyToGame.objectsInArea.knowsNeighbors;
 
+import TheBadParodyToGame.area.ConstantArea;
 import TheBadParodyToGame.area.position.GamePosition;
 import TheBadParodyToGame.area.position.Position;
-import TheBadParodyToGame.objectsInArea.ObjectKnowsPosition;
+import TheBadParodyToGame.objectsInArea.ObjectKnowsPositionInArea;
 
-public abstract class ObjectKnowsFourNeighborsPoses extends ObjectKnowsPosition {
-    public ObjectKnowsFourNeighborsPoses(Position pos) {
-        super(pos);
+public abstract class ObjectKnowsFourNeighborsPoses<A extends ConstantArea<?>> extends ObjectKnowsPositionInArea<A> {
+
+    public ObjectKnowsFourNeighborsPoses(A area, Position pos) {
+        super(area, pos);
     }
 
     public Position getUpPos() {

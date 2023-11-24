@@ -15,4 +15,9 @@ public class Apple implements DangerObject {
     public int getHealing() {
         return heal;
     }
+
+    @Override
+    public char getChar() {
+        return 'a';
+    }
 }

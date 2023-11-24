@@ -19,8 +19,6 @@ public class SimpleVisualizer {
     private int yMin;
     private int yMax;
 
-    private HashMap<Class<?>, String> consoleVisualMap = new SymbolMap();
-
     public SimpleVisualizer(Position minPos, Position maxPos, AreaContainsAll area) {
         this.area = area;
         int x1 = minPos.getX();
@@ -44,10 +42,6 @@ public class SimpleVisualizer {
         }
     }
 
-    public HashMap<Class<?>, String> getConsoleVisualMap() {
-        return consoleVisualMap;
-    }
-
     public void showConsole() throws PositionException {
         System.out.print(" ");
         for (int x = xMin; x <= xMax; x++) {
@@ -69,8 +63,7 @@ public class SimpleVisualizer {
                     System.out.print(" ");
                 } else {
                     ObjectInArea obj = area.get(currentPos);
-                    Class<?> objClass = obj.getClass();
-                    String str = consoleVisualMap.get(objClass);
+                    String str = String.valueOf(obj.getChar());
                     System.out.print(str);
                 }
             }

@@ -14,4 +14,8 @@ public class GamePortal implements Portal {
         return teleportPos;
     }
 
+    @Override
+    public char getChar() {
+        return '@';
+    }
 }

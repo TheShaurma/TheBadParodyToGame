@@ -189,6 +189,11 @@ public class Player extends MovingObject {
         }
     }
 
+    @Override
+    public char getChar() {
+        return 'P';
+    }
+
     /**
      * Checks if player alive.
      * 
