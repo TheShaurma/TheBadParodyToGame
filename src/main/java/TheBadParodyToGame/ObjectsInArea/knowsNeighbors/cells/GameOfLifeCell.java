@@ -15,7 +15,7 @@ public class GameOfLifeCell extends AbstractCell {
     }
 
     @Override
-    boolean getAliveNextStep() throws EmptyPositionException, PositionCannotExistInAreaException {
+    public boolean getNextStep() throws EmptyPositionException, PositionCannotExistInAreaException {
         if (isAlive()) {
             if (willSurvive()) {
                 return true;
@@ -32,23 +32,23 @@ public class GameOfLifeCell extends AbstractCell {
     }
 
     @Override
-    boolean willSurvive() throws EmptyPositionException, PositionCannotExistInAreaException {
+    public boolean willSurvive() throws EmptyPositionException, PositionCannotExistInAreaException {
         int num = getNumOfAliveNeighbors();
         return num == 2 || num == 3;
     }
 
     @Override
-    boolean willDead() throws EmptyPositionException, PositionCannotExistInAreaException {
+    public boolean willDead() throws EmptyPositionException, PositionCannotExistInAreaException {
         return !willSurvive();
     }
 
     @Override
-    boolean willBorn() throws EmptyPositionException, PositionCannotExistInAreaException {
+    public boolean willBorn() throws EmptyPositionException, PositionCannotExistInAreaException {
         return getNumOfAliveNeighbors() == 3;
     }
 
     @Override
-    int getNumOfAliveNeighbors() throws EmptyPositionException, PositionCannotExistInAreaException {
+    public int getNumOfAliveNeighbors() throws EmptyPositionException, PositionCannotExistInAreaException {
         int result = 0;
         var area = getArea();
         for (Position pos : getAllNeighborsPositions()) {

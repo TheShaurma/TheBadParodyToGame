@@ -19,17 +19,21 @@ public abstract class AbstractCell extends ObjectKnowsEightNeighborsPoses<Consta
         this.alive = alive;
     }
 
-    abstract boolean getAliveNextStep() throws EmptyPositionException, PositionCannotExistInAreaException;
+    abstract public boolean getNextStep() throws EmptyPositionException, PositionCannotExistInAreaException;
 
-    abstract boolean willSurvive() throws EmptyPositionException, PositionCannotExistInAreaException;
+    abstract public boolean willSurvive() throws EmptyPositionException, PositionCannotExistInAreaException;
 
-    abstract boolean willDead() throws EmptyPositionException, PositionCannotExistInAreaException;
+    abstract public boolean willDead() throws EmptyPositionException, PositionCannotExistInAreaException;
 
-    abstract boolean willBorn() throws EmptyPositionException, PositionCannotExistInAreaException;
+    abstract public boolean willBorn() throws EmptyPositionException, PositionCannotExistInAreaException;
 
-    abstract int getNumOfAliveNeighbors() throws EmptyPositionException, PositionCannotExistInAreaException;
+    abstract public int getNumOfAliveNeighbors() throws EmptyPositionException, PositionCannotExistInAreaException;
 
     public boolean isAlive() {
         return alive;
+    }
+
+    public void setAlive(boolean alive) {
+        this.alive = alive;
     }
 }

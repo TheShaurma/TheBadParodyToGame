@@ -3,6 +3,7 @@ package TheBadParodyToGame.visualization;
 import java.util.HashMap;
 
 import TheBadParodyToGame.area.AreaContainsAll;
+import TheBadParodyToGame.area.ConstantArea;
 import TheBadParodyToGame.area.position.GamePosition;
 import TheBadParodyToGame.area.position.Position;
 import TheBadParodyToGame.area.position.PositionException;
@@ -12,14 +13,14 @@ import TheBadParodyToGame.objectsInArea.ObjectInArea;
  * Visualizer
  */
 public class SimpleVisualizer {
-    private AreaContainsAll area;
+    private ConstantArea<?> area;
 
     private int xMin;
     private int xMax;
     private int yMin;
     private int yMax;
 
-    public SimpleVisualizer(Position minPos, Position maxPos, AreaContainsAll area) {
+    public SimpleVisualizer(Position minPos, Position maxPos, ConstantArea<?> area) {
         this.area = area;
         int x1 = minPos.getX();
         int x2 = maxPos.getX();
