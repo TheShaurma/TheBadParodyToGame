@@ -1,11 +1,9 @@
-package TheBadParodyToGame.ObjectsInArea;
+package TheBadParodyToGame.objectsInArea;
 
 import TheBadParodyToGame.area.AreaContainsAll;
 import TheBadParodyToGame.area.position.Position;
 import TheBadParodyToGame.area.position.PositionCannotExistInAreaException;
 import TheBadParodyToGame.area.position.PositionException;
-import TheBadParodyToGame.objectsInArea.CannotMoveObjectException;
-import TheBadParodyToGame.objectsInArea.LostObjectException;
 import TheBadParodyToGame.objectsInArea.movingObjects.MovingObject;
 
 public class MovingObjectStub extends MovingObject {

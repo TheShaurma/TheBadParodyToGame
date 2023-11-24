@@ -9,9 +9,9 @@ import java.util.Vector;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 
-import TheBadParodyToGame.ObjectsInArea.ObjectInAreaStub;
 import TheBadParodyToGame.area.position.PositionStub;
 import TheBadParodyToGame.objectsInArea.ObjectInArea;
+import TheBadParodyToGame.objectsInArea.ObjectInAreaStub;
 import TheBadParodyToGame.area.position.BusyPositionException;
 import TheBadParodyToGame.area.position.EmptyPositionException;
 import TheBadParodyToGame.area.position.Position;

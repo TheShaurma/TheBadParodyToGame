@@ -90,4 +90,18 @@ public class PositionStub implements Position {
     public String toString() {
         return "PositionStub(" + getX() + ", " + getY() + ")";
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof Position)) {
+            return false;
+        }
+
+        Position otherPos = (Position) o;
+        if (getX() == otherPos.getX() && getY() == otherPos.getY()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
