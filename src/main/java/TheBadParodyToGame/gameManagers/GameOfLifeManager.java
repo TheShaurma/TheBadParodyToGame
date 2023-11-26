@@ -22,7 +22,7 @@ public class GameOfLifeManager {
     private int xMin = 0;
     private int xMax = 100;
     private int yMin = 0;
-    private int yMax = 20;
+    private int yMax = 50;
 
     private final Random random = new Random();
     private SimpleVisualizer evenVisualizer;
