@@ -10,6 +10,11 @@ import TheBadParodyToGame.objectsInArea.ObjectInArea;
 
 // TODO: write docs
 // TODO: create tests
+/**
+ * ConstantLoopedArea
+ * 
+ * This in an adaptor for Area class.
+ */
 public class ConstantLoopedArea<OBJ extends ObjectInArea> implements ConstantArea<OBJ> {
     private final ConstantArea<OBJ> areaItself;
 
@@ -18,6 +23,17 @@ public class ConstantLoopedArea<OBJ extends ObjectInArea> implements ConstantAre
     private final int yMin;
     private final int yMax;
 
+    /**
+     * Creates area looped in x and y directions.
+     * When you trying move to -1 coordinate of x or y, you moves to xMax or yMax
+     * coordinate finally.
+     * When you trying move to xMax or yMax coordinates, you moves to 0 coordinate
+     * of x or y finally.
+     * 
+     * @param area
+     * @param xMax
+     * @param yMax
+     */
     public ConstantLoopedArea(ConstantArea<OBJ> area, int xMax, int yMax) {
         areaItself = area;
 
