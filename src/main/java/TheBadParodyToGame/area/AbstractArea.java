@@ -47,7 +47,6 @@ public abstract class AbstractArea<OBJ extends ObjectInArea> implements Area<OBJ
         if (positionIsEmpty(pos)) {
             set(pos, obj);
         }
-
     }
 
     @Override

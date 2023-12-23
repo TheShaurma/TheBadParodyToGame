@@ -1,5 +1,6 @@
 package TheBadParodyToGame;
 
+import java.awt.Window;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -12,11 +13,12 @@ import TheBadParodyToGame.objectsInArea.movingObjects.player.PlayerDiedException
 import TheBadParodyToGame.read.AreaReader;
 import TheBadParodyToGame.read.UnknownSymbolException;
 import TheBadParodyToGame.visualization.AreaWithPlayerInCenterAdapter;
-import TheBadParodyToGame.visualization.SimpleVisualizer;
+import TheBadParodyToGame.visualization.ConsoleVisualizer;
+import TheBadParodyToGame.visualization.WindowVisualizer;
 
 public class TestMain {
     private static AreaContainsAll area;
-    private static SimpleVisualizer visualizer;
+    private static WindowVisualizer visualizer;
     private static Player player;
     private static Scanner in;
     private static boolean run;
@@ -27,8 +29,8 @@ public class TestMain {
         String input;
         while (run) {
             System.out.println(player.getHPString() + " - " + player.getName());
-            visualizer.showConsole();
-            System.out.print("Use WASD to move and Q to quit:");
+            visualizer.showArea();
+            System.out.print("Use WASD to move and Q to quit: ");
 
             input = in.next();
 
@@ -51,9 +53,15 @@ public class TestMain {
         Position startPos = new GamePosition(1, 1);
         player = new Player("Valera", area, startPos);
 
-        visualizer = new SimpleVisualizer(new GamePosition(-20, -10),
+        // visualizer = new ConsoleVisualizer(new GamePosition(-20, -10),
+        // new GamePosition(20, 10),
+        // new AreaWithPlayerInCenterAdapter(area, player));
+
+        visualizer = new WindowVisualizer(
+                new AreaWithPlayerInCenterAdapter(area, player),
+                new GamePosition(-20, -10),
                 new GamePosition(20, 10),
-                new AreaWithPlayerInCenterAdapter(area, player));
+                player);
 
         in = new Scanner(System.in);
         run = true;

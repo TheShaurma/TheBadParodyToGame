@@ -6,6 +6,7 @@ public class GameFrame extends JFrame {
     public GameFrame() {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setTitle("The Bad Parody To Game");
-        setLayout(null);
+        // TODO: remove
+        // setLayout(null);
     }
 }

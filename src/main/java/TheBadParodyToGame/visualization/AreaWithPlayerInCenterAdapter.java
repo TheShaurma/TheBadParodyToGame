@@ -3,6 +3,7 @@ package TheBadParodyToGame.visualization;
 import java.util.Iterator;
 
 import TheBadParodyToGame.area.AreaContainsAll;
+import TheBadParodyToGame.area.ConstantAreaContainsAll;
 import TheBadParodyToGame.area.position.BusyPositionException;
 import TheBadParodyToGame.area.position.EmptyPositionException;
 import TheBadParodyToGame.area.position.GamePosition;
@@ -16,7 +17,7 @@ import TheBadParodyToGame.objectsInArea.movingObjects.player.Player;
  * 
  * Used only for visualization. That's why this class isn't in area package.
  */
-public class AreaWithPlayerInCenterAdapter implements AreaContainsAll {
+public class AreaWithPlayerInCenterAdapter implements AreaContainsAll, ConstantAreaContainsAll {
     private AreaContainsAll areaItself;
     private Player player;
 

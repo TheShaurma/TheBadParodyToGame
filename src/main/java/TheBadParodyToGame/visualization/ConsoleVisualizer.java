@@ -3,15 +3,17 @@ package TheBadParodyToGame.visualization;
 import java.util.HashMap;
 
 import TheBadParodyToGame.area.ConstantArea;
+import TheBadParodyToGame.area.position.EmptyPositionException;
 import TheBadParodyToGame.area.position.GamePosition;
 import TheBadParodyToGame.area.position.Position;
+import TheBadParodyToGame.area.position.PositionCannotExistInAreaException;
 import TheBadParodyToGame.area.position.PositionException;
 import TheBadParodyToGame.objectsInArea.ObjectInArea;
 
 /**
  * Visualizer
  */
-public class SimpleVisualizer {
+public class ConsoleVisualizer {
     private ConstantArea<?> area;
 
     private int xMin;
@@ -19,62 +21,60 @@ public class SimpleVisualizer {
     private int yMin;
     private int yMax;
 
-    public SimpleVisualizer(Position minPos, Position maxPos, ConstantArea<?> area) {
+    public ConsoleVisualizer(Position minPos, Position maxPos, ConstantArea<?> area) {
         this.area = area;
+
         int x1 = minPos.getX();
         int x2 = maxPos.getX();
-        if (x1 > x2) {
-            xMin = x2;
-            xMax = x1;
-        } else {
-            xMin = x1;
-            xMax = x2;
-        }
+        xMin = Math.min(x1, x2);
+        xMax = Math.max(x1, x2);
 
         int y1 = minPos.getY();
         int y2 = maxPos.getY();
-        if (y1 > y2) {
-            yMin = y2;
-            yMax = y1;
-        } else {
-            yMin = y1;
-            yMax = y2;
-        }
+        yMin = Math.min(y1, y2);
+        yMax = Math.max(y1, y2);
     }
 
     public void showConsole() throws PositionException {
-        System.out.print(" ");
+        System.out.println(getAreaString());
+    }
+
+    public String getAreaString() throws PositionCannotExistInAreaException, EmptyPositionException {
+
+        String result = "";
+        result += " ";
         for (int x = xMin; x <= xMax; x++) {
             if (x == 0) {
-                System.out.print("X");
+                result += "X";
             } else {
-                System.out.print(Math.abs(x % 10));
+                result += Math.abs(x % 10);
             }
         }
-        System.out.println();
+        result += '\n';
 
         for (int y = yMax; y >= yMin; y--) {
-            System.out.print("|");
+            result += "|";
 
             for (int x = xMin; x <= xMax; x++) {
                 Position currentPos = new GamePosition(x, y);
 
                 if (area.positionIsEmpty(currentPos)) {
-                    System.out.print(" ");
+                    result += " ";
                 } else {
                     ObjectInArea obj = area.get(currentPos);
                     String str = String.valueOf(obj.getChar());
-                    System.out.print(str);
+                    result += str;
                 }
             }
-            System.out.print(y);
-            System.out.println();
-
+            result += y;
+            result += '\n';
         }
         for (int x = xMin; x <= xMax; x++) {
-            System.out.print("=");
+            result += "=";
         }
-        System.out.println();
+        // result += '\n';
+
+        return result;
     }
 }
 

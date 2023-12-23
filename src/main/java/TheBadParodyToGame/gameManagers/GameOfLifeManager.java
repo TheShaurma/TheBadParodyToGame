@@ -12,7 +12,7 @@ import TheBadParodyToGame.area.position.PositionCannotExistInAreaException;
 import TheBadParodyToGame.area.position.PositionException;
 import TheBadParodyToGame.objectsInArea.knowsNeighbors.cells.AbstractCell;
 import TheBadParodyToGame.objectsInArea.knowsNeighbors.cells.GameOfLifeCell;
-import TheBadParodyToGame.visualization.SimpleVisualizer;
+import TheBadParodyToGame.visualization.ConsoleVisualizer;
 
 public class GameOfLifeManager {
     private int step = 0;
@@ -25,8 +25,8 @@ public class GameOfLifeManager {
     private int yMax = 50;
 
     private final Random random = new Random();
-    private SimpleVisualizer evenVisualizer;
-    private SimpleVisualizer oddVisualizer;
+    private ConsoleVisualizer evenVisualizer;
+    private ConsoleVisualizer oddVisualizer;
 
     public void startGame() throws PositionCannotExistInAreaException {
         evenStep = getFilledArea();
@@ -34,8 +34,8 @@ public class GameOfLifeManager {
 
         Position minPos = new GamePosition(xMin, yMin);
         Position maxPos = new GamePosition(xMax, yMax);
-        evenVisualizer = new SimpleVisualizer(minPos, maxPos, evenStep);
-        oddVisualizer = new SimpleVisualizer(minPos, maxPos, oddStep);
+        evenVisualizer = new ConsoleVisualizer(minPos, maxPos, evenStep);
+        oddVisualizer = new ConsoleVisualizer(minPos, maxPos, oddStep);
     }
 
     public void nextStep() throws EmptyPositionException, PositionCannotExistInAreaException {
