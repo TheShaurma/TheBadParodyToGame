@@ -7,11 +7,11 @@ import TheBadParodyToGame.area.position.GamePosition;
 import TheBadParodyToGame.area.position.Position;
 import TheBadParodyToGame.area.position.PositionCannotExistInAreaException;
 import TheBadParodyToGame.area.position.PositionException;
+import TheBadParodyToGame.objectsInArea.AbstractObject;
 import TheBadParodyToGame.objectsInArea.CannotMoveObjectException;
 import TheBadParodyToGame.objectsInArea.LostObjectException;
-import TheBadParodyToGame.objectsInArea.ObjectInArea;
 
-public abstract class MovingObject implements ObjectInArea {
+public abstract class MovingObject extends AbstractObject {
     private final AreaContainsAll area;
     private Position startPos;
 

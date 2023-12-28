@@ -1,6 +1,6 @@
 package TheBadParodyToGame.objectsInArea.affectingToHP;
 
-public class Apple implements DangerObject {
+public class Apple implements HealingObject {
     private int heal;
 
     public Apple() {

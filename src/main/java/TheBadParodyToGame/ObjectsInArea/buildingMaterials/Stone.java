@@ -1,11 +1,11 @@
 package TheBadParodyToGame.objectsInArea.buildingMaterials;
 
-import TheBadParodyToGame.objectsInArea.ObjectInArea;
+import TheBadParodyToGame.objectsInArea.AbstractObject;
 
 /**
  * Stone is object for Area.
  */
-public class Stone implements ObjectInArea {
+public class Stone extends AbstractObject {
     @Override
     public char getChar() {
         return 's';
