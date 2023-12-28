@@ -1,6 +1,9 @@
 # VS Code package
 .vscode/
 
+# Jython cache package
+.jython_cache/
+
 # Java
 *.class
 
