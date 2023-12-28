@@ -135,4 +135,38 @@ public abstract class AbstractArea<OBJ extends ObjectInArea> implements Area<OBJ
     public Iterator<Position> iterator() {
         return areaItself.keySet().iterator();
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof ConstantArea<?>)) {
+            return false;
+        } else {
+
+            ConstantArea<?> otherArea = (ConstantArea<?>) obj;
+            for (Position pos : this) {
+                try {
+                    if (otherArea.positionIsEmpty(pos) ||
+                            !get(pos).equals(otherArea.get(pos))) {
+                        return false;
+                    }
+
+                } catch (PositionCannotExistInAreaException | EmptyPositionException e) {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+    }
+
+    @Override
+    public int hashCode() {
+        int result = 0;
+        for (Position pos : this) {
+            result += pos.getX();
+            result += pos.getY();
+        }
+
+        return result;
+    }
 }
