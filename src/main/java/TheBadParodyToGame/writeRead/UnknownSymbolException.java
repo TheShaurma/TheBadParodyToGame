@@ -1,4 +1,4 @@
-package TheBadParodyToGame.read;
+package TheBadParodyToGame.writeRead;
 
 @Deprecated
 public class UnknownSymbolException extends Exception {

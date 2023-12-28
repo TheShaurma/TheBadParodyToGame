@@ -1,6 +1,5 @@
 package TheBadParodyToGame;
 
-import java.awt.Window;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -10,10 +9,10 @@ import TheBadParodyToGame.area.position.Position;
 import TheBadParodyToGame.area.position.PositionException;
 import TheBadParodyToGame.objectsInArea.movingObjects.player.Player;
 import TheBadParodyToGame.objectsInArea.movingObjects.player.PlayerDiedException;
-import TheBadParodyToGame.read.AreaReader;
-import TheBadParodyToGame.read.UnknownSymbolException;
 import TheBadParodyToGame.visualization.AreaWithPlayerInCenterAdapter;
 import TheBadParodyToGame.visualization.WindowVisualizer;
+import TheBadParodyToGame.writeRead.AreaReader;
+import TheBadParodyToGame.writeRead.UnknownSymbolException;
 
 public class TestMain {
     private static AreaContainsAll area;

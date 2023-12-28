@@ -1,4 +1,4 @@
-package TheBadParodyToGame.read;
+package TheBadParodyToGame.writeRead;
 
 import java.io.FileReader;
 import java.io.IOException;
