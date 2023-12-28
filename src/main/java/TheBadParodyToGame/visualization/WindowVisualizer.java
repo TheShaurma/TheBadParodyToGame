@@ -41,7 +41,7 @@ public class WindowVisualizer {
                 consoleVisualizer.getAreaString()));
     }
 
-    public void close() {
+    public void closeWindow() {
         frame.dispose();
     }
 

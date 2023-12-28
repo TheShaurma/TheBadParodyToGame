@@ -10,6 +10,7 @@ import TheBadParodyToGame.area.position.PositionCannotExistInAreaException;
 import TheBadParodyToGame.objectsInArea.ObjectInArea;
 
 // TODO: adapt for multi-thread
+// TODO: equals and hashCode
 /**
  * DIDN'T adapted for multi-thread using.
  */

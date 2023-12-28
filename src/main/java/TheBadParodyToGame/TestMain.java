@@ -13,7 +13,6 @@ import TheBadParodyToGame.objectsInArea.movingObjects.player.PlayerDiedException
 import TheBadParodyToGame.read.AreaReader;
 import TheBadParodyToGame.read.UnknownSymbolException;
 import TheBadParodyToGame.visualization.AreaWithPlayerInCenterAdapter;
-import TheBadParodyToGame.visualization.ConsoleVisualizer;
 import TheBadParodyToGame.visualization.WindowVisualizer;
 
 public class TestMain {
@@ -36,6 +35,7 @@ public class TestMain {
 
             if (input.equals("q") || input.equals("Q")) {
                 run = false;
+                visualizer.closeWindow();
             }
 
             try {
@@ -52,10 +52,6 @@ public class TestMain {
 
         Position startPos = new GamePosition(1, 1);
         player = new Player("Valera", area, startPos);
-
-        // visualizer = new ConsoleVisualizer(new GamePosition(-20, -10),
-        // new GamePosition(20, 10),
-        // new AreaWithPlayerInCenterAdapter(area, player));
 
         visualizer = new WindowVisualizer(
                 new AreaWithPlayerInCenterAdapter(area, player),
