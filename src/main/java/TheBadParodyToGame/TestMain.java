@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 import TheBadParodyToGame.area.AreaContainsAll;
+import TheBadParodyToGame.area.GameArea;
 import TheBadParodyToGame.area.position.GamePosition;
 import TheBadParodyToGame.area.position.Position;
 import TheBadParodyToGame.area.position.PositionException;
@@ -12,6 +13,7 @@ import TheBadParodyToGame.objectsInArea.movingObjects.player.PlayerDiedException
 import TheBadParodyToGame.visualization.AreaWithPlayerInCenterAdapter;
 import TheBadParodyToGame.visualization.WindowVisualizer;
 import TheBadParodyToGame.writeRead.AreaReader;
+import TheBadParodyToGame.writeRead.AreaWriteReader;
 import TheBadParodyToGame.writeRead.UnknownSymbolException;
 
 public class TestMain {
@@ -34,6 +36,7 @@ public class TestMain {
 
             if (input.equals("q") || input.equals("Q")) {
                 run = false;
+                System.out.println(new AreaWriteReader().convertToString((GameArea) area));
                 visualizer.closeWindow();
             }
 
