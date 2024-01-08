@@ -3,11 +3,11 @@ package TheBadParodyToGame.visualization;
 import java.util.HashMap;
 
 import TheBadParodyToGame.area.ConstantArea;
-import TheBadParodyToGame.area.position.EmptyPositionException;
 import TheBadParodyToGame.area.position.GamePosition;
 import TheBadParodyToGame.area.position.Position;
-import TheBadParodyToGame.area.position.PositionCannotExistInAreaException;
-import TheBadParodyToGame.area.position.PositionException;
+import TheBadParodyToGame.area.position.exceptions.EmptyPositionException;
+import TheBadParodyToGame.area.position.exceptions.PositionCannotExistInAreaException;
+import TheBadParodyToGame.area.position.exceptions.PositionException;
 import TheBadParodyToGame.objectsInArea.ObjectInArea;
 
 /**

@@ -1,9 +1,9 @@
 package TheBadParodyToGame.objectsInArea.knowsNeighbors.cells;
 
 import TheBadParodyToGame.area.ConstantArea;
-import TheBadParodyToGame.area.position.EmptyPositionException;
 import TheBadParodyToGame.area.position.Position;
-import TheBadParodyToGame.area.position.PositionCannotExistInAreaException;
+import TheBadParodyToGame.area.position.exceptions.EmptyPositionException;
+import TheBadParodyToGame.area.position.exceptions.PositionCannotExistInAreaException;
 
 public class GameOfLifeCell extends AbstractCell {
     public GameOfLifeCell(ConstantArea<AbstractCell> area, Position pos) {

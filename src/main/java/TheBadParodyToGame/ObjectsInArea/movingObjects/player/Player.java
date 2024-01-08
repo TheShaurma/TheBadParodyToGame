@@ -1,10 +1,10 @@
 package TheBadParodyToGame.objectsInArea.movingObjects.player;
 
 import TheBadParodyToGame.area.AreaContainsAll;
-import TheBadParodyToGame.area.position.EmptyPositionException;
 import TheBadParodyToGame.area.position.Position;
-import TheBadParodyToGame.area.position.PositionCannotExistInAreaException;
-import TheBadParodyToGame.area.position.PositionException;
+import TheBadParodyToGame.area.position.exceptions.EmptyPositionException;
+import TheBadParodyToGame.area.position.exceptions.PositionCannotExistInAreaException;
+import TheBadParodyToGame.area.position.exceptions.PositionException;
 import TheBadParodyToGame.objectsInArea.CannotMoveObjectException;
 import TheBadParodyToGame.objectsInArea.LostObjectException;
 import TheBadParodyToGame.objectsInArea.ObjectInArea;

@@ -1,4 +1,4 @@
-package TheBadParodyToGame.area.borders;
+package TheBadParodyToGame.area.withBorders.borders;
 
 import TheBadParodyToGame.area.position.Position;
 

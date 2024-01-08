@@ -7,7 +7,7 @@ import java.util.Scanner;
 import TheBadParodyToGame.area.AreaContainsAll;
 import TheBadParodyToGame.area.GameArea;
 import TheBadParodyToGame.area.position.GamePosition;
-import TheBadParodyToGame.area.position.PositionException;
+import TheBadParodyToGame.area.position.exceptions.PositionException;
 import TheBadParodyToGame.objectsInArea.ObjectInArea;
 import TheBadParodyToGame.objectsInArea.affectingToHP.Apple;
 import TheBadParodyToGame.objectsInArea.affectingToHP.Fire;

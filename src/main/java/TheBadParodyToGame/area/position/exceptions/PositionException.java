@@ -1,4 +1,6 @@
-package TheBadParodyToGame.area.position;
+package TheBadParodyToGame.area.position.exceptions;
+
+import TheBadParodyToGame.area.position.Position;
 
 public abstract class PositionException extends Exception {
     private final Position position;

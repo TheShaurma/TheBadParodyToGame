@@ -9,9 +9,9 @@ import org.junit.jupiter.api.Test;
 
 import TheBadParodyToGame.area.AreaStub;
 import TheBadParodyToGame.area.position.PositionStub;
+import TheBadParodyToGame.area.position.exceptions.PositionException;
 import TheBadParodyToGame.area.AreaContainsAll;
 import TheBadParodyToGame.area.position.Position;
-import TheBadParodyToGame.area.position.PositionException;
 
 public class MovingObjectTest {
     // Move from busy to empty pos: obj moved:

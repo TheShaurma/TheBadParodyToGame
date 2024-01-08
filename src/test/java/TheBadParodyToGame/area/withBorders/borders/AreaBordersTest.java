@@ -1,4 +1,4 @@
-package TheBadParodyToGame.area.borders;
+package TheBadParodyToGame.area.withBorders.borders;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;

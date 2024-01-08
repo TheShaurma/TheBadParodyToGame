@@ -1,7 +1,10 @@
-package TheBadParodyToGame.area.position;
+package TheBadParodyToGame.area.position.exceptions;
 
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+import TheBadParodyToGame.area.position.Position;
+import TheBadParodyToGame.area.position.PositionStub;
 
 public class EmptyPositionExceptionTest {
     @Test

@@ -10,13 +10,13 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 
 import TheBadParodyToGame.area.position.PositionStub;
+import TheBadParodyToGame.area.position.exceptions.BusyPositionException;
+import TheBadParodyToGame.area.position.exceptions.EmptyPositionException;
+import TheBadParodyToGame.area.position.exceptions.PositionCannotExistInAreaException;
+import TheBadParodyToGame.area.position.exceptions.PositionException;
 import TheBadParodyToGame.objectsInArea.ObjectInArea;
 import TheBadParodyToGame.objectsInArea.ObjectInAreaStub;
-import TheBadParodyToGame.area.position.BusyPositionException;
-import TheBadParodyToGame.area.position.EmptyPositionException;
 import TheBadParodyToGame.area.position.Position;
-import TheBadParodyToGame.area.position.PositionCannotExistInAreaException;
-import TheBadParodyToGame.area.position.PositionException;
 
 public class GameAreaTest {
     /**

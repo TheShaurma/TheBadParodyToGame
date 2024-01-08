@@ -1,7 +1,7 @@
 package TheBadParodyToGame.objectsInArea;
 
 import TheBadParodyToGame.area.position.Position;
-import TheBadParodyToGame.area.position.PositionException;
+import TheBadParodyToGame.area.position.exceptions.PositionException;
 
 public abstract class ObjectOnPositionException extends PositionException {
     private ObjectInArea object;

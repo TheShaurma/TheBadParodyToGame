@@ -2,16 +2,18 @@ package TheBadParodyToGame.writeRead;
 
 import com.google.gson.Gson;
 
-import TheBadParodyToGame.area.GameArea;
+import TheBadParodyToGame.area.position.GamePosition;
+import TheBadParodyToGame.area.position.Position;
 
+@Deprecated
 public class AreaWriteReader {
     private static final Gson gson = new Gson();
 
-    public String convertToString(GameArea area) {
-        return gson.toJson(area);
+    public String convertPositionToString(Position pos) {
+        return gson.toJson(pos);
     }
 
-    public GameArea getAreaByString(String str) {
-        return gson.fromJson(str, GameArea.class);
+    public GamePosition getPositionByString(String str) {
+        return gson.fromJson(str, GamePosition.class);
     }
 }

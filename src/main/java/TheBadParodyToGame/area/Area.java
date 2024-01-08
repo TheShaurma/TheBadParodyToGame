@@ -1,9 +1,9 @@
 package TheBadParodyToGame.area;
 
-import TheBadParodyToGame.area.position.BusyPositionException;
-import TheBadParodyToGame.area.position.EmptyPositionException;
 import TheBadParodyToGame.area.position.Position;
-import TheBadParodyToGame.area.position.PositionCannotExistInAreaException;
+import TheBadParodyToGame.area.position.exceptions.BusyPositionException;
+import TheBadParodyToGame.area.position.exceptions.EmptyPositionException;
+import TheBadParodyToGame.area.position.exceptions.PositionCannotExistInAreaException;
 import TheBadParodyToGame.objectsInArea.ObjectInArea;
 
 public interface Area<OBJ extends ObjectInArea> extends ConstantArea<OBJ> {
