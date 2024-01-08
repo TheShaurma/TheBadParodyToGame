@@ -7,7 +7,7 @@ import TheBadParodyToGame.area.position.exceptions.PositionCannotExistInAreaExce
 import TheBadParodyToGame.objectsInArea.ObjectInArea;
 
 /**
- * When you calls {@code get}, {@code set}, {@code place},
+ * When you call {@code get}, {@code set}, {@code place},
  * {@code tryPlace}, {@code replace}, {@code tryReplace},
  * {@code remove}, {@code tryRemove}, {@code relocate},
  * {@code tryRelocate}, {@code relocateToEverywhere},
@@ -99,5 +99,10 @@ public abstract class AreaChecksPosition<OBJ extends ObjectInArea>
         return super.positionIsBusy(pos);
     }
 
+    /**
+     * @param pos which will be checked in method
+     * @throws PositionCannotExistInAreaException if any problems
+     *                                            were detected.
+     */
     protected abstract void checkPosition(Position pos) throws PositionCannotExistInAreaException;
 }
