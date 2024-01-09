@@ -6,70 +6,62 @@ import TheBadParodyToGame.area.position.exceptions.EmptyPositionException;
 import TheBadParodyToGame.area.position.exceptions.PositionCannotExistInAreaException;
 import TheBadParodyToGame.objectsInArea.ObjectInArea;
 
-/**
- * When you call {@code get}, {@code set}, {@code place},
- * {@code tryPlace}, {@code replace}, {@code tryReplace},
- * {@code remove}, {@code tryRemove}, {@code relocate},
- * {@code tryRelocate}, {@code relocateToEverywhere},
- * {@code positionItEmpty}, {@code positionIsBusy} methods,
- * class calls {@code checkPosition()} method.
- */
-public abstract class AreaChecksPosition<OBJ extends ObjectInArea>
+public abstract class AreaHandlesPosition<OBJ extends ObjectInArea>
         extends AbstractArea<OBJ> {
 
     @Override
     public OBJ get(Position pos)
             throws EmptyPositionException, PositionCannotExistInAreaException {
-        checkPosition(pos);
+        pos = handlePosition(pos);
         return super.get(pos);
     }
 
     @Override
     public void set(Position pos, OBJ obj)
             throws PositionCannotExistInAreaException {
-        checkPosition(pos);
+        pos = handlePosition(pos);
         super.set(pos, obj);
     }
 
     @Override
     public void place(Position pos, OBJ obj)
             throws BusyPositionException, PositionCannotExistInAreaException {
-        checkPosition(pos);
+        pos = handlePosition(pos);
         super.place(pos, obj);
     }
 
     @Override
     public void tryPlace(Position pos, OBJ obj)
             throws PositionCannotExistInAreaException {
-        checkPosition(pos);
+        pos = handlePosition(pos);
         super.tryPlace(pos, obj);
     }
 
     @Override
     public void replace(Position pos, OBJ obj)
             throws EmptyPositionException, PositionCannotExistInAreaException {
-        checkPosition(pos);
+        pos = handlePosition(pos);
         super.replace(pos, obj);
     }
 
     @Override
     public void tryReplace(Position pos, OBJ obj)
             throws PositionCannotExistInAreaException {
-        checkPosition(pos);
+        pos = handlePosition(pos);
         super.tryReplace(pos, obj);
     }
 
     @Override
     public void remove(Position pos)
             throws EmptyPositionException, PositionCannotExistInAreaException {
-        checkPosition(pos);
+        pos = handlePosition(pos);
         super.remove(pos);
     }
 
     @Override
     public void tryRemove(Position pos)
             throws PositionCannotExistInAreaException {
-        checkPosition(pos);
+        pos = handlePosition(pos);
         super.tryRemove(pos);
     }
 
@@ -77,46 +69,46 @@ public abstract class AreaChecksPosition<OBJ extends ObjectInArea>
     public void relocate(Position oldPos, Position newPos)
             throws EmptyPositionException, BusyPositionException,
             PositionCannotExistInAreaException {
-        checkPosition(oldPos);
-        checkPosition(newPos);
+        oldPos = handlePosition(oldPos);
+        newPos = handlePosition(newPos);
         super.relocate(oldPos, newPos);
     }
 
     @Override
     public void tryRelocate(Position oldPos, Position newPos)
             throws PositionCannotExistInAreaException {
-        checkPosition(oldPos);
-        checkPosition(newPos);
+        oldPos = handlePosition(oldPos);
+        newPos = handlePosition(newPos);
         super.tryRelocate(oldPos, newPos);
     }
 
     @Override
     public void relocateToEverywhere(Position oldPos, Position newPos)
             throws EmptyPositionException, PositionCannotExistInAreaException {
-        checkPosition(oldPos);
-        checkPosition(newPos);
+        oldPos = handlePosition(oldPos);
+        newPos = handlePosition(newPos);
         super.relocateToEverywhere(oldPos, newPos);
     }
 
     @Override
     public boolean positionIsEmpty(Position pos)
             throws PositionCannotExistInAreaException {
-        checkPosition(pos);
+        pos = handlePosition(pos);
         return super.positionIsEmpty(pos);
     }
 
     @Override
     public boolean positionIsBusy(Position pos)
             throws PositionCannotExistInAreaException {
-        checkPosition(pos);
+        pos = handlePosition(pos);
         return super.positionIsBusy(pos);
     }
 
     /**
-     * @param pos which will be checked in method
-     * @throws PositionCannotExistInAreaException if any problems
-     *                                            were detected.
+     * Handle position then returns handled position.
+     * 
+     * @param pos
+     * @return handled position
      */
-    protected abstract void checkPosition(Position pos)
-            throws PositionCannotExistInAreaException;
+    public abstract Position handlePosition(Position pos);
 }

@@ -10,11 +10,12 @@ import TheBadParodyToGame.area.position.exceptions.PositionCannotExistInAreaExce
 import TheBadParodyToGame.objectsInArea.ObjectInArea;
 
 // TODO: adapt for multi-thread
-// TODO: equals and hashCode
+// TODO: equals and hashCode tests
 /**
  * DIDN'T adapted for multi-thread using.
  */
-public abstract class AbstractArea<OBJ extends ObjectInArea> implements Area<OBJ> {
+public abstract class AbstractArea<OBJ extends ObjectInArea>
+        implements Area<OBJ> {
     private final HashMap<Position, OBJ> areaItself;
 
     public AbstractArea() {
