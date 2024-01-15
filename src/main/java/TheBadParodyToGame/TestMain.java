@@ -57,6 +57,7 @@ public class TestMain {
             } catch (PlayerDiedException e) {
                 System.out.println("Game Over!");
                 run = false;
+
             }
         }
     }

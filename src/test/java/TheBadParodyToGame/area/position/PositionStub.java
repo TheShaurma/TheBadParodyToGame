@@ -104,4 +104,89 @@ public class PositionStub implements Position {
             return false;
         }
     }
+
+    @Override
+    public Position getUpLeft() {
+        throw new UnsupportedOperationException("Stub hasn't getUpLeft method.");
+    }
+
+    @Override
+    public Position getUpRight() {
+        throw new UnsupportedOperationException("Stub hasn't getUpRight method.");
+    }
+
+    @Override
+    public Position getDownLeft() {
+        throw new UnsupportedOperationException("Stub hasn't getDownLeft method.");
+    }
+
+    @Override
+    public Position getDownRight() {
+        throw new UnsupportedOperationException("Stub hasn't getDownRight method.");
+    }
+
+    @Override
+    public Position getUp(int y) {
+        throw new UnsupportedOperationException("Stub hasn't getUp method.");
+    }
+
+    @Override
+    public Position getDown(int y) {
+        throw new UnsupportedOperationException("Stub hasn't getDown method.");
+    }
+
+    @Override
+    public Position getLeft(int x) {
+        throw new UnsupportedOperationException("Stub hasn't getLeft method.");
+    }
+
+    @Override
+    public Position getRight(int x) {
+        throw new UnsupportedOperationException("Stub hasn't getRight method.");
+    }
+
+    @Override
+    public Position getUpLeft(int n) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getUpLeft'");
+    }
+
+    @Override
+    public Position getUpRight(int n) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getUpRight'");
+    }
+
+    @Override
+    public Position getDownLeft(int n) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getDownLeft'");
+    }
+
+    @Override
+    public Position getDownRight(int n) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getDownRight'");
+    }
+
+    @Override
+    public Position getUpRight(int x, int y) {
+        throw new UnsupportedOperationException("Stub hasn't getUpRight method.");
+    }
+
+    @Override
+    public Position getUpLeft(int x, int y) {
+        throw new UnsupportedOperationException("Stub hasn't getUpLeft method.");
+    }
+
+    @Override
+    public Position getDownRight(int x, int y) {
+        throw new UnsupportedOperationException("Stub hasn't getDownRight method.");
+    }
+
+    @Override
+    public Position getDownLeft(int x, int y) {
+        throw new UnsupportedOperationException("Stub hasn't getDownLeft method.");
+    }
+
 }

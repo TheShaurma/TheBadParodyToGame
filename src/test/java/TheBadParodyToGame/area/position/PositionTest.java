@@ -1,9 +1,11 @@
 package TheBadParodyToGame.area.position;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.util.Random;
 
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.Assertions;;
+import org.junit.jupiter.api.Assertions;
 
 /**
  * This is test for PositionTest.
@@ -13,7 +15,7 @@ public class PositionTest {
 
     @Test
     public void getX_call_10Returned() {
-        GamePosition pos = new GamePosition(10, -10);
+        Position pos = new GamePosition(10, -10);
 
         int result = pos.getX();
 
@@ -22,14 +24,259 @@ public class PositionTest {
 
     @Test
     public void getY_call_minus10Returned() {
-        GamePosition position = new GamePosition(10, -10);
+        Position position = new GamePosition(10, -10);
 
         int result = position.getY();
 
         Assertions.assertEquals(-10, result);
     }
 
+    @Test
+    public void getUp_call_positionUpperTo1Returned() {
+        int x = random.nextInt();
+        int y = random.nextInt();
+        Position pos = new GamePosition(x, y);
+        Position excepted = new GamePosition(x, y + 1);
+        Position actual = pos.getUp();
+
+        assertEquals(excepted, actual);
+    }
+
+    @Test
+    public void getDown_call_positionBelowTo1Returned() {
+        int x = random.nextInt();
+        int y = random.nextInt();
+        Position pos = new GamePosition(x, y);
+        Position excepted = new GamePosition(x, y - 1);
+        Position actual = pos.getDown();
+
+        assertEquals(excepted, actual);
+    }
+
+    @Test
+    public void getLeft_call_positionLefterTo1Returned() {
+        int x = random.nextInt();
+        int y = random.nextInt();
+        Position pos = new GamePosition(x, y);
+        Position excepted = new GamePosition(x - 1, y);
+        Position actual = pos.getLeft();
+
+        assertEquals(excepted, actual);
+    }
+
+    @Test
+    public void getRight_call_positionRighterTo1Returned() {
+        int x = random.nextInt();
+        int y = random.nextInt();
+        Position pos = new GamePosition(x, y);
+        Position excepted = new GamePosition(x + 1, y);
+        Position actual = pos.getRight();
+
+        assertEquals(excepted, actual);
+    }
+
+    @Test
+    public void getUpLeft_call_positionUpperAndLefterTo1Returned() {
+        int x = random.nextInt();
+        int y = random.nextInt();
+        Position pos = new GamePosition(x, y);
+        Position excepted = new GamePosition(x - 1, y + 1);
+        Position actual = pos.getUpLeft();
+
+        assertEquals(excepted, actual);
+    }
+
+    @Test
+    public void getUp_call_positionUpperAndRighterTo1Returned() {
+        int x = random.nextInt();
+        int y = random.nextInt();
+        Position pos = new GamePosition(x, y);
+        Position excepted = new GamePosition(x + 1, y + 1);
+        Position actual = pos.getUpRight();
+
+        assertEquals(excepted, actual);
+    }
+
+    @Test
+    public void getDownLeft_call_positionBelowAndLefterTo1Returned() {
+        int x = random.nextInt();
+        int y = random.nextInt();
+        Position pos = new GamePosition(x, y);
+        Position excepted = new GamePosition(x - 1, y - 1);
+        Position actual = pos.getDownLeft();
+
+        assertEquals(excepted, actual);
+    }
+
+    @Test
+    public void getDownRight_call_positionBelowAndRighterTo1Returned() {
+        int x = random.nextInt();
+        int y = random.nextInt();
+        Position pos = new GamePosition(x, y);
+        Position excepted = new GamePosition(x + 1, y - 1);
+        Position actual = pos.getDownRight();
+
+        assertEquals(excepted, actual);
+    }
+
+    @Test
+    public void getUpToN_call_positionUpperToNReturned() {
+        int x = random.nextInt();
+        int y = random.nextInt();
+        int n = random.nextInt();
+        Position pos = new GamePosition(x, y);
+        Position expected = new GamePosition(x, y + n);
+        Position actual = pos.getUp(n);
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void getDownToN_call_positionBelowToNReturned() {
+        int x = random.nextInt();
+        int y = random.nextInt();
+        int n = random.nextInt();
+        Position pos = new GamePosition(x, y);
+        Position expected = new GamePosition(x, y - n);
+        Position actual = pos.getDown(n);
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void getLeftToN_call_positionLefterToNReturned() {
+        int x = random.nextInt();
+        int y = random.nextInt();
+        int n = random.nextInt();
+        Position pos = new GamePosition(x, y);
+        Position expected = new GamePosition(x - n, y);
+        Position actual = pos.getLeft(n);
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void getRightToN_call_positionRighterToNReturned() {
+        int x = random.nextInt();
+        int y = random.nextInt();
+        int n = random.nextInt();
+        Position pos = new GamePosition(x, y);
+        Position expected = new GamePosition(x + n, y);
+        Position actual = pos.getRight(n);
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void getUpLeftToN_call_positionUpperAndLefterToNReturned() {
+        int x = random.nextInt();
+        int y = random.nextInt();
+        int n = random.nextInt();
+        Position pos = new GamePosition(x, y);
+        Position expected = new GamePosition(x - n, y + n);
+        Position actual = pos.getUpLeft(n);
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void getUpRightToN_call_positionUpperAndRighterToNReturned() {
+        int x = random.nextInt();
+        int y = random.nextInt();
+        int n = random.nextInt();
+        Position pos = new GamePosition(x, y);
+        Position expected = new GamePosition(x + n, y + n);
+        Position actual = pos.getUpRight(n);
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void getDownLeftToN_call_positionBelowAndLefterToNReturned() {
+        int x = random.nextInt();
+        int y = random.nextInt();
+        int n = random.nextInt();
+        Position pos = new GamePosition(x, y);
+        Position expected = new GamePosition(x - n, y - n);
+        Position actual = pos.getDownLeft(n);
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void getDownRightToN_call_positionBelowAndRighterToNReturned() {
+        int x = random.nextInt();
+        int y = random.nextInt();
+        int n = random.nextInt();
+        Position pos = new GamePosition(x, y);
+        Position expected = new GamePosition(x + n, y - n);
+        Position actual = pos.getDownRight(n);
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void getUpToYLeftToX_call_positionUpperToXAndRighterToYReturned() {
+        int posX = random.nextInt();
+        int posY = random.nextInt();
+        int xMove = random.nextInt();
+        int yMove = random.nextInt();
+        Position pos = new GamePosition(posX, posY);
+        Position expected = new GamePosition(
+                posX - xMove,
+                posY + yMove);
+        Position actual = pos.getUpLeft(xMove, yMove);
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void getUpToYRightToX_call_positionUpperToXAndRighterToYReturned() {
+        int posX = random.nextInt();
+        int posY = random.nextInt();
+        int xMove = random.nextInt();
+        int yMove = random.nextInt();
+        Position pos = new GamePosition(posX, posY);
+        Position expected = new GamePosition(
+                posX + xMove,
+                posY + yMove);
+        Position actual = pos.getUpRight(xMove, yMove);
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void getDownToYLeftToX_call_positionBelowToXAndLefterToYReturned() {
+        int posX = random.nextInt();
+        int posY = random.nextInt();
+        int xMove = random.nextInt();
+        int yMove = random.nextInt();
+        Position pos = new GamePosition(posX, posY);
+        Position expected = new GamePosition(
+                posX - xMove,
+                posY - yMove);
+        Position actual = pos.getDownLeft(xMove, yMove);
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void getDownToYRightToX_call_positionBelowToXAndRighterToYReturned() {
+        int posX = random.nextInt();
+        int posY = random.nextInt();
+        int xMove = random.nextInt();
+        int yMove = random.nextInt();
+        Position pos = new GamePosition(posX, posY);
+        Position expected = new GamePosition(
+                posX + xMove,
+                posY - yMove);
+        Position actual = pos.getDownRight(xMove, yMove);
+
+        assertEquals(expected, actual);
+    }
+
     /**
+     * 
      * x.equals(x) — true
      */
     @Test

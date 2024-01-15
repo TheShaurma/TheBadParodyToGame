@@ -16,6 +16,7 @@ import TheBadParodyToGame.objectsInArea.ObjectInArea;
 public abstract class AreaWithBorders<OBJ extends ObjectInArea>
         extends AreaChecksPosition<OBJ>
         implements ConstantAreaWithBorders<OBJ> {
+
     private final Borders borders;
 
     public AreaWithBorders(Borders borders) {
