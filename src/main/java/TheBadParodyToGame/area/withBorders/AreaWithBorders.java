@@ -30,14 +30,9 @@ public abstract class AreaWithBorders<OBJ extends ObjectInArea>
 
     @Override
     protected void checkPosition(Position pos) throws PositionCannotExistInAreaException {
-        int x = pos.getX();
-        int y = pos.getY();
         Borders borders = getBorders();
 
-        if (!(x >= borders.getXMin() &&
-                x <= borders.getXMax() &&
-                y >= borders.getYMin() &&
-                y <= borders.getYMax())) {
+        if (!borders.positionInBorders(pos)) {
             throw new PositionOutOfBordersException(pos);
         }
     }
