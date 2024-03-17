@@ -13,7 +13,7 @@ import TheBadParodyToGame.objectsInArea.LostObjectException;
 
 public abstract class MovingObject extends AbstractObject {
     private final AreaContainsAll area;
-    private Position startPos;
+    private Position currentPos;
 
     /**
      * Call {@code area.place(pos, this)} after creating.
@@ -28,8 +28,9 @@ public abstract class MovingObject extends AbstractObject {
     public MovingObject(AreaContainsAll area, Position pos)
             throws BusyPositionException, PositionCannotExistInAreaException {
         this.area = area;
-        startPos = pos;
+        currentPos = pos;
 
+        // TODO: revome placing
         area.place(pos, this);
     }
 
@@ -48,7 +49,8 @@ public abstract class MovingObject extends AbstractObject {
      *                                            in object's data;
      * @throws CannotMoveObjectException          if pos in up is busy.
      */
-    protected void moveUp() throws LostObjectException, CannotMoveObjectException, PositionCannotExistInAreaException {
+    protected void moveUp()
+            throws LostObjectException, CannotMoveObjectException, PositionCannotExistInAreaException {
         moveUp(1);
     }
 
@@ -420,7 +422,7 @@ public abstract class MovingObject extends AbstractObject {
      * @return current position of object.
      */
     protected final Position getCurrentPosition() {
-        return startPos;
+        return currentPos;
     }
 
     /**
@@ -429,10 +431,10 @@ public abstract class MovingObject extends AbstractObject {
      * @param pos
      */
     protected final void setCurrentPosition(Position pos) {
-        startPos = pos;
+        currentPos = pos;
     }
 
-    private void checkForBeingInCurrentPosition() throws LostObjectException, PositionCannotExistInAreaException {
+    protected void checkForBeingInCurrentPosition() throws LostObjectException, PositionCannotExistInAreaException {
         AreaContainsAll area = getArea();
         Position pos = getCurrentPosition();
 
