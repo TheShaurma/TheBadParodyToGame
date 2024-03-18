@@ -36,7 +36,8 @@ public class LostObjectExceptionTest {
         Position pos = new PositionStub();
         ObjectInArea obj = new ObjectInAreaStub();
         LostObjectException exception = new LostObjectException(pos, obj);
-        String expectedString = "Manager lost its object in position:" + exception.getPosition() + ".";
+        String expectedString = "Manager lost " + exception.getObject() + "in position: " + exception.getPosition()
+                + ".";
         String actualString;
 
         actualString = exception.toString();

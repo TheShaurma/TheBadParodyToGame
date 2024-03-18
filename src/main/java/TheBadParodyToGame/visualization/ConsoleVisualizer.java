@@ -21,7 +21,7 @@ public class ConsoleVisualizer {
     private int yMin;
     private int yMax;
 
-    public ConsoleVisualizer(Position minPos, Position maxPos, ConstantArea<?> area) {
+    public ConsoleVisualizer(ConstantArea<?> area, Position minPos, Position maxPos) {
         this.area = area;
 
         int x1 = minPos.getX();
@@ -35,7 +35,7 @@ public class ConsoleVisualizer {
         yMax = Math.max(y1, y2);
     }
 
-    public void showConsole() throws PositionException {
+    public void showArea() throws PositionException {
         System.out.println(getAreaString());
     }
 

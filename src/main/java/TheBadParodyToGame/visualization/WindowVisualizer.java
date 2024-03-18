@@ -22,7 +22,7 @@ public class WindowVisualizer {
             Position maxPos,
             Player player) throws BusyPositionException,
             PositionCannotExistInAreaException, EmptyPositionException {
-        consoleVisualizer = new ConsoleVisualizer(minPos, maxPos, area);
+        consoleVisualizer = new ConsoleVisualizer(area, minPos, maxPos);
 
         this.player = player;
 

@@ -18,6 +18,7 @@ import TheBadParodyToGame.objectsInArea.movingObjects.player.Player;
 import TheBadParodyToGame.objectsInArea.movingObjects.player.PlayerDiedException;
 import TheBadParodyToGame.objectsInArea.movingObjects.withAI.Enemy;
 import TheBadParodyToGame.visualization.AreaWithPlayerInCenterAdapter;
+import TheBadParodyToGame.visualization.ConsoleVisualizer;
 import TheBadParodyToGame.visualization.WindowVisualizer;
 import TheBadParodyToGame.writeRead.AreaReader;
 import TheBadParodyToGame.writeRead.AreaWriteReader;
@@ -25,7 +26,7 @@ import TheBadParodyToGame.writeRead.UnknownSymbolException;
 
 public class TestMain {
     private static AreaContainsAll area;
-    private static WindowVisualizer visualizer;
+    private static ConsoleVisualizer visualizer;
     private static Player player;
     private static Scanner in;
     private static boolean run;
@@ -46,7 +47,7 @@ public class TestMain {
             if (input.equals("q") || input.equals("Q")) {
                 run = false;
 
-                visualizer.closeWindow();
+                // visualizer.closeWindow();
 
                 File file = new File("TestRoom.json");
                 file.createNewFile();
@@ -78,17 +79,18 @@ public class TestMain {
         Position startPos = new GamePosition(1, 1);
         player = new Player("Valera", area, startPos);
 
-        visualizer = new WindowVisualizer(
+        visualizer = new ConsoleVisualizer(
                 new AreaWithPlayerInCenterAdapter(area, player),
                 new GamePosition(-20, -10),
-                new GamePosition(20, 10),
-                player);
+                new GamePosition(20, 10));
+        // player);
 
         writeReader = new AreaWriteReader();
         in = new Scanner(System.in);
         run = true;
 
         enemies = new ArrayList<>();
+
         placeEnemies(30);
     }
 

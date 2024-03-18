@@ -5,7 +5,7 @@ package TheBadParodyToGame.objectsInArea.affectingToHP;
 public class Fire implements DangerObject {
 
     @Override
-    public int getDamage() {
+    public int getAttack() {
         return 5;
     }
 

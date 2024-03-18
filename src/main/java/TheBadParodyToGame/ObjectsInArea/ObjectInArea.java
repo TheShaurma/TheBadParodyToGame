@@ -9,7 +9,7 @@ public interface ObjectInArea {
         return ' ';
     }
 
-    default public int getDamage() {
+    default public int getAttack() {
         return 0;
     }
 

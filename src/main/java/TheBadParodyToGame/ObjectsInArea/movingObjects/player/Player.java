@@ -10,6 +10,7 @@ import TheBadParodyToGame.objectsInArea.LostObjectException;
 import TheBadParodyToGame.objectsInArea.ObjectInArea;
 import TheBadParodyToGame.objectsInArea.PassableObject;
 import TheBadParodyToGame.objectsInArea.movingObjects.MovingObject;
+import TheBadParodyToGame.objectsInArea.movingObjects.withAI.Enemy;
 
 /**
  * Player should be moved by user.
@@ -17,6 +18,7 @@ import TheBadParodyToGame.objectsInArea.movingObjects.MovingObject;
  * <div>"Player died" = "{@code PlayerDiedException} thrown".
  */
 public class Player extends MovingObject {
+
     private int heatPoints = 100;
     private String name;
 
@@ -33,6 +35,10 @@ public class Player extends MovingObject {
 
     public String getName() {
         return name;
+    }
+
+    public int getAttack() {
+        return 30;
     }
 
     public String getHPString() {
@@ -128,7 +134,7 @@ public class Player extends MovingObject {
      * @param n
      * @throws PlayerDiedException if {@code n >= HP}.
      */
-    public void harm(int n) {
+    public void hurt(int n) {
         heatPoints -= n;
     }
 
@@ -178,13 +184,21 @@ public class Player extends MovingObject {
 
                 if (obj instanceof PassableObject) {
                     heal(obj.getHealing());
-                    harm(obj.getDamage());
+                    hurt(obj.getAttack());
 
                     area.remove(newPos);
-                    moveToPosition(newPos);
+                } else if (obj instanceof Enemy) {
+                    Enemy enemy = (Enemy) obj;
+                    enemy.hurt(getAttack());
+                    hurt(enemy.getAttack());
                 }
+
+                try {
+                    super.moveToPosition(newPos);
+                } catch (CannotMoveObjectException e1) {
+                }
+
             } catch (EmptyPositionException e1) {
-                throw new LostObjectException(newPos, this);
             }
         }
     }
