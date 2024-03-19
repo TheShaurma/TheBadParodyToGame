@@ -11,16 +11,15 @@ import TheBadParodyToGame.area.position.exceptions.PositionCannotExistInAreaExce
 import TheBadParodyToGame.objectsInArea.CannotMoveObjectException;
 import TheBadParodyToGame.objectsInArea.LostObjectException;
 import TheBadParodyToGame.objectsInArea.affectingToHP.DangerObject;
-import TheBadParodyToGame.objectsInArea.movingObjects.Mob;
 
-public class Enemy extends Mob implements DangerObject {
+public class EnemyMovesRandomly extends Mob implements DangerObject {
 
     private static final Random random = new Random();
     private final Map<Integer, Mover> movers = new HashMap<>();
 
     private static final int MAX_MOVER_NUMBER = 7;
 
-    public Enemy(AreaContainsAll area, Position pos, int hp)
+    public EnemyMovesRandomly(AreaContainsAll area, Position pos, int hp)
             throws BusyPositionException, PositionCannotExistInAreaException {
         super(area, pos, hp);
 
@@ -62,32 +61,6 @@ public class Enemy extends Mob implements DangerObject {
     public String toString() {
         return String.format("Enemy(%s)", getCurrentPosition().toString());
     }
-
-    // @Override
-    // protected void checkForBeingInCurrentPosition() throws LostObjectException,
-    // PositionCannotExistInAreaException {
-    // if (isLiving()) {
-    // try {
-    // super.checkForBeingInCurrentPosition();
-    // } catch (LostObjectException e) {
-    // var area = getArea();
-    // var pos = getCurrentPosition();
-
-    // try {
-    // if (area.get(pos) instanceof Player) {
-    // kill();
-    // } else {
-    // throw e;
-    // }
-    // } catch (EmptyPositionException e1) {
-    // throw e;
-    // }
-    // }
-    // } else {
-    // System.out.println("kljfdal");
-    // }
-    // }
-
 }
 
 interface Mover {

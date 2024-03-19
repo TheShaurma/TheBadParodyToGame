@@ -10,7 +10,7 @@ import TheBadParodyToGame.objectsInArea.LostObjectException;
 import TheBadParodyToGame.objectsInArea.ObjectInArea;
 import TheBadParodyToGame.objectsInArea.PassableObject;
 import TheBadParodyToGame.objectsInArea.movingObjects.MoveableObject;
-import TheBadParodyToGame.objectsInArea.movingObjects.withAI.Enemy;
+import TheBadParodyToGame.objectsInArea.movingObjects.withAI.EnemyMovesRandomly;
 
 /**
  * Player should be moved by user.
@@ -182,8 +182,8 @@ public class Player extends MoveableObject {
             try {
                 obj = getArea().get(e.getPosition());
 
-                if (obj instanceof Enemy) {
-                    Enemy enemy = (Enemy) obj;
+                if (obj instanceof EnemyMovesRandomly) {
+                    EnemyMovesRandomly enemy = (EnemyMovesRandomly) obj;
                     enemy.hurt(getAttack());
                     heal(enemy.getHealing());
                     hurt(enemy.getAttack());

@@ -14,6 +14,7 @@ import TheBadParodyToGame.area.position.exceptions.BusyPositionException;
 import TheBadParodyToGame.area.position.exceptions.PositionCannotExistInAreaException;
 import TheBadParodyToGame.objectsInArea.CannotMoveObjectException;
 import TheBadParodyToGame.objectsInArea.LostObjectException;
+import TheBadParodyToGame.objectsInArea.movingObjects.withAI.Mob;
 
 public class MobTest {
 
@@ -94,7 +95,7 @@ public class MobTest {
         AreaContainsAll area = new AreaStub();
         PositionStub pos = new PositionStub();
         Position otherPos = pos.getOther();
-        Mob mob = new MobStub(area, pos, hp);
+        MobStub mob = new MobStub(area, pos, hp);
 
         mob.hurt(hurt);
 
@@ -122,5 +123,11 @@ class MobStub extends Mob {
     @Override
     public void moveToStep() throws LostObjectException, CannotMoveObjectException, PositionCannotExistInAreaException {
         throw new UnsupportedOperationException("Unimplemented method 'moveToStep'");
+    }
+
+    @Override
+    public void moveToPosition(Position newPos)
+            throws LostObjectException, PositionCannotExistInAreaException, CannotMoveObjectException {
+        super.moveToPosition(newPos);
     }
 }

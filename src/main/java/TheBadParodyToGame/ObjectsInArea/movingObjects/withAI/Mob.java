@@ -1,4 +1,4 @@
-package TheBadParodyToGame.objectsInArea.movingObjects;
+package TheBadParodyToGame.objectsInArea.movingObjects.withAI;
 
 import TheBadParodyToGame.area.AreaContainsAll;
 import TheBadParodyToGame.area.position.Position;
@@ -7,6 +7,8 @@ import TheBadParodyToGame.area.position.exceptions.EmptyPositionException;
 import TheBadParodyToGame.area.position.exceptions.PositionCannotExistInAreaException;
 import TheBadParodyToGame.objectsInArea.CannotMoveObjectException;
 import TheBadParodyToGame.objectsInArea.LostObjectException;
+import TheBadParodyToGame.objectsInArea.movingObjects.Entity;
+import TheBadParodyToGame.objectsInArea.movingObjects.MoveableObject;
 
 public abstract class Mob extends MoveableObject implements Entity {
 

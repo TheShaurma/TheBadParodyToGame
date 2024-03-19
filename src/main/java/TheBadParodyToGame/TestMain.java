@@ -16,7 +16,9 @@ import TheBadParodyToGame.area.position.exceptions.PositionCannotExistInAreaExce
 import TheBadParodyToGame.area.position.exceptions.PositionException;
 import TheBadParodyToGame.objectsInArea.movingObjects.player.Player;
 import TheBadParodyToGame.objectsInArea.movingObjects.player.PlayerDiedException;
-import TheBadParodyToGame.objectsInArea.movingObjects.withAI.Enemy;
+import TheBadParodyToGame.objectsInArea.movingObjects.withAI.EnemyFollowingPlayer;
+import TheBadParodyToGame.objectsInArea.movingObjects.withAI.EnemyMovesRandomly;
+import TheBadParodyToGame.objectsInArea.movingObjects.withAI.Mob;
 import TheBadParodyToGame.visualization.AreaWithPlayerInCenterAdapter;
 import TheBadParodyToGame.visualization.ConsoleVisualizer;
 import TheBadParodyToGame.visualization.WindowVisualizer;
@@ -31,7 +33,7 @@ public class TestMain {
     private static Scanner in;
     private static boolean run;
     private static AreaWriteReader writeReader;
-    private static List<Enemy> enemies;
+    private static List<Mob> enemies;
 
     public static void main(String[] args) throws PositionException, IOException, UnknownSymbolException {
         initVariables();
@@ -64,7 +66,7 @@ public class TestMain {
                     run = false;
                 }
 
-                for (Enemy enemy : enemies) {
+                for (Mob enemy : enemies) {
                     enemy.moveToStep();
                 }
             }
@@ -97,7 +99,16 @@ public class TestMain {
         for (int i = 0; i < n; i++) {
             Position pos = Positions.getRandomPosition(minPos, maxPos);
             try {
-                Enemy enemy = new Enemy(area, pos, 40);
+                var enemy = new EnemyMovesRandomly(area, pos, 40);
+                enemies.add(enemy);
+            } catch (BusyPositionException e) {
+            }
+        }
+
+        for (int i = 0; i < n; i++) {
+            Position pos = Positions.getRandomPosition(minPos, maxPos);
+            try {
+                var enemy = new EnemyFollowingPlayer(area, pos, i, player);
                 enemies.add(enemy);
             } catch (BusyPositionException e) {
             }

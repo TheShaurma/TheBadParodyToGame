@@ -1,4 +1,4 @@
-package TheBadParodyToGame.objectsInArea.movingObjects;
+package TheBadParodyToGame.objectsInArea.movingObjects.withAI;
 
 import TheBadParodyToGame.area.AreaContainsAll;
 import TheBadParodyToGame.area.position.Position;
@@ -10,12 +10,9 @@ public abstract class MobKnowsPlayerPosition extends Mob {
 
     private Player player;
 
-    public MobKnowsPlayerPosition(AreaContainsAll area, Position pos, int hp)
+    public MobKnowsPlayerPosition(AreaContainsAll area, Position pos, int hp, Player player)
             throws BusyPositionException, PositionCannotExistInAreaException {
         super(area, pos, hp);
-    }
-
-    protected void setPlayer(Player player) {
         this.player = player;
     }
 
