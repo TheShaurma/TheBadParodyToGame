@@ -9,7 +9,7 @@ import TheBadParodyToGame.objectsInArea.CannotMoveObjectException;
 import TheBadParodyToGame.objectsInArea.LostObjectException;
 import TheBadParodyToGame.objectsInArea.ObjectInArea;
 import TheBadParodyToGame.objectsInArea.PassableObject;
-import TheBadParodyToGame.objectsInArea.movingObjects.MovingObject;
+import TheBadParodyToGame.objectsInArea.movingObjects.MoveableObject;
 import TheBadParodyToGame.objectsInArea.movingObjects.withAI.Enemy;
 
 /**
@@ -17,7 +17,7 @@ import TheBadParodyToGame.objectsInArea.movingObjects.withAI.Enemy;
  *
  * <div>"Player died" = "{@code PlayerDiedException} thrown".
  */
-public class Player extends MovingObject {
+public class Player extends MoveableObject {
 
     private int heatPoints = 100;
     private String name;

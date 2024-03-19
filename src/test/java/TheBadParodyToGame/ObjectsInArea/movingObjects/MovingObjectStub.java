@@ -6,9 +6,9 @@ import TheBadParodyToGame.area.position.exceptions.PositionCannotExistInAreaExce
 import TheBadParodyToGame.area.position.exceptions.PositionException;
 import TheBadParodyToGame.objectsInArea.CannotMoveObjectException;
 import TheBadParodyToGame.objectsInArea.LostObjectException;
-import TheBadParodyToGame.objectsInArea.movingObjects.MovingObject;
+import TheBadParodyToGame.objectsInArea.movingObjects.MoveableObject;
 
-public class MovingObjectStub extends MovingObject {
+public class MovingObjectStub extends MoveableObject {
     public MovingObjectStub(AreaContainsAll area, Position pos) throws PositionException {
         super(area, pos);
     }

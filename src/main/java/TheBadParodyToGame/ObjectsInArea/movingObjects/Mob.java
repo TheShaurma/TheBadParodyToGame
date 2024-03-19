@@ -7,9 +7,8 @@ import TheBadParodyToGame.area.position.exceptions.EmptyPositionException;
 import TheBadParodyToGame.area.position.exceptions.PositionCannotExistInAreaException;
 import TheBadParodyToGame.objectsInArea.CannotMoveObjectException;
 import TheBadParodyToGame.objectsInArea.LostObjectException;
-import TheBadParodyToGame.objectsInArea.movingObjects.withAI.ObjectMovingItself;
 
-public abstract class Mob extends ObjectMovingItself implements Entity {
+public abstract class Mob extends MoveableObject implements Entity {
 
     private int hp;
 
@@ -61,6 +60,9 @@ public abstract class Mob extends ObjectMovingItself implements Entity {
     public boolean isLiving() {
         return hp > 0;
     }
+
+    abstract public void moveToStep()
+            throws LostObjectException, CannotMoveObjectException, PositionCannotExistInAreaException;
 
     @Override
     protected void moveToPosition(Position newPos)
