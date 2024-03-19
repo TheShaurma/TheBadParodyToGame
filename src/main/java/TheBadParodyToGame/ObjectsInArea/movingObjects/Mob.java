@@ -5,6 +5,7 @@ import TheBadParodyToGame.area.position.Position;
 import TheBadParodyToGame.area.position.exceptions.BusyPositionException;
 import TheBadParodyToGame.area.position.exceptions.EmptyPositionException;
 import TheBadParodyToGame.area.position.exceptions.PositionCannotExistInAreaException;
+import TheBadParodyToGame.objectsInArea.CannotMoveObjectException;
 import TheBadParodyToGame.objectsInArea.LostObjectException;
 import TheBadParodyToGame.objectsInArea.movingObjects.withAI.ObjectMovingItself;
 
@@ -61,4 +62,12 @@ public abstract class Mob extends ObjectMovingItself implements Entity {
         return hp > 0;
     }
 
+    @Override
+    protected void moveToPosition(Position newPos)
+            throws LostObjectException, PositionCannotExistInAreaException,
+            CannotMoveObjectException {
+        if (isLiving()) {
+            super.moveToPosition(newPos);
+        }
+    }
 }

@@ -47,8 +47,6 @@ public class TestMain {
             if (input.equals("q") || input.equals("Q")) {
                 run = false;
 
-                // visualizer.closeWindow();
-
                 File file = new File("TestRoom.json");
                 file.createNewFile();
                 FileWriter writer = new FileWriter(file);
@@ -83,7 +81,6 @@ public class TestMain {
                 new AreaWithPlayerInCenterAdapter(area, player),
                 new GamePosition(-20, -10),
                 new GamePosition(20, 10));
-        // player);
 
         writeReader = new AreaWriteReader();
         in = new Scanner(System.in);
@@ -100,11 +97,9 @@ public class TestMain {
         for (int i = 0; i < n; i++) {
             Position pos = Positions.getRandomPosition(minPos, maxPos);
             try {
-                Enemy enemy = new Enemy(area, pos);
-                // area.place(pos, enemy);
+                Enemy enemy = new Enemy(area, pos, 40);
                 enemies.add(enemy);
             } catch (BusyPositionException e) {
-                // System.out.println("kjsfad");
             }
         }
     }

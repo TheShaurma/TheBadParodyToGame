@@ -182,15 +182,16 @@ public class Player extends MovingObject {
             try {
                 obj = getArea().get(e.getPosition());
 
-                if (obj instanceof PassableObject) {
+                if (obj instanceof Enemy) {
+                    Enemy enemy = (Enemy) obj;
+                    enemy.hurt(getAttack());
+                    heal(enemy.getHealing());
+                    hurt(enemy.getAttack());
+                } else if (obj instanceof PassableObject) {
                     heal(obj.getHealing());
                     hurt(obj.getAttack());
 
                     area.remove(newPos);
-                } else if (obj instanceof Enemy) {
-                    Enemy enemy = (Enemy) obj;
-                    enemy.hurt(getAttack());
-                    hurt(enemy.getAttack());
                 }
 
                 try {

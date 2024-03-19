@@ -1,4 +1,4 @@
-package TheBadParodyToGame.objectsInArea;
+package TheBadParodyToGame.objectsInArea.movingObjects;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -10,6 +10,10 @@ import org.junit.jupiter.api.Test;
 import TheBadParodyToGame.area.AreaStub;
 import TheBadParodyToGame.area.position.PositionStub;
 import TheBadParodyToGame.area.position.exceptions.PositionException;
+import TheBadParodyToGame.objectsInArea.CannotMoveObjectException;
+import TheBadParodyToGame.objectsInArea.LostObjectException;
+import TheBadParodyToGame.objectsInArea.ObjectInArea;
+import TheBadParodyToGame.objectsInArea.ObjectInAreaStub;
 import TheBadParodyToGame.area.AreaContainsAll;
 import TheBadParodyToGame.area.position.Position;
 

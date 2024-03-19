@@ -20,8 +20,9 @@ public class Enemy extends Mob implements DangerObject {
 
     private static final int MAX_MOVER_NUMBER = 7;
 
-    public Enemy(AreaContainsAll area, Position pos) throws BusyPositionException, PositionCannotExistInAreaException {
-        super(area, pos, 30);
+    public Enemy(AreaContainsAll area, Position pos, int hp)
+            throws BusyPositionException, PositionCannotExistInAreaException {
+        super(area, pos, hp);
 
         movers.put(0, this::moveUp);
         movers.put(1, this::moveDown);
@@ -36,8 +37,6 @@ public class Enemy extends Mob implements DangerObject {
     @Override
     public void moveToStep()
             throws LostObjectException, PositionCannotExistInAreaException {
-        System.out.print(this);
-        System.out.println(isLiving());
         if (isLiving()) {
             int moverNumber = random.nextInt(MAX_MOVER_NUMBER + 1);
             Mover mover = movers.get(moverNumber);
@@ -56,7 +55,7 @@ public class Enemy extends Mob implements DangerObject {
 
     @Override
     public int getAttack() {
-        return getHP();
+        return getHP() * 10;
     }
 
     @Override
