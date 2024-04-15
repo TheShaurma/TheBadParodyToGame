@@ -10,7 +10,7 @@ import TheBadParodyToGame.objectsInArea.LostObjectException;
 import TheBadParodyToGame.objectsInArea.ObjectInArea;
 import TheBadParodyToGame.objectsInArea.PassableObject;
 import TheBadParodyToGame.objectsInArea.movingObjects.MoveableObject;
-import TheBadParodyToGame.objectsInArea.movingObjects.withAI.EnemyMovesRandomly;
+import TheBadParodyToGame.objectsInArea.movingObjects.mobs.EnemyMovesRandomly;
 
 /**
  * Player should be moved by user.

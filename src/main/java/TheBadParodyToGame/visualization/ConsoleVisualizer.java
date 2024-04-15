@@ -7,8 +7,8 @@ import TheBadParodyToGame.area.position.GamePosition;
 import TheBadParodyToGame.area.position.Position;
 import TheBadParodyToGame.area.position.exceptions.EmptyPositionException;
 import TheBadParodyToGame.area.position.exceptions.PositionCannotExistInAreaException;
-import TheBadParodyToGame.area.position.exceptions.PositionException;
 import TheBadParodyToGame.objectsInArea.ObjectInArea;
+import TheBadParodyToGame.objectsInArea.movingObjects.player.Player;
 
 /**
  * Visualizer
@@ -21,7 +21,9 @@ public class ConsoleVisualizer {
     private int yMin;
     private int yMax;
 
-    public ConsoleVisualizer(ConstantArea<?> area, Position minPos, Position maxPos) {
+    private Player player;
+
+    public ConsoleVisualizer(ConstantArea<?> area, Position minPos, Position maxPos, Player player) {
         this.area = area;
 
         int x1 = minPos.getX();
@@ -33,13 +35,16 @@ public class ConsoleVisualizer {
         int y2 = maxPos.getY();
         yMin = Math.min(y1, y2);
         yMax = Math.max(y1, y2);
+
+        this.player = player;
     }
 
-    public void showArea() throws PositionException {
+    public void showGame() throws PositionCannotExistInAreaException, EmptyPositionException {
+        System.out.println(player.getHPString() + " - " + player.getName());
         System.out.println(getAreaString());
     }
 
-    public String getAreaString() throws PositionCannotExistInAreaException, EmptyPositionException {
+    public String getAreaString() throws PositionCannotExistInAreaException {
 
         String result = "";
         result += " ";
@@ -58,12 +63,12 @@ public class ConsoleVisualizer {
             for (int x = xMin; x <= xMax; x++) {
                 Position currentPos = new GamePosition(x, y);
 
-                if (area.positionIsEmpty(currentPos)) {
-                    result += " ";
-                } else {
+                try {
                     ObjectInArea obj = area.get(currentPos);
                     String str = String.valueOf(obj.getChar());
                     result += str;
+                } catch (EmptyPositionException e) {
+                    result += " ";
                 }
             }
             result += y;

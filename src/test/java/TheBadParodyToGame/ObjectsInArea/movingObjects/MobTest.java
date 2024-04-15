@@ -14,7 +14,7 @@ import TheBadParodyToGame.area.position.exceptions.BusyPositionException;
 import TheBadParodyToGame.area.position.exceptions.PositionCannotExistInAreaException;
 import TheBadParodyToGame.objectsInArea.CannotMoveObjectException;
 import TheBadParodyToGame.objectsInArea.LostObjectException;
-import TheBadParodyToGame.objectsInArea.movingObjects.withAI.Mob;
+import TheBadParodyToGame.objectsInArea.movingObjects.mobs.Mob;
 
 public class MobTest {
 

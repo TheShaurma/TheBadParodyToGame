@@ -1,4 +1,4 @@
-package TheBadParodyToGame.objectsInArea.movingObjects.withAI;
+package TheBadParodyToGame.objectsInArea.movingObjects.mobs;
 
 import TheBadParodyToGame.area.AreaContainsAll;
 import TheBadParodyToGame.area.position.GamePosition;
