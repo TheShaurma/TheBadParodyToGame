@@ -152,8 +152,11 @@ public class Player extends MoveableObject {
      * @throws PlayerDiedException
      * @throws PositionException                  if moving has problems.
      */
-    public void moveByDirections(String directions) throws LostObjectException, CannotMoveObjectException,
-            PositionCannotExistInAreaException, PlayerDiedException {
+    public void moveByDirections(String directions)
+            throws LostObjectException,
+            CannotMoveObjectException,
+            PositionCannotExistInAreaException,
+            PlayerDiedException {
         for (int i = 0; i < directions.length(); i++) {
             char d = directions.charAt(i);
 

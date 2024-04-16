@@ -64,24 +64,6 @@ public class GameManager {
         for (Mob mob : allMobs) {
             mob.moveToStep();
         }
-
-        // run = true;
-        // if (run) {
-        // if (input.equals("q") || input.equals("Q")) {
-        // run = false;
-        // } else {
-        // try {
-        // player.moveByDirections(input);
-        // } catch (PlayerDiedException e) {
-        // System.out.println("Game Over!");
-        // run = false;
-        // }
-
-        // for (Mob enemy : allMobs) {
-        // enemy.moveToStep();
-        // }
-        // }
-        // }
     }
 
     private String getPlayerInput() {
