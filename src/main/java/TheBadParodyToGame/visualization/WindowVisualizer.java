@@ -10,7 +10,7 @@ import TheBadParodyToGame.area.position.Position;
 import TheBadParodyToGame.area.position.exceptions.BusyPositionException;
 import TheBadParodyToGame.area.position.exceptions.EmptyPositionException;
 import TheBadParodyToGame.area.position.exceptions.PositionCannotExistInAreaException;
-import TheBadParodyToGame.objectsInArea.movingObjects.player.Player;
+import TheBadParodyToGame.objectsInArea.movingObjects.withHP.player.Player;
 
 public class WindowVisualizer {
     private final ConsoleVisualizer consoleVisualizer;

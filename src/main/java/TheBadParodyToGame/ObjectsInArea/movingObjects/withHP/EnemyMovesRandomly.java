@@ -1,4 +1,4 @@
-package TheBadParodyToGame.objectsInArea.movingObjects.mobs;
+package TheBadParodyToGame.objectsInArea.movingObjects.withHP;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,7 +12,7 @@ import TheBadParodyToGame.objectsInArea.CannotMoveObjectException;
 import TheBadParodyToGame.objectsInArea.LostObjectException;
 import TheBadParodyToGame.objectsInArea.affectingToHP.DangerObject;
 
-public class EnemyMovesRandomly extends Mob implements DangerObject {
+public class EnemyMovesRandomly extends Enemy implements DangerObject {
 
     private static final Random random = new Random();
     private final Map<Integer, Mover> movers = new HashMap<>();
@@ -59,7 +59,7 @@ public class EnemyMovesRandomly extends Mob implements DangerObject {
 
     @Override
     public String toString() {
-        return String.format("Enemy(%s)", getCurrentPosition().toString());
+        return String.format("EnemyMovesRandomly(%s)", getCurrentPosition().toString());
     }
 }
 

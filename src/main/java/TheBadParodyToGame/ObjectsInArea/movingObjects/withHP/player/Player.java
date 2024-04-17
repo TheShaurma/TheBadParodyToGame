@@ -1,4 +1,4 @@
-package TheBadParodyToGame.objectsInArea.movingObjects.player;
+package TheBadParodyToGame.objectsInArea.movingObjects.withHP.player;
 
 import TheBadParodyToGame.area.AreaContainsAll;
 import TheBadParodyToGame.area.position.Position;
@@ -9,15 +9,15 @@ import TheBadParodyToGame.objectsInArea.CannotMoveObjectException;
 import TheBadParodyToGame.objectsInArea.LostObjectException;
 import TheBadParodyToGame.objectsInArea.ObjectInArea;
 import TheBadParodyToGame.objectsInArea.PassableObject;
-import TheBadParodyToGame.objectsInArea.movingObjects.MoveableObject;
-import TheBadParodyToGame.objectsInArea.movingObjects.mobs.EnemyMovesRandomly;
+import TheBadParodyToGame.objectsInArea.movingObjects.MovingObject;
+import TheBadParodyToGame.objectsInArea.movingObjects.withHP.EnemyMovesRandomly;
 
 /**
  * Player should be moved by user.
  *
  * <div>"Player died" = "{@code PlayerDiedException} thrown".
  */
-public class Player extends MoveableObject {
+public class Player extends MovingObject {
 
     private int heatPoints = 100;
     private String name;

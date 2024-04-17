@@ -1,12 +1,13 @@
-package TheBadParodyToGame.objectsInArea.movingObjects.mobs;
+package TheBadParodyToGame.objectsInArea.movingObjects.withHP;
 
 import TheBadParodyToGame.area.AreaContainsAll;
 import TheBadParodyToGame.area.position.Position;
 import TheBadParodyToGame.area.position.exceptions.BusyPositionException;
 import TheBadParodyToGame.area.position.exceptions.PositionCannotExistInAreaException;
-import TheBadParodyToGame.objectsInArea.movingObjects.player.Player;
+import TheBadParodyToGame.objectsInArea.movingObjects.withHP.player.Player;
 
 // TODO: objects should's be placed here
+@Deprecated
 public class MobsKnowsPlayerPositionPlacer {
 
     private Player player;

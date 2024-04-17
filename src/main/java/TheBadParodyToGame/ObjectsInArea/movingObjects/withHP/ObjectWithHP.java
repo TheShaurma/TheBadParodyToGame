@@ -1,4 +1,4 @@
-package TheBadParodyToGame.objectsInArea.movingObjects.mobs;
+package TheBadParodyToGame.objectsInArea.movingObjects.withHP;
 
 import TheBadParodyToGame.area.AreaContainsAll;
 import TheBadParodyToGame.area.position.Position;
@@ -8,13 +8,13 @@ import TheBadParodyToGame.area.position.exceptions.PositionCannotExistInAreaExce
 import TheBadParodyToGame.objectsInArea.CannotMoveObjectException;
 import TheBadParodyToGame.objectsInArea.LostObjectException;
 import TheBadParodyToGame.objectsInArea.movingObjects.Entity;
-import TheBadParodyToGame.objectsInArea.movingObjects.MoveableObject;
+import TheBadParodyToGame.objectsInArea.movingObjects.MovingObject;
 
-public abstract class Mob extends MoveableObject implements Entity {
+public abstract class ObjectWithHP extends MovingObject implements Entity {
 
     private int hp;
 
-    public Mob(AreaContainsAll area, Position pos, int hp)
+    public ObjectWithHP(AreaContainsAll area, Position pos, int hp)
             throws BusyPositionException, PositionCannotExistInAreaException {
         super(area, pos);
         this.hp = hp;
@@ -63,14 +63,14 @@ public abstract class Mob extends MoveableObject implements Entity {
         return hp > 0;
     }
 
-    abstract public void moveToStep()
-            throws LostObjectException, CannotMoveObjectException, PositionCannotExistInAreaException;
-
     @Override
     protected void moveToPosition(Position newPos)
-            throws LostObjectException, PositionCannotExistInAreaException,
+            throws LostObjectException,
+            PositionCannotExistInAreaException,
             CannotMoveObjectException {
-        if (isLiving()) {
+        if (!isLiving()) {
+            throw new DiedMobCannotMoveException(newPos, this);
+        } else {
             super.moveToPosition(newPos);
         }
     }

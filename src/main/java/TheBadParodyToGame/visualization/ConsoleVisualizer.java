@@ -8,7 +8,7 @@ import TheBadParodyToGame.area.position.Position;
 import TheBadParodyToGame.area.position.exceptions.EmptyPositionException;
 import TheBadParodyToGame.area.position.exceptions.PositionCannotExistInAreaException;
 import TheBadParodyToGame.objectsInArea.ObjectInArea;
-import TheBadParodyToGame.objectsInArea.movingObjects.player.Player;
+import TheBadParodyToGame.objectsInArea.movingObjects.withHP.player.Player;
 
 /**
  * Visualizer

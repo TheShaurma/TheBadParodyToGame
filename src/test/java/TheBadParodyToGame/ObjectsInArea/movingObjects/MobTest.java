@@ -2,6 +2,7 @@ package TheBadParodyToGame.objectsInArea.movingObjects;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
@@ -14,7 +15,9 @@ import TheBadParodyToGame.area.position.exceptions.BusyPositionException;
 import TheBadParodyToGame.area.position.exceptions.PositionCannotExistInAreaException;
 import TheBadParodyToGame.objectsInArea.CannotMoveObjectException;
 import TheBadParodyToGame.objectsInArea.LostObjectException;
-import TheBadParodyToGame.objectsInArea.movingObjects.mobs.Mob;
+import TheBadParodyToGame.objectsInArea.movingObjects.withHP.DiedMobCannotMoveException;
+import TheBadParodyToGame.objectsInArea.movingObjects.withHP.ObjectWithAI;
+import TheBadParodyToGame.objectsInArea.movingObjects.withHP.ObjectWithHP;
 
 public class MobTest {
 
@@ -22,7 +25,7 @@ public class MobTest {
     public void getHP_callLotOfTimes_normalResultAllTimes()
             throws BusyPositionException, PositionCannotExistInAreaException {
         int expected = 100;
-        Mob mob = getMob(expected);
+        ObjectWithHP mob = getMob(expected);
         int actual;
 
         for (int i = 0; i < 10000; i++) {
@@ -36,7 +39,7 @@ public class MobTest {
         int hp = 100;
         int heal = 50;
         int expected = hp + heal;
-        Mob mob = getMob(hp);
+        ObjectWithHP mob = getMob(hp);
 
         mob.heal(heal);
         int actual = mob.getHP();
@@ -50,7 +53,7 @@ public class MobTest {
         int hp = 100;
         int hurt = 50;
         int expected = hp - hurt;
-        Mob mob = getMob(hp);
+        ObjectWithHP mob = getMob(hp);
 
         mob.hurt(hurt);
         int actual = mob.getHP();
@@ -65,7 +68,7 @@ public class MobTest {
         int hurt = 1000;
         AreaContainsAll area = new AreaStub();
         Position pos = new PositionStub();
-        Mob mob = new MobStub(area, pos, hp);
+        ObjectWithHP mob = new MobStub(area, pos, hp);
 
         mob.hurt(hurt);
 
@@ -79,7 +82,7 @@ public class MobTest {
         int hurt = 1000;
         AreaContainsAll area = new AreaStub();
         Position pos = new PositionStub();
-        Mob mob = new MobStub(area, pos, hp);
+        ObjectWithHP mob = new MobStub(area, pos, hp);
 
         mob.hurt(hurt);
 
@@ -87,7 +90,7 @@ public class MobTest {
     }
 
     @Test
-    public void hurt_tryToMoveAfterDead_nothingHappened()
+    public void hurt_tryToMoveAfterDead_objectWasntMovedAndDiedMobCannotMoveExceptionThrown()
             throws BusyPositionException, PositionCannotExistInAreaException, LostObjectException,
             CannotMoveObjectException {
         int hp = 100;
@@ -100,7 +103,9 @@ public class MobTest {
         mob.hurt(hurt);
 
         assertFalse(mob.isLiving());
-        mob.moveToPosition(otherPos);
+        assertThrows(DiedMobCannotMoveException.class, () -> {
+            mob.moveToPosition(otherPos);
+        });
         assertTrue(area.positionIsEmpty(pos));
         assertTrue(area.positionIsEmpty(otherPos));
     }
@@ -114,7 +119,7 @@ public class MobTest {
     }
 }
 
-class MobStub extends Mob {
+class MobStub extends ObjectWithAI {
     public MobStub(AreaContainsAll area, Position pos, int hp)
             throws BusyPositionException, PositionCannotExistInAreaException {
         super(area, pos, hp);

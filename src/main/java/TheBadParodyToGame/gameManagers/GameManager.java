@@ -15,18 +15,19 @@ import TheBadParodyToGame.area.position.exceptions.PositionCannotExistInAreaExce
 import TheBadParodyToGame.area.position.exceptions.PositionException;
 import TheBadParodyToGame.objectsInArea.CannotMoveObjectException;
 import TheBadParodyToGame.objectsInArea.LostObjectException;
-import TheBadParodyToGame.objectsInArea.movingObjects.mobs.EnemyFollowingPlayer;
-import TheBadParodyToGame.objectsInArea.movingObjects.mobs.EnemyMovesRandomly;
-import TheBadParodyToGame.objectsInArea.movingObjects.mobs.Mob;
-import TheBadParodyToGame.objectsInArea.movingObjects.player.Player;
-import TheBadParodyToGame.objectsInArea.movingObjects.player.PlayerDiedException;
+import TheBadParodyToGame.objectsInArea.movingObjects.withHP.DiedMobCannotMoveException;
+import TheBadParodyToGame.objectsInArea.movingObjects.withHP.EnemyFollowingPlayer;
+import TheBadParodyToGame.objectsInArea.movingObjects.withHP.EnemyMovesRandomly;
+import TheBadParodyToGame.objectsInArea.movingObjects.withHP.ObjectWithAI;
+import TheBadParodyToGame.objectsInArea.movingObjects.withHP.player.Player;
+import TheBadParodyToGame.objectsInArea.movingObjects.withHP.player.PlayerDiedException;
 import TheBadParodyToGame.visualization.AreaWithPlayerInCenterAdapter;
 import TheBadParodyToGame.visualization.ConsoleVisualizer;
 import TheBadParodyToGame.writeRead.AreaReader;
 import TheBadParodyToGame.writeRead.UnknownSymbolException;
 
 public class GameManager {
-    private List<Mob> allMobs;
+    private List<ObjectWithAI> allMobs;
     private Scanner in;
     private AreaContainsAll area;
     private Player player;
@@ -61,8 +62,12 @@ public class GameManager {
 
         player.moveByDirections(input);
 
-        for (Mob mob : allMobs) {
-            mob.moveToStep();
+        for (ObjectWithAI mob : allMobs) {
+            try {
+                mob.moveToStep();
+            } catch (DiedMobCannotMoveException e) {
+                System.out.println(String.format("%s died.", e.getObject()));
+            }
         }
     }
 
@@ -112,7 +117,7 @@ public class GameManager {
             }
         }
 
-        for (int i = 0; i < n; i++) {
+        for (int i = 1; i < n + 1; i++) {
             Position pos = Positions.getRandomPosition(minPos, maxPos);
             try {
                 var enemy = new EnemyFollowingPlayer(area, pos, i, player);
@@ -122,7 +127,7 @@ public class GameManager {
         }
     }
 
-    public void addMob(Mob mob) {
+    public void addMob(ObjectWithAI mob) {
         allMobs.add(mob);
     }
 
@@ -130,7 +135,7 @@ public class GameManager {
             throws LostObjectException,
             CannotMoveObjectException,
             PositionCannotExistInAreaException {
-        for (Mob mob : allMobs) {
+        for (ObjectWithAI mob : allMobs) {
             mob.moveToStep();
         }
     }

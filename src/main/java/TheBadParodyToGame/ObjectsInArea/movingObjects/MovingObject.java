@@ -11,7 +11,7 @@ import TheBadParodyToGame.objectsInArea.AbstractObject;
 import TheBadParodyToGame.objectsInArea.CannotMoveObjectException;
 import TheBadParodyToGame.objectsInArea.LostObjectException;
 
-public abstract class MoveableObject extends AbstractObject {
+public abstract class MovingObject extends AbstractObject {
     private final AreaContainsAll area;
     private Position currentPos;
 
@@ -25,7 +25,7 @@ public abstract class MoveableObject extends AbstractObject {
      * @throws PositionException                  if {@code pos} can't exist in
      *                                            {@code area}.
      */
-    public MoveableObject(AreaContainsAll area, Position pos)
+    public MovingObject(AreaContainsAll area, Position pos)
             throws BusyPositionException, PositionCannotExistInAreaException {
         this.area = area;
         currentPos = pos;

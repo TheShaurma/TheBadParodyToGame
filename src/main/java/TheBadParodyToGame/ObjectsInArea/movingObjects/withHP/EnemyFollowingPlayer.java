@@ -1,4 +1,4 @@
-package TheBadParodyToGame.objectsInArea.movingObjects.mobs;
+package TheBadParodyToGame.objectsInArea.movingObjects.withHP;
 
 import TheBadParodyToGame.area.AreaContainsAll;
 import TheBadParodyToGame.area.position.GamePosition;
@@ -9,9 +9,9 @@ import TheBadParodyToGame.area.position.exceptions.PositionCannotExistInAreaExce
 import TheBadParodyToGame.objectsInArea.CannotMoveObjectException;
 import TheBadParodyToGame.objectsInArea.LostObjectException;
 import TheBadParodyToGame.objectsInArea.ObjectInArea;
-import TheBadParodyToGame.objectsInArea.movingObjects.player.Player;
+import TheBadParodyToGame.objectsInArea.movingObjects.withHP.player.Player;
 
-public class EnemyFollowingPlayer extends MobKnowsPlayerPosition {
+public class EnemyFollowingPlayer extends EnemyKnowsPlayerPosition {
 
     public EnemyFollowingPlayer(AreaContainsAll area, Position pos, int hp, Player player)
             throws BusyPositionException, PositionCannotExistInAreaException {
@@ -66,5 +66,10 @@ public class EnemyFollowingPlayer extends MobKnowsPlayerPosition {
     @Override
     public char getChar() {
         return '!';
+    }
+
+    @Override
+    public String toString() {
+        return String.format("EnemyFollowingPlayer(%s)", getCurrentPosition());
     }
 }
