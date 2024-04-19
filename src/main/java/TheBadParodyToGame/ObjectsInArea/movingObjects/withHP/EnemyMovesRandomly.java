@@ -35,13 +35,18 @@ public class EnemyMovesRandomly extends Enemy implements DangerObject {
 
     @Override
     public void moveToStep()
-            throws LostObjectException, PositionCannotExistInAreaException {
+            throws LostObjectException,
+            CannotMoveObjectException,
+            PositionCannotExistInAreaException {
+
         if (isLiving()) {
             int moverNumber = random.nextInt(MAX_MOVER_NUMBER + 1);
             Mover mover = movers.get(moverNumber);
 
             try {
                 mover.move();
+            } catch (DiedMobCannotMoveException e) {
+                throw e;
             } catch (CannotMoveObjectException e) {
             }
         }
@@ -53,13 +58,18 @@ public class EnemyMovesRandomly extends Enemy implements DangerObject {
     }
 
     @Override
-    public int getAttack() {
+    public int getDamage() {
         return getHP() * 10;
     }
 
     @Override
     public String toString() {
         return String.format("EnemyMovesRandomly(%s)", getCurrentPosition().toString());
+    }
+
+    @Override
+    public int getAttack() {
+        return 5;
     }
 }
 

@@ -16,6 +16,6 @@ public abstract class ObjectOnPositionException extends PositionException {
     }
 
     public final ObjectInArea getObject() {
-        return this.object;
+        return object;
     }
 }

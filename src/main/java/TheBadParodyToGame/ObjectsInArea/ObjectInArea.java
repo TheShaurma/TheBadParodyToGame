@@ -8,12 +8,4 @@ public interface ObjectInArea {
     default char getChar() {
         return ' ';
     }
-
-    default public int getAttack() {
-        return 0;
-    }
-
-    default public int getHealing() {
-        return 0;
-    }
 }

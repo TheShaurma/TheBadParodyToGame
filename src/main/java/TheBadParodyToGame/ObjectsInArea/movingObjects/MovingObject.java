@@ -26,7 +26,8 @@ public abstract class MovingObject extends AbstractObject {
      *                                            {@code area}.
      */
     public MovingObject(AreaContainsAll area, Position pos)
-            throws BusyPositionException, PositionCannotExistInAreaException {
+            throws BusyPositionException,
+            PositionCannotExistInAreaException {
         this.area = area;
         currentPos = pos;
 
@@ -50,7 +51,9 @@ public abstract class MovingObject extends AbstractObject {
      * @throws CannotMoveObjectException          if pos in up is busy.
      */
     protected void moveUp()
-            throws LostObjectException, CannotMoveObjectException, PositionCannotExistInAreaException {
+            throws LostObjectException,
+            CannotMoveObjectException,
+            PositionCannotExistInAreaException {
         moveUp(1);
     }
 
@@ -65,7 +68,10 @@ public abstract class MovingObject extends AbstractObject {
      * @throws CannotMoveObjectException          if pos in down is busy.
      */
     protected void moveDown()
-            throws LostObjectException, CannotMoveObjectException, PositionCannotExistInAreaException {
+            throws LostObjectException,
+            CannotMoveObjectException,
+            PositionCannotExistInAreaException {
+
         moveDown(1);
     }
 
@@ -80,7 +86,10 @@ public abstract class MovingObject extends AbstractObject {
      * @throws CannotMoveObjectException          if pos in left is busy.
      */
     protected void moveLeft()
-            throws LostObjectException, CannotMoveObjectException, PositionCannotExistInAreaException {
+            throws LostObjectException,
+            CannotMoveObjectException,
+            PositionCannotExistInAreaException {
+
         moveLeft(1);
     }
 
@@ -95,7 +104,10 @@ public abstract class MovingObject extends AbstractObject {
      * @throws CannotMoveObjectException          if pos in right is busy.
      */
     protected void moveRight()
-            throws LostObjectException, CannotMoveObjectException, PositionCannotExistInAreaException {
+            throws LostObjectException,
+            CannotMoveObjectException,
+            PositionCannotExistInAreaException {
+
         moveRight(1);
     }
 
@@ -110,7 +122,10 @@ public abstract class MovingObject extends AbstractObject {
      * @throws CannotMoveObjectException          if pos in up of left is busy.
      */
     protected void moveUpLeft()
-            throws LostObjectException, CannotMoveObjectException, PositionCannotExistInAreaException {
+            throws LostObjectException,
+            CannotMoveObjectException,
+            PositionCannotExistInAreaException {
+
         moveUpLeft(1);
     }
 
@@ -125,7 +140,10 @@ public abstract class MovingObject extends AbstractObject {
      * @throws CannotMoveObjectException          if pos in up of right is busy.
      */
     protected void moveUpRight()
-            throws LostObjectException, CannotMoveObjectException, PositionCannotExistInAreaException {
+            throws LostObjectException,
+            CannotMoveObjectException,
+            PositionCannotExistInAreaException {
+
         moveUpRight(1);
     }
 
@@ -140,7 +158,10 @@ public abstract class MovingObject extends AbstractObject {
      * @throws CannotMoveObjectException          if pos in down of left is busy.
      */
     protected void moveDownLeft()
-            throws LostObjectException, CannotMoveObjectException, PositionCannotExistInAreaException {
+            throws LostObjectException,
+            CannotMoveObjectException,
+            PositionCannotExistInAreaException {
+
         moveDownLeft(1);
     }
 
@@ -155,7 +176,10 @@ public abstract class MovingObject extends AbstractObject {
      * @throws CannotMoveObjectException          if pos in down of right is busy.
      */
     protected void moveDownRight()
-            throws LostObjectException, CannotMoveObjectException, PositionCannotExistInAreaException {
+            throws LostObjectException,
+            CannotMoveObjectException,
+            PositionCannotExistInAreaException {
+
         moveDownRight(1);
     }
 
@@ -170,7 +194,10 @@ public abstract class MovingObject extends AbstractObject {
      * @throws CannotMoveObjectException          if pos in up is busy.
      */
     protected void moveUp(int n)
-            throws LostObjectException, CannotMoveObjectException, PositionCannotExistInAreaException {
+            throws LostObjectException,
+            CannotMoveObjectException,
+            PositionCannotExistInAreaException {
+
         Position oldPos = getCurrentPosition();
         int newX = oldPos.getX();
         int newY = oldPos.getY() + n;
@@ -190,7 +217,10 @@ public abstract class MovingObject extends AbstractObject {
      * @throws CannotMoveObjectException          if pos in down is busy.
      */
     protected void moveDown(int n)
-            throws LostObjectException, CannotMoveObjectException, PositionCannotExistInAreaException {
+            throws LostObjectException,
+            CannotMoveObjectException,
+            PositionCannotExistInAreaException {
+
         Position oldPos = getCurrentPosition();
         int newX = oldPos.getX();
         int newY = oldPos.getY() - n;
@@ -210,7 +240,10 @@ public abstract class MovingObject extends AbstractObject {
      * @throws CannotMoveObjectException          if pos in left is busy.
      */
     protected void moveLeft(int n)
-            throws LostObjectException, CannotMoveObjectException, PositionCannotExistInAreaException {
+            throws LostObjectException,
+            CannotMoveObjectException,
+            PositionCannotExistInAreaException {
+
         Position oldPos = getCurrentPosition();
         int newX = oldPos.getX() - n;
         int newY = oldPos.getY();
@@ -230,7 +263,10 @@ public abstract class MovingObject extends AbstractObject {
      * @throws CannotMoveObjectException          if pos in right is busy.
      */
     protected void moveRight(int n)
-            throws LostObjectException, CannotMoveObjectException, PositionCannotExistInAreaException {
+            throws LostObjectException,
+            CannotMoveObjectException,
+            PositionCannotExistInAreaException {
+
         Position oldPos = getCurrentPosition();
         int newX = oldPos.getX() + n;
         int newY = oldPos.getY();
@@ -250,7 +286,10 @@ public abstract class MovingObject extends AbstractObject {
      * @throws CannotMoveObjectException          if pos in up of left is busy.
      */
     protected void moveUpLeft(int n)
-            throws LostObjectException, CannotMoveObjectException, PositionCannotExistInAreaException {
+            throws LostObjectException,
+            CannotMoveObjectException,
+            PositionCannotExistInAreaException {
+
         moveUpLeft(n, n);
     }
 
@@ -265,7 +304,10 @@ public abstract class MovingObject extends AbstractObject {
      * @throws CannotMoveObjectException          if pos in up of right is busy.
      */
     protected void moveUpRight(int n)
-            throws LostObjectException, CannotMoveObjectException, PositionCannotExistInAreaException {
+            throws LostObjectException,
+            CannotMoveObjectException,
+            PositionCannotExistInAreaException {
+
         moveUpRight(n, n);
     }
 
@@ -280,7 +322,10 @@ public abstract class MovingObject extends AbstractObject {
      * @throws CannotMoveObjectException          if pos in down of left is busy.
      */
     protected void moveDownLeft(int n)
-            throws LostObjectException, CannotMoveObjectException, PositionCannotExistInAreaException {
+            throws LostObjectException,
+            CannotMoveObjectException,
+            PositionCannotExistInAreaException {
+
         moveDownLeft(n, n);
     }
 
@@ -295,7 +340,10 @@ public abstract class MovingObject extends AbstractObject {
      * @throws CannotMoveObjectException          if pos in down of right is busy.
      */
     protected void moveDownRight(int n)
-            throws LostObjectException, CannotMoveObjectException, PositionCannotExistInAreaException {
+            throws LostObjectException,
+            CannotMoveObjectException,
+            PositionCannotExistInAreaException {
+
         moveDownRight(n, n);
     }
 
@@ -311,7 +359,10 @@ public abstract class MovingObject extends AbstractObject {
      * @throws CannotMoveObjectException          if pos in up of left is busy.
      */
     protected void moveUpLeft(int inUp, int inLeft)
-            throws LostObjectException, CannotMoveObjectException, PositionCannotExistInAreaException {
+            throws LostObjectException,
+            CannotMoveObjectException,
+            PositionCannotExistInAreaException {
+
         Position oldPos = getCurrentPosition();
         int newX = oldPos.getX() - inLeft;
         int newY = oldPos.getY() + inUp;
@@ -332,7 +383,10 @@ public abstract class MovingObject extends AbstractObject {
      * @throws CannotMoveObjectException          if pos in up of right is busy.
      */
     protected void moveUpRight(int inUp, int inRight)
-            throws LostObjectException, CannotMoveObjectException, PositionCannotExistInAreaException {
+            throws LostObjectException,
+            CannotMoveObjectException,
+            PositionCannotExistInAreaException {
+
         Position oldPos = getCurrentPosition();
         int newX = oldPos.getX() + inRight;
         int newY = oldPos.getY() + inUp;
@@ -353,7 +407,10 @@ public abstract class MovingObject extends AbstractObject {
      * @throws CannotMoveObjectException          if pos in down of left is busy.
      */
     protected void moveDownLeft(int inDown, int inLeft)
-            throws LostObjectException, CannotMoveObjectException, PositionCannotExistInAreaException {
+            throws LostObjectException,
+            CannotMoveObjectException,
+            PositionCannotExistInAreaException {
+
         Position oldPos = getCurrentPosition();
         int newX = oldPos.getX() - inLeft;
         int newY = oldPos.getY() - inDown;
@@ -374,7 +431,10 @@ public abstract class MovingObject extends AbstractObject {
      * @throws CannotMoveObjectException          if pos in down of right is busy.
      */
     protected void moveDownRight(int inDown, int inRight)
-            throws LostObjectException, CannotMoveObjectException, PositionCannotExistInAreaException {
+            throws LostObjectException,
+            CannotMoveObjectException,
+            PositionCannotExistInAreaException {
+
         Position oldPos = getCurrentPosition();
         int newX = oldPos.getX() + inRight;
         int newY = oldPos.getY() - inDown;
@@ -395,6 +455,7 @@ public abstract class MovingObject extends AbstractObject {
      */
     protected void moveToPosition(Position newPos)
             throws LostObjectException, PositionCannotExistInAreaException, CannotMoveObjectException {
+
         checkForBeingInCurrentPosition();
 
         Position oldPos = getCurrentPosition();
@@ -434,7 +495,10 @@ public abstract class MovingObject extends AbstractObject {
         currentPos = pos;
     }
 
-    protected void checkForBeingInCurrentPosition() throws LostObjectException, PositionCannotExistInAreaException {
+    protected void checkForBeingInCurrentPosition()
+            throws LostObjectException,
+            PositionCannotExistInAreaException {
+
         AreaContainsAll area = getArea();
         Position pos = getCurrentPosition();
 

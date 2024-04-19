@@ -10,6 +10,7 @@ import TheBadParodyToGame.objectsInArea.LostObjectException;
 import TheBadParodyToGame.objectsInArea.ObjectInArea;
 import TheBadParodyToGame.objectsInArea.PassableObject;
 import TheBadParodyToGame.objectsInArea.movingObjects.MovingObject;
+import TheBadParodyToGame.objectsInArea.movingObjects.withHP.Enemy;
 import TheBadParodyToGame.objectsInArea.movingObjects.withHP.EnemyMovesRandomly;
 
 /**
@@ -37,7 +38,7 @@ public class Player extends MovingObject {
         return name;
     }
 
-    public int getAttack() {
+    public int getDamage() {
         return 30;
     }
 
@@ -185,14 +186,18 @@ public class Player extends MovingObject {
             try {
                 obj = getArea().get(e.getPosition());
 
-                if (obj instanceof EnemyMovesRandomly) {
-                    EnemyMovesRandomly enemy = (EnemyMovesRandomly) obj;
-                    enemy.hurt(getAttack());
+                if (obj instanceof Enemy) {
+                    Enemy enemy = (Enemy) obj;
+
+                    enemy.hurt(getDamage());
                     heal(enemy.getHealing());
                     hurt(enemy.getAttack());
+
                 } else if (obj instanceof PassableObject) {
-                    heal(obj.getHealing());
-                    hurt(obj.getAttack());
+                    PassableObject passableObj = (PassableObject) obj;
+
+                    heal(passableObj.getHealing());
+                    hurt(passableObj.getDamage());
 
                     area.remove(newPos);
                 }

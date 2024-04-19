@@ -9,6 +9,6 @@ public class LostObjectException extends ObjectOnPositionException {
 
     @Override
     public String toString() {
-        return "Manager lost " + getObject() + "in position: " + getPosition() + ".";
+        return String.format("%s was waited on %s but it wasn't there.", getObject(), getPosition());
     }
 }

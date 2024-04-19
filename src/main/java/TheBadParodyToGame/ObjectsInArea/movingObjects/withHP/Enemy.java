@@ -11,4 +11,9 @@ public abstract class Enemy extends ObjectWithAI {
         super(area, pos, hp);
     }
 
+    public int getHealing() {
+        return 0;
+    }
+
+    abstract public int getAttack();
 }
