@@ -1,10 +1,10 @@
-package TheBadParodyToGame.objectsInArea.movingObjects.withHP;
+package TheBadParodyToGame.objectsInArea.movingObjects.entities;
 
 import TheBadParodyToGame.area.AreaContainsAll;
 import TheBadParodyToGame.area.position.Position;
 import TheBadParodyToGame.area.position.exceptions.BusyPositionException;
 import TheBadParodyToGame.area.position.exceptions.PositionCannotExistInAreaException;
-import TheBadParodyToGame.objectsInArea.movingObjects.withHP.player.Player;
+import TheBadParodyToGame.objectsInArea.movingObjects.entities.player.Player;
 
 // TODO: objects should's be placed here
 @Deprecated
@@ -13,9 +13,9 @@ public class MobsKnowsPlayerPositionPlacer {
     private Player player;
     private AreaContainsAll area;
 
-    public EnemyFollowingPlayer createEnemyFollowingPlayer(Position pos)
+    public EnemyFollowsPlayer createEnemyFollowingPlayer(Position pos)
             throws BusyPositionException, PositionCannotExistInAreaException {
-        return new EnemyFollowingPlayer(area, pos, 50, player);
+        return new EnemyFollowsPlayer(area, pos, 50, player);
     }
 
     public Player getPlayer() {

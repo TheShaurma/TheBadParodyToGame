@@ -15,7 +15,8 @@ public interface Area<OBJ extends ObjectInArea> extends ConstantArea<OBJ> {
          * @throws PositionCannotExistInAreaException if {@code pos} can't exist in
          *                                            Area.
          */
-        void set(Position pos, OBJ obj) throws PositionCannotExistInAreaException;
+        void set(Position pos, OBJ obj)
+                        throws PositionCannotExistInAreaException;
 
         /**
          * Place {@code obj} at {@code pos} in Area
@@ -26,7 +27,9 @@ public interface Area<OBJ extends ObjectInArea> extends ConstantArea<OBJ> {
          * @throws PositionCannotExistInAreaException if {@code pos} can't exist in
          *                                            Area.
          */
-        void place(Position pos, OBJ obj) throws BusyPositionException, PositionCannotExistInAreaException;
+        void place(Position pos, OBJ obj)
+                        throws BusyPositionException,
+                        PositionCannotExistInAreaException;
 
         /**
          * If {@code pos} is busy, nothing will happen,
@@ -36,7 +39,8 @@ public interface Area<OBJ extends ObjectInArea> extends ConstantArea<OBJ> {
          * @param obj
          * @throws PositionCannotExistInAreaException if pos can't exist in Area.
          */
-        void tryPlace(Position pos, OBJ obj) throws PositionCannotExistInAreaException;
+        void tryPlace(Position pos, OBJ obj)
+                        throws PositionCannotExistInAreaException;
 
         /**
          * Replace old object at {@code pos} to new assigned {@code obj}.
@@ -47,7 +51,9 @@ public interface Area<OBJ extends ObjectInArea> extends ConstantArea<OBJ> {
          * @throws PositionCannotExistInAreaException if {@code pos} can't exist in
          *                                            Area.
          */
-        void replace(Position pos, OBJ obj) throws EmptyPositionException, PositionCannotExistInAreaException;
+        void replace(Position pos, OBJ obj)
+                        throws EmptyPositionException,
+                        PositionCannotExistInAreaException;
 
         /**
          * If {@code pos} is empty do nothing, else replace old object at {@code pos} to
@@ -58,7 +64,8 @@ public interface Area<OBJ extends ObjectInArea> extends ConstantArea<OBJ> {
          * @throws PositionCannotExistInAreaException if {@code pos} can't exist in
          *                                            Area.
          */
-        void tryReplace(Position pos, OBJ obj) throws PositionCannotExistInAreaException;
+        void tryReplace(Position pos, OBJ obj)
+                        throws PositionCannotExistInAreaException;
 
         /**
          * Removes object from assigned {@code pos}.
@@ -68,7 +75,9 @@ public interface Area<OBJ extends ObjectInArea> extends ConstantArea<OBJ> {
          * @throws PositionCannotExistInAreaException if {@code pos} can't exist in
          *                                            Area.
          */
-        void remove(Position pos) throws EmptyPositionException, PositionCannotExistInAreaException;
+        void remove(Position pos)
+                        throws EmptyPositionException,
+                        PositionCannotExistInAreaException;
 
         /**
          * If {@code pos} is empty, nothing will happen,
@@ -78,7 +87,8 @@ public interface Area<OBJ extends ObjectInArea> extends ConstantArea<OBJ> {
          * @throws PositionCannotExistInAreaException if {@code pos} can't exist in
          *                                            Area.
          */
-        void tryRemove(Position pos) throws PositionCannotExistInAreaException;
+        void tryRemove(Position pos)
+                        throws PositionCannotExistInAreaException;
 
         /**
          * Relocate object from {@code oldPos} to {@code newPos}.
@@ -97,7 +107,9 @@ public interface Area<OBJ extends ObjectInArea> extends ConstantArea<OBJ> {
          *                                            exist in Area.
          */
         void relocate(Position oldPos, Position newPos)
-                        throws EmptyPositionException, BusyPositionException, PositionCannotExistInAreaException;
+                        throws EmptyPositionException,
+                        BusyPositionException,
+                        PositionCannotExistInAreaException;
 
         /**
          * If {@code oldPos} is empty or/and {@code newPos} is busy nothing will happen,
@@ -109,7 +121,8 @@ public interface Area<OBJ extends ObjectInArea> extends ConstantArea<OBJ> {
          *                                            {@code newPos} can't
          *                                            exist in Area.
          */
-        void tryRelocate(Position oldPos, Position newPos) throws PositionCannotExistInAreaException;
+        void tryRelocate(Position oldPos, Position newPos)
+                        throws PositionCannotExistInAreaException;
 
         /**
          * Relocate object from {@code oldPos} to {@code newPos} even if {@code newPos}
@@ -123,5 +136,6 @@ public interface Area<OBJ extends ObjectInArea> extends ConstantArea<OBJ> {
          *                                            exist in Area.
          */
         void relocateToEverywhere(Position oldPos, Position newPos)
-                        throws EmptyPositionException, PositionCannotExistInAreaException;
+                        throws EmptyPositionException,
+                        PositionCannotExistInAreaException;
 }

@@ -26,7 +26,7 @@ public class AreaWithBordersTest {
     }
 }
 
-class AreaWithBordersStub extends AreaWithBorders<ObjectInAreaStub> {
+class AreaWithBordersStub extends AbstractAreaWithBorders<ObjectInAreaStub> {
     public AreaWithBordersStub() {
         super(new BordersStub());
     }

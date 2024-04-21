@@ -1,4 +1,4 @@
-package TheBadParodyToGame.objectsInArea.movingObjects.withHP;
+package TheBadParodyToGame.objectsInArea.movingObjects.entities;
 
 import TheBadParodyToGame.area.AreaContainsAll;
 import TheBadParodyToGame.area.position.GamePosition;
@@ -9,11 +9,11 @@ import TheBadParodyToGame.area.position.exceptions.PositionCannotExistInAreaExce
 import TheBadParodyToGame.objectsInArea.CannotMoveObjectException;
 import TheBadParodyToGame.objectsInArea.LostObjectException;
 import TheBadParodyToGame.objectsInArea.ObjectInArea;
-import TheBadParodyToGame.objectsInArea.movingObjects.withHP.player.Player;
+import TheBadParodyToGame.objectsInArea.movingObjects.entities.player.Player;
 
-public class EnemyFollowingPlayer extends EnemyKnowsPlayerPosition {
+public class EnemyFollowsPlayer extends EnemyKnowsPlayerPosition {
 
-    public EnemyFollowingPlayer(AreaContainsAll area, Position pos, int hp, Player player)
+    public EnemyFollowsPlayer(AreaContainsAll area, Position pos, int hp, Player player)
             throws BusyPositionException, PositionCannotExistInAreaException {
         super(area, pos, hp, player);
     }

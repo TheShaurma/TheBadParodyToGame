@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 import TheBadParodyToGame.area.AreaStub;
 import TheBadParodyToGame.area.position.PositionStub;
 import TheBadParodyToGame.area.position.exceptions.PositionException;
-import TheBadParodyToGame.objectsInArea.movingObjects.withHP.player.Player;
+import TheBadParodyToGame.objectsInArea.movingObjects.entities.player.Player;
 import TheBadParodyToGame.area.AreaContainsAll;
 import TheBadParodyToGame.area.position.Position;
 import TheBadParodyToGame.visualization.AreaWithPlayerInCenterAdapter;

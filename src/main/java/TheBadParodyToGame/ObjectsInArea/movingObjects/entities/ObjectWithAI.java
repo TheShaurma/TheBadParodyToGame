@@ -1,4 +1,4 @@
-package TheBadParodyToGame.objectsInArea.movingObjects.withHP;
+package TheBadParodyToGame.objectsInArea.movingObjects.entities;
 
 import TheBadParodyToGame.area.AreaContainsAll;
 import TheBadParodyToGame.area.position.Position;

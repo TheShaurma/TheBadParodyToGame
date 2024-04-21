@@ -165,4 +165,8 @@ class AreaHandlesPositionStub extends AreaHandlesPosition<ObjectInAreaStub> {
         return pos;
     }
 
+    @Override
+    protected void checkPosition(Position pos) throws PositionCannotExistInAreaException {
+    }
+
 }

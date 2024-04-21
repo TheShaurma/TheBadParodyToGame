@@ -1,6 +1,11 @@
 package TheBadParodyToGame.objectsInArea.affectingToHP;
 
-public class Apple implements HealingObject {
+import TheBadParodyToGame.objectsInArea.AbstractObject;
+
+public class Apple extends AbstractObject implements HealingObject {
+
+    protected static final int HASH = 2;
+
     private int heal;
 
     public Apple() {

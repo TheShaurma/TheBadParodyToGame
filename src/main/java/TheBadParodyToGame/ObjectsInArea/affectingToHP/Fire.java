@@ -1,8 +1,12 @@
 package TheBadParodyToGame.objectsInArea.affectingToHP;
 
+import TheBadParodyToGame.objectsInArea.AbstractObject;
+
 /**
  */
-public class Fire implements DangerObject {
+public class Fire extends AbstractObject implements DangerObject {
+
+    protected static final int HASH = 1;
 
     @Override
     public int getDamage() {

@@ -1,10 +1,10 @@
-package TheBadParodyToGame.objectsInArea.movingObjects.withHP;
+package TheBadParodyToGame.objectsInArea.movingObjects.entities;
 
 import TheBadParodyToGame.area.AreaContainsAll;
 import TheBadParodyToGame.area.position.Position;
 import TheBadParodyToGame.area.position.exceptions.BusyPositionException;
 import TheBadParodyToGame.area.position.exceptions.PositionCannotExistInAreaException;
-import TheBadParodyToGame.objectsInArea.movingObjects.withHP.player.Player;
+import TheBadParodyToGame.objectsInArea.movingObjects.entities.player.Player;
 
 public abstract class EnemyKnowsPlayerPosition extends Enemy {
 

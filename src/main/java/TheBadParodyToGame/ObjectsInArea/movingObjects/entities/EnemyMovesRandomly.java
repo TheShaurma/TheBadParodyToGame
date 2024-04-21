@@ -1,4 +1,4 @@
-package TheBadParodyToGame.objectsInArea.movingObjects.withHP;
+package TheBadParodyToGame.objectsInArea.movingObjects.entities;
 
 import java.util.HashMap;
 import java.util.Map;

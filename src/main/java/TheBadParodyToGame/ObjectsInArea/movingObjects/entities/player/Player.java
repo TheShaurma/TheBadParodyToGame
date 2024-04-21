@@ -1,4 +1,4 @@
-package TheBadParodyToGame.objectsInArea.movingObjects.withHP.player;
+package TheBadParodyToGame.objectsInArea.movingObjects.entities.player;
 
 import TheBadParodyToGame.area.AreaContainsAll;
 import TheBadParodyToGame.area.position.Position;
@@ -10,8 +10,7 @@ import TheBadParodyToGame.objectsInArea.LostObjectException;
 import TheBadParodyToGame.objectsInArea.ObjectInArea;
 import TheBadParodyToGame.objectsInArea.PassableObject;
 import TheBadParodyToGame.objectsInArea.movingObjects.MovingObject;
-import TheBadParodyToGame.objectsInArea.movingObjects.withHP.Enemy;
-import TheBadParodyToGame.objectsInArea.movingObjects.withHP.EnemyMovesRandomly;
+import TheBadParodyToGame.objectsInArea.movingObjects.entities.Enemy;
 
 /**
  * Player should be moved by user.

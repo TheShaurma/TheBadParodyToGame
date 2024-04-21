@@ -1,4 +1,4 @@
-package TheBadParodyToGame.objectsInArea.movingObjects;
+package TheBadParodyToGame.objectsInArea.movingObjects.entities;
 
 import TheBadParodyToGame.area.position.exceptions.PositionCannotExistInAreaException;
 import TheBadParodyToGame.objectsInArea.LostObjectException;

@@ -13,17 +13,21 @@ public interface ConstantArea<OBJ extends ObjectInArea> extends Iterable<Positio
      * @throws PositionCannotExistInAreaException if {@code pos} can't exist in
      *                                            Area.
      */
-    OBJ get(Position pos) throws EmptyPositionException, PositionCannotExistInAreaException;
+    OBJ get(Position pos)
+            throws EmptyPositionException,
+            PositionCannotExistInAreaException;
 
     /**
      * @param pos
      * @return if {@code pos} is empty
      */
-    boolean positionIsEmpty(Position pos) throws PositionCannotExistInAreaException;
+    boolean positionIsEmpty(Position pos)
+            throws PositionCannotExistInAreaException;
 
     /**
      * @param pos
      * @return if {@code pos} is busy
      */
-    boolean positionIsBusy(Position pos) throws PositionCannotExistInAreaException;
+    boolean positionIsBusy(Position pos)
+            throws PositionCannotExistInAreaException;
 }

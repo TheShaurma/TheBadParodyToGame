@@ -7,11 +7,12 @@ import TheBadParodyToGame.area.position.exceptions.PositionCannotExistInAreaExce
 import TheBadParodyToGame.objectsInArea.ObjectInArea;
 
 public abstract class AreaHandlesPosition<OBJ extends ObjectInArea>
-        extends AbstractArea<OBJ> {
+        extends AreaChecksPosition<OBJ> {
 
     @Override
     public OBJ get(Position pos)
-            throws EmptyPositionException, PositionCannotExistInAreaException {
+            throws EmptyPositionException,
+            PositionCannotExistInAreaException {
         pos = handlePosition(pos);
         return super.get(pos);
     }
@@ -25,7 +26,8 @@ public abstract class AreaHandlesPosition<OBJ extends ObjectInArea>
 
     @Override
     public void place(Position pos, OBJ obj)
-            throws BusyPositionException, PositionCannotExistInAreaException {
+            throws BusyPositionException,
+            PositionCannotExistInAreaException {
         pos = handlePosition(pos);
         super.place(pos, obj);
     }
@@ -39,7 +41,8 @@ public abstract class AreaHandlesPosition<OBJ extends ObjectInArea>
 
     @Override
     public void replace(Position pos, OBJ obj)
-            throws EmptyPositionException, PositionCannotExistInAreaException {
+            throws EmptyPositionException,
+            PositionCannotExistInAreaException {
         pos = handlePosition(pos);
         super.replace(pos, obj);
     }
@@ -53,7 +56,8 @@ public abstract class AreaHandlesPosition<OBJ extends ObjectInArea>
 
     @Override
     public void remove(Position pos)
-            throws EmptyPositionException, PositionCannotExistInAreaException {
+            throws EmptyPositionException,
+            PositionCannotExistInAreaException {
         pos = handlePosition(pos);
         super.remove(pos);
     }
@@ -67,7 +71,8 @@ public abstract class AreaHandlesPosition<OBJ extends ObjectInArea>
 
     @Override
     public void relocate(Position oldPos, Position newPos)
-            throws EmptyPositionException, BusyPositionException,
+            throws EmptyPositionException,
+            BusyPositionException,
             PositionCannotExistInAreaException {
         oldPos = handlePosition(oldPos);
         newPos = handlePosition(newPos);
@@ -84,7 +89,8 @@ public abstract class AreaHandlesPosition<OBJ extends ObjectInArea>
 
     @Override
     public void relocateToEverywhere(Position oldPos, Position newPos)
-            throws EmptyPositionException, PositionCannotExistInAreaException {
+            throws EmptyPositionException,
+            PositionCannotExistInAreaException {
         oldPos = handlePosition(oldPos);
         newPos = handlePosition(newPos);
         super.relocateToEverywhere(oldPos, newPos);

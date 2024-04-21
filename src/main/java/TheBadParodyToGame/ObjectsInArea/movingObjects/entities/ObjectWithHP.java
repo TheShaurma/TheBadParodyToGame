@@ -1,4 +1,4 @@
-package TheBadParodyToGame.objectsInArea.movingObjects.withHP;
+package TheBadParodyToGame.objectsInArea.movingObjects.entities;
 
 import TheBadParodyToGame.area.AreaContainsAll;
 import TheBadParodyToGame.area.position.Position;
@@ -7,7 +7,6 @@ import TheBadParodyToGame.area.position.exceptions.EmptyPositionException;
 import TheBadParodyToGame.area.position.exceptions.PositionCannotExistInAreaException;
 import TheBadParodyToGame.objectsInArea.CannotMoveObjectException;
 import TheBadParodyToGame.objectsInArea.LostObjectException;
-import TheBadParodyToGame.objectsInArea.movingObjects.Entity;
 import TheBadParodyToGame.objectsInArea.movingObjects.MovingObject;
 
 public abstract class ObjectWithHP extends MovingObject implements Entity {

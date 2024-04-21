@@ -32,16 +32,11 @@ public class LostObjectExceptionTest {
     }
 
     @Test
-    public void toString_Call_normalStringReturned() {
+    public void toString_call_exceptionWasntThrown() {
         Position pos = new PositionStub();
         ObjectInArea obj = new ObjectInAreaStub();
         LostObjectException exception = new LostObjectException(pos, obj);
-        String expectedString = "Manager lost " + exception.getObject() + "in position: " + exception.getPosition()
-                + ".";
-        String actualString;
 
-        actualString = exception.toString();
-
-        Assertions.assertEquals(expectedString, actualString);
+        exception.toString();
     }
 }

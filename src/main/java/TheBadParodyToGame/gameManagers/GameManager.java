@@ -15,12 +15,12 @@ import TheBadParodyToGame.area.position.exceptions.PositionCannotExistInAreaExce
 import TheBadParodyToGame.area.position.exceptions.PositionException;
 import TheBadParodyToGame.objectsInArea.CannotMoveObjectException;
 import TheBadParodyToGame.objectsInArea.LostObjectException;
-import TheBadParodyToGame.objectsInArea.movingObjects.withHP.DiedMobCannotMoveException;
-import TheBadParodyToGame.objectsInArea.movingObjects.withHP.EnemyFollowingPlayer;
-import TheBadParodyToGame.objectsInArea.movingObjects.withHP.EnemyMovesRandomly;
-import TheBadParodyToGame.objectsInArea.movingObjects.withHP.ObjectWithAI;
-import TheBadParodyToGame.objectsInArea.movingObjects.withHP.player.Player;
-import TheBadParodyToGame.objectsInArea.movingObjects.withHP.player.PlayerDiedException;
+import TheBadParodyToGame.objectsInArea.movingObjects.entities.DiedMobCannotMoveException;
+import TheBadParodyToGame.objectsInArea.movingObjects.entities.EnemyFollowsPlayer;
+import TheBadParodyToGame.objectsInArea.movingObjects.entities.EnemyMovesRandomly;
+import TheBadParodyToGame.objectsInArea.movingObjects.entities.ObjectWithAI;
+import TheBadParodyToGame.objectsInArea.movingObjects.entities.player.Player;
+import TheBadParodyToGame.objectsInArea.movingObjects.entities.player.PlayerDiedException;
 import TheBadParodyToGame.visualization.AreaWithPlayerInCenterAdapter;
 import TheBadParodyToGame.visualization.ConsoleVisualizer;
 import TheBadParodyToGame.writeRead.AreaReader;
@@ -120,7 +120,7 @@ public class GameManager {
         for (int i = 1; i < n + 1; i++) {
             Position pos = Positions.getRandomPosition(minPos, maxPos);
             try {
-                var enemy = new EnemyFollowingPlayer(area, pos, i, player);
+                var enemy = new EnemyFollowsPlayer(area, pos, i, player);
                 allMobs.add(enemy);
             } catch (BusyPositionException e) {
             }
