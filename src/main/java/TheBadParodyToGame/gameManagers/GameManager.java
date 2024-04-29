@@ -34,9 +34,11 @@ public class GameManager {
     private ConsoleVisualizer visualizer;
 
     public void start()
-            throws PositionCannotExistInAreaException, EmptyPositionException,
+            throws PositionCannotExistInAreaException,
+            EmptyPositionException,
             LostObjectException,
             CannotMoveObjectException {
+
         for (;;) {
             visualizer.showGame();
             String input = getPlayerInput();
@@ -69,6 +71,8 @@ public class GameManager {
                 System.out.println(String.format("%s died.", e.getObject()));
             }
         }
+
+        player.checkAlive();
     }
 
     private String getPlayerInput() {
@@ -80,6 +84,7 @@ public class GameManager {
             throws PositionException,
             IOException,
             UnknownSymbolException {
+
         initVariables();
         placeEnemies(50);
     }
@@ -88,10 +93,12 @@ public class GameManager {
             throws PositionException,
             IOException,
             UnknownSymbolException {
+
         area = AreaReader.readArea("StartLevel.txt");
 
         Position startPos = new GamePosition(1, 1);
         player = new Player("Valera", area, startPos);
+        area.place(startPos, player);
 
         visualizer = new ConsoleVisualizer(
                 new AreaWithPlayerInCenterAdapter(area, player),
@@ -106,12 +113,15 @@ public class GameManager {
 
     private void placeEnemies(int n)
             throws PositionCannotExistInAreaException {
+
         Position minPos = new GamePosition(0, 0);
         Position maxPos = new GamePosition(101, 29);
         for (int i = 0; i < n; i++) {
             Position pos = Positions.getRandomPosition(minPos, maxPos);
             try {
                 var enemy = new EnemyMovesRandomly(area, pos, 40);
+
+                area.place(pos, enemy);
                 allMobs.add(enemy);
             } catch (BusyPositionException e) {
             }
@@ -121,6 +131,8 @@ public class GameManager {
             Position pos = Positions.getRandomPosition(minPos, maxPos);
             try {
                 var enemy = new EnemyFollowsPlayer(area, pos, i, player);
+
+                area.place(pos, enemy);
                 allMobs.add(enemy);
             } catch (BusyPositionException e) {
             }
@@ -135,6 +147,7 @@ public class GameManager {
             throws LostObjectException,
             CannotMoveObjectException,
             PositionCannotExistInAreaException {
+
         for (ObjectWithAI mob : allMobs) {
             mob.moveToStep();
         }

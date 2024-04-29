@@ -10,6 +10,8 @@ import TheBadParodyToGame.objectsInArea.LostObjectException;
 public class MovingObjectStub extends MovingObject {
     public MovingObjectStub(AreaContainsAll area, Position pos) throws PositionException {
         super(area, pos);
+
+        area.place(pos, this);
     }
 
     @Override

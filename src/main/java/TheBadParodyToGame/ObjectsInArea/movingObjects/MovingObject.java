@@ -30,9 +30,6 @@ public abstract class MovingObject extends AbstractObject {
             PositionCannotExistInAreaException {
         this.area = area;
         currentPos = pos;
-
-        // TODO: revome placing
-        area.place(pos, this);
     }
 
     @Override

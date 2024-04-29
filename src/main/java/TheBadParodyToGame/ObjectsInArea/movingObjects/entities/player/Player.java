@@ -22,6 +22,12 @@ public class Player extends MovingObject {
     private int heatPoints = 100;
     private String name;
 
+    public Player(String name, AreaContainsAll area, Position startPos) throws PositionException {
+        super(area, startPos);
+
+        this.name = name;
+    }
+
     public Player(AreaContainsAll area, Position startPos) throws PositionException {
         super(area, startPos);
 
@@ -63,29 +69,19 @@ public class Player extends MovingObject {
             } else if (i < 10) {
                 result += i;
             } else {
-                switch (i) {
-                    case 10:
-                        result += '^';
-                        break;
-                    case 11:
-                        result += '*';
-                        break;
-                    case 12:
-                        result += '#';
-                        break;
-                    default:
-                        result += '@';
+                if (i == 10) {
+                    result += '^';
+                } else if (i == 11) {
+                    result += '*';
+                } else if (i == 12) {
+                    result += '#';
+                } else {
+                    result += '@';
                 }
             }
         }
 
         return result + " - " + getHP();
-    }
-
-    public Player(String name, AreaContainsAll area, Position startPos) throws PositionException {
-        super(area, startPos);
-
-        this.name = name;
     }
 
     /**
@@ -221,7 +217,7 @@ public class Player extends MovingObject {
      * 
      * @throws PlayerDiedException if {@code n <= 0}.
      */
-    private void checkAlive() throws PlayerDiedException {
+    public void checkAlive() throws PlayerDiedException {
         if (getHP() <= 0) {
             throw new PlayerDiedException(getCurrentPosition(), this);
         }

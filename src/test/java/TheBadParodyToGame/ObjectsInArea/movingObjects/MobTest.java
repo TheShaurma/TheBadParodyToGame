@@ -123,6 +123,8 @@ class MobStub extends ObjectWithAI {
     public MobStub(AreaContainsAll area, Position pos, int hp)
             throws BusyPositionException, PositionCannotExistInAreaException {
         super(area, pos, hp);
+
+        area.place(pos, this);
     }
 
     @Override
