@@ -133,8 +133,8 @@ public abstract class AbstractArea<OBJ extends ObjectInArea>
     }
 
     @Override
-    public Iterator<Position> iterator() {
-        return areaItself.keySet().iterator();
+    public Iterable<Position> getAllBusyPositions() {
+        return areaItself.keySet();
     }
 
     @Override
@@ -144,7 +144,7 @@ public abstract class AbstractArea<OBJ extends ObjectInArea>
         } else {
 
             ConstantArea<?> otherArea = (ConstantArea<?>) obj;
-            for (Position pos : this) {
+            for (Position pos : getAllBusyPositions()) {
                 try {
                     if (otherArea.positionIsEmpty(pos) ||
                             !get(pos).equals(otherArea.get(pos))) {
@@ -163,7 +163,7 @@ public abstract class AbstractArea<OBJ extends ObjectInArea>
     @Override
     public int hashCode() {
         int result = 0;
-        for (Position pos : this) {
+        for (Position pos : getAllBusyPositions()) {
             result += pos.getX();
             result += pos.getY();
         }

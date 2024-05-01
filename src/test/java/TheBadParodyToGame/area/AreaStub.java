@@ -113,7 +113,7 @@ public class AreaStub implements AreaContainsAll {
     }
 
     @Override
-    public Iterator<Position> iterator() {
+    public Iterable<Position> getAllBusyPositions() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'iterator'");
     }

@@ -19,7 +19,7 @@ public class AreaJoiner {
             throws EmptyPositionException, PositionCannotExistInAreaException {
         ObjectInArea obj;
         int x, y;
-        for (Position pos : joinedArea) {
+        for (Position pos : joinedArea.getAllBusyPositions()) {
             obj = joinedArea.get(pos);
             x = downLeftAnglePos.getX() + pos.getX();
             y = downLeftAnglePos.getY() + pos.getY();

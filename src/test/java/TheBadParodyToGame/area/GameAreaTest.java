@@ -521,7 +521,8 @@ public class GameAreaTest {
     }
 
     @Test
-    public void iterator_iterate_iterated() throws BusyPositionException, PositionCannotExistInAreaException {
+    public void getAllBusyPositions_iterate_iterated()
+            throws BusyPositionException, PositionCannotExistInAreaException {
         GameArea area = new GameArea();
         PositionStub pos1 = new PositionStub();
         PositionStub pos2 = pos1.getOther();
@@ -531,7 +532,7 @@ public class GameAreaTest {
         area.place(pos3, new ObjectInAreaStub());
         Vector<Position> poses = new Vector<>();
 
-        for (Position pos : area) {
+        for (Position pos : area.getAllBusyPositions()) {
             assertFalse(poses.contains(pos));
             poses.add(pos);
             assertTrue(area.positionIsBusy(pos));
