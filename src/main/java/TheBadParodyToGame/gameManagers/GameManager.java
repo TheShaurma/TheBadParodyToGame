@@ -24,6 +24,7 @@ import TheBadParodyToGame.objectsInArea.movingObjects.entities.player.PlayerDied
 import TheBadParodyToGame.visualization.AreaWithPlayerInCenterAdapter;
 import TheBadParodyToGame.visualization.ConsoleVisualizer;
 import TheBadParodyToGame.writeRead.AreaReader;
+import TheBadParodyToGame.writeRead.AreaWriter;
 import TheBadParodyToGame.writeRead.UnknownSymbolException;
 
 public class GameManager {
@@ -37,7 +38,8 @@ public class GameManager {
             throws PositionCannotExistInAreaException,
             EmptyPositionException,
             LostObjectException,
-            CannotMoveObjectException {
+            CannotMoveObjectException,
+            IOException {
 
         for (;;) {
             visualizer.showGame();
@@ -54,6 +56,8 @@ public class GameManager {
                 break;
             }
         }
+
+        new AreaWriter("gameArea").writeArea(area);
     }
 
     private void step(String input)

@@ -1,7 +1,5 @@
 package TheBadParodyToGame.visualization;
 
-import java.util.Iterator;
-
 import TheBadParodyToGame.area.AreaContainsAll;
 import TheBadParodyToGame.area.position.GamePosition;
 import TheBadParodyToGame.area.position.Position;
