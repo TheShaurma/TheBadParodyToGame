@@ -1,7 +1,6 @@
 package TheBadParodyToGame.area;
 
 import java.util.HashMap;
-import java.util.Iterator;
 
 import TheBadParodyToGame.area.position.Position;
 import TheBadParodyToGame.area.position.exceptions.BusyPositionException;
@@ -138,22 +137,36 @@ public abstract class AbstractArea<OBJ extends ObjectInArea>
     }
 
     @Override
+    public Iterable<OBJ> getAllObjects() {
+        return areaItself.values();
+    }
+
+    @Override
     public boolean equals(Object obj) {
         if (!(obj instanceof ConstantArea<?>)) {
             return false;
         } else {
 
             ConstantArea<?> otherArea = (ConstantArea<?>) obj;
-            for (Position pos : getAllBusyPositions()) {
-                try {
+            try {
+
+                for (Position pos : getAllBusyPositions()) {
                     if (otherArea.positionIsEmpty(pos) ||
                             !get(pos).equals(otherArea.get(pos))) {
                         return false;
                     }
 
-                } catch (PositionCannotExistInAreaException | EmptyPositionException e) {
-                    return false;
                 }
+
+                for (Position pos : otherArea.getAllBusyPositions()) {
+                    if (positionIsEmpty(pos) ||
+                            !get(pos).equals(otherArea.get(pos))) {
+                        return false;
+                    }
+                }
+
+            } catch (PositionCannotExistInAreaException | EmptyPositionException e) {
+                return false;
             }
 
             return true;

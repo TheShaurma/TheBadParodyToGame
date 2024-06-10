@@ -1,8 +1,6 @@
 # VS Code package
 .vscode/
 
-# Jython cache package
-.jython_cache/
 
 # Java
 *.class
@@ -11,6 +9,7 @@
 lib/
 
 # Data
-data/
+data/user/
 
+# Maven package
 target/

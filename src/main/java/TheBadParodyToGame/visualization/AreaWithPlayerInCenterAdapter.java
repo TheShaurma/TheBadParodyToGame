@@ -110,4 +110,9 @@ public class AreaWithPlayerInCenterAdapter implements AreaContainsAll {
     public Iterable<Position> getAllBusyPositions() {
         return areaItself.getAllBusyPositions();
     }
+
+    @Override
+    public Iterable<ObjectInArea> getAllObjects() {
+        return areaItself.getAllObjects();
+    }
 }

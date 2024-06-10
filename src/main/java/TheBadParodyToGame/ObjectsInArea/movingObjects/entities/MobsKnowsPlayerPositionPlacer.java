@@ -13,7 +13,7 @@ public class MobsKnowsPlayerPositionPlacer {
     private Player player;
     private AreaContainsAll area;
 
-    public EnemyFollowsPlayer createEnemyFollowingPlayer(Position pos)
+    public EnemyFollowsPlayer placeEnemyFollowingPlayer(Position pos)
             throws BusyPositionException, PositionCannotExistInAreaException {
         return new EnemyFollowsPlayer(area, pos, 50, player);
     }

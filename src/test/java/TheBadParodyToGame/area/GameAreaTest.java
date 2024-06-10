@@ -537,5 +537,9 @@ public class GameAreaTest {
             poses.add(pos);
             assertTrue(area.positionIsBusy(pos));
         }
+
+        assertTrue(poses.contains(pos1));
+        assertTrue(poses.contains(pos2));
+        assertTrue(poses.contains(pos3));
     }
 }

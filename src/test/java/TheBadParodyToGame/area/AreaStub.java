@@ -1,7 +1,6 @@
 package TheBadParodyToGame.area;
 
 import java.util.HashMap;
-import java.util.Iterator;
 
 import TheBadParodyToGame.area.position.Position;
 import TheBadParodyToGame.area.position.exceptions.BusyPositionException;
@@ -116,6 +115,12 @@ public class AreaStub implements AreaContainsAll {
     public Iterable<Position> getAllBusyPositions() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'iterator'");
+    }
+
+    @Override
+    public Iterable<ObjectInArea> getAllObjects() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getAllObjects'");
     }
 }
 

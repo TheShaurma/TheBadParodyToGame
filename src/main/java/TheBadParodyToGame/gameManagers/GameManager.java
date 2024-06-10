@@ -33,6 +33,7 @@ public class GameManager {
     private AreaContainsAll area;
     private Player player;
     private ConsoleVisualizer visualizer;
+    private AreaWriter<AreaContainsAll> writer;
 
     public void start()
             throws PositionCannotExistInAreaException,
@@ -57,7 +58,8 @@ public class GameManager {
             }
         }
 
-        new AreaWriter("gameArea").writeArea(area);
+        writer.writeArea();
+        writer.close();
     }
 
     private void step(String input)
@@ -113,6 +115,10 @@ public class GameManager {
         in = new Scanner(System.in);
 
         allMobs = new ArrayList<>();
+
+        writer = new AreaWriter<>();
+        writer.setFileName("main-room");
+        writer.setArea(area);
     }
 
     private void placeEnemies(int n)

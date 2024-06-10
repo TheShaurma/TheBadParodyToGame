@@ -1,5 +1,7 @@
 package TheBadParodyToGame.writeRead;
 
+import java.io.Closeable;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -13,7 +15,7 @@ import TheBadParodyToGame.objectsInArea.movingObjects.entities.EnemyKnowsPlayerP
 import TheBadParodyToGame.objectsInArea.movingObjects.entities.EnemyMovesRandomly;
 import TheBadParodyToGame.objectsInArea.movingObjects.entities.player.Player;
 
-class ClassesMap {
+class ClassesMap implements Closeable {
     private static final Map<String, Class<?>> classMap = new HashMap<>();
     private static final Map<Class<?>, String> stringMap = new HashMap<>();
 
@@ -73,5 +75,11 @@ class ClassesMap {
         result.add(EnemyKnowsPlayerPosition.class);
 
         return result;
+    }
+
+    @Override
+    public void close() throws IOException {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'close'");
     }
 }

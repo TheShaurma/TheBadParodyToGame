@@ -35,4 +35,9 @@ public interface ConstantArea<OBJ extends ObjectInArea> {
          * @return all busy positions in area
          */
         Iterable<Position> getAllBusyPositions();
+
+        /**
+         * @return all objects in area
+         */
+        Iterable<OBJ> getAllObjects();
 }
