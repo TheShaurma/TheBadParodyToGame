@@ -17,7 +17,7 @@ import TheBadParodyToGame.objectsInArea.buildingMaterials.Stone;
  * GameAreaReader
  */
 @Deprecated
-public class AreaReader {
+public class LegacyAreaReader {
     public static AreaContainsAll readArea(String areaName)
             throws IOException, UnknownSymbolException, PositionException {
         AreaContainsAll area = new GameArea();

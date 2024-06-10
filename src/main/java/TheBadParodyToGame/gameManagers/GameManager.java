@@ -23,7 +23,7 @@ import TheBadParodyToGame.objectsInArea.movingObjects.entities.player.Player;
 import TheBadParodyToGame.objectsInArea.movingObjects.entities.player.PlayerDiedException;
 import TheBadParodyToGame.visualization.AreaWithPlayerInCenterAdapter;
 import TheBadParodyToGame.visualization.ConsoleVisualizer;
-import TheBadParodyToGame.writeRead.AreaReader;
+import TheBadParodyToGame.writeRead.LegacyAreaReader;
 import TheBadParodyToGame.writeRead.AreaWriter;
 import TheBadParodyToGame.writeRead.UnknownSymbolException;
 
@@ -100,7 +100,7 @@ public class GameManager {
             IOException,
             UnknownSymbolException {
 
-        area = AreaReader.readArea("StartLevel.txt");
+        area = LegacyAreaReader.readArea("StartLevel.txt");
 
         Position startPos = new GamePosition(1, 1);
         player = new Player("Valera", area, startPos);
