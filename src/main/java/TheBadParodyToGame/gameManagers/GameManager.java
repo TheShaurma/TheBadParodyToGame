@@ -23,12 +23,10 @@ import TheBadParodyToGame.objectsInArea.movingObjects.entities.player.Player;
 import TheBadParodyToGame.objectsInArea.movingObjects.entities.player.PlayerDiedException;
 import TheBadParodyToGame.visualization.AreaWithPlayerInCenterAdapter;
 import TheBadParodyToGame.visualization.ConsoleVisualizer;
-import TheBadParodyToGame.writeRead.LegacyAreaReader;
 import TheBadParodyToGame.writeRead.AreaWriter;
 import TheBadParodyToGame.writeRead.CannotFindFileException;
 import TheBadParodyToGame.writeRead.GameAreaReader;
 import TheBadParodyToGame.writeRead.InvalidFileException;
-import TheBadParodyToGame.writeRead.UnknownSymbolException;
 
 public class GameManager {
     private List<ObjectWithAI> allMobs;
@@ -93,7 +91,6 @@ public class GameManager {
     public void init()
             throws PositionException,
             IOException,
-            UnknownSymbolException,
             CannotFindFileException,
             InvalidFileException {
 
@@ -104,7 +101,6 @@ public class GameManager {
     private void initVariables()
             throws PositionException,
             IOException,
-            UnknownSymbolException,
             CannotFindFileException,
             InvalidFileException {
 

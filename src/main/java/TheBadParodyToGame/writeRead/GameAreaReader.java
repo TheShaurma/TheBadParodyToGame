@@ -54,7 +54,7 @@ public class GameAreaReader
                                             ClassesMap.getClassByString(key)));
 
                         } catch (BusyPositionException | PositionCannotExistInAreaException e) {
-                            throw new InvalidFileException(this, key);
+                            throw new InvalidFileException(this, getFileName());
                         }
                     }
                 }
