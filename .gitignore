@@ -13,3 +13,5 @@ data/user/
 
 # Maven package
 target/
+
+main-room-after-game.json

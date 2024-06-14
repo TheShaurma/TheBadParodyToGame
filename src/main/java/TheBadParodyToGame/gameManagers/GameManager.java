@@ -110,8 +110,9 @@ public class GameManager {
 
         areaReader = new GameAreaReader();
         areaReader.setFileName("main-room");
-
         area = areaReader.readArea();
+
+        // area = LegacyAreaReader.readArea("StartLevel.txt");
 
         Position startPos = new GamePosition(1, 1);
         player = new Player("Valera", area, startPos);
@@ -128,7 +129,7 @@ public class GameManager {
         allMobs = new ArrayList<>();
 
         areaWriter = new AreaWriter<>();
-        areaWriter.setFileName("main-room");
+        areaWriter.setFileName("main-room-after-game");
         areaWriter.setArea(area);
     }
 

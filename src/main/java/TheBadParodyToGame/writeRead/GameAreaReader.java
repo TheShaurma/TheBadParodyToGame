@@ -43,20 +43,18 @@ public class GameAreaReader
             JsonElement value = entry.getValue();
 
             if (!key.equals("hash")) {
-                for (JsonElement poses : value.getAsJsonArray()) {
-                    for (JsonElement posJson : poses.getAsJsonArray()) {
-                        Position pos = gson.fromJson(posJson, GamePosition.class);
+                for (JsonElement posJson : value.getAsJsonArray()) {
+                    Position pos = gson.fromJson(posJson, GamePosition.class);
 
-                        if (buildingMaterialsClasses.contains(key)) {
-                            try {
-                                result.place(
-                                        pos,
-                                        ClassesMap.createObjectOfClass(
-                                                ClassesMap.getClassByString(key)));
+                    if (buildingMaterialsClasses.contains(key)) {
+                        try {
+                            result.place(
+                                    pos,
+                                    ClassesMap.createObjectOfClass(
+                                            ClassesMap.getClassByString(key)));
 
-                            } catch (BusyPositionException | PositionCannotExistInAreaException e) {
-                                throw new InvalidFileException(this, key);
-                            }
+                        } catch (BusyPositionException | PositionCannotExistInAreaException e) {
+                            throw new InvalidFileException(this, key);
                         }
                     }
                 }
@@ -64,6 +62,7 @@ public class GameAreaReader
         }
 
         return result;
+
     }
 
     @Override
