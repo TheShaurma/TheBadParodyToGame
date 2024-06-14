@@ -6,6 +6,8 @@ import TheBadParodyToGame.area.position.exceptions.PositionException;
 import TheBadParodyToGame.gameManagers.GameManager;
 import TheBadParodyToGame.objectsInArea.CannotMoveObjectException;
 import TheBadParodyToGame.objectsInArea.LostObjectException;
+import TheBadParodyToGame.writeRead.CannotFindFileException;
+import TheBadParodyToGame.writeRead.InvalidFileException;
 import TheBadParodyToGame.writeRead.UnknownSymbolException;
 
 public class TestMain {
@@ -14,7 +16,9 @@ public class TestMain {
             IOException,
             UnknownSymbolException,
             LostObjectException,
-            CannotMoveObjectException {
+            CannotMoveObjectException,
+            CannotFindFileException,
+            InvalidFileException {
 
         var manager = new GameManager();
         manager.init();

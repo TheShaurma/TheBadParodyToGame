@@ -25,6 +25,9 @@ import TheBadParodyToGame.visualization.AreaWithPlayerInCenterAdapter;
 import TheBadParodyToGame.visualization.ConsoleVisualizer;
 import TheBadParodyToGame.writeRead.LegacyAreaReader;
 import TheBadParodyToGame.writeRead.AreaWriter;
+import TheBadParodyToGame.writeRead.CannotFindFileException;
+import TheBadParodyToGame.writeRead.GameAreaReader;
+import TheBadParodyToGame.writeRead.InvalidFileException;
 import TheBadParodyToGame.writeRead.UnknownSymbolException;
 
 public class GameManager {
@@ -33,7 +36,8 @@ public class GameManager {
     private AreaContainsAll area;
     private Player player;
     private ConsoleVisualizer visualizer;
-    private AreaWriter<AreaContainsAll> writer;
+    private GameAreaReader areaReader;
+    private AreaWriter<AreaContainsAll> areaWriter;
 
     public void start()
             throws PositionCannotExistInAreaException,
@@ -58,8 +62,8 @@ public class GameManager {
             }
         }
 
-        writer.writeArea();
-        writer.close();
+        areaWriter.writeArea();
+        areaWriter.close();
     }
 
     private void step(String input)
@@ -89,7 +93,9 @@ public class GameManager {
     public void init()
             throws PositionException,
             IOException,
-            UnknownSymbolException {
+            UnknownSymbolException,
+            CannotFindFileException,
+            InvalidFileException {
 
         initVariables();
         placeEnemies(50);
@@ -98,9 +104,14 @@ public class GameManager {
     private void initVariables()
             throws PositionException,
             IOException,
-            UnknownSymbolException {
+            UnknownSymbolException,
+            CannotFindFileException,
+            InvalidFileException {
 
-        area = LegacyAreaReader.readArea("StartLevel.txt");
+        areaReader = new GameAreaReader();
+        areaReader.setFileName("main-room");
+
+        area = areaReader.readArea();
 
         Position startPos = new GamePosition(1, 1);
         player = new Player("Valera", area, startPos);
@@ -116,9 +127,9 @@ public class GameManager {
 
         allMobs = new ArrayList<>();
 
-        writer = new AreaWriter<>();
-        writer.setFileName("main-room");
-        writer.setArea(area);
+        areaWriter = new AreaWriter<>();
+        areaWriter.setFileName("main-room");
+        areaWriter.setArea(area);
     }
 
     private void placeEnemies(int n)

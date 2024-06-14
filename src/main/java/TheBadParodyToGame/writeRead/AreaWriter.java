@@ -27,9 +27,9 @@ public class AreaWriter<A extends ConstantArea<?>>
     private final Gson gson;
     private A area;
 
+    // TODO: file should written in default package
     private static final String[] PATH = {
             "data",
-            "default",
             "rooms"
     };
 
@@ -65,7 +65,7 @@ public class AreaWriter<A extends ConstantArea<?>>
             throws IOException {
 
         Path dir = Files.createDirectories(
-                Paths.get(PATH[0], PATH[1], PATH[2]));
+                Paths.get(PATH[0], PATH[1]));
 
         Path path = dir.resolve(fileName + ".json");
         out = new OutputStreamWriter(
