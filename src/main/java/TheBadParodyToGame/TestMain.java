@@ -3,7 +3,7 @@ package TheBadParodyToGame;
 import java.io.IOException;
 
 import TheBadParodyToGame.area.position.exceptions.PositionException;
-import TheBadParodyToGame.gameManagers.GameManager;
+import TheBadParodyToGame.manage.TBPTGManager;
 import TheBadParodyToGame.objectsInArea.CannotMoveObjectException;
 import TheBadParodyToGame.objectsInArea.LostObjectException;
 import TheBadParodyToGame.writeRead.CannotFindFileException;
@@ -18,7 +18,7 @@ public class TestMain {
             CannotFindFileException,
             InvalidFileException {
 
-        var manager = new GameManager();
+        var manager = new TBPTGManager();
         manager.init();
         manager.start();
     }

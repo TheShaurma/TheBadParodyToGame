@@ -20,6 +20,7 @@ import TheBadParodyToGame.area.position.exceptions.EmptyPositionException;
 import TheBadParodyToGame.area.position.exceptions.PositionCannotExistInAreaException;
 import TheBadParodyToGame.objectsInArea.ObjectInArea;
 
+// TODO: docs
 public class AreaWriter<A extends ConstantArea<?>>
         implements Closeable {
 
@@ -27,7 +28,6 @@ public class AreaWriter<A extends ConstantArea<?>>
     private final Gson gson;
     private A area;
 
-    // TODO: file should written in default package
     private static final String[] PATH = {
             "data",
             "rooms"

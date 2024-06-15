@@ -1,4 +1,4 @@
-package TheBadParodyToGame.gameManagers;
+package TheBadParodyToGame.manage;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -28,7 +28,7 @@ import TheBadParodyToGame.writeRead.CannotFindFileException;
 import TheBadParodyToGame.writeRead.GameAreaReader;
 import TheBadParodyToGame.writeRead.InvalidFileException;
 
-public class GameManager {
+public class TBPTGManager implements Manager {
     private List<ObjectWithAI> allMobs;
     private Scanner in;
     private AreaContainsAll area;
@@ -37,6 +37,18 @@ public class GameManager {
     private GameAreaReader areaReader;
     private AreaWriter<AreaContainsAll> areaWriter;
 
+    @Override
+    public void init()
+            throws PositionException,
+            IOException,
+            CannotFindFileException,
+            InvalidFileException {
+
+        initVariables();
+        placeEnemies(50);
+    }
+
+    @Override
     public void start()
             throws PositionCannotExistInAreaException,
             EmptyPositionException,
@@ -64,6 +76,10 @@ public class GameManager {
         areaWriter.close();
     }
 
+    @Override
+    public void stop() {
+    }
+
     private void step(String input)
             throws LostObjectException,
             CannotMoveObjectException,
@@ -88,16 +104,6 @@ public class GameManager {
         return in.next();
     }
 
-    public void init()
-            throws PositionException,
-            IOException,
-            CannotFindFileException,
-            InvalidFileException {
-
-        initVariables();
-        placeEnemies(50);
-    }
-
     private void initVariables()
             throws PositionException,
             IOException,
@@ -107,8 +113,6 @@ public class GameManager {
         areaReader = new GameAreaReader();
         areaReader.setFileName("main-room");
         area = areaReader.readArea();
-
-        // area = LegacyAreaReader.readArea("StartLevel.txt");
 
         Position startPos = new GamePosition(1, 1);
         player = new Player("Valera", area, startPos);

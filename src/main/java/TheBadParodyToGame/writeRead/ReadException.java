@@ -1,5 +1,6 @@
 package TheBadParodyToGame.writeRead;
 
+// TODO: docs
 public abstract class ReadException
         extends Exception {
 

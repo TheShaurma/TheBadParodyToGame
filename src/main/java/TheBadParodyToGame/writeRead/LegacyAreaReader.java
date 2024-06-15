@@ -13,9 +13,6 @@ import TheBadParodyToGame.objectsInArea.affectingToHP.Apple;
 import TheBadParodyToGame.objectsInArea.affectingToHP.Fire;
 import TheBadParodyToGame.objectsInArea.buildingMaterials.Stone;
 
-/**
- * GameAreaReader
- */
 @Deprecated
 public class LegacyAreaReader {
     public static AreaContainsAll readArea(String areaName)

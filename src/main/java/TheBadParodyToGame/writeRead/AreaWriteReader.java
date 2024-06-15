@@ -5,6 +5,7 @@ import com.google.gson.Gson;
 import TheBadParodyToGame.area.position.GamePosition;
 import TheBadParodyToGame.area.position.Position;
 
+// TODO: docs
 @Deprecated
 public class AreaWriteReader {
     private static final Gson gson = new Gson();

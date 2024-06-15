@@ -1,5 +1,6 @@
 package TheBadParodyToGame.writeRead;
 
+// TODO: docs
 public class InvalidFileException
         extends ReadException {
 
