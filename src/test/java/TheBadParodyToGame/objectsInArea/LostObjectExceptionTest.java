@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 
 import TheBadParodyToGame.area.position.PositionStub;
+import TheBadParodyToGame.objectsInArea.LostObjectException;
+import TheBadParodyToGame.objectsInArea.ObjectInArea;
 import TheBadParodyToGame.area.position.Position;
 
 public class LostObjectExceptionTest {
